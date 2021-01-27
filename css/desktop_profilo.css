@@ -1,0 +1,171 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: Verdana, Geneva, sans-serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+body {
+    background-color: #E8E9EB;
+    max-width: 1024px;
+    margin: auto;
+}
+
+/***** HEADER *****/
+
+#header {
+	background-color: #ff9d00;
+	height: 7em;
+}
+
+#titolone {
+	padding: 1em;
+	float: left;
+	margin: 0em auto;
+}
+
+#titolone h1 {
+	font-size: 3em;
+	margin: 0em auto;
+}
+
+#titolone h2 {
+	font-size: 1em;
+}
+
+#usr_zone {
+	float: right;
+	padding: 2em;
+}
+
+#name_log {
+	text-align: right;
+	float: left;
+}
+
+#utente {
+	font-size: 1.2em;
+}
+
+#utente a {
+	color: black;
+}
+
+#logout {
+	font-size: 0.8em;
+}
+
+#logout a {
+	color: red;
+}
+
+#usr_zone img {
+	width: 3em;
+	border-radius: 50%;
+    margin: 0 0.5em 0 0.5em;
+	float: right;
+}
+
+/***** MACRO CONTENUTO - SEZIONE PROPOSTE *****/
+
+
+
+
+#menubar li img {
+	padding: 0.3em;
+}
+
+#menubar li{
+    background-color: #ff7300;
+    display: block;
+    height: 40px;
+    float: left;
+    text-align: center;
+}
+
+#menubar li a {
+    
+   font-weight: bold;
+    color: #fff;
+    display: inline;
+    text-align: center;
+	color: white;
+}
+
+#main_proposte {
+    width: 33.3%;
+}
+
+#main_lavoratori {
+    width: 33.3%;
+}
+
+#main_info {
+    width: 33.4%;
+}
+
+#profilo_dati_personali, #profilo_contributi {
+  
+  background-color: #f4f4f4;
+  margin-bottom: 2em;
+  padding: 5%;
+}
+
+#profilo_nome_cognome{
+    margin-top: 1em;
+}
+
+#profilo_nome_cognome img{
+	border-radius: 50%;
+}
+
+#profilo_dati li {
+    margin-left: 10%;
+    margin-top: 1em;
+}
+
+
+#profilo_skills{
+  background-color: #f4f4f4;
+  margin-bottom: 2em;
+  padding: 2%;
+    
+}
+
+#lista_skills{
+margin-left: 5%;
+border-spacing: 10px;
+}
+
+#profilo_biografia{
+    background-color: #f4f4f4;
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+#descrizione_biografia{
+    margin-left: 5%;
+    margin-top: 1em;
+}
+
+#recensioni{
+    font-size: 2em;
+    vertical-align: top;
+    margin-bottom: 5%;
+}
+
+#footer {
+  clear: left;
+  background-color: #FF9900;
+  text-align: center;
+  font-style: italic;
+  padding-top: 0.25em;
+  color: #fff;
+}
+
+#footer a {
+  display: inline-block;
+  vertical-align: middle;
+}
