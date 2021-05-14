@@ -7,30 +7,45 @@
 
 body {
     background-color: #E8E9EB;
-    max-width: 1024px;
     margin: auto;
 }
 
 /***** HEADER *****/
 
 #header {
-	background-color: #ff9d00;
-	height: 7em;
+	background-color:#ff9100;
+	height: 6em;
 }
 
 #titolone {
 	padding: 1em;
 	float: left;
-	margin: 0em auto;
+	width: auto;
+	align-content:center;
 }
 
 #titolone h1 {
 	font-size: 3em;
 	margin: 0em auto;
+	color: #ffffff;
+	float: left;
 }
 
-#titolone h2 {
-	font-size: 1em;
+#titolone img{
+	float: right;
+	width: 2.5em;
+}
+
+#breadcrumb {
+	background-color: #252525;
+	height: 1.5em;
+}
+
+#breadcrumb a{
+	margin: 1em 1em 0em 1.8em;
+	padding-top: 1em;
+	font-size: 0.8em;
+	color:#eb6105;
 }
 
 #usr_zone {
@@ -69,26 +84,6 @@ body {
 /***** MACRO CONTENUTO - SEZIONE PROPOSTE *****/
 
 
-#menubar {
-	background-color: #ff7300;
-	padding: 0.65em 0;
-}
-
-#menubar li {
-	display: inline;
-	padding: 0.5em 3.5em;
-	font-size: 1.3em;
-	font-weight: bold;	
-}
-
-#menubar li img {
-	padding-left: 0.5em;
-	position: absolute;	
-}
-
-#menubar li a {
-	color: white;
-}
 
 #main_proposte {
 	background-color: #ff5a00;
@@ -96,47 +91,39 @@ body {
 
 #strumenti {
 	background-color: #ff5a00;
-	padding: 1em;
-	height: 3em;
-	text-align: center;
-	
+	float: left;	
 }
 
-#new_prop {
-	padding: 0.8em;
-	margin-left: 1em;
-	float: left;
-	border-radius: 1em;
-	background-color: #00bd00;
-	font-weight: bold;
-	font-size: 0.8em;
-}
 
 #ricerca {
-	display: inline;
-	margin: 0.8em;
+	
+	margin: 1em 1.3em 0em 1.3em;
 	background-color: #ff5a00;
+	float: left;
 }
 
 #cerca {
 	height: 2.2em ;
-	width: 20em;
-	padding-left: 0.5em;
+	width: 13em;
+	padding-left: 1.5em;
+	border-radius: 1em;
 }
 
 #lente {
-	padding: 0.5em;
+	padding-left: 0.3em;
+	height: 1em;
+	width: 1em;
+	color: cadetblue;
 }
 
 #ordina {
-	float: right;
-	padding: 0.3em 1em 0 0;
+	
 }
 
 #filtro {
 	background-color: #ff5a00;
-	float: left;
 	padding: 1em;
+	margin-top: 3em;
 }
 
 #filtro p {
@@ -151,7 +138,7 @@ body {
 }
 
 #action {
-	padding-top: 0.5em;
+	padding: 2em 1em;
 }
 
 #action button {
@@ -168,41 +155,6 @@ body {
 	float: right;
 }
 
-#card_lavoro {
-	background-color: white;
-	padding: 1em 0 1em 10em;
-	margin: 0.5em 0 0.5em 0;
-}
-
-#card_lavoro h3 {
-	color: #ff5a00;
-	padding-left: 2em;
-	font-size: 2em;
-}
-
-#card_lavoro img {
-	width: 3em;
-	border-radius: 50%;
-    margin: 0 0.5em 0 0.5em;
-	float: left;
-}
-
-#informazioni_p {
-	padding-left: 6em;
-	font-size: 0.9em;	
-}
-
-#skill_relative {
-	float: right;
-	padding-right: 4em;
-}
-
-#skill_relative li{
-	display: inline;
-	padding: 0.3em 1em;
-	background-color: #aa9eff;
-	border-radius: 0.5em;
-}
 	
 
 /***** FOOTER *****/

@@ -3,13 +3,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-  <title>CanYouHelp?</title>
+  <title>WorkerAdvisor</title>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-  <meta name="title" content="CanYouHelp? Comunità per lavorare. Veramente!" />
+  <meta name="title" content="WorkerAdvisor trova il lavoratore che fa per te" />
 
-  <meta name="description" content="Una piattaforma che permette di offrirsi o trovare dei professionisti, per svolgere lavori di cui si ha bisogno." />
+  <meta name="description" content="Una piattaforma che permette di trovare e recensire lavoratori per i tuoi bisogni" />
 
-  <meta name="keywords" content="lavoro, cerco, offro, privato, professione" />
+  <meta name="keywords" content="lavoro, recensione, privato, professione" />
 
   <meta name="language" content="italian it" />
 
@@ -30,8 +30,8 @@
 
 	<div id="header">  
 		<div id="titolone">
-			<h1 xml:lang="en">CanYouHelp?</h1>
-			<h2>Comunità per lavorare. Veramente!</h2>
+			<h1 xml:lang="en">WorkerAdvisor</h1>
+			<img src="../img/icon_lav.png" />
 		</div>
    
 		<div id="usr_zone">
@@ -43,61 +43,41 @@
 		</div>  
     </div>
 	
+	<div id="breadcrumb">
+		<a href=""><span xml:lang="en">Home</span></a>
+	</div>
 	
 	<div id="proposte" class="macro_contenuto">	
-		<ul id="menubar">
-			<li id="main_proposte"><a href="">PROPOSTE</a><img src="../mg/icon_prop.png" height="29" width="31"/></li>
-			<li id="main_lavoratori"><a href="">LAVORATORI</a><img src="../img/icon_lav.png" height="29" width="24"/></li>
-			<li id="main_info"><a href="">INFO</a><img src="../img/icon_info.png" height="29" width="29"/></li>
-		</ul>
+		
 		
 		<div id="strumenti">
-			<button id="new_prop" type="button" href="">Crea Nuova Proposta</button>
   
 			<form id="ricerca">
 				<input type="text" id="cerca" placeholder="cerca" tabindex="21" />
-				<button id="lente" type="submit">cerca</button>
+				<img src="../img/lente.png" id="lente" type="submit"/>
 			</form>
 		
-			<form id="ordina">
-				<span>Ordina per:</span>
-				<select name="ord_type" id="ord_type">
-					<option>Data crescente</option>
-					<option>Data decrescente</option>
-				</select>
-			</form>
-		</div>
-		
-		<div id="filtro">
-			<p>Filtra categoria:</p>
-			<input type="checkbox" id="grafica" name="grafica" value="grafica">
-			<label for="grafica"> Grafica</label><br>
-			<input type="checkbox" id="computer" name="computer" value="computer">
-			<label for="computer"> Computer</label><br>
-			<input type="checkbox" id="domestico" name="domestico" value="domestico">
-			<label for="domestico"> Domestico</label><br>
-			<input type="checkbox" id="giardinaggio" name="giardinaggio" value="giardinaggio">
-			<label for="giardinaggio"> Giardinaggio</label><br>
-			<input type="checkbox" id="ecc" name="ecc" value="ecc">
-			<label for="ecc"> ecc...</label><br>
-			<div id="action">
-				<button id="submit">Submit</button>
-				<button id="reset">Reset</button>
+			<div id="filtro">
+				<p>Filtra categoria:</p>
+				<input type="checkbox" id="grafica" name="grafica" value="grafica">
+				<label for="grafica"> Grafica</label><br>
+				<input type="checkbox" id="computer" name="computer" value="computer">
+				<label for="computer"> Computer</label><br>
+				<input type="checkbox" id="domestico" name="domestico" value="domestico">
+				<label for="domestico"> Domestico</label><br>
+				<input type="checkbox" id="giardinaggio" name="giardinaggio" value="giardinaggio">
+				<label for="giardinaggio"> Giardinaggio</label><br>
+				<input type="checkbox" id="ecc" name="ecc" value="ecc">
+				<label for="ecc"> ecc...</label><br>
+				<div id="action">
+					<button id="submit">Submit</button>
+					<button id="reset">Reset</button>
+				</div>
 			</div>
 		</div>
 		
 		<div id="card_lavoro">
-			<img src="img/icon_user.png" alt="foto del profilo utente" href="" />			
-			<h3>Titolo Proposta</h3>
-			<ul id="skill_relative">
-				<li id="skill_1">skill 1</li>
-				<li id="skill_2">skill 2</li>
-				<li id="skill_3">skill 3</li>
-			</ul>
-			<ul id="informazioni_p">
-				<li id="data_ins">Data inserimento</li>
-				<li id="luogo">Luogo</li>
-			</ul>
+			
 		</div>
     </div>
   
