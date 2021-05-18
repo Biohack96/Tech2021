@@ -81,7 +81,7 @@ body {
 	float: right;
 }
 
-/***** MACRO CONTENUTO - SEZIONE PROPOSTE *****/
+/***** MAIN CONTENUTO *****/
 
 
 
@@ -116,9 +116,6 @@ body {
 	color: cadetblue;
 }
 
-#ordina {
-	
-}
 
 #filtro {
 	background-color: #ff5a00;
@@ -153,6 +150,31 @@ body {
 
 #reset {
 	float: right;
+}
+
+/***** CARD LAVORATORI ****/
+#elenco_lavoratori{
+	margin-left: 17.5em;
+}
+
+#card_lavoro{
+	background-color: #fff;
+
+}
+
+#card_lavoro img{
+	padding-bottom: 2em;
+	float: left;
+}
+
+#dati_lavoratore{
+	margin-right: auto;
+}
+
+#voto{
+	float: right;
+	display: inline;
+
 }
 
 	

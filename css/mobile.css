@@ -7,35 +7,50 @@
 
 body {
     background-color: #E8E9EB;
-    max-width: 1024px;
     margin: auto;
 }
 
 /***** HEADER *****/
 
 #header {
-	background-color: #ff9d00;
-	height: 10em;
+	background-color:#ff9100;
+	height: 6em;
 }
 
 #titolone {
 	padding: 1em;
 	float: left;
-	margin: 0em auto;
+	width: auto;
+	align-content:center;
 }
 
 #titolone h1 {
-	font-size: 2em;
+	font-size: 3em;
 	margin: 0em auto;
+	color: #ffffff;
+	float: left;
 }
 
-#titolone h2 {
-	font-size: 0.7em;
+#titolone img{
+	float: right;
+	width: 2.5em;
+}
+
+#breadcrumb {
+	background-color: #252525;
+	height: 1.5em;
+}
+
+#breadcrumb a{
+	margin: 1em 1em 0em 1.8em;
+	padding-top: 1em;
+	font-size: 0.8em;
+	color:#eb6105;
 }
 
 #usr_zone {
 	float: right;
-	padding: 1em;
+	padding: 2em;
 }
 
 #name_log {
@@ -44,7 +59,7 @@ body {
 }
 
 #utente {
-	font-size: 0.9em;
+	font-size: 1.2em;
 }
 
 #utente a {
@@ -53,7 +68,6 @@ body {
 
 #logout {
 	font-size: 0.8em;
-	margin-top: 0.2em;
 }
 
 #logout a {
@@ -61,34 +75,15 @@ body {
 }
 
 #usr_zone img {
-	width: 2.5em;
+	width: 3em;
 	border-radius: 50%;
     margin: 0 0.5em 0 0.5em;
 	float: right;
 }
 
-/***** MACRO CONTENUTO - SEZIONE PROPOSTE *****/
+/***** MAIN CONTENUTO *****/
 
 
-#menubar {
-	background-color: #ff7300;
-	padding: 0.42em 0;
-}
-
-#menubar li {
-	display: inline;
-	padding: 1em;
-	font-size: 0.7em;
-	font-weight: bold;	
-}
-
-#menubar li img {
-	display: none;	
-}
-
-#menubar li a {
-	color: white;
-}
 
 #main_proposte {
 	background-color: #ff5a00;
@@ -96,46 +91,36 @@ body {
 
 #strumenti {
 	background-color: #ff5a00;
-	padding: 1em;
-	height: 6em;
-	vertical-align: middle;	
+	float: left;	
 }
 
-#new_prop {
-	padding: 0.8em;
-	margin-bottom: 0.7em;
-	border-radius: 1em;
-	background-color: #00bd00;
-	font-weight: bold;
-	font-size: 0.8em;
-	margin-left: 2em;
-}
 
 #ricerca {
-	margin: 0.8em;
+	
+	margin: 1em 1.3em 0em 1.3em;
+	background-color: #ff5a00;
+	float: left;
 }
 
 #cerca {
-	height: 1.6em ;
-	width: 10em;
-	padding-left: 0.5em;
+	height: 2.2em ;
+	width: 13em;
+	padding-left: 1.5em;
+	border-radius: 1em;
 }
 
 #lente {
-	padding: 0.2em;
+	padding-left: 0.3em;
+	height: 1em;
+	width: 1em;
+	color: cadetblue;
 }
 
-#ordina {
-	float: right;
-	padding: 0.3em 1em 0 0;
-}
-
-#ordina span {
-	font-size: 0.8em;
-}
 
 #filtro {
-	display: none;
+	background-color: #ff5a00;
+	padding: 1em;
+	margin-top: 3em;
 }
 
 #filtro p {
@@ -150,7 +135,7 @@ body {
 }
 
 #action {
-	padding-top: 0.5em;
+	padding: 2em 1em;
 }
 
 #action button {
@@ -167,37 +152,45 @@ body {
 	float: right;
 }
 
-#card_lavoro {
-	background-color: white;
-	padding: 1em;
-	margin: 0.5em 0 0.5em 0;
+/***** CARD LAVORATORI ****/
+#elenco_lavoratori{
+	margin-left: 17.5em;
+}
+
+#card_lavoro{
+	background-color: #fff;
 
 }
 
-#card_lavoro h3 {
-	color: #ff5a00;
-	padding-left: 0.3em;
-	font-size: 1.3em;
+#card_lavoro img{
+	padding-bottom: 2em;
+	float: left;
 }
 
-#card_lavoro img {
-	display: none;
+#dati_lavoratore{
+	margin-right: auto;
 }
 
-#card_lavoro ul {
-	padding: 1em;
-	font-size: 0.8em;	
+#voto{
+	float: right;
+	display: inline;
+
 }
+
+	
 
 /***** FOOTER *****/
 
 #footer {
-	padding: 0.8em 0;
-	font-size: 0.8em;
-	height: 5em;
+	background-color: #ff9d00;
+	clear: left;
+	text-align: center;
+	font-style: italic;
+	padding-top: 0.25em;
+	color: #fff;
 }
 
 #footer a {
-	float: right;
-	height: 2em;
+  display: inline-block;
+  vertical-align: middle;
 }
