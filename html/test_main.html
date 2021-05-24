@@ -16,7 +16,7 @@
   <meta name="author" content="Giovanni Grigoletto, Christian Cinnirella, Marco Marangon, Stefano Biotto" />
 
   <link rel="stylesheet" type="text/css" href="../css/desktop_style.css" media="handheld, screen" />
-  <link rel="stylesheet" type="text/css" href="../css/mobile.css" media="handheld, screen and (max-width:800px), only screen and (max-device-width:800px)" />
+  <link rel="stylesheet" type="text/css" href="../css/desktop_style.css" media="handheld, screen and (max-width:800px), only screen and (max-device-width:800px)" />
   
   <noscript>
     <link rel="stylesheet" type="text/css" href="../css/desktop_nojs.css" media="handheld, screen" />
@@ -33,15 +33,19 @@
 			<h1 xml:lang="en">WorkerAdvisor</h1>
 			<img src="../img/icon_lav.png" />
 		</div>
-   
-		<div id="usr_zone">
-			<div id="name_log">
-				<p id="utente"><a href="">Nome Cognome</a></p>	
-				<p id="logout"><a href="">Logout</a></p>
-			</div>
-			<img src="../img/jesus.jpg" alt="foto del profilo utente" href="" /> 
-		</div>  
-    </div>
+    
+		<div id="head_dx">
+			<div id="usr_zone">
+				<div id="name_log">
+					<p id="utente"><a href="">Nome Cognome</a></p>	
+					<p id="logout"><a href="">Logout</a></p>
+				</div>
+				<a href=""><img src="../img/jesus.jpg" alt="foto del profilo utente" /></a>
+			</div> 
+			
+			<a id="info" href=""><img src="../img/icon_info.png" alt="informazioni sul sito" /></a>
+		</div>
+	</div>
 	
 	<div id="breadcrumb">
 		<a href=""><span xml:lang="en">Home</span></a>
@@ -51,42 +55,105 @@
 		
 		
 		<div id="strumenti">
-  
-			<form id="ricerca">
-				<input type="text" id="cerca" placeholder="cerca per nome" tabindex="21" />
-				<img src="../img/lente.png" id="lente" type="submit" href="" />
-			</form>
+			<form id="ricerca" action="">
+				<fieldset>
+					<input type="text" id="cerca" tabindex="" />
 		
-			<div id="filtro">
-				<p>Filtra categoria:</p>
-				<input type="checkbox" id="grafica" name="grafica" value="grafica">
-				<label for="grafica"> Grafica</label><br>
-				<input type="checkbox" id="computer" name="computer" value="computer">
-				<label for="computer"> Computer</label><br>
-				<input type="checkbox" id="domestico" name="domestico" value="domestico">
-				<label for="domestico"> Domestico</label><br>
-				<input type="checkbox" id="giardinaggio" name="giardinaggio" value="giardinaggio">
-				<label for="giardinaggio"> Giardinaggio</label><br>
-				<input type="checkbox" id="ecc" name="ecc" value="ecc">
-				<label for="ecc"> ecc...</label><br>
-				<div id="action">
-					<button id="submit">Submit</button>
-					<button id="reset">Reset</button>
-				</div>
-			</div>
+					<div><input type="radio" name="nome" id="ric_nome" value="ric_nome"/>
+						<label" for="ric_nome">per nome</label></div>
+					<div><input type="radio" name="provincia" id="ric_prov" value="ric_prov"/>
+						<label" for="ric_prov">per provincia</label></div>
+				</fieldset>
+
+				<fieldset><legend>Filtra le categorie</legend>
+					<div><input type="checkbox" name="grafico" id="grafico" value="grafico" />
+						<label" for="grafico">Grafica</label></div>
+					<div><input type="checkbox" name="informatica" id="informatica" value="informatica" />
+						<label" for="informatica">Informatica</label></div>
+					<div><input type="checkbox" name="elettricista" id="elettricista" value="elettricista" />
+						<label" for="elettricista">Elettricista</label></div>
+					<div><input type="checkbox" name="idraulico" id="idraulico" value="idraulico" />
+						<label" for="idraulico">Idraulico</label></div>
+				</fieldset>
+
+			</form>
 		</div>
 		
 		<div id="elenco_lavoratori">
 
-			<div id="card_lavoro">
-				<img src="../img/icon_user.png" alt="foto del lavoratore" />
+			<div id="card_lavoro1" class="carte" href="">
+				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
 				<div id="dati_lavoratore">
-					<h3>Nome Cognome</h3>
-					<div id="professione">Professione</div>
-					<div id="luogo">Luogo</div>
+					<div id="info_lavoratore">
+						<h3>Nome Cognome</h3>
+						<div id="professione">Professione</div>
+						<div id="luogo">Luogo</div>
+					</div>
+					<div id="voto">3</div>
 				</div>
-				<div id="voto">Voto</div>
 			</div>
+
+			<div id="card_lavoro2" class="carte">
+				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
+				<div id="dati_lavoratore">
+					<div id="info_lavoratore">
+						<h3>Nome Cognome</h3>
+						<div id="professione">Professione</div>
+						<div id="luogo">Luogo</div>
+					</div>
+					<div id="voto">3</div>
+				</div>
+			</div>
+
+			<div id="card_lavoro3" class="carte">
+				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
+				<div id="dati_lavoratore">
+					<div id="info_lavoratore">
+						<h3>Nome Cognome</h3>
+						<div id="professione">Professione</div>
+						<div id="luogo">Luogo</div>
+					</div>
+					<div id="voto">3</div>
+				</div>
+			</div>
+
+			<div id="card_lavoro3" class="carte">
+				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
+				<div id="dati_lavoratore">
+					<div id="info_lavoratore">
+						<h3>Nome Cognome</h3>
+						<div id="professione">Professione</div>
+						<div id="luogo">Luogo</div>
+					</div>
+					<div id="voto">3</div>
+				</div>
+			</div>
+
+			<div id="card_lavoro3" class="carte">
+				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
+				<div id="dati_lavoratore">
+					<div id="info_lavoratore">
+						<h3>Nome Cognome</h3>
+						<div id="professione">Professione</div>
+						<div id="luogo">Luogo</div>
+					</div>
+					<div id="voto">3</div>
+				</div>
+			</div>
+
+			<div id="card_lavoro3" class="carte">
+				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
+				<div id="dati_lavoratore">
+					<div id="info_lavoratore">
+						<h3>Nome Cognome</h3>
+						<div id="professione">Professione</div>
+						<div id="luogo">Luogo</div>
+					</div>
+					<div id="voto">3</div>
+				</div>
+			</div>
+
+
     	</div>
   
     <div id="footer">
