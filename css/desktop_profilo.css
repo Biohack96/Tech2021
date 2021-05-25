@@ -23,21 +23,24 @@ body {
 #titolone {
 	padding: 1em;
 	float: left;
-	margin: 0em auto;
+	width: auto;
+	align-content:center;
 }
 
 #titolone h1 {
 	font-size: 3em;
 	margin: 0em auto;
+	color: #ffffff;
+	float: left;
 }
 
-#titolone h2 {
-	font-size: 1em;
+#titolone img{
+	float: right;
+	width: 2.5em;
 }
 
 #usr_zone {
-	float: right;
-	padding: 2em;
+	float: left;
 }
 
 #name_log {
@@ -68,57 +71,51 @@ body {
 	float: right;
 }
 
-/***** MACRO CONTENUTO - SEZIONE PROPOSTE *****/
-
-
-
-
-#menubar li img {
-	padding: 0.3em;
+#breadcrumb {
+	background-color: #000000;
+	height: 2em;
+	padding-top: 0.5em;
 }
 
-#menubar li{
-    background-color: #ff7300;
-    display: block;
-    height: 40px;
-    float: left;
-    text-align: center;
+#breadcrumb a{
+	padding: 1.5em;
+	font-size: 0.9em;
+	color:#eb6105;
 }
 
-#menubar li a {
-    
-   font-weight: bold;
-    color: #fff;
-    display: inline;
-    text-align: center;
-	color: white;
+#head_dx{
+	float: right;
+	padding: 2em;
 }
 
-#main_proposte {
-    width: 33.3%;
+#info img{
+	float: right;
+	width: 2em;
+	padding-left: 1em;
 }
 
-#main_lavoratori {
-    width: 33.3%;
-}
 
-#main_info {
-    width: 33.4%;
-}
+/*********PROFILO*********/
 
-#profilo_dati_personali, #profilo_contributi {
+
+#profilo_dati_personali{
   
   background-color: #f4f4f4;
   margin-bottom: 2em;
   padding: 5%;
 }
 
-#profilo_nome_cognome{
-    margin-top: 1em;
+#profilo_dati_personali img{
+	width: 2em;
 }
+
 
 #profilo_nome_cognome img{
 	border-radius: 50%;
+}
+
+#profilo_dati img{
+	margin-right: 0.5em;
 }
 
 #profilo_dati li {
@@ -126,18 +123,16 @@ body {
     margin-top: 1em;
 }
 
-
-#profilo_skills{
-  background-color: #f4f4f4;
-  margin-bottom: 2em;
-  padding: 2%;
-    
+ul#profilo_dati{
+    list-style-type: none;
 }
 
-#lista_skills{
-margin-left: 5%;
-border-spacing: 10px;
+ul#categorie{
+    list-style-type: none;
+    margin-left: 5%;
+    margin-top: 0.5em ;
 }
+
 
 #profilo_biografia{
     background-color: #f4f4f4;
