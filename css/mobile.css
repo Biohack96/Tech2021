@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #E8E9EB;
+    background-color: #252525;
     margin: auto;
 }
 
@@ -14,18 +14,18 @@ body {
 
 #header {
 	background-color:#ff9100;
-	height: 6em;
+	height: 3em;
 }
 
 #titolone {
-	padding: 1em;
+	padding: 0.7em;
 	float: left;
 	width: auto;
 	align-content:center;
 }
 
 #titolone h1 {
-	font-size: 3em;
+	font-size: 1.3em;
 	margin: 0em auto;
 	color: #ffffff;
 	float: left;
@@ -33,24 +33,34 @@ body {
 
 #titolone img{
 	float: right;
-	width: 2.5em;
+	width: 1.2em;
 }
 
 #breadcrumb {
-	background-color: #252525;
-	height: 1.5em;
+	background-color: #000000;
+	height: 2em;
+	padding-top: 0.5em;
 }
 
 #breadcrumb a{
-	margin: 1em 1em 0em 1.8em;
-	padding-top: 1em;
-	font-size: 0.8em;
+	padding: 1.5em;
+	font-size: 0.9em;
 	color:#eb6105;
 }
 
-#usr_zone {
+#head_dx{
 	float: right;
 	padding: 2em;
+}
+
+#info img{
+	float: right;
+	width: 2em;
+	padding-left: 1em;
+}
+
+#usr_zone {
+	float: left;
 }
 
 #name_log {
@@ -85,96 +95,49 @@ body {
 
 
 
-#main_proposte {
-	background-color: #ff5a00;
-}
-
 #strumenti {
 	background-color: #ff5a00;
-	float: left;	
-}
 
+	height: 30em;
+	width: auto;
+	margin: auto;
+}
 
 #ricerca {
-	
-	margin: 1em 1.3em 0em 1.3em;
-	background-color: #ff5a00;
-	float: left;
-}
-
-#cerca {
-	height: 2.2em ;
-	width: 13em;
-	padding-left: 1.5em;
-	border-radius: 1em;
-}
-
-#lente {
-	padding-left: 0.3em;
-	height: 1em;
-	width: 1em;
-	color: cadetblue;
-}
-
-
-#filtro {
-	background-color: #ff5a00;
 	padding: 1em;
-	margin-top: 3em;
 }
 
-#filtro p {
-	font-size: 0.8em;
-	font-weight: bold;
-	padding: 1em 0;
-}
 
-#filtro label {
-	font-size: 0.8em;
-	color: white;
-}
 
-#action {
-	padding: 2em 1em;
-}
-
-#action button {
-	padding: 0.3em;
-	border-radius: 0.5em;
-	font-size: 0.7em;
-}
-
-#submit {
-	float: left;
-}
-
-#reset {
-	float: right;
-}
-
-/***** CARD LAVORATORI ****/
+/***** LAVORATORI ****/
 #elenco_lavoratori{
-	margin-left: 17.5em;
+	margin: auto;
 }
 
-#card_lavoro{
+.carte {
 	background-color: #fff;
-
+	margin: 0.5em 0 0.5 0;
+	height: 17.5em;
+	width: 13em;
+	display: inline-block;
 }
 
-#card_lavoro img{
-	padding-bottom: 2em;
+.carte img {
+	width: 13em;
+	height: 13em;
+}
+
+#info_lavoratore {
 	float: left;
+	font-size: 0.8em;
+	padding: 0.5em;
 }
 
-#dati_lavoratore{
-	margin-right: auto;
-}
-
-#voto{
+#voto {
 	float: right;
-	display: inline;
-
+	font-size: 2.5em;
+	padding: 0.2em;
+	color: red;
 }
 
 	
@@ -186,6 +149,7 @@ body {
 	clear: left;
 	text-align: center;
 	font-style: italic;
+	font-size: 0.8em;
 	padding-top: 0.25em;
 	color: #fff;
 }
@@ -193,4 +157,9 @@ body {
 #footer a {
   display: inline-block;
   vertical-align: middle;
+}
+
+#footer a img {
+	height: 1.5em;
+	width: 3.65em;
 }

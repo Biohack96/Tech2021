@@ -16,7 +16,7 @@
   <meta name="author" content="Giovanni Grigoletto, Christian Cinnirella, Marco Marangon, Stefano Biotto" />
 
   <link rel="stylesheet" type="text/css" href="../css/desktop_style.css" media="handheld, screen" />
-  <link rel="stylesheet" type="text/css" href="../css/desktop_style.css" media="handheld, screen and (max-width:800px), only screen and (max-device-width:800px)" />
+  <link rel="stylesheet" type="text/css" href="../css/mobile.css" media="handheld, screen and (max-width:800px), only screen and (max-device-width:800px)" />
   
   <noscript>
     <link rel="stylesheet" type="text/css" href="../css/desktop_nojs.css" media="handheld, screen" />
@@ -30,8 +30,7 @@
 
 	<div id="header">  
 		<div id="titolone">
-			<h1 xml:lang="en">WorkerAdvisor</h1>
-			<img src="../img/icon_lav.png" />
+			<a href=""><img src="../img/walogo.png" alt="Worker Advisor logo banner" /></a>
 		</div>
     
 		<div id="head_dx">
@@ -51,31 +50,20 @@
 		<a href=""><span xml:lang="en">Home</span></a>
 	</div>
 	
-	<div id="proposte" class="macro_contenuto">	
+	<div id="proposte">	
 		
+		<p>Ricerca nei campi desiderati:</p>
 		
 		<div id="strumenti">
+			
 			<form id="ricerca" action="">
 				<fieldset>
-					<input type="text" id="cerca" tabindex="" />
-		
-					<div><input type="radio" name="nome" id="ric_nome" value="ric_nome"/>
-						<label" for="ric_nome">per nome</label></div>
-					<div><input type="radio" name="provincia" id="ric_prov" value="ric_prov"/>
-						<label" for="ric_prov">per provincia</label></div>
-				</fieldset>
+					<input type="text" id="cerca_nome" class="banner_cerca" placeholder="nome/cognome" tabindex="" />
+					<input type="text" id="cerca_nome" class="banner_cerca" placeholder="città/provincia" tabindex="" />
+					<input type="text" id="cerca_nome" class="banner_cerca" placeholder="categoria di lavoro" tabindex="" />
 
-				<fieldset><legend>Filtra le categorie</legend>
-					<div><input type="checkbox" name="grafico" id="grafico" value="grafico" />
-						<label" for="grafico">Grafica</label></div>
-					<div><input type="checkbox" name="informatica" id="informatica" value="informatica" />
-						<label" for="informatica">Informatica</label></div>
-					<div><input type="checkbox" name="elettricista" id="elettricista" value="elettricista" />
-						<label" for="elettricista">Elettricista</label></div>
-					<div><input type="checkbox" name="idraulico" id="idraulico" value="idraulico" />
-						<label" for="idraulico">Idraulico</label></div>
+					<button id="button_cerca" type="submit" href=""><img src="../img/lente.png" /></button>
 				</fieldset>
-
 			</form>
 		</div>
 		
@@ -94,6 +82,30 @@
 			</div>
 
 			<div id="card_lavoro2" class="carte">
+				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
+				<div id="dati_lavoratore">
+					<div id="info_lavoratore">
+						<h3>Nome Cognome</h3>
+						<div id="professione">Professione</div>
+						<div id="luogo">Luogo</div>
+					</div>
+					<div id="voto">3</div>
+				</div>
+			</div>
+
+			<div id="card_lavoro3" class="carte">
+				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
+				<div id="dati_lavoratore">
+					<div id="info_lavoratore">
+						<h3>Nome Cognome</h3>
+						<div id="professione">Professione</div>
+						<div id="luogo">Luogo</div>
+					</div>
+					<div id="voto">3</div>
+				</div>
+			</div>
+
+			<div id="card_lavoro3" class="carte">
 				<img src="../img/unnamed.jpg" alt="foto del lavoratore" />
 				<div id="dati_lavoratore">
 					<div id="info_lavoratore">

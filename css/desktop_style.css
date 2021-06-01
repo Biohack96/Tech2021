@@ -10,11 +10,11 @@ body {
     margin: auto;
 }
 
-/***** HEADER *****/
+/***** header *****/
 
 #header {
 	background-color:#ff9100;
-	height: 6em;
+	height: 5.5em;
 }
 
 #titolone {
@@ -24,16 +24,9 @@ body {
 	align-content:center;
 }
 
-#titolone h1 {
-	font-size: 3em;
-	margin: 0em auto;
-	color: #ffffff;
-	float: left;
-}
-
 #titolone img{
-	float: right;
-	width: 2.5em;
+	padding-top: 0.3em;
+	width: 26em;
 }
 
 #breadcrumb {
@@ -91,27 +84,49 @@ body {
 	float: right;
 }
 
-/***** MAIN CONTENUTO *****/
-
-
+/***** banner di ricerca *****/
 
 #strumenti {
 	background-color: #ff5a00;
-	float: left;
-	height: 30em;
-	width: 14em;
-	margin: 1em;
+	margin: 1.5em;
+	border-radius: 0.5em;
+}
+
+#proposte p {
+	text-align: center;
+	padding-top: 1em;
+	color: white;
 }
 
 #ricerca {
 	padding: 1em;
+	text-align: center;
+}
+
+#button_cerca {
+	background-color: transparent;
+	margin: 0 1em 0 1em;
+}
+
+#button_cerca img {
+	width: 2em;
+	height: 2em;
+}
+
+.banner_cerca{
+	border-radius: 1em;
+	padding: 0.4em 0 0.5em 0;
+	margin: 0 2em 0 2em;
+	width: 15em;
+	text-align: center;
 }
 
 
 
-/***** LAVORATORI ****/
+/***** spazio card lavoratori ****/
+
 #elenco_lavoratori{
-	margin-left: 13em;
+	margin: 0 11em 0 11em;
 }
 
 .carte {
@@ -142,16 +157,17 @@ body {
 
 	
 
-/***** FOOTER *****/
+/***** footer *****/
 
 #footer {
 	background-color: #ff9d00;
 	clear: left;
 	text-align: center;
 	font-style: italic;
-	font-size: 0.8em;
-	padding-top: 0.25em;
+	font-size: 0.9em;
+	padding-top: 1em;
 	color: #fff;
+	height: 2.5em;
 }
 
 #footer a {
