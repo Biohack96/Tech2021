@@ -18,13 +18,14 @@ $utente = $db->getProfilo($_GET['id']);
 $autore = $db->getProfilo($_SESSION['user_id']);
 $content = file_get_contents('includes/content_lascia_recensione.html');
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (isset($_POST['recensione'])) {
  
-    if( $db->setRecensione(NULL, $_POST['voto'], $_POST['id_aut'], $_POST['id_us'], $_POST['skill'])){
+    if( $db->setRecensione($_POST['comm'], $_POST['voto'], $_POST['id_aut'], $_POST['id_us'])){
    
-     header('Location: profilo.php?id=2');
+     header('Location: profilo.php?id=1');
     } else {
       header('Location: 404.php');
     }

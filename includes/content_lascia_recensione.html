@@ -1,32 +1,30 @@
 <div id="recensione" class="content">
-    <h1>Recensione</h1>
     
-    <p>Lascia una recensione a <nome /> <cognome /> </p>
+    <h3 id="title_recensione" >Lascia una recensione a <nome /> <cognome /> </h3>
    
        <form action="recensione.php" name="recensione" method="post">
     
-    <select name='id_us' hidden>
-           <option value='<id />'> </option>
-    </select>
+    <div id="content_recensione">
+        <select name='id_us' hidden>
+            <option value='<id />'> </option>
+        </select>
 
-     <select name='id_aut' hidden>
+        <select name='id_aut' hidden>
            <option value='<id_aut />'> </option>
-           </select>
+        </select>
            
-           
-    <select name='voto'>
-        <option value='1'> 1 </option>
-        <option value='2'> 2 </option>
-        <option value='3'> 3 </option>
-        <option value='4'> 4 </option>
-        <option value='5'> 5 </option>
-    </select>
-           
-    <label for="commento_recensione" class="recensione_label" id="label_recensione_commento">Commento: </label>
-    <textarea id="commento_recensione" name="comm" rows="5" cols="30" tabindex="33"></textarea>
+        <div id="voto">  Voto: <br>    
+            <input type="radio" id="uno" name="voto" value=1 required /> 1 <br>
+            <input type="radio" id="due" name="voto" value=2 /> 2 <br>
+            <input type="radio" id="tre" name="voto" value=3 /> 3 <br>
+            <input type="radio" id="quattro" name="voto" value=4 /> 4 <br>
+            <input type="radio" id="cinque" name="voto" value=5 /> 5 <br>
+        </div>      
+
+        <textarea placeholder="Descrivi la tua esperienza con questo lavoratore" id="commento_recensione" name="comm" rows="10" cols="60" tabindex="33"></textarea>
     
-    <input type="submit" class="bottone recensione_button" name="recensione" value="Conferma" tabindex="23"/>
+        <input type="submit" class="bottone recensione_button" name="recensione" value="Conferma" tabindex="23"/>
+    </div>
 
 </form>
 </div>
-

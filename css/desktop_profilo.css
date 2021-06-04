@@ -7,6 +7,10 @@
     vertical-align: middle;
 }
 
+.break-word {
+    word-wrap: break-word;
+}
+
 body {
     background-color: #E8E9EB;
     max-width: 1024px;
@@ -133,11 +137,62 @@ ul#categorie{
     margin-top: 0.5em ;
 }
 
+#categorie li{
+	margin-top: 0.5em;
+}
 
-#profilo_biografia{
+#profilo_recensioni{
+	margin-top: 2em;
     background-color: #f4f4f4;
     margin-bottom: 2%;
-    padding: 2%;
+    padding: 5%;
+}
+
+#media{
+	font-size: large;
+}
+
+#media_title{
+	font-size: x-large;
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+
+#media_numero{
+
+}
+
+#lista_recensioni{
+	margin-top: 2%;
+}
+
+#autore_recensione{
+	font-size: larger;
+	font-weight: bold;
+	margin-left: 12px;
+	margin-bottom: 3px;
+}
+
+#rating{
+	margin-left: 10px;
+}
+
+#descrizione_recensione{
+	margin-top: 3px;
+	margin-left: 12px;
+}
+
+.button{
+	display: block;
+    width: 200px;
+    height: 25px;
+    background: #eb6105;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
 }
 
 #descrizione_biografia{
@@ -145,10 +200,38 @@ ul#categorie{
     margin-top: 1em;
 }
 
+#title_recensione{
+	text-align: center;
+	margin-bottom: 2%;
+}
+
+#content_recensione{
+	padding: 2%;
+}
+
+textarea#commento_recensione{
+	margin-top: 2%;
+	resize: none;
+}
+
+#recensione{
+	margin-top: 2em;
+    background-color: #f4f4f4;
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
 #recensioni{
-    font-size: 2em;
     vertical-align: top;
+	width: 100%;
     margin-bottom: 5%;
+	padding: 2%;
+	table-layout:auto;
+}
+
+#recensioni th, td{
+	padding: 2%;
+	text-align: center;
 }
 
 #footer {

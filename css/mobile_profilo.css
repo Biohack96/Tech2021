@@ -5,6 +5,20 @@
     font-family: Verdana, Geneva, sans-serif;
 }
 
+.button {
+    display: block;
+    width: 80%;
+    height: 25px;
+    background: #eb6105;
+    padding: 10px;
+    margin-left: 7%;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
+
 body {
     background-color: #E8E9EB;
     max-width: 1024px;
