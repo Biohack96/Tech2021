@@ -126,15 +126,17 @@ body {
 /***** spazio card lavoratori ****/
 
 #elenco_lavoratori{
-	margin: 0 11em 0 11em;
+	margin: 0 10%;
+	text-align: center;
 }
 
 .carte {
 	background-color: #fff;
-	margin: 1em;
+	margin: 0.5em;
 	height: 17.5em;
 	width: 13em;
 	display: inline-block;
+	text-align: left;
 }
 
 .carte img {
