@@ -1,0 +1,249 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: Verdana, Geneva, sans-serif;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.break-word {
+    word-wrap: break-word;
+}
+
+body {
+    background-color: #E8E9EB;
+    max-width: 1024px;
+    margin: auto;
+}
+
+/***** HEADER *****/
+
+#header {
+	background-color: #ff9d00;
+	height: 7em;
+}
+
+#titolone {
+	padding: 1em;
+	float: left;
+	width: auto;
+	align-content:center;
+}
+
+#titolone h1 {
+	font-size: 3em;
+	margin: 0em auto;
+	color: #ffffff;
+	float: left;
+}
+
+#titolone img{
+	float: right;
+	width: 2.5em;
+}
+
+#usr_zone {
+	float: left;
+}
+
+#name_log {
+	text-align: right;
+	float: left;
+}
+
+#utente {
+	font-size: 1.2em;
+}
+
+#utente a {
+	color: black;
+}
+
+#logout {
+	font-size: 0.8em;
+}
+
+#logout a {
+	color: red;
+}
+
+#usr_zone img {
+	width: 3em;
+	border-radius: 50%;
+    margin: 0 0.5em 0 0.5em;
+	float: right;
+}
+
+#breadcrumb {
+	background-color: #000000;
+	height: 2em;
+	padding-top: 0.5em;
+}
+
+#breadcrumb a{
+	padding: 1.5em;
+	font-size: 0.9em;
+	color:#eb6105;
+}
+
+#head_dx{
+	float: right;
+	padding: 2em;
+}
+
+#info img{
+	float: right;
+	width: 2em;
+	padding-left: 1em;
+}
+
+
+/*********PROFILO*********/
+
+
+#profilo_dati_personali{
+  
+  background-color: #f4f4f4;
+  margin-bottom: 2em;
+  padding: 5%;
+}
+
+#profilo_dati_personali img{
+	width: 2em;
+}
+
+
+#profilo_nome_cognome img{
+	border-radius: 50%;
+}
+
+#profilo_dati img{
+	margin-right: 0.5em;
+}
+
+#profilo_dati li {
+    margin-left: 10%;
+    margin-top: 1em;
+}
+
+ul#profilo_dati{
+    list-style-type: none;
+}
+
+ul#categorie{
+    list-style-type: none;
+    margin-left: 5%;
+    margin-top: 0.5em ;
+}
+
+#categorie li{
+	margin-top: 0.5em;
+}
+
+#profilo_recensioni{
+	margin-top: 2em;
+    background-color: #f4f4f4;
+    margin-bottom: 2%;
+    padding: 5%;
+}
+
+#media{
+	font-size: large;
+}
+
+#media_title{
+	font-size: x-large;
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+
+#media_numero{
+
+}
+
+#lista_recensioni{
+	margin-top: 2%;
+}
+
+#autore_recensione{
+	font-size: larger;
+	font-weight: bold;
+	margin-left: 12px;
+	margin-bottom: 3px;
+}
+
+#rating{
+	margin-left: 10px;
+}
+
+#descrizione_recensione{
+	margin-top: 3px;
+	margin-left: 12px;
+}
+
+.button{
+	display: block;
+    width: 200px;
+    height: 25px;
+    background: #eb6105;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+#descrizione_biografia{
+    margin-left: 5%;
+    margin-top: 1em;
+}
+
+#title_recensione{
+	text-align: center;
+	margin-bottom: 2%;
+}
+
+#content_recensione{
+	padding: 2%;
+}
+
+textarea#commento_recensione{
+	margin-top: 2%;
+	resize: none;
+}
+
+#recensione{
+	margin-top: 2em;
+    background-color: #f4f4f4;
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+#recensioni{
+    vertical-align: top;
+	width: 100%;
+    margin-bottom: 5%;
+	padding: 2%;
+	table-layout:auto;
+}
+
+#recensioni th, td{
+	padding: 2%;
+	text-align: center;
+}
+
+#footer {
+  clear: left;
+  background-color: #FF9900;
+  text-align: center;
+  font-style: italic;
+  padding-top: 0.25em;
+  color: #fff;
+}
+
+#footer a {
+  display: inline-block;
+  vertical-align: middle;
+}

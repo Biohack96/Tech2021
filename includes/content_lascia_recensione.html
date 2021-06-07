@@ -1,0 +1,30 @@
+<div id="recensione" class="content">
+    
+    <h3 id="title_recensione" >Lascia una recensione a <nome /> <cognome /> </h3>
+   
+       <form action="recensione.php" name="recensione" method="post">
+    
+    <div id="content_recensione">
+        <select name='id_us' hidden>
+            <option value='<id />'> </option>
+        </select>
+
+        <select name='id_aut' hidden>
+           <option value='<id_aut />'> </option>
+        </select>
+           
+        <div id="voto">  Voto: <br>    
+            <input type="radio" id="uno" name="voto" value=1 required /> 1 <br>
+            <input type="radio" id="due" name="voto" value=2 /> 2 <br>
+            <input type="radio" id="tre" name="voto" value=3 /> 3 <br>
+            <input type="radio" id="quattro" name="voto" value=4 /> 4 <br>
+            <input type="radio" id="cinque" name="voto" value=5 /> 5 <br>
+        </div>      
+
+        <textarea placeholder="Descrivi la tua esperienza con questo lavoratore" id="commento_recensione" name="comm" rows="10" cols="60" tabindex="33"></textarea>
+    
+        <input type="submit" class="bottone recensione_button" name="recensione" value="Conferma" tabindex="23"/>
+    </div>
+
+</form>
+</div>
