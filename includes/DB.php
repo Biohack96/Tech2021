@@ -67,7 +67,7 @@ class DB extends mysqli{
 
 	public function getRecensioni($id = NULL)
 	{
-		$sql = "SELECT descrizione, voto, nome, cognome  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=?";
+		$sql = "SELECT descrizione, voto, nome, cognome  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();

@@ -10,6 +10,10 @@ if (!isset($_GET['id'])) {
   header('Location: 404.php');
 }
 
+if($_GET['id'] == $_SESSION['user_id']){
+  header('Location: 404.php');
+}
+
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 

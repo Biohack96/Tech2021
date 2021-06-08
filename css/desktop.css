@@ -115,16 +115,7 @@ body {
   ul#profilo_dati{
 	  list-style-type: none;
   }
-  
-  ul#categorie{
-	  list-style-type: none;
-	  margin-left: 5%;
-	  margin-top: 0.5em ;
-  }
-  
-  #categorie li{
-	  margin-top: 0.5em;
-  }
+
   
   #profilo_recensioni{
 	  margin-top: 2em;
@@ -143,9 +134,6 @@ body {
 	  margin-bottom: 2%;
   }
   
-  #media_numero{
-  
-  }
   
   #lista_recensioni{
 	  margin-top: 2%;
@@ -195,9 +183,22 @@ body {
 	  padding: 2%;
   }
   
+  #conferma_recensione_button{
+	margin-left: 50px;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: orange;
+    /* text-decoration-color: white; */
+    color: white;
+    font-weight: bold;
+}
+
+
   textarea#commento_recensione{
 	  margin-top: 2%;
 	  resize: none;
+	  vertical-align: middle;
   }
   
   #recensione{
