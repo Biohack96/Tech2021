@@ -96,8 +96,8 @@ body {
   
   #profilo_dati_personali img{
 	  width: 2em;
+	  vertical-align: middle;
   }
-  
   
   #profilo_nome_cognome img{
 	  border-radius: 50%;
