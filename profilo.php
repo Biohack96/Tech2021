@@ -100,6 +100,7 @@ foreach($recensioni as $recensione) {
   $r = file_get_contents("includes/recensioni.html");
 
  $r = str_replace("<autore />", $recensione['nome'] . " " . $recensione['cognome'] , $r);
+ $r = str_replace("<date_recensione />", $recensione['data_recensione'] , $r);
 
  if($recensione['voto'] < 2){
   $r = str_replace("<img_voto />", "img/Star_rating_1_of_5.png", $r);

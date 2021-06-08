@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (isset($_POST['recensione'])) {
  
-    if( $db->setRecensione($_POST['comm'], $_POST['voto'], $_POST['id_aut'], $_POST['id_us'])){
+    if( $db->setRecensione($_POST['comm'], $_POST['voto'], date("Y-m-d"), $_SESSION['user_id'], $_POST['id_us'])){
    
      header('Location: profilo.php?id=' . $_POST['id_us']);
     } else {

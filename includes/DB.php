@@ -67,7 +67,7 @@ class DB extends mysqli{
 
 	public function getRecensioni($id = NULL)
 	{
-		$sql = "SELECT descrizione, voto, nome, cognome  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";
+		$sql = "SELECT descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, nome, cognome  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();
@@ -92,12 +92,12 @@ class DB extends mysqli{
 
     }
  
-    public function setRecensione($descrizione, $voto, $id_autore, $id_utente){
+    public function setRecensione($descrizione, $voto, $data_recensione, $id_autore, $id_utente){
         
-            $sql = "INSERT INTO recensione VALUES (NULL,?,?,?,?);";
+            $sql = "INSERT INTO recensione VALUES (NULL,?,?,?,?,?);";
             
             $query = $this->prepare($sql);
-            $query->bind_param("siii",$descrizione, $voto, $id_autore, $id_utente);
+            $query->bind_param("sisii",$descrizione, $voto, $data_recensione, $id_autore, $id_utente);
         
          if($query->execute())
 		{
