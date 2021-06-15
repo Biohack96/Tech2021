@@ -4,7 +4,7 @@ class DB extends mysqli{
 
 	//public function __construct($host="localhost:8889", $user="root", $pass="root", $db="db")
 	//public function __construct($host="localhost", $user="dbrescia", $pass="kainoolay9ojaeQu", $db="db")
-	public function __construct($host="localhost", $user="root", $pass="", $db="cyh2")
+	public function __construct($host="localhost", $user="root", $pass="", $db="workeradvisor")
 	{
         parent::__construct($host, $user, $pass, $db);
 
@@ -16,7 +16,7 @@ class DB extends mysqli{
 
 	public function getProfilo($id = NULL)
 	{
-		$sql = "SELECT id,email,nome,cognome,telefono, DATE_FORMAT(datanascita,'%d/%m/%Y') as datanascita,cf,img_path FROM `utente` WHERE id=?";
+		$sql = "SELECT id,email,nome,cognome,telefono, DATE_FORMAT(datanascita,'%d/%m/%Y') as datanascita,cf,titolostudio,bio,img_path FROM `utente` WHERE id=?";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();
@@ -37,7 +37,7 @@ class DB extends mysqli{
 		return $usr;
 
     }
-
+/*
 	public function getCategoria($id = NULL)
 	{
 		$sql = "SELECT nome FROM categoria JOIN possiede ON categoria.id = possiede.id_categoria WHERE id_utente=?";
@@ -46,13 +46,13 @@ class DB extends mysqli{
 		$query->execute();
 		$result = $query->get_result();
 
-		/*preparo la query, la eseguo e ottengo i risultati*/
+		preparo la query, la eseguo e ottengo i risultati
 
-		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato
 
 		$cat = array();
 		/*foreach($usr as $key => $value)
-		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+		{echo "\n".$key."  ".$usr["$key"];}  /*ciclo per il debug
 		while ($row = $result->fetch_assoc())
 			{
 				$cat[] = $row;
@@ -64,7 +64,7 @@ class DB extends mysqli{
 		return $cat;
 
     }
-
+*/
 	public function getRecensioni($id = NULL)
 	{
 		$sql = "SELECT descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, nome, cognome  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";
