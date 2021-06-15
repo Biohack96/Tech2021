@@ -24,16 +24,16 @@ $page_body = str_replace('<info_utente />', $info_utente, $page_body);
 
 // Dati del profilo
 $profilo = $db->getProfilo($_GET['id']);
-$categorie = $db->getCategoria($_GET['id']);
 $recensioni = $db->getRecensioni($_GET['id']);
-
-
 
 $content = file_get_contents('includes/content_profilo.html');
 $content = str_replace('<immagine_profilo />', $profilo['img_path'], $content);
 $content = str_replace('<nome />', $profilo['nome'], $content);
 $content = str_replace('<cognome />', $profilo['cognome'], $content);
 $content = str_replace('<data_di_nascita />', $profilo['datanascita'], $content); 
+$content = str_replace('<titolo_studio />', $profilo['titolostudio'], $content); 
+$content = str_replace('<bio />', $profilo['bio'], $content); 
+
 
 $content = str_replace('<email />', $profilo['email'], $content);
 $content = str_replace('<telefono />', $profilo['telefono'], $content);
