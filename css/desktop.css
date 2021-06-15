@@ -116,6 +116,16 @@ body {
 	  list-style-type: none;
   }
 
+  #biografia{
+	  padding: 2%;
+  }
+
+  #biografia_testo{
+	padding: 2%;
+	text-align: justify;
+}
+
+  /******RECENSIONI*******/
   
   #profilo_recensioni{
 	  margin-top: 2em;
@@ -157,6 +167,10 @@ body {
 	  margin-left: 10px;
   }
   
+  #media_numero img{
+	vertical-align: -7px;
+}
+
   #descrizione_recensione{
 	  margin-top: 3px;
 	  margin-left: 12px;

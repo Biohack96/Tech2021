@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('includes/DB.php');
+require_once('includes/create_info_utente.php');
 
 // Oggetto di accesso al database
 $db = new DB();
@@ -16,6 +17,9 @@ if($_GET['id'] == $_SESSION['user_id']){
 
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
+
+$info_utente = createInfoUtente($db);
+$page_body = str_replace('<info_utente />', $info_utente, $page_body);
 
 
 $utente = $db->getProfilo($_GET['id']);

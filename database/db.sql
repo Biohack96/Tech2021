@@ -6,7 +6,7 @@ USE dbrescia;
 
 SET FOREIGN_KEY_CHECKS = 0; -- Disabilita check su vincoli di integrità referenziale
 
-DROP TABLE IF EXISTS commento, partecipazione, post, utente;
+DROP TABLE IF EXISTS utente, recensione;
 
 CREATE TABLE utente (
   id          INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,58 +14,25 @@ CREATE TABLE utente (
   password    VARCHAR(64) NOT NULL,
   nome        VARCHAR(30) NOT NULL,
   cognome     VARCHAR(30) NOT NULL,
-  telefono	  VARCHAR(30) NOT NULL,
+  telefono      VARCHAR(30) NOT NULL,
   datanascita DATE NOT NULL,
   cf          VARCHAR(16) NOT NULL UNIQUE,
+  titolostudio VARCHAR(50) NOT NULL,
   bio         TEXT NOT NULL,
-  skill_1     ENUM ('idraulico','elettricista','informatico','giardiniere'),
-  skill_2     ENUM ('idraulico','elettricista','informatico','giardiniere'),
-  skill_3     ENUM ('idraulico','elettricista','informatico','giardiniere'),
-  skill_4     ENUM ('idraulico','elettricista','informatico','giardiniere'),
-  skill_5     ENUM ('idraulico','elettricista','informatico','giardiniere'),
-  liv_sk_1    INT,
-  liv_sk_2    INT,
-  liv_sk_3    INT,
-  liv_sk_4    INT,
-  liv_sk_5    INT,
   img_path    VARCHAR(256) NOT NULL DEFAULT 'img/jesus.jpg'
 );
 
-CREATE TABLE post (
-  id          INT AUTO_INCREMENT PRIMARY KEY,
-  titolo      VARCHAR(100) NOT NULL,
-  id_autore   INT NOT NULL,
-  data        TIMESTAMP NOT NULL,
-  descrizione VARCHAR(1000) NOT NULL,
-  img_path    VARCHAR(256) NOT NULL DEFAULT 'img/default.png',
-  provincia	  VARCHAR(50) NOT NULL,
-  luogo		  VARCHAR(150) NOT NULL,
-  chiuso      BOOLEAN NOT NULL DEFAULT 0,
-
-  FOREIGN KEY (id_autore) REFERENCES utente(id)
-);
-
-CREATE TABLE commento (
-  id          INT AUTO_INCREMENT PRIMARY KEY,
-  id_autore   INT NOT NULL,
-  id_post     INT NOT NULL,
-  data        TIMESTAMP NOT NULL,
-  img_path    VARCHAR(256) DEFAULT NULL,
-  text        TEXT NOT NULL,
+CREATE TABLE recensione (
+  id              INT AUTO_INCREMENT PRIMARY KEY,
+  descrizione     VARCHAR(2000) NOT NULL,
+  voto            INT NOT NULL,
+  data_recensione DATE NOT NULL,
+  id_autore       INT NOT NULL,
+  id_utente       INT NOT NULL,
 
   FOREIGN KEY (id_autore) REFERENCES utente(id),
-  FOREIGN KEY (id_post) REFERENCES post(id)
+  FOREIGN KEY (id_utente) REFERENCES utente(id)
 );
 
-CREATE TABLE  partecipazione (
-	id          INT AUTO_INCREMENT PRIMARY KEY,
-	id_post		  INT NOT NULL,
-	id_utente   INT NOT NULL,
-
-	FOREIGN KEY (id_utente) REFERENCES utente(id),
-  FOREIGN KEY (id_post) REFERENCES post(id),
-  CONSTRAINT Part_uniq UNIQUE (id_post,id_utente)
-
-);
 
 SET FOREIGN_KEY_CHECKS = 1; -- Riabilita check
