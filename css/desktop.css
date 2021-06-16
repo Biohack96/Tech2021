@@ -303,6 +303,48 @@ body {
 	color: red;
 }
 
+/******404*****/
+
+#_404error {
+	text-align: center;
+	margin-top: 2em;
+}
+
+#_404error p{
+	color: #fff;
+}
+
+#_404error img {
+	width: 20%;
+}
+
+#_404 {
+	font-size: 11em;
+	font-weight: bold;
+}
+
+#ops {
+	font-size: 3em;
+	margin: 0.5em;
+}
+
+#_404buttons button{
+	margin: 3%;
+	border-radius: 1em;
+	padding: 1em;
+	color: #fff;
+	font-weight: bold;
+}
+
+#backButton {
+	background-color: #ff9100;
+}
+
+#backHomeButton {
+	background-color: #eb6105;
+}
+
+
 	
 
 /***** footer *****/
