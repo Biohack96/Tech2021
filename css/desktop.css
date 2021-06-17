@@ -84,6 +84,118 @@ body {
 	float: right;
 }
 
+/******REGISTRAZIONE E LOGIN******/
+
+#registrazione {
+	background-color: #f4f4f4;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+#registrazione legend{
+	font-weight: bolder;
+	font-size: x-large;
+	margin-bottom: 10px;
+}
+
+ul#gruppo1, ul#gruppo2{
+	list-style-type: none;
+}
+
+#registrazione label {
+    display: inline-block;
+    width:200px;
+	margin-top: 5px;
+    text-align: right;
+}
+
+#gruppo1{
+	float: left;
+	margin-left: 15%;
+	width: 30%;
+}
+
+#gruppo2{
+	float: left;
+	width: 30%;
+}
+
+#gruppo1 input{
+	padding: 0.3em;
+	border: 1px solid #000000;
+}
+
+#gruppo2 input{
+	padding: 0.3em;
+	border: 1px solid #000000;
+}
+
+#bio_foto{
+	background-color: #f4f4f4;
+    text-align: center;
+}
+
+#registrazione_biografia{
+	margin-top: 5px;
+	vertical-align: middle;
+	resize: none;
+	border: 1px solid #000000;
+	margin-bottom: 20px;
+}
+
+#conf_registrazione{
+	margin-top: 30px;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #ff9100;
+    color: white;
+    font-weight: bold;
+	cursor: pointer;
+	margin-bottom: 30px;
+}
+
+#login_box{
+	background-color: #f4f4f4;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+#login_box legend{
+	font-weight: bolder;
+	font-size: x-large;
+}
+
+#login_box ul{
+	list-style-type: none;
+}
+
+#login_box label {
+    display: inline-block;
+    width:100px;
+	margin-top: 10px;
+    text-align: right;
+}
+
+#info_login input{
+	padding: 0.3em;
+	border: 1px solid #000000;
+}
+
+#login_button{
+
+	margin-top: 30px;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #ff9100;
+    color: white;
+    font-weight: bold;
+	cursor: pointer;
+}
+
 /********PROFILO*********/
 
 
