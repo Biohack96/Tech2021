@@ -14,7 +14,7 @@ function createInfoUtente($db) {
 
     $result = '<div id="name_log">
     <p id="utente"><a href="profilo.php?id='. $_SESSION['user_id'] .'">' . $usr['nome'] . ' ' . $usr['cognome'] . '</a></p>	
-    <p id="logout"><a href="">Logout</a></p>
+    <p id="logout"><a href="login.php">Logout</a></p>
   </div>
   <a href=""><img src="' . $usr['img_path'] . '" alt="foto del profilo utente" /></a>
 ';

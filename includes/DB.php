@@ -2,6 +2,11 @@
 class DB extends mysqli{
 
 
+	private $imgDir = 'img/upload/';
+	private $max_img_size = 3000000; // 3MB
+	private $perm_img_format = array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG);
+
+
 	//public function __construct($host="localhost:8889", $user="root", $pass="root", $db="db")
 	//public function __construct($host="localhost", $user="dbrescia", $pass="kainoolay9ojaeQu", $db="db")
 	public function __construct($host="localhost", $user="root", $pass="", $db="workeradvisor")
@@ -37,34 +42,60 @@ class DB extends mysqli{
 		return $usr;
 
     }
-/*
-	public function getCategoria($id = NULL)
-	{
-		$sql = "SELECT nome FROM categoria JOIN possiede ON categoria.id = possiede.id_categoria WHERE id_utente=?";
-		$query = $this->prepare($sql);
-		$query->bind_param("i", $id);
-		$query->execute();
-		$result = $query->get_result();
 
-		preparo la query, la eseguo e ottengo i risultati
+	public function setProfilo($email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img)
+{
 
-		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato
+	$hashed_pass = hash('sha256', $password);
 
-		$cat = array();
-		/*foreach($usr as $key => $value)
-		{echo "\n".$key."  ".$usr["$key"];}  /*ciclo per il debug
-		while ($row = $result->fetch_assoc())
-			{
-				$cat[] = $row;
-			}
-		
-		$query->close();
-		$result->free();
+	if(!empty($img))
+		{
+			$img_format = exif_imagetype($img);
+			if(!in_array($img_format , $this->perm_img_format)) {$error[] = 'Formato immagine errato, inserire un immagine in formato PNG o JPEG';} 	 // verifica se è un immagine
+			if (filesize($img) > $this->max_img_size) {$error[] = 'Immagine troppo grande (max: 3MB)';}
+			$hash = hash_file('sha256', $img);
+			if (!move_uploaded_file($img, $this->imgDir.$hash)) {$error[] = "Impossibile spostare l'immagine";}
+			$img_path = $this->imgDir.$hash;
+			//$this->crop($img_path,1);
+		}
 
-		return $cat;
+	if(!empty($img_path)) 
+		{
 
-    }
-*/
+		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,titolostudio,bio,img_path) VALUES (?,?,?,?,?,?,?,?,?,?)";
+
+				$query = $this->prepare($sql);
+				$query->bind_param("ssssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img_path);
+
+				if($query->execute())
+				{
+					$new_id = $this->insert_id;
+					$_SESSION['user_id']= $new_id;
+					$query->close();
+					return $new_id;
+				}
+				else {return NULL;}
+		}
+	else {
+
+		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,titolostudio,bio) VALUES (?,?,?,?,?,?,?,?,?)";
+
+				$query = $this->prepare($sql);
+				$query->bind_param("sssssssss", $email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio);
+
+				if($query->execute())
+				{
+					$new_id = $this->insert_id;
+					$_SESSION['user_id']= $new_id;
+					$query->close();
+					return $new_id;
+				}
+				else {return NULL;}
+
+	}
+
+	}
+
 	public function getRecensioni($id = NULL)
 	{
 		$sql = "SELECT descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, nome, cognome  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";
@@ -129,11 +160,11 @@ class DB extends mysqli{
 
 	public function login($username, $password)
 	{
-		
+		$hashed_pass = hash('sha256', $password);
 
 		$sql = "SELECT id FROM `utente` WHERE email = ? AND password = ? LIMIT 1;";
 		$query = $this->prepare($sql);
-		$query->bind_param("ss", $username,$password);
+		$query->bind_param("ss", $username,$hashed_pass);
 		if(!$query->execute()) {return NULL;}
 		$result = $query->get_result();
 
@@ -149,6 +180,10 @@ class DB extends mysqli{
 
 	}
 
+	public function logout()
+	{
+		unset($_SESSION['user_id']);
+	}
 	
 }
 ?>

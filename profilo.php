@@ -19,8 +19,14 @@ $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
 // Contiene lo snippet di codice per visualizzare l'utente loggato in alto a destra
-$info_utente = createInfoUtente($db);
-$page_body = str_replace('<info_utente />', $info_utente, $page_body);
+if (isset($_SESSION['user_id'])){
+  $info_utente = createInfoUtente($db);
+  $page_body = str_replace('<info_utente />', $info_utente, $page_body);
+}
+
+else {
+  $page_body = str_replace('<info_utente />', '<a class="button" href="login.php">Accedi</a>', $page_body);
+}
 
 // Dati del profilo
 $profilo = $db->getProfilo($_GET['id']);
@@ -38,17 +44,18 @@ $content = str_replace('<bio />', $profilo['bio'], $content);
 $content = str_replace('<email />', $profilo['email'], $content);
 $content = str_replace('<telefono />', $profilo['telefono'], $content);
 
-if($_SESSION['user_id'] != $_GET['id']){
-$content = str_replace('<button_recensione />', '<a class="button" href="recensione.php?id=' . $_GET['id'] .'">Lascia una recensione</a>' , $content);
+if (isset($_SESSION['user_id'])){
+  if($_SESSION['user_id'] != $_GET['id']){
+    $content = str_replace('<button_recensione />', '<a class="button" href="recensione.php?id=' . $_GET['id'] .'">Lascia una recensione</a>' , $content);
+  }
 }
-
 
 $lista_recensioni='';
 
 if($recensioni != NULL){
 
   $content = str_replace('<div_recensioni />', '<div id="media">
-    <p id="media_numero"> <media_img /> <media /> </p>
+    <p id="media_numero"> <img src="<media_img /> " height= 30px> <media /> </p>
     </div>
 
     <div id="lista_recensioni">
@@ -60,39 +67,39 @@ if($recensioni != NULL){
 
 
  if($media['media'] >= 1 && $media['media'] < 1.5){
-  $content = str_replace("<media_img />", '<img src="img/Star_rating_2.5_of_5.png" height= 30px>', $content);
+  $content = str_replace("<media_img />", "img/Star_rating_2.5_of_5.png" , $content);
 }
 
  elseif($media['media'] >= 1.5 && $media['media'] < 2){
-  $content = str_replace("<media_img />", '<img src="img/Star_rating_1.5_of_5.png" height= 30px>', $content);
+  $content = str_replace("<media_img />", "img/Star_rating_1.5_of_5.png" , $content);
  }
 
  elseif($media['media'] >= 2 && $media['media'] < 2.5){
-    $content = str_replace("<media_img />", '<img src="img/Star_rating_2_of_5.png" height= 30px>', $content);
+    $content = str_replace("<media_img />", "img/Star_rating_2_of_5.png" , $content);
   }
 
   elseif($media['media'] >= 2.5 && $media['media'] < 3){
-    $content = str_replace("<media_img />", '<img src="img/Star_rating_2.5_of_5.png" height= 30px>', $content);
+    $content = str_replace("<media_img />", "img/Star_rating_2.5_of_5.png" , $content);
   }
 
   elseif($media['media'] >= 3 && $media['media'] < 3.5){
-    $content = str_replace("<media_img />", '<img src="img/Star_rating_3_of_5.png" height= 30px>', $content);
+    $content = str_replace("<media_img />", "img/Star_rating_3_of_5.png" , $content);
   }
 
   elseif($media['media'] >= 3.5 && $media['media'] < 4){
-    $content = str_replace("<media_img />", '<img src="img/Star_rating_3.5_of_5.png" height= 30px>', $content);
+    $content = str_replace("<media_img />", "img/Star_rating_3.5_of_5.png" , $content);
   }
 
   elseif($media['media'] >= 4 && $media['media'] < 4.5){
-    $content = str_replace("<media_img />", '<img src="img/Star_rating_4_of_5.png" height= 30px>', $content);
+    $content = str_replace("<media_img />", "img/Star_rating_4_of_5.png" , $content);
   }
 
   elseif($media['media'] >= 4.5 && $media['media'] < 5){
-    $content = str_replace("<media_img />", '<img src="img/Star_rating_4.5_of_5.png" height= 30px>', $content);
+    $content = str_replace("<media_img />", "img/Star_rating_4.5_of_5.png" , $content);
   }
 
-  elseif($media['media'] == 5){
-    $content = str_replace("<media_img />", '<img src="img/Star_rating_5_of_5.png" height= 30px>', $content);
+  else{
+    $content = str_replace("<media_img />", "img/Star_rating_5_of_5.png" , $content);
   }
 
 
