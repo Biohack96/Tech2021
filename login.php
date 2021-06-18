@@ -6,8 +6,8 @@ require_once('includes/DB.php');
 $db = new DB();
 
 if (isset($_SESSION['user_id'])) {
-  $db->logout();
- // header('Location: index.php');
+  //$db->logout();
+	header('Location: index.php');
 }
 
 // Inserimento nel database ed eventuale generazione di stringhe di errore

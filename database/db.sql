@@ -1,8 +1,8 @@
-﻿-- DROP DATABASE IF EXISTS doit;
+﻿-- DROP DATABASE IF EXISTS workeradvisor;
 
--- CREATE DATABASE doit;
+CREATE DATABASE workeradvisor;
 
-USE dbrescia;
+USE workeradvisor;
 
 SET FOREIGN_KEY_CHECKS = 0; -- Disabilita check su vincoli di integrità referenziale
 
