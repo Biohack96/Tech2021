@@ -30,7 +30,6 @@ body {
 }
 
 #breadcrumb {
-	background-color: #000000;
 	height: 2em;
 	padding-top: 0.5em;
 }
@@ -43,13 +42,13 @@ body {
 
 #head_dx{
 	float: right;
-	padding: 2em;
+	padding: 1.5em 2em 0.3em 2em;
 }
 
 #info img{
 	float: right;
 	width: 2em;
-	padding-left: 1em;
+	padding-right: 3.5em;
 }
 
 #usr_zone {
@@ -456,7 +455,25 @@ ul#gruppo1, ul#gruppo2{
 	background-color: #eb6105;
 }
 
+/*******info*****/
+#informazioni{
+	color:#fff;
+	padding: 1.5em;
+}
 
+#informazioni h1{
+	color: #ff9100;
+	margin-bottom: 1em;
+}
+
+#informazioni h2{
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+#informazioni p{
+	margin-bottom: 0.5em;
+}
 	
 
 /***** footer *****/

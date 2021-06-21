@@ -29,7 +29,6 @@ body {
 }
 
 #breadcrumb {
-	background-color: #000000;
 	height: 2em;
 	padding-top: 0.5em;
 }
@@ -46,9 +45,7 @@ body {
 }
 
 #info img{
-	display: none;
-	width: 2em;
-	padding-left: 1em;
+	padding-right:1.5em;
 }
 
 #usr_zone {
@@ -355,10 +352,10 @@ body {
 	clear: left;
 	text-align: center;
 	font-style: italic;
-	font-size: 0.9em;
+	font-size: 0.7em;
 	padding-top: 1em;
 	color: #fff;
-	height: 2.5em;
+	height: 3.7em;
 }
 
 #footer a {
