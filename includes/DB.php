@@ -17,7 +17,32 @@ class DB extends mysqli{
            	 die();
         	}
 	}
+	
+	
+	public function getcards($limit = 1,$offset=0)
+	{
+		$cards = array();
 
+		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,nome,cognome,titolostudio,img_path FROM utente u join recensione r on u.id = r.id_utente group by u.id limit $limit offset $offset";
+		$query = $this->prepare($sql);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		while ($row = $result->fetch_assoc())
+			{
+					$cards[] = $row;
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $cards;
+
+    }
 
 	public function getProfilo($id = NULL)
 	{
@@ -81,7 +106,7 @@ class DB extends mysqli{
 		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,titolostudio,bio) VALUES (?,?,?,?,?,?,?,?,?)";
 
 				$query = $this->prepare($sql);
-				$query->bind_param("sssssssss", $email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio);
+				$query->bind_param("sssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio);
 
 				if($query->execute())
 				{

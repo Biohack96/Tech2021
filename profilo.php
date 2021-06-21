@@ -8,7 +8,7 @@ $db = new DB();
 
 //Controllo sicurezza
 if (!isset($_GET['id'])) {
-  header('Location: 404.php');
+  header("Location: profilo.php?id=$_SESSION[user_id]");
 }
 
 // Titolo della pagina
