@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('includes/DB.php');
-//require_once('includes/create_info_utente.php');
+require_once('includes/create_info_utente.php');
 
 // Oggetto di accesso al database
 $db = new DB();
@@ -16,6 +16,14 @@ $ricerca = file_get_contents('includes/ricerca.html');
 $page_body = file_get_contents('includes/body.html');
 $card_t = file_get_contents('includes/card.html');
 $card_list_t = file_get_contents('includes/cardlist.html');
+
+// Contiene lo snippet di codice per visualizzare l'utente loggato in alto a destra
+
+$info_utente = createInfoUtente($db);
+$page_body = str_replace('<info_utente />', $info_utente, $page_body);
+
+
+
 $cards = "";
 $cardlist="";
 

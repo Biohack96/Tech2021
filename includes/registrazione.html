@@ -1,60 +1,61 @@
-<div class="box_registrazione" id="registrazione">
-<form id="registrazione" method="post" enctype="multipart/form-data">
-<fieldset id="fiedlset_registrazione" xml:lang="en">
-<legend class="fieldset_registrazione">Registrazione</legend>
-<div id="info_generali">
-<ul id="gruppo1">
-	<li>
-	<label for="registrazione_nome" class="registrazione_label" id="reg_nome_id">Nome:</label>
-	<input type="text" class="registrazione_field" id="registrazione_nome" name="nome"></input>
-	</li>
-	<li>
-	<label for="registrazione_cognome" class="registrazione_label" id="reg_cognome_id">Cognome:</label>
-	<input type="text" class="registrazione_field" id="registrazione_cognome" name="cognome"></input>
-	</li>
-	<li>
-	<label for="registrazione_email" class="registrazione_label" id="email_id"><span xml:lang="en">Email:</span></label>
-	<input type="text" class="registrazione_field" id="registrazione_email" name="email"></input>
-	</li>
-	<label for="registrazione_password" class="registrazione_label" id="password_id"><span xml:lang="en">Password:</span></label>
-	<input type="password" class="registrazione_field" name="password"></input>
-	</li>
-	<li>	
-	<label for="registrazione_conferma_password" class="registrazione_label" id="conferma_password_id">Conferma <span xml:lang="en">password:</span></label>
-	<input type="password" class="registrazione_field" name="conferma_password"></input>
-	</li>
-</ul>
-<ul id="gruppo2">
-	<li>
-	<label for="registrazione_telefono" class="registrazione_label" id="tel_id">Telefono:</label>
-	<input type="text" class="registrazione_field "id="registrazione_telefono" name="telefono"></input>
-	</li>
+<div class="box_registrazione" id="registrazione_info">
+	<form id="registrazione" method="post" enctype="multipart/form-data">
+	<fieldset id="fiedlset_registrazione" xml:lang="en">
+	<legend class="fieldset_registrazione">Registrazione</legend>
+	<ul id="gruppo1">
+		<li>
+		<label for="registrazione_nome" class="registrazione_label" id="reg_nome_id">Nome:</label>
+		<input type="text" class="registrazione_field" id="registrazione_nome" name="nome"></input>
+		</li>
+		<li>
+		<label for="registrazione_cognome" class="registrazione_label" id="reg_cognome_id">Cognome:</label>
+		<input type="text" class="registrazione_field" id="registrazione_cognome" name="cognome"></input>
+		</li>
+		<li>
+		<label for="registrazione_email" class="registrazione_label" id="email_id"><span xml:lang="en">Email:</span></label>
+		<input type="text" class="registrazione_field" id="registrazione_email" name="email"></input>
+		</li>
+		<label for="registrazione_password" class="registrazione_label" id="password_id"><span xml:lang="en">Password:</span></label>
+		<input type="password" class="registrazione_field" name="password"></input>
+		</li>
+		<li>	
+		<label for="registrazione_conferma_password" class="registrazione_label" id="conferma_password_id">Conferma <span xml:lang="en">password:</span></label>
+		<input type="password" class="registrazione_field" name="conferma_password"></input>
+		</li>
+	</ul>
+	<ul id="gruppo2">
+		<li>
+		<label for="registrazione_telefono" class="registrazione_label" id="tel_id">Telefono:</label>
+		<input type="text" class="registrazione_field "id="registrazione_telefono" name="telefono"></input>
+		</li>
+		
+		<li>
+		<label for="registrazione_data_di_nascita" class="registrazione_label" id="data_di_nascita_id">Data di nascita:<br/></label>
+		<input type="date" id="registrazione_data_di_nascita" class="registrazione_field" name="data_di_nascita"></input>
+		</li>
+		<li>
+		<label for="registrazione_cf" class="registrazione_label" id="cf_id">Codice fiscale:</label>
+		<input type="text" class="registrazione_field" id="registrazione_cf" name="cf"></input>
+		</li>
+		<li>
+		<label for="registrazione_titolo_studio" class="registrazione_label" id="titolo_studio_id">Titolo di studio:</label>
+		<input type="text" class="registrazione_field" id="registrazione_titolo_di_studio" name="titolo_di_studio"></input>
+		</li>
+	</ul>
+	</fieldset>
+	</div>
 	
-	<li>
-	<label for="registrazione_data_di_nascita" class="registrazione_label" id="data_di_nascita_id">Data di nascita:<br/></label>
-	<input type="date" id="registrazione_data_di_nascita" class="registrazione_field" name="data_di_nascita"></input>
-	</li>
-	<li>
-	<label for="registrazione_cf" class="registrazione_label" id="cf_id">Codice fiscale:</label>
-	<input type="text" class="registrazione_field" id="registrazione_cf" name="cf"></input>
-	</li>
-	<li>
-	<label for="registrazione_titolo_studio" class="registrazione_label" id="titolo_studio_id">Titolo di studio:</label>
-	<input type="text" class="registrazione_field" id="registrazione_titolo_di_studio" name="titolo_di_studio"></input>
-	</li>
-</ul>
-</fieldset>
-</div>
-
-<div id="bio_foto">
-<label for="registrazione_biografia" class="registrazione_label" id="bio_id">Biografia: <desc /> </label>
-	<textarea id="registrazione_biografia" name="bio" rows="10" cols="60"></textarea>
-<br/>
-<label for="registrazione_foto" class="registrazione_label" id="foto_id">Foto profilo:</label>
-<input type="file" id="registrazione_foto" name="img" accept=".png, .jpg"></input>
-<br/>
-<input type="submit" class="bottone registrazione_button" id ="conf_registrazione" name="registrazione" value="Conferma registrazione" tabindex="23"/>
-</fieldset>
-</form>
-</div>
-</div>
+	<div id="registrazione_bio_foto">
+	<label for="registrazione_biografia" class="registrazione_label" id="bio_id">Biografia: <desc /> </label>
+		<textarea id="registrazione_biografia" name="bio" rows="10" cols="60"></textarea>
+	<br/>
+	<label for="registrazione_foto" class="registrazione_label" id="foto_id">Foto profilo:</label>
+	<input type="file" id="registrazione_foto" name="img" accept=".png, .jpg"></input>
+	<br/>
+	<input type="submit" class="bottone registrazione_button" id ="conf_registrazione" name="registrazione" value="Conferma registrazione" tabindex="23"/>
+	</fieldset>
+	</form>
+	</br>
+	<a id="login_link" href="login.php">Hai già un account? Accedi</a>
+	</div>
+	</div>

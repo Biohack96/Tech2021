@@ -19,14 +19,9 @@ $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
 // Contiene lo snippet di codice per visualizzare l'utente loggato in alto a destra
-if (isset($_SESSION['user_id'])){
+
   $info_utente = createInfoUtente($db);
   $page_body = str_replace('<info_utente />', $info_utente, $page_body);
-}
-
-else {
-  $page_body = str_replace('<info_utente />', '<a class="button" href="login.php">Accedi</a>', $page_body);
-}
 
 // Dati del profilo
 $profilo = $db->getProfilo($_GET['id']);

@@ -85,7 +85,7 @@ body {
 
 /******REGISTRAZIONE E LOGIN******/
 
-#registrazione {
+#registrazione_info {
 	background-color: #f4f4f4;
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -130,9 +130,10 @@ ul#gruppo1, ul#gruppo2{
 	border: 1px solid #000000;
 }
 
-#bio_foto{
+#registrazione_bio_foto{
 	background-color: #f4f4f4;
     text-align: center;
+	padding-bottom: 20px;
 }
 
 #registrazione_biografia{
@@ -153,6 +154,10 @@ ul#gruppo1, ul#gruppo2{
     font-weight: bold;
 	cursor: pointer;
 	margin-bottom: 30px;
+}
+
+#login_link{
+	margin-bottom: 10px;
 }
 
 #login_box{
