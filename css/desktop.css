@@ -216,8 +216,6 @@ ul#gruppo1, ul#gruppo2{
 	background-color: #f4f4f4;
 	margin-bottom: 2em;
 	padding: 5%;
-	border-radius: 15px;
-	margin: 1em;
   }
   
   #profilo_dati_personali img{
@@ -258,8 +256,6 @@ ul#gruppo1, ul#gruppo2{
 	  background-color: #f4f4f4;
 	  margin-bottom: 2%;
 	  padding: 5%;
-	  border-radius: 15px;
-	  margin: 1em;
   }
   
   #media{
@@ -302,6 +298,12 @@ ul#gruppo1, ul#gruppo2{
   #descrizione_recensione{
 	  margin-top: 3px;
 	  margin-left: 12px;
+	  margin-bottom: 10px;
+  }
+
+  #link_elimina_recensione{
+	  color: red;
+	  text-decoration: none;
   }
   
   .button{
@@ -357,6 +359,28 @@ ul#gruppo1, ul#gruppo2{
 	  padding: 2%;
   }
   
+/*******ELIMINA RECENSIONE *********/
+
+#recensione_info{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#conferma_eliminazione_button{
+	width: 150px;
+    height: 40px;
+    padding: 3px;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+  #recensione_da_eliminare{
+	  padding-left: 100px;
+	  background-color: #f4f4f4;
+	  padding-bottom: 3%;
+	  padding-top: 3%;
+  }
+
 
 /***** banner di ricerca *****/
 
