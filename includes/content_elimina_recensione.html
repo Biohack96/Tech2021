@@ -1,0 +1,28 @@
+<div id="recensione_da_eliminare">
+    <h2>Vuoi eliminare questa recensione?</h2>
+
+<div id="recensione_info">
+    <p id="autore_recensione"><autore /> </p>
+
+<p id="data_recensione"> <date_recensione /></p>
+<div id="rating">
+  <img src="<img_voto />" height= 25px alt="Valutazione:" />
+</div>
+<div class="break-word">
+<p id="descrizione_recensione"> <descrizione /></p>
+</div>
+</div>
+<form action="elimina_recensione.php" name="recensione" method="post">
+
+    <select name='id_utente' hidden>
+        <option value='<id_utente />'> </option>
+    </select>
+
+    <select name='id_rec' hidden>
+        <option value='<id_rec />'> </option>
+    </select>
+
+    <input type="submit" id="conferma_eliminazione_button" class="button" name="elimina" value="Elimina"/>
+    
+</form>
+</div>

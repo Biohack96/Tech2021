@@ -2,13 +2,14 @@
 session_start();
 require_once('includes/DB.php');
 require_once('includes/create_info_utente.php');
+require_once('includes/create_recensioni.php');
 
 // Oggetto di accesso al database
 $db = new DB();
 
 //Controllo sicurezza
 if (!isset($_GET['id'])) {
-  header("Location: profilo.php?id=$_SESSION[user_id]");
+  header("Location: index.php");
 }
 
 // Titolo della pagina
@@ -25,7 +26,6 @@ $page_body = file_get_contents('includes/body.html');
 
 // Dati del profilo
 $profilo = $db->getProfilo($_GET['id']);
-$recensioni = $db->getRecensioni($_GET['id']);
 
 $content = file_get_contents('includes/content_profilo.html');
 $content = str_replace('<immagine_profilo />', $profilo['img_path'], $content);
@@ -39,103 +39,77 @@ $content = str_replace('<bio />', $profilo['bio'], $content);
 $content = str_replace('<email />', $profilo['email'], $content);
 $content = str_replace('<telefono />', $profilo['telefono'], $content);
 
-if (isset($_SESSION['user_id'])){
-  if($_SESSION['user_id'] != $_GET['id']){
-    $content = str_replace('<button_recensione />', '<a class="button" href="recensione.php?id=' . $_GET['id'] .'">Lascia una recensione</a>' , $content);
-  }
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $_GET['id']){
+
+    $b = file_get_contents('includes/button_lascia_recensione.html');
+    $b = str_replace('<id />', $_GET['id'], $b);
+    
+    $content = str_replace('<button_recensione />', $b , $content);
+  
 }
 
-$lista_recensioni='';
+// Crea l'intestazione delle recensioni e la media
 
-if($recensioni != NULL){
+$r = file_get_contents('includes/intestazione_recensioni.html');
 
-  $content = str_replace('<div_recensioni />', '<div id="media">
-    <p id="media_numero"> <img src="<media_img /> " height= 30px> <media /> </p>
-    </div>
-
-    <div id="lista_recensioni">
-    <recensioni />
-    </div>' , $content); 
+if($db->getRecensioni($_GET['id'])){
 
  $media = $db->getMedia($_GET['id']);
- $content = str_replace('<media />', $media['media'] . " su 5", $content); 
+
+ $r = str_replace('<media />', $media['media'] . " su 5", $r); 
 
 
  if($media['media'] >= 1 && $media['media'] < 1.5){
-  $content = str_replace("<media_img />", "img/Star_rating_2.5_of_5.png" , $content);
+  $r = str_replace("<media_img />", "img/Star_rating_2.5_of_5.png" , $r);
 }
 
  elseif($media['media'] >= 1.5 && $media['media'] < 2){
-  $content = str_replace("<media_img />", "img/Star_rating_1.5_of_5.png" , $content);
+  $r = str_replace("<media_img />", "img/Star_rating_1.5_of_5.png" , $r);
  }
 
  elseif($media['media'] >= 2 && $media['media'] < 2.5){
-    $content = str_replace("<media_img />", "img/Star_rating_2_of_5.png" , $content);
+    $r = str_replace("<media_img />", "img/Star_rating_2_of_5.png" , $r);
   }
 
   elseif($media['media'] >= 2.5 && $media['media'] < 3){
-    $content = str_replace("<media_img />", "img/Star_rating_2.5_of_5.png" , $content);
+    $r = str_replace("<media_img />", "img/Star_rating_2.5_of_5.png" , $r);
   }
 
   elseif($media['media'] >= 3 && $media['media'] < 3.5){
-    $content = str_replace("<media_img />", "img/Star_rating_3_of_5.png" , $content);
+    $r = str_replace("<media_img />", "img/Star_rating_3_of_5.png" , $r);
   }
 
   elseif($media['media'] >= 3.5 && $media['media'] < 4){
-    $content = str_replace("<media_img />", "img/Star_rating_3.5_of_5.png" , $content);
+    $r = str_replace("<media_img />", "img/Star_rating_3.5_of_5.png" , $r);
   }
 
   elseif($media['media'] >= 4 && $media['media'] < 4.5){
-    $content = str_replace("<media_img />", "img/Star_rating_4_of_5.png" , $content);
+    $r = str_replace("<media_img />", "img/Star_rating_4_of_5.png" , $r);
   }
 
   elseif($media['media'] >= 4.5 && $media['media'] < 5){
-    $content = str_replace("<media_img />", "img/Star_rating_4.5_of_5.png" , $content);
+    $r = str_replace("<media_img />", "img/Star_rating_4.5_of_5.png" , $r);
   }
 
   else{
-    $content = str_replace("<media_img />", "img/Star_rating_5_of_5.png" , $content);
+    $r = str_replace("<media_img />", "img/Star_rating_5_of_5.png" , $r);
   }
 
+// Crea la lista delle recensioni
 
-foreach($recensioni as $recensione) {
-  $r = file_get_contents("includes/recensioni.html");
+$lista_recensioni='';
+$lista_recensioni = createRecensioni($db, $_GET['id']);
 
- $r = str_replace("<autore />", $recensione['nome'] . " " . $recensione['cognome'] , $r);
- $r = str_replace("<date_recensione />", $recensione['data_recensione'] , $r);
+$r = str_replace('<recensioni />', $lista_recensioni , $r);
+$content = str_replace('<div_recensioni />', $r , $content);
 
- if($recensione['voto'] < 2){
-  $r = str_replace("<img_voto />", "img/Star_rating_1_of_5.png", $r);
-}
-
- elseif($recensione['voto'] >= 2 && $recensione['voto'] < 3){
-    $r = str_replace("<img_voto />", "img/Star_rating_2_of_5.png", $r);
- }
-
- elseif($recensione['voto'] >= 3 && $recensione['voto'] < 4){
-  $r = str_replace("<img_voto />", "img/Star_rating_3_of_5.png", $r);
-}
-
- elseif($recensione['voto'] >= 4 && $recensione['voto'] < 5){
-  $r = str_replace("<img_voto />", "img/Star_rating_4_of_5.png", $r);
-}
-
- elseif($recensione['voto'] == 5){
-  $r = str_replace("<img_voto />", "img/Star_rating_5_of_5.png", $r);
-}
-
- $r = str_replace("<descrizione />", $recensione['descrizione'], $r);
-
- $lista_recensioni .= $r;
-}
 }
 
 else {
-  $content = str_replace('<div_recensioni />', '<p> Nessuna recensione </p>', $content);
+  $content = str_replace('<div_recensioni />', 'Nessuna recensione', $content);
 }
 
 $page_body = str_replace('<content />', $content, $page_body);
-$page_body = str_replace('<recensioni />', $lista_recensioni, $page_body);
 
 
 echo $page_head . $page_body ;

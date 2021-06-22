@@ -123,7 +123,7 @@ class DB extends mysqli{
 
 	public function getRecensioni($id = NULL)
 	{
-		$sql = "SELECT descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, nome, cognome  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";
+		$sql = "SELECT recensione.id, descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, nome, cognome, id_autore  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();
@@ -164,7 +164,48 @@ class DB extends mysqli{
         else return false;
             
     }
-    
+
+	public function getRecensione($id = NULL)
+	{
+		$sql = "SELECT id, descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, id_autore, id_utente  FROM recensione WHERE id=?";
+		$query = $this->prepare($sql);
+		$query->bind_param("i", $id);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$rec = $result->fetch_assoc(); /*traformo il risultato della query in un array associativo*/
+
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+
+		$query->close();
+		$result->free();
+
+		return $rec;
+
+    }
+
+	public function deleteRecensione($id = NULL, $id_autore = NULL){
+
+		$sql = "DELETE FROM recensione WHERE id = ? AND id_autore = ? ";
+		$query = $this->prepare($sql);
+		$query->bind_param("ii", $id, $id_autore);
+
+		if($query->execute())
+		{
+			$res=$this->affected_rows;
+			$query->close();
+			return (bool)$res;
+		}
+
+		return NULL;
+
+		}
+
 	public function getMedia($id_utente = NULL){
 
 		$sql = "SELECT FORMAT(AVG(voto), 1) AS media FROM recensione WHERE id_utente = ?";
