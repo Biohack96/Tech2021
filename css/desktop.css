@@ -90,12 +90,15 @@ body {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	text-align: center;
+	border-radius: 15px;
+	margin: 1em;
 }
 
 #registrazione legend{
 	font-weight: bolder;
 	font-size: x-large;
 	margin-bottom: 10px;
+	padding-left: 1em;
 }
 
 ul#gruppo1, ul#gruppo2{
@@ -133,7 +136,9 @@ ul#gruppo1, ul#gruppo2{
 #registrazione_bio_foto{
 	background-color: #f4f4f4;
     text-align: center;
-	padding-bottom: 20px;
+	padding: 20px 0;
+	border-radius: 15px;
+	margin: 1em;
 }
 
 #registrazione_biografia{
@@ -165,11 +170,14 @@ ul#gruppo1, ul#gruppo2{
 	padding-top: 20px;
 	padding-bottom: 20px;
 	text-align: center;
+	border-radius: 15px;
+	margin: 1em;
 }
 
 #login_box legend{
 	font-weight: bolder;
 	font-size: x-large;
+	padding-left: 1em;
 }
 
 #login_box ul{
@@ -208,6 +216,8 @@ ul#gruppo1, ul#gruppo2{
 	background-color: #f4f4f4;
 	margin-bottom: 2em;
 	padding: 5%;
+	border-radius: 15px;
+	margin: 1em;
   }
   
   #profilo_dati_personali img{
@@ -248,6 +258,8 @@ ul#gruppo1, ul#gruppo2{
 	  background-color: #f4f4f4;
 	  margin-bottom: 2%;
 	  padding: 5%;
+	  border-radius: 15px;
+	  margin: 1em;
   }
   
   #media{
@@ -365,14 +377,15 @@ ul#gruppo1, ul#gruppo2{
 	text-align: center;
 }
 
+
 #button_cerca {
 	background-color: transparent;
 	margin: 0 1em 0 1em;
 }
 
 #button_cerca img {
-	width: 2em;
-	height: 2em;
+	width: 1.5em;
+	height: 1.5em;
 }
 
 .banner_cerca{
@@ -485,13 +498,14 @@ ul#gruppo1, ul#gruppo2{
 
 #footer {
 	background-color: #ff9d00;
-	clear: left;
 	text-align: center;
 	font-style: italic;
 	font-size: 0.9em;
 	padding-top: 1em;
 	color: #fff;
 	height: 2.5em;
+	bottom: 0%;
+	width: 100%;
 }
 
 #footer a {
