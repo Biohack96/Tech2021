@@ -11,6 +11,19 @@ if (isset($_SESSION['user_id'])) {
 }
 $content = file_get_contents('includes/registrazione.html');
 
+$content = str_replace('<titolo />', "Registrazione", $content);
+$content = str_replace('<conferma_button />', "Conferma registrazione", $content);
+
+$content = str_replace('<nome />', '', $content);
+  $content = str_replace('<cognome />', '', $content);
+  $content = str_replace('<email />', '', $content);
+  $content = str_replace('<telefono />', '', $content);
+  $content = str_replace('<data_nascita />', '', $content);
+  $content = str_replace('<cf />', '', $content);
+  $content = str_replace('<titolo_studio />', '', $content);
+  $content = str_replace('<bio />', '', $content);
+  $content = str_replace('hidden', '', $content);
+
 // Inserimento nel database ed eventuale generazione di stringhe di errore
 $error_login = '';
 $error_registrazione = '';
@@ -24,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
   
-     $result = $db->setProfilo($_POST['email'],
+     $result = $db->setProfilo( $_POST['email'],
                                 $_POST['password'],
                                 $_POST['nome'],
                                 $_POST['cognome'],
@@ -41,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: profilo.php?id=' . $_SESSION['user_id']);
   }
 }
+
   $page_head = file_get_contents('includes/head.html');
   $page_body = file_get_contents('includes/body.html');
  

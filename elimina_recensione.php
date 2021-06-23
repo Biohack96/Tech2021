@@ -41,7 +41,7 @@ $page_body = file_get_contents('includes/body.html');
 
 }
 
-  //$content = str_replace("<autore />", $recensione['nome'] . " " . $recensione['cognome'] , $content);
+  $content = str_replace("<autore />", $recensione['nome'] . " " . $recensione['cognome'] , $content);
 
 
   $content = str_replace("<id_utente />", $recensione['id_utente'] , $content);

@@ -27,11 +27,15 @@ $page_body = file_get_contents('includes/body.html');
 // Dati del profilo
 $profilo = $db->getProfilo($_GET['id']);
 
+if($profilo['id'] == NULL){
+  header("Location: index.php");
+}
+
 $content = file_get_contents('includes/content_profilo.html');
 $content = str_replace('<immagine_profilo />', $profilo['img_path'], $content);
 $content = str_replace('<nome />', $profilo['nome'], $content);
 $content = str_replace('<cognome />', $profilo['cognome'], $content);
-$content = str_replace('<data_di_nascita />', $profilo['datanascita'], $content); 
+$content = str_replace('<data_di_nascita />', $profilo['data_nascita'], $content); 
 $content = str_replace('<titolo_studio />', $profilo['titolostudio'], $content); 
 $content = str_replace('<bio />', $profilo['bio'], $content); 
 
@@ -47,6 +51,16 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != $_GET['id']){
     $content = str_replace('<button_recensione />', $b , $content);
   
 }
+
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['id']){
+
+    $m = file_get_contents('includes/modifica_profilo_button.html');
+    $m = str_replace('<id />', $_GET['id'], $m);
+
+    $content = str_replace('<modifica />', $m , $content);
+
+}
+
 
 // Crea l'intestazione delle recensioni e la media
 

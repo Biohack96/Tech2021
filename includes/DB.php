@@ -4,7 +4,7 @@ class DB extends mysqli{
 
 	private $imgDir = 'img/upload/';
 	private $max_img_size = 3000000; // 3MB
-	private $perm_img_format = array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG);
+	private $perm_img_format = array(IMAGETYPE_GIF , IMAGETYPE_JPEG , IMAGETYPE_PNG);
 
 
 	//public function __construct($host="localhost:8889", $user="root", $pass="root", $db="db")
@@ -46,7 +46,7 @@ class DB extends mysqli{
 
 	public function getProfilo($id = NULL)
 	{
-		$sql = "SELECT id,email,nome,cognome,telefono, DATE_FORMAT(datanascita,'%d/%m/%Y') as datanascita,cf,titolostudio,bio,img_path FROM `utente` WHERE id=?";
+		$sql = "SELECT id,email,nome,cognome,telefono, datanascita, DATE_FORMAT(datanascita,'%d/%m/%Y') as data_nascita,cf,titolostudio,bio,img_path FROM `utente` WHERE id=?";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();
@@ -118,8 +118,40 @@ class DB extends mysqli{
 				else {return NULL;}
 
 	}
+}
 
-	}
+
+	public function updateProfilo ($id, $email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img){
+
+		$hashed_pass = hash('sha256', $password);
+
+	if(!empty($img))
+		{
+			$img_format = exif_imagetype($img);
+			if(!in_array($img_format , $this->perm_img_format)) {$error[] = 'Formato immagine errato, inserire un immagine in formato PNG o JPEG';} 	 // verifica se è un immagine
+			if (filesize($img) > $this->max_img_size) {$error[] = 'Immagine troppo grande (max: 3MB)';}
+			$hash = hash_file('sha256', $img);
+			if (!move_uploaded_file($img, $this->imgDir.$hash)) {$error[] = "Impossibile spostare l'immagine";}
+			$img_path = $this->imgDir.$hash;
+			//$this->crop($img_path,1);
+		}
+
+		$sql = "UPDATE utente
+				SET email=?, password=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, titolostudio=?, bio=?, img_path=?
+				WHERE id=?";
+
+		$query = $this->prepare($sql);
+		$query->bind_param("ssssssssssi", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img_path, $id);
+	
+		if($query->execute())
+				{
+					$query->close();
+					return $id;
+				}
+
+
+			}
+	
 
 	public function getRecensioni($id = NULL)
 	{
@@ -167,7 +199,7 @@ class DB extends mysqli{
 
 	public function getRecensione($id = NULL)
 	{
-		$sql = "SELECT id, descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, id_autore, id_utente  FROM recensione WHERE id=?";
+		$sql = "SELECT recensione.id, descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, nome, cognome, id_autore, id_utente  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE recensione.id=?";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();

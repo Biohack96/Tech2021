@@ -12,7 +12,7 @@ function createRecensioni($db, $id) {
   foreach($recensioni as $recensione) {
     $recensioni = file_get_contents("includes/recensioni.html");
   
-    if ($recensione['id_autore'] == $_SESSION['user_id']){
+    if (isset($_SESSION['user_id']) && $recensione['id_autore'] == $_SESSION['user_id']){
         
         $e = file_get_contents("includes/elimina_recensione_button.html");
         $e = str_replace("<id_recensione />", $recensione['id'] , $e);
