@@ -36,7 +36,7 @@ $content = str_replace('<immagine_profilo />', $profilo['img_path'], $content);
 $content = str_replace('<nome />', $profilo['nome'], $content);
 $content = str_replace('<cognome />', $profilo['cognome'], $content);
 $content = str_replace('<data_di_nascita />', $profilo['data_nascita'], $content); 
-$content = str_replace('<titolo_studio />', $profilo['titolostudio'], $content); 
+$content = str_replace('<titolo_studio />', $profilo['professione'], $content); 
 $content = str_replace('<bio />', $profilo['bio'], $content); 
 
 

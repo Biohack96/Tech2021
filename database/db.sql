@@ -17,7 +17,7 @@ CREATE TABLE utente (
   telefono      VARCHAR(30) NOT NULL,
   datanascita DATE NOT NULL,
   cf          VARCHAR(16) NOT NULL UNIQUE,
-  titolostudio VARCHAR(50) NOT NULL,
+  professione VARCHAR(50) NOT NULL,
   bio         TEXT NOT NULL,
   img_path    VARCHAR(256) NOT NULL DEFAULT 'img/jesus.jpg'
 );

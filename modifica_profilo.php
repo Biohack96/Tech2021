@@ -38,7 +38,7 @@ $page_body = file_get_contents('includes/body.html');
   $content = str_replace('<telefono />', $profilo['telefono'], $content);
   $content = str_replace('<data_nascita />', $profilo['datanascita'], $content);
   $content = str_replace('<cf />', $profilo['cf'], $content);
-  $content = str_replace('<titolo_studio />', $profilo['titolostudio'], $content);
+  $content = str_replace('<titolo_studio />', $profilo['professione'], $content);
   $content = str_replace('<bio />', $profilo['bio'], $content);
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {

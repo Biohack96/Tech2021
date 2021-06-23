@@ -23,7 +23,7 @@ class DB extends mysqli{
 	{
 		$cards = array();
 
-		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,nome,cognome,titolostudio,img_path FROM utente u join recensione r on u.id = r.id_utente group by u.id limit $limit offset $offset";
+		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,img_path FROM utente u left join recensione r on u.id = r.id_utente group by u.id limit $limit offset $offset";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
@@ -34,7 +34,13 @@ class DB extends mysqli{
 
 		while ($row = $result->fetch_assoc())
 			{
+				if(empty($row['voto'])){
+						$row['voto'] == "non";
+						//echo "AAAAAAAAAAA";
+						}
+					
 					$cards[] = $row;
+					
 			}
 		
 		$query->close();
@@ -46,7 +52,7 @@ class DB extends mysqli{
 
 	public function getProfilo($id = NULL)
 	{
-		$sql = "SELECT id,email,nome,cognome,telefono, datanascita, DATE_FORMAT(datanascita,'%d/%m/%Y') as data_nascita,cf,titolostudio,bio,img_path FROM `utente` WHERE id=?";
+		$sql = "SELECT id,email,nome,cognome,telefono, datanascita, DATE_FORMAT(datanascita,'%d/%m/%Y') as data_nascita,cf,professione,bio,img_path FROM `utente` WHERE id=?";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();
@@ -68,7 +74,7 @@ class DB extends mysqli{
 
     }
 
-	public function setProfilo($email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img)
+	public function setProfilo($email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img)
 {
 
 	$hashed_pass = hash('sha256', $password);
@@ -87,10 +93,10 @@ class DB extends mysqli{
 	if(!empty($img_path)) 
 		{
 
-		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,titolostudio,bio,img_path) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,professione,bio,img_path) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 				$query = $this->prepare($sql);
-				$query->bind_param("ssssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img_path);
+				$query->bind_param("ssssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img_path);
 
 				if($query->execute())
 				{
@@ -103,10 +109,10 @@ class DB extends mysqli{
 		}
 	else {
 
-		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,titolostudio,bio) VALUES (?,?,?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,professione,bio) VALUES (?,?,?,?,?,?,?,?,?)";
 
 				$query = $this->prepare($sql);
-				$query->bind_param("sssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio);
+				$query->bind_param("sssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio);
 
 				if($query->execute())
 				{
@@ -121,7 +127,7 @@ class DB extends mysqli{
 }
 
 
-	public function updateProfilo ($id, $email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img){
+	public function updateProfilo ($id, $email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img){
 
 		
 
@@ -142,11 +148,11 @@ class DB extends mysqli{
 		$hashed_pass = hash('sha256', $password);
 
 		$sql = "UPDATE utente
-				SET email=?, password=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, titolostudio=?, bio=?, img_path=?
+				SET email=?, password=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, professione=?, bio=?, img_path=?
 				WHERE id=?";
 
 		$query = $this->prepare($sql);
-		$query->bind_param("ssssssssssi", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img_path, $id);
+		$query->bind_param("ssssssssssi", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img_path, $id);
 	
 		if($query->execute())
 				{
@@ -159,11 +165,11 @@ class DB extends mysqli{
 	else
 	{
 		$sql = "UPDATE utente
-				SET email=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, titolostudio=?, bio=?, img_path=?
+				SET email=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, professione=?, bio=?, img_path=?
 				WHERE id=?";
 
 		$query = $this->prepare($sql);
-		$query->bind_param("sssssssssi", $email, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img_path, $id);
+		$query->bind_param("sssssssssi", $email, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img_path, $id);
 	
 		if($query->execute())
 				{
