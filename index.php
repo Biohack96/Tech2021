@@ -29,19 +29,20 @@ $cardlist="";
 
 $cards_data  = $db->getcards(2); //da scegliere
 
+if(!empty($cards_data))
+{
+	foreach($cards_data as $key => $val){ //array di array 
 
-foreach($cards_data as $key => $val){ //array di array 
-
-		$temp = str_replace('<NomeCognome/>', ($val['nome']." ".$val['cognome']), $card_t);
-		//$temp = str_replace('<Luogo/>', $val['luogo'], $temp);	
-		//$temp = str_replace('<Professione/>', $val['titolostudio'], $temp);	TODO
-		$temp = str_replace('<Path/>', "".$val['img_path'], $temp);		
-		$temp = str_replace('<Voto/>', $val['voto'], $temp);	
-		$cards .= $temp;
-	
-			
+			$temp = str_replace('<NomeCognome/>', ($val['nome']." ".$val['cognome']), $card_t);
+			//$temp = str_replace('<Luogo/>', $val['luogo'], $temp);	
+			//$temp = str_replace('<Professione/>', $val['titolostudio'], $temp);	TODO
+			$temp = str_replace('<Path/>', "".$val['img_path'], $temp);		
+			$temp = str_replace('<Voto/>', $val['voto'], $temp);	
+			$cards .= $temp;
+		
+				
+	}
 }
-
 //var_dump($cards);
 
 $cardlist = str_replace('<cards/>', $cards, $card_list_t);	
