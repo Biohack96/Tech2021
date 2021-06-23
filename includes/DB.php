@@ -123,7 +123,7 @@ class DB extends mysqli{
 
 	public function updateProfilo ($id, $email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img){
 
-		$hashed_pass = hash('sha256', $password);
+		
 
 	if(!empty($img))
 		{
@@ -135,6 +135,11 @@ class DB extends mysqli{
 			$img_path = $this->imgDir.$hash;
 			//$this->crop($img_path,1);
 		}
+
+	if(!empty($img_path) && !empty($password)) 
+	{
+
+		$hashed_pass = hash('sha256', $password);
 
 		$sql = "UPDATE utente
 				SET email=?, password=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, titolostudio=?, bio=?, img_path=?
@@ -149,9 +154,26 @@ class DB extends mysqli{
 					return $id;
 				}
 
-
-			}
+	}
 	
+	else
+	{
+		$sql = "UPDATE utente
+				SET email=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, titolostudio=?, bio=?, img_path=?
+				WHERE id=?";
+
+		$query = $this->prepare($sql);
+		$query->bind_param("sssssssssi", $email, $nome, $cognome, $telefono, $datanascita, $cf, $titolostudio, $bio, $img_path, $id);
+	
+		if($query->execute())
+				{
+					$query->close();
+					return $id;
+				}
+	}
+
+	}
+
 
 	public function getRecensioni($id = NULL)
 	{
