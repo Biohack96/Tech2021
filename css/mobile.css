@@ -10,6 +10,11 @@ body {
     margin: auto;
 }
 
+.content{
+	margin-top: 7em;
+	margin-bottom: 4em;
+}
+
 /***** header *****/
 
 #header {
@@ -69,6 +74,7 @@ body {
 #minimenu {
 	height: 1.5em;
 	padding-top: 0.5em;
+	top: 4em;
 }
 
 #minimenu a{
