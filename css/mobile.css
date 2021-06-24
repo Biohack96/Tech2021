@@ -37,7 +37,7 @@ body {
 
 #head_dx{
 	float: right;
-	padding: 1em 1em 1em 0;
+	padding: 1em 0 1em 0;
 }
 
 #usr_zone {
@@ -45,11 +45,11 @@ body {
 }
 
 #name_log {	
-	display: none;
+	padding-top: 0.5em;
 }
 
 #utente {
-	font-size: 1.2em;
+	display: none;
 }
 
 #utente a {
@@ -65,7 +65,7 @@ body {
 }
 
 #usr_zone img {
-	width: 2em;
+	width: 2.5em;
 	border-radius: 50%;
     margin: 0.1em;
 	padding: 0.1em;
