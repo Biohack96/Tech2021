@@ -424,7 +424,7 @@ ul#gruppo1, ul#gruppo2{
 
 #ricerca {
 	padding: 1em;
-	text-align: center;
+	
 }
 
 #ricerca p {
@@ -435,9 +435,10 @@ ul#gruppo1, ul#gruppo2{
 .banner_cerca{
 	border-radius: 1em;
 	padding: 0.4em 0 0.5em 0;
-	margin: 0 1% 0 1%;
+	margin: 1%;
 	width: 25%;
 	text-align: center;
+	font-size: 80%;
 }
 
 #button_cerca {
@@ -448,7 +449,7 @@ ul#gruppo1, ul#gruppo2{
 
 #button_cerca img {
 	width: 1.3em;
-	height: 1.3em;
+
 }
 
 
