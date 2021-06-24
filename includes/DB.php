@@ -276,7 +276,10 @@ class DB extends mysqli{
 			if(!in_array($img_format , $this->perm_img_format)) {$error[] = 'Formato immagine errato, inserire un immagine in formato PNG o JPEG';} 	 // verifica se è un immagine
 			if (filesize($img) > $this->max_img_size) {$error[] = 'Immagine troppo grande (max: 3MB)';}
 			$hash = hash_file('sha256', $img);
-			if (!move_uploaded_file($img, $this->imgDir.$hash)) //{$error[] = "Impossibile spostare l'immagine";}
+			if(is_uploaded_file($_FILES['img']['tmp_name']))
+			{
+			if (!move_uploaded_file($img, $this->imgDir.$hash)) {$error[] = "Impossibile spostare l'immagine";}
+			}
 			$img_path = $this->imgDir.$hash;
 			//$this->crop($img_path,1);
 		}
