@@ -49,6 +49,43 @@ class DB extends mysqli{
 		return $cards;
 
     }
+	
+	public function getcardsR($limit = 1,$offset=0,$nome='',$luogo='',$professione='')
+	{
+		
+		$nome= $this->real_escape_string($nome);
+		$luogp= $this->real_escape_string($luogo);
+		$professione=$this->real_escape_string($professione);
+		
+		$cards = array();
+
+		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,img_path FROM utente u left join recensione r on u.id = r.id_utente where (nome  like '%".$nome . "% ' or cognome  like '%".$nome . "%')and professione like '%".$professione . "%' group by u.id limit $limit offset $offset";
+		//var_dump($sql);
+		$query = $this->prepare($sql);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		while ($row = $result->fetch_assoc())
+			{
+				if(empty($row['voto'])){
+						$row['voto'] == "non";
+						//echo "AAAAAAAAAAA";
+						}
+					
+					$cards[] = $row;
+					
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $cards;
+
+    }
 
 	public function getProfilo($id = NULL)
 	{

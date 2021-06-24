@@ -7,21 +7,20 @@
 * utente loggato altrimenti restituisce ''.
 */
 function createInfoUtente($db) {
-  $result = '';
+  
 
   if (isset($_SESSION['user_id']) === true) {
+	$info_utente = file_get_contents('includes/info_utente.html');
     $usr = $db->getProfilo($_SESSION['user_id']);
 
-    $result = '<div id="name_log">
-    <p id="utente"><a href="profilo.php?id='. $_SESSION['user_id'] .'">' . $usr['nome'] . ' ' . $usr['cognome'] . '</a></p>	
-    <p id="logout"><a href="logout.php">Logout</a></p>
-  </div>
-  <a href="profilo.php?id='. $_SESSION['user_id'] .'"><img src="' . $usr['img_path'] . '" alt="foto del profilo utente" /></a>
-';
+    $result = str_replace('</id_user>', $usr['id'], $info_utente);
+	$result = str_replace('</nome_cognome>', $usr['nome'] . " " . $usr['cognome'], $result);
+	$result = str_replace('</path>', $usr['img_path'], $result);
+	
   }
 
   else{
-    $result = '<a class="button" href="login.php">Accedi</a>';
+    $result = file_get_contents('includes/pulsante_accedi.html');
   }
 
   return $result;

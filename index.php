@@ -18,18 +18,29 @@ $card_t = file_get_contents('includes/card.html');
 $card_list_t = file_get_contents('includes/cardlist.html');
 
 // Contiene lo snippet di codice per visualizzare l'utente loggato in alto a destra
-if(isset($_SESSION['user_id'])) {
-	$info_utente = createInfoUtente($db);
-	$page_body = str_replace('<info_utente />', $info_utente, $page_body);
-}
-else
-	$page_body = str_replace('<info_utente />', "", $page_body);
+
+$info_utente = createInfoUtente($db);
+$page_body = str_replace('<info_utente />', $info_utente, $page_body);
+
 
 
 $cards = "";
 $cardlist="";
 
-$cards_data  = $db->getcards(2); //da scegliere
+if(isset($_GET['nome']) || isset($_GET['luogo']) || isset($_GET['professione']))
+{
+	
+	$nome= !empty($_GET['nome'])?$_GET['nome']:null;
+	$luogo= !empty($_GET['luogo'])?$_GET['luogo']:null;
+	$professione= !empty($_GET['professione'])?$_GET['professione']:null;
+
+	$cards_data  = $db->getcardsR(10,0,$nome,$luogo,$professione);
+}
+else
+	$cards_data  = $db->getcards(10); //da scegliere
+
+
+
 
 if(!empty($cards_data))
 {
@@ -39,6 +50,7 @@ if(!empty($cards_data))
 			//$temp = str_replace('<Luogo/>', $val['luogo'], $temp);	
 			//$temp = str_replace('<Professione/>', $val['titolostudio'], $temp);	TODO
 			$temp = str_replace('<Path/>', "".$val['img_path'], $temp);		
+			$temp = str_replace('<Professione/>', $val['professione'], $temp);
 			$temp = str_replace('<Voto/>', $val['voto'], $temp);
 			$temp = str_replace('</id_profilo>', $val['id'], $temp);
 			$cards .= $temp;
