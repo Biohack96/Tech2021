@@ -15,6 +15,15 @@ body {
 	margin-bottom: 5em;
 }
 
+*:focus {
+  outline: 0.6em dashed #00ff00;
+}
+
+#minimenu a:focus {
+  outline: none;
+}
+
+
 /***** header *****/
 
 #header {
@@ -87,7 +96,9 @@ body {
 }
 
 #logout a {
-	color: red;
+	color: black;
+    font-size: 1.5em;
+    display: block;
 }
 
 #usr_zone img {
