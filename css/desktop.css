@@ -249,6 +249,10 @@ ul#gruppo1, ul#gruppo2{
 	text-align: justify;
 }
 
+
+  #button_modifica_profilo{
+	  margin-top: 20px;
+  }
   /******RECENSIONI*******/
   
   #profilo_recensioni{
