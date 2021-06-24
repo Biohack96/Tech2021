@@ -11,7 +11,7 @@ body {
 }
 
 .content{
-	margin-top: 8em;
+	margin-top: 9.5em;
 	margin-bottom: 5em;
 }
 
@@ -19,7 +19,7 @@ body {
   outline: 0.6em dashed #00ff00;
 }
 
-#minimenu a:focus {
+#minimenu :focus {
   outline: none;
 }
 
