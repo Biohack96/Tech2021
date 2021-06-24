@@ -34,7 +34,6 @@ $title = 'Modifica profilo';
   $content = str_replace('<titolo />', "Modifica profilo", $content);
   $content = str_replace('<conferma_button />', "Conferma modifica", $content);
 
-
   $content = str_replace('<nome />', $profilo['nome'], $content);
   $content = str_replace('<cognome />', $profilo['cognome'], $content);
   $content = str_replace('<email />', $profilo['email'], $content);
@@ -87,11 +86,22 @@ $title = 'Modifica profilo';
 
 }
 
+if (isset($_GET['elimina'])){
+
+  $delete = $db->deleteProfilo($_SESSION['user_id']);
+  
+  if ($delete) {
+    header('Location: 404.php');
+  
+  }
+}
+
+  $elimina = file_get_contents('includes/elimina_profilo.html');
+  $content = str_replace('<elimina_profilo />', $elimina, $content);
+
 
   $page_head = str_replace('<titolo />', $title, $page_head);
-
   $page_body = str_replace('<content />', $content, $page_body);
-
 
 echo $page_head . $page_body ;
 

@@ -327,6 +327,13 @@ class DB extends mysqli{
 
 	}
 
+
+public function deleteProfilo($id = NULL){
+	return true;
+}
+
+
+
 public function getRecensioni($id = NULL)
 	{
 		$sql = "SELECT recensione.id, descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, nome, cognome, id_autore  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";

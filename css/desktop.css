@@ -240,6 +240,27 @@ ul#gruppo1, ul#gruppo2{
 	cursor: pointer;
 }
 
+#elimina_profilo_div {
+	background-color: #f4f4f4;
+    border-radius: 1em;
+    text-align: center;
+    margin: 1em;
+	padding: 0.5em;
+}
+
+#elimina_profilo_div legend {
+	font-weight: bolder;
+	font-size: large;
+}
+
+#elimina_profilo_button{
+	display: inline;
+	height: 3em;
+	margin: 1em;
+	padding: 0;
+	cursor: pointer;
+}
+
 /********PROFILO*********/
 
 #img_profilo 
