@@ -272,10 +272,14 @@ ul#gruppo1, ul#gruppo2{
 	text-align: justify;
 }
 
-
   #button_modifica_profilo{
 	  margin-top: 20px;
   }
+
+  #lascia_recensione_button{
+	margin-left: 2em;
+}
+
   /******RECENSIONI*******/
   
   #profilo_recensioni{
@@ -341,7 +345,7 @@ ul#gruppo1, ul#gruppo2{
 	  background: #ff9100;
 	  padding: 10px;
 	  text-align: center;
-	  border-radius: 5px;
+	  border-radius: 1em;
 	  color: white;
 	  font-weight: bold;
 	  line-height: 25px;

@@ -7,7 +7,7 @@ require_once('includes/create_info_utente.php');
 $db = new DB();
 
 
-if (!isset($_GET['id'])) {
+if (!isset($_GET['id']) || !isset($_SESSION['user_id'])) {
   header('Location: 404.php');
 }
 

@@ -84,6 +84,9 @@ body {
 	color:#eb6105;
 }
 
+#accedi_button{
+	padding-right: 1.5em;
+}
 
 /*****Registrazione*****/
 
@@ -163,6 +166,15 @@ body {
 	text-align: justify;
 }
 
+  #button_modifica_profilo{
+	  width: unset;
+  }
+
+  #lascia_recensione_button{
+	width: 80%;
+	margin-left: 7%;
+}
+
   /******RECENSIONI*******/
   
   #profilo_recensioni{
@@ -221,7 +233,7 @@ body {
 	  background: #ff9100;
 	  padding: 10px;
 	  text-align: center;
-	  border-radius: 5px;
+	  border-radius: 1em;
 	  color: white;
 	  font-weight: bold;
 	  line-height: 25px;
