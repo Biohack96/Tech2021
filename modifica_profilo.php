@@ -2,6 +2,7 @@
 session_start();
 require_once('includes/DB.php');
 require_once('includes/create_info_utente.php');
+require_once('includes/error.php');
 // Oggetto di accesso al database
 $db = new DB();
 
@@ -74,9 +75,13 @@ $title = 'Modifica profilo';
                                   $img_path
                                  );
         
-          if ($result) {
+          if (is_numeric($result)) {
           header('Location: profilo.php?id=' . $_SESSION['user_id']);
     }
+	else
+		{
+		$content .= printError($result);
+		}
   }
   }
 
