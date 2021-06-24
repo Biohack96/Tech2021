@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($db->login($_POST['email'], $_POST['password'])) {
       header('Location: profilo.php?id=' . $_SESSION['user_id']);
-    } else header('Location: 404.php');
+    } else header('Location: /login.php?error=1');
 
   } 
 }
@@ -67,6 +67,9 @@ if (isset($_POST['registrazione'])) {
 
 // Rimpiazzo dei segnaposto sull'intera pagina
 $page_head = str_replace('<title />', "<title>$title - WorkerAdvisor</title>", $page_head);
+
+if(isset($_GET['error']))
+	$content .= file_get_contents('includes/login_error.html');
 
 $page_body = str_replace('<content />', $content, $page_body);
 
