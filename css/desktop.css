@@ -210,7 +210,12 @@ ul#gruppo1, ul#gruppo2{
 }
 
 /********PROFILO*********/
-
+#img_profilo 
+{
+	float: right;
+    width: 15em;
+    margin-right: 35em;
+}
 
 #profilo_dati_personali{
   
@@ -219,17 +224,14 @@ ul#gruppo1, ul#gruppo2{
 	padding: 5%;
   }
   
-  #profilo_dati_personali img{
-	  width: 2em;
-	  vertical-align: middle;
-  }
-  
   #profilo_nome_cognome img{
 	  border-radius: 50%;
   }
   
   #profilo_dati img{
 	  margin-right: 0.5em;
+	  width: 2em;
+	  vertical-align: middle;
   }
   
   #profilo_dati li {
@@ -553,3 +555,4 @@ ul#gruppo1, ul#gruppo2{
 	height: 1.5em;
 	width: 3.65em;
 }
+
