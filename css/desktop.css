@@ -19,7 +19,7 @@ body {
   outline: 0.6em dashed #00ff00;
 }
 
-#minimenu :focus {
+#minimenu a:focus {
   outline: none;
 }
 
