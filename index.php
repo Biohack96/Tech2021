@@ -60,6 +60,8 @@ else	{
 
 }
 
+$counter = 20;
+
 if(!empty($cards_data))
 {
 	foreach($cards_data as $key => $val){ //array di array 
@@ -71,7 +73,9 @@ if(!empty($cards_data))
 			$temp = str_replace('<Professione/>', $val['professione'], $temp);
 			$temp = str_replace('<Voto/>', $val['voto'], $temp);
 			$temp = str_replace('</id_profilo>', $val['id'], $temp);
+			$temp = str_replace('<tabindex/>', $counter, $temp);
 			$cards .= $temp;
+			$counter++;
 		
 				
 	}

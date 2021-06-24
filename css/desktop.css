@@ -46,6 +46,11 @@ body {
 	background-color:#252525;
 	width:100%;
 	z-index: 1;
+	display: inline;
+}
+
+#minimenu>li {
+	display: inline;
 }
 
 #minimenu a{
