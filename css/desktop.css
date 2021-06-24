@@ -427,13 +427,16 @@ ul#gruppo1, ul#gruppo2{
 	text-align: center;
 }
 
+#ricerca p {
+	float: left;
+}
 
 
 .banner_cerca{
 	border-radius: 1em;
 	padding: 0.4em 0 0.5em 0;
 	margin: 0 1% 0 1%;
-	width: 20em;
+	width: 25%;
 	text-align: center;
 }
 
