@@ -29,7 +29,7 @@ class DB extends mysqli{
 	{
 		$cards = array();
 
-		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,img_path FROM utente u left join recensione r on u.id = r.id_utente group by u.id limit $limit offset $offset";
+		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,luogo,img_path FROM utente u left join recensione r on u.id = r.id_utente group by u.id limit $limit offset $offset";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();

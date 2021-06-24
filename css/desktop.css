@@ -498,6 +498,11 @@ ul#gruppo1, ul#gruppo2{
 
 #backHomeButton {
 	background-color: #eb6105;
+    margin-left: px;
+    display: inline;
+    border-radius: 1em;
+    padding: 13px;
+    font-size: small;
 }
 
 /*******info*****/
