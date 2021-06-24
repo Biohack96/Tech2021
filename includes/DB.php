@@ -24,6 +24,52 @@ class DB extends mysqli{
         	}
 	}
 	
+	public function alreadyReg($mail , $cf)
+	{
+		$error = array();
+
+		$sql = "SELECT id FROM utente WHERE email = ?;";
+		$query = $this->prepare($sql);
+		$query->bind_param("s", $mail);
+
+		if($query->execute())
+		{
+			if($query->get_result()->num_rows)
+			{
+				$query->close();
+				$error[] = "Mail già presente";
+			}
+
+
+		}
+		else
+		{
+			$error[] = "Impossibile contattare il db per verificare l'unicità dell'account";
+		}
+
+		$sql1 = "SELECT id FROM utente WHERE cf = ?;";
+		$query = $this->prepare($sql1);
+		$query->bind_param("s", $cf);
+
+		if($query->execute())
+		{
+			if($query->get_result()->num_rows)
+			{
+				$query->close();
+				$error[] = "Codice fiscale già presente";
+			}
+
+
+		}
+		else
+		{
+			$error[] = "Impossibile contattare il db per verificare l'unicità dell'account";
+		}
+
+		if(count($error)) {return $error;}
+
+		return FALSE;
+	}
 	
 	public function getcards($limit = 1,$offset=0)
 	{
@@ -200,7 +246,29 @@ class DB extends mysqli{
 
 
 	public function updateProfilo ($id, $email, $password, $conf_password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $luogo, $bio, $img){
-
+	
+	$error = array();
+		if (strlen($email) > 50) {$error[] = "Mail tropppo lunga (Max: 50 caratteri)";}
+		if (!preg_match($this->mailPattern,$email)) {$error[] = "Mail in formato errato";}
+	
+		if(!empty($password)){
+		if (!preg_match($this->passPattern,$password))
+		{
+			$error[] = "Password in formato errato, la password deve essere rispettare i seguenti requisiti: deve essere di almeno 8 caratteri con almeno una maiuscola e un numero";
+		}
+		}
+	
+		if ($password !== $conf_password) {$error[] = "Le password non coincidono";}
+		if (!preg_match($this->namePattern, $nome)) {$error[] = "Nome non valido, non sono concesse lettere accentate (min: 2 caratteri, max: 30 caratteri)";};
+		if (!preg_match($this->namePattern, $cognome)) {$error[] = "Cognome non valido, non sono concesse lettere accentate (min: 2 caratteri, max: 30 caratteri)";}
+		if($datanascita > date('Y-m-d H:i:s')) {$error[] = "Devi mettere una data passata";}
+		if(empty($datanascita)) {$error[] = "Devi specificare una data di nascita";}
+		//else if((int)($date_now - $datanascita) < 3) {$error[] = "Sei un prodigio per essere un bebè";}
+		//else if((int)($date_now - $datanascita) < 13) {$error[] = "Apprezziamo la buona voltà ma sei troppo giovane per iscriverti a questo sito :(";}
+		if (strlen($cf) !== 16) {$error[] = 'Codice fiscale non valido';}
+		if (strlen($bio) > 65535) {$error[] = "Biografia troppo lunga (max: 65535 caratteri)";}
+		if (strlen($bio) === 0) {$error[] = "Biografia mancante, inserire una biografia";}
+		if (!preg_match($this->cellPattern,$telefono)) {$error[] = "Numero di telefono non valido, inserire solo numeri (min: 7 numeri, max: 12 numeri)";}
 
 	if(!empty($img))
 		{
@@ -208,10 +276,12 @@ class DB extends mysqli{
 			if(!in_array($img_format , $this->perm_img_format)) {$error[] = 'Formato immagine errato, inserire un immagine in formato PNG o JPEG';} 	 // verifica se è un immagine
 			if (filesize($img) > $this->max_img_size) {$error[] = 'Immagine troppo grande (max: 3MB)';}
 			$hash = hash_file('sha256', $img);
-			if (!move_uploaded_file($img, $this->imgDir.$hash)) {$error[] = "Impossibile spostare l'immagine";}
+			if (!move_uploaded_file($img, $this->imgDir.$hash)) //{$error[] = "Impossibile spostare l'immagine";}
 			$img_path = $this->imgDir.$hash;
 			//$this->crop($img_path,1);
 		}
+		
+		if(count($error)) {return $error;}
 
 	if(!empty($img_path) && !empty($password)) 
 	{
@@ -254,8 +324,7 @@ class DB extends mysqli{
 
 	}
 
-
-	public function getRecensioni($id = NULL)
+public function getRecensioni($id = NULL)
 	{
 		$sql = "SELECT recensione.id, descrizione, voto, DATE_FORMAT(data_recensione, '%d/%m/%Y') AS data_recensione, nome, cognome, id_autore  FROM recensione JOIN utente ON recensione.id_autore = utente.id WHERE id_utente=? ORDER BY recensione.id";
 		$query = $this->prepare($sql);
