@@ -13,6 +13,8 @@ if (isset($_SESSION['user_id'])) {
 
 $content = file_get_contents('includes/registrazione.html');
 
+$scripts = file_get_contents('includes/script_registrazione.html');
+
 $content = str_replace('<titolo />', "Registrazione", $content);
 $content = str_replace('<conferma_button />', "Conferma registrazione", $content);
 
@@ -67,6 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $page_head = file_get_contents('includes/head.html');
   $page_body = file_get_contents('includes/body.html');
  
+  $page_head = str_replace('<scripts />', $scripts, $page_head);
+
   $title = 'Registrati';
   
   $page_head = str_replace('<titolo />', $title, $page_head);
