@@ -15,6 +15,9 @@ body {
 #header {
 	background-color:#ff9100;
 	height: 5.5em;
+	position: fixed;
+	width: 100%;
+	top:0;
 }
 
 #titolone {
@@ -32,6 +35,10 @@ body {
 #minimenu {
 	height: 1.5em;
 	padding-top: 0.5em;
+	position: fixed;
+	top: 5.5em;
+	background-color:#252525;
+	width:100%;
 }
 
 #minimenu a{
@@ -210,6 +217,7 @@ ul#gruppo1, ul#gruppo2{
 }
 
 /********PROFILO*********/
+
 #img_profilo 
 {
 	float: right;
@@ -220,7 +228,8 @@ ul#gruppo1, ul#gruppo2{
 #profilo_dati_personali{
   
 	background-color: #f4f4f4;
-	margin-bottom: 2em;
+	margin: 2em;
+	border-radius: 2em;
 	padding: 5%;
   }
   
@@ -241,10 +250,13 @@ ul#gruppo1, ul#gruppo2{
   
   ul#profilo_dati{
 	  list-style-type: none;
+	  float: left;
+	  width: 30em;
   }
 
   #biografia{
 	  padding: 2%;
+	  clear: both;
   }
 
   #biografia_testo{
@@ -261,8 +273,9 @@ ul#gruppo1, ul#gruppo2{
   #profilo_recensioni{
 	  margin-top: 2em;
 	  background-color: #f4f4f4;
-	  margin-bottom: 2%;
 	  padding: 5%;
+	  margin: 2em;
+	  border-radius: 2em;
   }
   
   #media{
@@ -420,6 +433,7 @@ ul#gruppo1, ul#gruppo2{
 #button_cerca {
 	background-color: transparent;
 	margin: 0 1em 0 1em;
+	margin-top: 0.5em;
 }
 
 #button_cerca img {
@@ -540,10 +554,10 @@ ul#gruppo1, ul#gruppo2{
 	padding-top: 1em;
 	color: #fff;
 	height: 2.5em;
-	position: absolute;
 	bottom: 0;
 	left: 0;
 	width: 100%;
+	position: fixed;
 }
 
 #footer a {
