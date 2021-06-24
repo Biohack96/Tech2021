@@ -28,33 +28,17 @@ body {
 	width: 12em;
 }
 
-#breadcrumb {
-	height: 2em;
-	padding-top: 0.5em;
-}
-
-#breadcrumb a{
-	padding: 1.5em;
-	font-size: 0.9em;
-	color:#eb6105;
-}
 
 #head_dx{
 	float: right;
 	padding: 1em 1em 1em 0;
 }
 
-#info img{
-	padding-right:1.5em;
-}
-
 #usr_zone {
 	float: left;
 }
 
-#name_log {
-	text-align: right;
-	float: left;
+#name_log {	
 	display: none;
 }
 
@@ -80,6 +64,17 @@ body {
     margin: 0.1em;
 	padding: 0.1em;
 	float: right;
+}
+
+#minimenu {
+	height: 1.5em;
+	padding-top: 0.5em;
+}
+
+#minimenu a{
+	padding: 1.5em 0 1em 1.5em;
+	font-size: 1em;
+	color:#eb6105;
 }
 
 /********PROFILO*********/
@@ -243,26 +238,23 @@ body {
 }
 
 #ricerca {
-	padding: 1em;
-	text-align: center;
+	
+}
+
+#ricerca fieldset {
+	
 }
 
 #button_cerca {
-	background-color: transparent;
-	margin: 0 1em 0 1em;
+	
 }
 
 #button_cerca img {
-	width: 2em;
-	height: 2em;
+	
 }
 
 .banner_cerca{
-	border-radius: 1em;
-	padding: 0.4em 0 0.5em 0;
-	margin: 0 2em 0 2em;
-	width: 15em;
-	text-align: center;
+	
 }
 
 
@@ -334,10 +326,6 @@ body {
 	font-weight: bold;
 }
 
-#backButton {
-	background-color: #ff9100;
-}
-
 #backHomeButton {
 	background-color: #eb6105;
 }
@@ -356,14 +344,9 @@ body {
 	padding-top: 1em;
 	color: #fff;
 	height: 3.7em;
+	
 }
 
 #footer a {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-#footer a img {
-	height: 1.5em;
-	width: 3.65em;
+  display: none;
 }
