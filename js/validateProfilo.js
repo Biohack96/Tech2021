@@ -121,14 +121,14 @@ function validateProfilo() {
 	togliError();
   var nome = document.getElementById('registrazione_nome');
   var cognome = document.getElementById("registrazione_cognome");
-  //var data = document.getElementById("registrazione_data_di_nascita");
-  //var cf = document.getElementById("registrazione_codice_fiscale");
-  //var mail = document.getElementById("registrazione_email");
-  //var cell = document.getElementById("registrazione_telefono");
-  //var pass = document.getElementById("registrazione_password");
-  //var c_pass = document.getElementById("registrazione_conferma_password");
-  //var bio = document.getElementById("registrazione_biografia");
-  //var prof= document.getElementById("registrazione_professione");
-  //var luogo = document.getElementById("registrazione_luogo");
-  return (checkNome(nome) & checkCognome(cognome) ) ;
+  var data = document.getElementById("registrazione_data_di_nascita");
+  var cf = document.getElementById("registrazione_codice_fiscale");
+  var mail = document.getElementById("registrazione_email");
+  var cell = document.getElementById("registrazione_telefono");
+  var pass = document.getElementById("registrazione_password");
+  var c_pass = document.getElementById("registrazione_conferma_password");
+  var bio = document.getElementById("registrazione_biografia");
+  var prof= document.getElementById("registrazione_professione");
+  var luogo = document.getElementById("registrazione_luogo");
+  return (checkNome(nome) & checkCognome(cognome) & checkCF(cf) & checkTel(cell) & checkPass(pass,c_pass) & checkMail(mail)  & checkBio(bio)  & checkImg()) != 0 & checkProfessione(prof) & checkLuogo(luogo) ;
 }
