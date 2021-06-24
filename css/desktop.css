@@ -23,6 +23,7 @@ body {
 	position: fixed;
 	width: 100%;
 	top:0;
+	z-index: 1;
 }
 
 #titolone {
@@ -44,6 +45,7 @@ body {
 	top: 5.5em;
 	background-color:#252525;
 	width:100%;
+	z-index: 1;
 }
 
 #minimenu a{
@@ -445,6 +447,7 @@ ul#gruppo1, ul#gruppo2{
 	background-color: transparent;
 	margin: 0 1em 0 1em;
 	margin-top: 0.5em;
+	cursor: pointer;
 }
 
 #button_cerca img {
