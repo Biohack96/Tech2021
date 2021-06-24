@@ -20,7 +20,7 @@ CREATE TABLE utente (
   professione VARCHAR(50) NOT NULL,
   luogo        VARCHAR(50) NOT NULL,
   bio         TEXT NOT NULL,
-  img_path    VARCHAR(256) NOT NULL DEFAULT 'img/jesus.jpg'
+  img_path    VARCHAR(256) NOT NULL DEFAULT 'img/upload/d19fc4ce9e0f96d96ba2aba9274ac3d32701feae45c5553e1b085ea0151cb865'
 );
 
 CREATE TABLE recensione (
