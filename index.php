@@ -30,6 +30,8 @@ $cardlist="";
 if(isset($_GET['nome']) || isset($_GET['luogo']) || isset($_GET['professione']))
 {
 
+	$title = 'Ricerca';
+
 	$nome= !empty($_GET['nome'])?$_GET['nome']:null;
 	$luogo= !empty($_GET['luogo'])?$_GET['luogo']:null;
 	$professione= !empty($_GET['professione'])?$_GET['professione']:null;
@@ -38,7 +40,7 @@ if(isset($_GET['nome']) || isset($_GET['luogo']) || isset($_GET['professione']))
 	$ricerca = str_replace('<luogocercato/>',$_GET['luogo'], $ricerca);
 	$ricerca = str_replace('<lavorocercato/>',$_GET['professione'], $ricerca);
 	
-	$risultato = $card_list_t = file_get_contents('includes/ris_ricerca.html');
+	$risultato = $card_list_t . file_get_contents('includes/ris_ricerca.html');
 	
 	$input = (!empty($_GET['nome'])?"NOME/COGNOME= ".$_GET['nome']:"") . (!empty($_GET['luogo'])?"LUOGO= ".$_GET['luogo']:"") . (!empty($_GET['professione'])?"PROFESSIONE= ".$_GET['professione']:"");
 	
@@ -83,6 +85,8 @@ $cardlist = str_replace('<cards/>', $cards, $card_list_t);
 $content = $ricerca . $cardlist;
 
 //var_dump($content);
+
+$page_head = str_replace('<titolo />', $title, $page_head);
 
 $page_body = str_replace('<content />', $content, $page_body);
 

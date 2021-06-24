@@ -60,12 +60,12 @@ class DB extends mysqli{
 	{
 		
 		$nome= $this->real_escape_string($nome);
-		$luogp= $this->real_escape_string($luogo);
+		$luogo= $this->real_escape_string($luogo);
 		$professione=$this->real_escape_string($professione);
 		
 		$cards = array();
 
-		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,img_path FROM utente u left join recensione r on u.id = r.id_utente where (nome  like '%".$nome . "% ' or cognome  like '%".$nome . "%')and professione like '%".$professione . "%' group by u.id limit $limit offset $offset";
+		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,luogo,img_path FROM utente u left join recensione r on u.id = r.id_utente where (nome  like '%".$nome . "%' or cognome  like '%".$nome . "%') and professione like '%".$professione . "%' and luogo like '%".$luogo . "%' group by u.id limit $limit offset $offset";
 		//var_dump($sql);
 		$query = $this->prepare($sql);
 		$query->execute();
