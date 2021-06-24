@@ -42,7 +42,7 @@ if(isset($_GET['nome']) || isset($_GET['luogo']) || isset($_GET['professione']))
 	
 	$risultato = $card_list_t . file_get_contents('includes/ris_ricerca.html');
 	
-	$input = (!empty($_GET['nome'])?"NOME/COGNOME= ".$_GET['nome']:"") . (!empty($_GET['luogo'])?"LUOGO= ".$_GET['luogo']:"") . (!empty($_GET['professione'])?"PROFESSIONE= ".$_GET['professione']:"");
+	$input = (!empty($_GET['nome'])?"NOME/COGNOME= ".$_GET['nome']:"") . (!empty($_GET['luogo'])?" LUOGO= ".$_GET['luogo']:"") . (!empty($_GET['professione'])?" PROFESSIONE= ".$_GET['professione']:"");
 	
 	$ricerca = $ricerca . str_replace('<inputs/>',$input, $risultato);
 	
