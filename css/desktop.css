@@ -39,7 +39,7 @@ body {
 }
 
 #minimenu {
-	height: 1.5em;
+	height: 3em;
 	padding-top: 0.5em;
 	position: fixed;
 	top: 5.5em;
@@ -55,7 +55,7 @@ body {
 
 #minimenu a{
 	padding: 1.5em 0 1em 1.5em;
-	font-size: 1em;
+	font-size: 2em;
 	color:#eb6105;
 }
 
@@ -420,7 +420,7 @@ ul#gruppo1, ul#gruppo2{
 	background-color: #ff5a00;
 	margin: 1.5em;
 	border-radius: 0.5em;
-	margin-top: 8em;
+	margin-top: 9em;
 }
 
 #proposte p {
@@ -446,7 +446,14 @@ ul#gruppo1, ul#gruppo2{
 	width: 25%;
 	text-align: center;
 	font-size: 80%;
+	height: 2.5em;
 }
+
+span.banner_cerca{
+	font-size: 1.5em;
+}
+
+    
 
 #button_cerca {
 	background-color: transparent;
@@ -456,7 +463,7 @@ ul#gruppo1, ul#gruppo2{
 }
 
 #button_cerca img {
-	width: 1.3em;
+	width: 3em;
 
 }
 
