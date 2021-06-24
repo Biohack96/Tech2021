@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('includes/DB.php');
+require_once('includes/error.php');
 
 // Oggetto di accesso al database
 $db = new DB();
@@ -39,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
      $result = $db->setProfilo( $_POST['email'],
                                 $_POST['password'],
+								$_POST['conferma_password'],
                                 $_POST['nome'],
                                 $_POST['cognome'],
                                 $_POST['telefono'],
@@ -50,10 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                );
 
     }  
-        if ($result) {
+        if (is_numeric($result)) 
         header('Location: profilo.php?id=' . $_SESSION['user_id']);
+		else
+		{
+		$content .= printError($result);
+		}
   }
-}
+
 
   $page_head = file_get_contents('includes/head.html');
   $page_body = file_get_contents('includes/body.html');
@@ -61,6 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $title = 'Registrati';
   $page_head = str_replace('<title />', "<title>$title - WorkerAdvisor</title>", $page_head);
   $page_body = str_replace('<content />', $content, $page_body);
-  echo $page_head . $page_body;
+  echo $page_head . $page_body ;
   ?>
 

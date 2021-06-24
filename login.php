@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once('includes/DB.php');
-
 // Oggetto di accesso al database
 $db = new DB();
 

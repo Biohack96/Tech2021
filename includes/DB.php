@@ -5,6 +5,12 @@ class DB extends mysqli{
 	private $imgDir = 'img/upload/';
 	private $max_img_size = 3000000; // 3MB
 	private $perm_img_format = array(IMAGETYPE_GIF , IMAGETYPE_JPEG , IMAGETYPE_PNG);
+	private $namePattern = "/^[a-zA-Z \\'\\s\é\è\ò\à\ù\ì]{2,30}$/" ;
+	private $mailPattern = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/' ;
+	private $passPattern = '/^(?=.*[0-9])(?=.*[A-Z]).{8,}$/' ; // Almeno 8 caratteri con almeno una maiuscola e un numero
+	private $cfPattern = '/^[a-zA-Z]{6}[0-9]{2}[abcdehlmprstABCDEHLMPRST]{1}[0-9]{2}([a-zA-Z]{1}[0-9]{3})[a-zA-Z]{1}$/' ;
+	private $cellPattern = '/^[0-9]{7,12}$/';
+
 
 
 	//public function __construct($host="localhost:8889", $user="root", $pass="root", $db="db")
@@ -111,8 +117,28 @@ class DB extends mysqli{
 
     }
 
-	public function setProfilo($email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img)
+	public function setProfilo($email, $password,$conf_password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img)
 {
+		$error = array();
+		if (strlen($email) > 50) {$error[] = "Mail tropppo lunga (Max: 50 caratteri)";}
+		if (!preg_match($this->mailPattern,$email)) {$error[] = "Mail in formato errato";}
+
+		if (!preg_match($this->passPattern,$password))
+		{
+			$error[] = "Password in formato errato, la password deve essere rispettare i seguenti requisiti: deve essere di almeno 8 caratteri con almeno una maiuscola e un numero";
+		}
+
+		If ($password !== $conf_password) {$error[] = "Le password non coincidono";}
+		if (!preg_match($this->namePattern, $nome)) {$error[] = "Nome non valido, non sono concesse lettere accentate (min: 2 caratteri, max: 30 caratteri)";};
+		if (!preg_match($this->namePattern, $cognome)) {$error[] = "Cognome non valido, non sono concesse lettere accentate (min: 2 caratteri, max: 30 caratteri)";}
+		if($datanascita > date('Y-m-d H:i:s')) {$error[] = "Devi mettere una data passata";}
+		if(empty($datanascita)) {$error[] = "Devi specificare una data di nascita";}
+		//else if((int)($date_now - $datanascita) < 3) {$error[] = "Sei un prodigio per essere un bebè";}
+		//else if((int)($date_now - $datanascita) < 13) {$error[] = "Apprezziamo la buona voltà ma sei troppo giovane per iscriverti a questo sito :(";}
+		if (strlen($cf) !== 16) {$error[] = 'Codice fiscale non valido';}
+		if (strlen($bio) > 65535) {$error[] = "Biografia troppo lunga (max: 65535 caratteri)";}
+		if (strlen($bio) === 0) {$error[] = "Biografia mancante, inserire una biografia";}
+		if (!preg_match($this->cellPattern,$telefono)) {$error[] = "Numero di telefono non valido, inserire solo numeri (min: 7 numeri, max: 12 numeri)";}
 
 	$hashed_pass = hash('sha256', $password);
 
@@ -126,7 +152,9 @@ class DB extends mysqli{
 			$img_path = $this->imgDir.$hash;
 			//$this->crop($img_path,1);
 		}
-
+	
+	if(count($error)) {return $error;}
+	
 	if(!empty($img_path)) 
 		{
 
@@ -164,7 +192,7 @@ class DB extends mysqli{
 }
 
 
-	public function updateProfilo ($id, $email, $password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img){
+	public function updateProfilo ($id, $email, $password,$conf_password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img){
 
 		
 
