@@ -10,6 +10,7 @@ if (isset($_SESSION['user_id'])) {
   $db->logout();
   header('Location: index.php');
 }
+
 $content = file_get_contents('includes/registrazione.html');
 
 $content = str_replace('<titolo />', "Registrazione", $content);
@@ -21,7 +22,8 @@ $content = str_replace('<nome />', '', $content);
   $content = str_replace('<telefono />', '', $content);
   $content = str_replace('<data_nascita />', '', $content);
   $content = str_replace('<cf />', '', $content);
-  $content = str_replace('<titolo_studio />', '', $content);
+  $content = str_replace('<professione />', '', $content);
+  $content = str_replace('<luogo />', '', $content);
   $content = str_replace('<bio />', '', $content);
   $content = str_replace('hidden', '', $content);
 
@@ -37,16 +39,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $img_path = $_FILES['img']['tmp_name'];
     }
 
-  
+
      $result = $db->setProfilo( $_POST['email'],
                                 $_POST['password'],
-								$_POST['conferma_password'],
+                                $_POST['conferma_password'],
                                 $_POST['nome'],
                                 $_POST['cognome'],
                                 $_POST['telefono'],
                                 $_POST['data_di_nascita'],
                                 $_POST['cf'],
-                                $_POST['titolo_di_studio'],
+                                $_POST['professione'],
+                                $_POST['luogo'],
                                 $_POST['bio'],
                                 $img_path
                                );
@@ -65,7 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $page_body = file_get_contents('includes/body.html');
  
   $title = 'Registrati';
-  $page_head = str_replace('<title />', "<title>$title - WorkerAdvisor</title>", $page_head);
+  
+  $page_head = str_replace('<titolo />', $title, $page_head);
   $page_body = str_replace('<content />', $content, $page_body);
   echo $page_head . $page_body ;
   ?>

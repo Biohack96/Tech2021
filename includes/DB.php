@@ -95,7 +95,8 @@ class DB extends mysqli{
 
 	public function getProfilo($id = NULL)
 	{
-		$sql = "SELECT id,email,nome,cognome,telefono, datanascita, DATE_FORMAT(datanascita,'%d/%m/%Y') as data_nascita,cf,professione,bio,img_path FROM `utente` WHERE id=?";
+		$sql = "SELECT id,email,nome,cognome,telefono, datanascita, DATE_FORMAT(datanascita,'%d/%m/%Y') as data_nascita,cf,professione,luogo,bio,img_path FROM `utente` WHERE id=?";
+
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();
@@ -117,8 +118,10 @@ class DB extends mysqli{
 
     }
 
-	public function setProfilo($email, $password,$conf_password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img)
-{
+
+	public function setProfilo($email, $password, $conf_password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $luogo, $bio, $img)
+
+	{
 		$error = array();
 		if (strlen($email) > 50) {$error[] = "Mail tropppo lunga (Max: 50 caratteri)";}
 		if (!preg_match($this->mailPattern,$email)) {$error[] = "Mail in formato errato";}
@@ -128,7 +131,7 @@ class DB extends mysqli{
 			$error[] = "Password in formato errato, la password deve essere rispettare i seguenti requisiti: deve essere di almeno 8 caratteri con almeno una maiuscola e un numero";
 		}
 
-		If ($password !== $conf_password) {$error[] = "Le password non coincidono";}
+		if ($password !== $conf_password) {$error[] = "Le password non coincidono";}
 		if (!preg_match($this->namePattern, $nome)) {$error[] = "Nome non valido, non sono concesse lettere accentate (min: 2 caratteri, max: 30 caratteri)";};
 		if (!preg_match($this->namePattern, $cognome)) {$error[] = "Cognome non valido, non sono concesse lettere accentate (min: 2 caratteri, max: 30 caratteri)";}
 		if($datanascita > date('Y-m-d H:i:s')) {$error[] = "Devi mettere una data passata";}
@@ -140,7 +143,7 @@ class DB extends mysqli{
 		if (strlen($bio) === 0) {$error[] = "Biografia mancante, inserire una biografia";}
 		if (!preg_match($this->cellPattern,$telefono)) {$error[] = "Numero di telefono non valido, inserire solo numeri (min: 7 numeri, max: 12 numeri)";}
 
-	$hashed_pass = hash('sha256', $password);
+		$hashed_pass = hash('sha256', $password);
 
 	if(!empty($img))
 		{
@@ -158,10 +161,11 @@ class DB extends mysqli{
 	if(!empty($img_path)) 
 		{
 
-		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,professione,bio,img_path) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,professione,luogo,bio,img_path) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
 				$query = $this->prepare($sql);
-				$query->bind_param("ssssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img_path);
+				$query->bind_param("sssssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $luogo, $bio, $img_path);
+
 
 				if($query->execute())
 				{
@@ -174,10 +178,12 @@ class DB extends mysqli{
 		}
 	else {
 
-		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,professione,bio) VALUES (?,?,?,?,?,?,?,?,?)";
+
+		$sql = "INSERT INTO utente (email,password,nome,cognome,telefono,datanascita,cf,professione,luogo,bio) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 				$query = $this->prepare($sql);
-				$query->bind_param("sssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio);
+				$query->bind_param("ssssssssss", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $luogo, $bio);
+
 
 				if($query->execute())
 				{
@@ -192,9 +198,9 @@ class DB extends mysqli{
 }
 
 
-	public function updateProfilo ($id, $email, $password,$conf_password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img){
 
-		
+	public function updateProfilo ($id, $email, $password, $conf_password, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $luogo, $bio, $img){
+
 
 	if(!empty($img))
 		{
@@ -213,11 +219,13 @@ class DB extends mysqli{
 		$hashed_pass = hash('sha256', $password);
 
 		$sql = "UPDATE utente
-				SET email=?, password=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, professione=?, bio=?, img_path=?
+
+				SET email=?, password=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, professione=?, luogo=?, bio=?, img_path=?
 				WHERE id=?";
 
 		$query = $this->prepare($sql);
-		$query->bind_param("ssssssssssi", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img_path, $id);
+		$query->bind_param("sssssssssssi", $email, $hashed_pass, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $luogo, $bio, $img_path, $id);
+
 	
 		if($query->execute())
 				{
@@ -230,11 +238,12 @@ class DB extends mysqli{
 	else
 	{
 		$sql = "UPDATE utente
-				SET email=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, professione=?, bio=?, img_path=?
+				SET email=?, nome=?, cognome=?, telefono=?, datanascita=?, cf=?, professione=?, luogo=?, bio=?, img_path=?
 				WHERE id=?";
 
 		$query = $this->prepare($sql);
-		$query->bind_param("sssssssssi", $email, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $bio, $img_path, $id);
+		$query->bind_param("ssssssssssi", $email, $nome, $cognome, $telefono, $datanascita, $cf, $professione, $luogo, $bio, $img_path, $id);
+
 	
 		if($query->execute())
 				{

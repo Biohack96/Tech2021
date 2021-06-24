@@ -25,6 +25,8 @@ $page_body = str_replace('<info_utente />', $info_utente, $page_body);
 $utente = $db->getProfilo($_GET['id']);
 $content = file_get_contents('includes/content_lascia_recensione.html');
 
+$title = 'Lascia una recensione a ' . $utente['nome'] . ' ' . $utente['cognome'];
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -44,6 +46,8 @@ $content = str_replace('<nome />', $utente['nome'], $content);
 $content = str_replace('<cognome />', $utente['cognome'], $content);
 $content = str_replace('<id />', $utente['id'], $content);
 
+
+$page_head = str_replace('<titolo />', $title, $page_head);
 
 $page_body = str_replace('<content />', $content, $page_body);
 

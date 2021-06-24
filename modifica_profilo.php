@@ -17,6 +17,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $_GET['id']){
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
+$title = 'Modifica profilo';
+
 // Contiene lo snippet di codice per visualizzare l'utente loggato in alto a destra
 
   $info_utente = createInfoUtente($db);
@@ -38,7 +40,8 @@ $page_body = file_get_contents('includes/body.html');
   $content = str_replace('<telefono />', $profilo['telefono'], $content);
   $content = str_replace('<data_nascita />', $profilo['datanascita'], $content);
   $content = str_replace('<cf />', $profilo['cf'], $content);
-  $content = str_replace('<titolo_studio />', $profilo['professione'], $content);
+  $content = str_replace('<professione />', $profilo['professione'], $content);
+  $content = str_replace('<luogo />', $profilo['luogo'], $content);
   $content = str_replace('<bio />', $profilo['bio'], $content);
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -54,30 +57,33 @@ $page_body = file_get_contents('includes/body.html');
           $img_path = $profilo['img_path'];
       }
 
+      if ($_POST['password'] === $_POST['password']) {
 
        $result = $db->updateProfilo( $_SESSION['user_id'],
                                   $_POST['email'],
                                   $_POST['password'],
+                                  $_POST['conferma_password'],
                                   $_POST['nome'],
                                   $_POST['cognome'],
                                   $_POST['telefono'],
                                   $_POST['data_di_nascita'],
                                   $_POST['cf'],
-                                  $_POST['titolo_di_studio'],
+                                  $_POST['professione'],
+                                  $_POST['luogo'],
                                   $_POST['bio'],
                                   $img_path
                                  );
-  
-      }  
+        
           if ($result) {
           header('Location: profilo.php?id=' . $_SESSION['user_id']);
     }
   }
+  }
+
+}
 
 
-
-
-
+  $page_head = str_replace('<titolo />', $title, $page_head);
 
   $page_body = str_replace('<content />', $content, $page_body);
 

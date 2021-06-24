@@ -27,6 +27,8 @@ $page_body = file_get_contents('includes/body.html');
 // Dati del profilo
 $profilo = $db->getProfilo($_GET['id']);
 
+$title = 'Profilo di ' . $profilo['nome'] . ' ' . $profilo['cognome'];
+
 if($profilo['id'] == NULL){
   header("Location: index.php");
 }
@@ -36,7 +38,8 @@ $content = str_replace('<immagine_profilo />', $profilo['img_path'], $content);
 $content = str_replace('<nome />', $profilo['nome'], $content);
 $content = str_replace('<cognome />', $profilo['cognome'], $content);
 $content = str_replace('<data_di_nascita />', $profilo['data_nascita'], $content); 
-$content = str_replace('<titolo_studio />', $profilo['professione'], $content); 
+$content = str_replace('<professione />', $profilo['professione'], $content); 
+$content = str_replace('<luogo />', $profilo['luogo'], $content); 
 $content = str_replace('<bio />', $profilo['bio'], $content); 
 
 
@@ -122,6 +125,8 @@ $content = str_replace('<div_recensioni />', $r , $content);
 else {
   $content = str_replace('<div_recensioni />', 'Nessuna recensione', $content);
 }
+
+$page_head = str_replace('<titolo />', $title, $page_head);
 
 $page_body = str_replace('<content />', $content, $page_body);
 

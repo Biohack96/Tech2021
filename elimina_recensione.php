@@ -73,6 +73,10 @@ $page_body = file_get_contents('includes/body.html');
  $content = str_replace("<descrizione />", $recensione['descrizione'], $content);
 
 
+ $title = 'Elimina recensione';
+ $page_head = str_replace('<titolo />', $title, $page_head);
+
+
 $page_body = str_replace('<content />', $content, $page_body);
 
 

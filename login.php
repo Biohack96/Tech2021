@@ -18,7 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($db->login($_POST['email'], $_POST['password'])) {
       header('Location: profilo.php?id=' . $_SESSION['user_id']);
+
     } else header('Location: /login.php?error=1');
+
 
   } 
 }
@@ -30,21 +32,10 @@ $title = 'Accedi';
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
-
+$scripts = file_get_contents('includes/script_login.html');
 
 // Codice HTML del content
 $content = file_get_contents('includes/login.html');
-
-$content = str_replace('<reg />', file_get_contents('includes/registrazione.html'), $content);
-
-$content = str_replace('<profiloEditTitolo />', "Registrati", $content);
-$content = str_replace('<testoBottone />', "invia", $content);
-$content = str_replace('<nomeSubmit />', "registrazione", $content);
-$content = str_replace('<delButton />', "", $content);
-
-$content = str_replace('<goto />', 'login.php', $content);
-
-$content = str_replace('<errorLogin />', $error_login, $content);
 
 
 if (isset($_POST['registrazione'])) {
@@ -66,7 +57,8 @@ if (isset($_POST['registrazione'])) {
 }
 
 // Rimpiazzo dei segnaposto sull'intera pagina
-$page_head = str_replace('<title />', "<title>$title - WorkerAdvisor</title>", $page_head);
+$page_head = str_replace('<titolo />', $title, $page_head);
+$page_head = str_replace('<scripts />', $scripts, $page_head);
 
 if(isset($_GET['error']))
 	$content .= file_get_contents('includes/login_error.html');
