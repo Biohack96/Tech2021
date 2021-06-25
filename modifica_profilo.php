@@ -96,7 +96,8 @@ if (isset($_GET['elimina'])){
   $delete = $db->deleteProfilo($_SESSION['user_id']);
   
   if ($delete) {
-    header('Location: 404.php');
+    $db->logout();
+    header('Location: index.php');
   
   }
 }

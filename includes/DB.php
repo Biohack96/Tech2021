@@ -343,8 +343,8 @@ public function deleteProfilo($id = NULL){
 		$sql1 = "DELETE FROM recensione WHERE id_autore = ? ;";
 		$sql2 = "DELETE FROM utente WHERE id = ? ;";
 
-		$query1 = $this->prepare($sql3);
-		$query2 = $this->prepare($sql4);
+		$query1 = $this->prepare($sql1);
+		$query2 = $this->prepare($sql2);
 
 		$query1->bind_param("i", $id);
 		$query2->bind_param("i", $id);

@@ -282,6 +282,7 @@ ul#gruppo1, ul#gruppo2{
 	float: left;
     width: 40%;
 	margin: 1em 1em 0 0.3em;
+	border-radius: 3em;
 }
 
 #profilo_dati_personali{
@@ -536,11 +537,13 @@ span.banner_cerca{
 	width: 13em;
 	display: inline-block;
 	text-align: left;
+	border-radius: 1em;
 }
 
 .carte img {
 	width: 13em;
 	height: 13em;
+	border-radius: 1em;
 }
 
 #info_lavoratore {
