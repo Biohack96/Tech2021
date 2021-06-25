@@ -552,14 +552,14 @@ span.banner_cerca{
 	border-radius: 1em;
 }
 
-#info_lavoratore {
+.info_lavoratore {
 	float: left;
 	font-size: 0.8em;
 	padding: 0.5em;
 	color: black;
 }
 
-#voto {
+.voto {
 	float: right;
 	font-size: 1.8em;
 	padding: 0.2em;
