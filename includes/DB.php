@@ -400,8 +400,11 @@ public function getRecensioni($id = NULL)
  
     public function setRecensione($descrizione, $voto, $data_recensione, $id_autore, $id_utente){
         
+
 			$descrizione = htmlentities($descrizione);
 		
+			if ($voto == 1 || $voto == 2 || $voto == 3 || $voto == 4 || $voto == 5) { 
+
             $sql = "INSERT INTO recensione VALUES (NULL,?,?,?,?,?);";
             
             $query = $this->prepare($sql);
@@ -414,8 +417,9 @@ public function getRecensioni($id = NULL)
 			return (bool)$res;
 		}
         else return false;
-            
-    }
+    	}
+		else return false;
+	}
 
 	public function getRecensione($id = NULL)
 	{
