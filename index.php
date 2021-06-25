@@ -30,7 +30,7 @@ $page_body = str_replace('<info_utente />', $info_utente, $page_body);
 $cards = "";
 $cardlist="";
 
-if(isset($_GET['nome']) || isset($_GET['luogo']) || isset($_GET['professione']))
+if(!empty($_GET['nome']) || !empty($_GET['luogo']) || !empty($_GET['professione']))
 {
 
 	$title = 'Ricerca';

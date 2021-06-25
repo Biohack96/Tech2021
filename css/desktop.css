@@ -15,6 +15,12 @@ body {
 	margin-bottom: 5em;
 }
 
+#risricerca{
+	margin-left: 15%;
+    font-size: 200%;
+    color: white;
+}
+
 input{
 	border-radius: 0.5em;
 }
@@ -35,6 +41,9 @@ textarea {
     font-weight: bold;
     display: block;
     width: 96%;
+	margin-bottom: 5em;
+	margin-left: 2em;
+
 }
 
 .error_login {
