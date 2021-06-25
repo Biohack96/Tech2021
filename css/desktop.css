@@ -373,7 +373,7 @@ ul#gruppo1, ul#gruppo2{
 	  margin-top: 2em;
 	  background-color: #f4f4f4;
 	  padding: 5%;
-	  margin: 2em 1em 1em 1em;
+	  margin: 2em;
 	  border-radius: 2em;
   }
   
@@ -565,9 +565,8 @@ legend.banner_cerca{
 /***** spazio card lavoratori ****/
 
 #elenco_lavoratori{
-	margin: 0 10%;
+	margin: 0 10% 5%;
 	text-align: center;
-	margin-bottom: 2em;
 }
 
 .carte {
