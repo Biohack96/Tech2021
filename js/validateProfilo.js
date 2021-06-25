@@ -1,13 +1,13 @@
 function mostraError(input, testoError) {
   var span = document.createElement('span');
-  span.className = "error";
+  span.className = "errorjs";
   span.innerText = testoError;
   input.after(span);
 }
 
 function togliError() {
- while (document.getElementsByClassName('error')[0]) {
-        document.getElementsByClassName('error')[0].remove();
+ while (document.getElementsByClassName('errorjs')[0]) {
+        document.getElementsByClassName('errorjs')[0].remove();
     }
 }
 
@@ -69,7 +69,7 @@ function checkTel(input) {
     return false;
 
   } else if (input.value.length <= 0) {
-    mostraError(input, "Biografia vuota, raccontaci qualcosa di te :)");
+    mostraError(input, "Biografia vuota, scrivi qualcosa su di te");
     return false;
   }
 

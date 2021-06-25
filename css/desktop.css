@@ -46,6 +46,16 @@ textarea {
 
 }
 
+.errorjs {
+    color: #FA3F00;
+    font-weight: bold;
+    display: block;
+    width: 96%;
+	margin-left: 2em;
+
+}
+
+
 .error_login {
     color: #FA3F00;
     font-weight: bold;

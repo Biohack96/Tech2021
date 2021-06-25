@@ -28,6 +28,7 @@ $content = str_replace('<nome />', '', $content);
   $content = str_replace('<luogo />', '', $content);
   $content = str_replace('<bio />', '', $content);
   $content = str_replace('hidden', '', $content);
+  $content = str_replace('<elimina_profilo />', "", $content);
 
 // Inserimento nel database ed eventuale generazione di stringhe di errore
 $error_login = '';

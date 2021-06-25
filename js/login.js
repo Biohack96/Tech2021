@@ -40,7 +40,7 @@ function checkEmail(input) {
     togliErrore(input);
     var p = input.parentNode;
     var span = document.createElement('span');
-    span.className = "error";
+    span.className = "errorjs";
     span.innerText = testoErrore;
     p.appendChild(span);
   

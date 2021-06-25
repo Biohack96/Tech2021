@@ -30,11 +30,12 @@ $title = 'Modifica profilo';
 
  
   $content = file_get_contents('includes/registrazione.html');
+	$scripts = file_get_contents('includes/script_registrazione.html');
   $profilo = $db->getProfilo($_SESSION['user_id']);
 
 $page_head = str_replace('<keyword/>', "account,modifica,profilo,lavoro, recensione, privato, professione", $page_head);
-	$page_head = str_replace('<metatitle/>', "Modifica il profilo di". $profilo['nome']." ". $profilo['cognome']." - WorkerAdvisor trova il lavoratore che fa per te ", $page_head);
-
+$page_head = str_replace('<metatitle/>', "Modifica il profilo di". $profilo['nome']." ". $profilo['cognome']." - WorkerAdvisor trova il lavoratore che fa per te ", $page_head);
+$page_head = str_replace('<scripts />', $scripts, $page_head);
 
   $content = str_replace('<titolo />', "Modifica profilo", $content);
   $content = str_replace('<conferma_button />', "Conferma modifica", $content);
@@ -48,6 +49,7 @@ $page_head = str_replace('<keyword/>', "account,modifica,profilo,lavoro, recensi
   $content = str_replace('<professione />', $profilo['professione'], $content);
   $content = str_replace('<luogo />', $profilo['luogo'], $content);
   $content = str_replace('<bio />', $profilo['bio'], $content);
+  
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
