@@ -321,6 +321,7 @@ ul#gruppo1, ul#gruppo2{
   #biografia_testo{
 	padding: 2%;
 	text-align: justify;
+	height: auto;
 }
 
   #button_modifica_profilo{

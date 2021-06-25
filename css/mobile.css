@@ -141,8 +141,9 @@ body {
   
  #img_profilo {
 	  float: left;
-	  width: 12em;
-	  margin: 1em 1em 0 1em;
+	  width: 80%;
+	  margin: 1em auto 0 1.5em;
+
   }
   
   #profilo_dati img{
@@ -332,6 +333,7 @@ body {
 
 #ricerca span {
 	font-size: 1.2em;
+	
 }
 
 #button_cerca img {
