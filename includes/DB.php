@@ -195,7 +195,7 @@ class DB extends mysqli{
 		
 		$professione = htmlentities($professione);
 		$luogo = htmlentities($luogo);
-		$biografia = htmlentities($biografia);
+		$bio = htmlentities($bio);
 		
 		
 		$hashed_pass = hash('sha256', $password);
@@ -281,6 +281,9 @@ class DB extends mysqli{
 		if (strlen($luogo) <2) {$error[] = "Luogo non valido, almeno due caratteri";}
 		if (strlen($professione) < 2) {$error[] = "Professione non valida, almeno 2 caratteri";}
 		
+		$professione = htmlentities($professione);
+		$luogo = htmlentities($luogo);
+		$bio = htmlentities($bio);
 		
 	if(!empty($img))
 		{
