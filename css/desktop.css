@@ -15,7 +15,6 @@ body {
 	margin-bottom: 5em;
 }
 
-<<<<<<< Updated upstream
 input{
 	border-radius: 0.5em;
 }
@@ -23,8 +22,6 @@ input{
 textarea {
 	border-radius: 0.5em;
 }
-=======
->>>>>>> Stashed changes
 
 *:focus {
   outline: 0.6em dashed #00ff00;
