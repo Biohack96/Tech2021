@@ -7,7 +7,7 @@ require_once('includes/create_info_utente.php');
 $db = new DB();
 
 // Titolo della pagina
-$title = 'Dashboard';
+$title = 'WorkerAdvisor';
 
 
 // Contengono l'HTML dei tag <head> e <body> che verranno stampati

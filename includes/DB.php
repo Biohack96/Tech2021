@@ -275,11 +275,7 @@ class DB extends mysqli{
 		if (!preg_match($this->cellPattern,$telefono)) {$error[] = "Numero di telefono non valido, inserire solo numeri (min: 7 numeri, max: 12 numeri)";}
 		if (strlen($luogo) <2) {$error[] = "Luogo non valido, almeno due caratteri";}
 		if (strlen($professione) < 2) {$error[] = "Professione non valida, almeno 2 caratteri";}
-		if($t = $this->alreadyReg($email,$cf)) 
-		{
-			foreach($t as $e)
-			$error[] = $e;
-		}
+		
 		
 	if(!empty($img))
 		{

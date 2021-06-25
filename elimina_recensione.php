@@ -13,6 +13,9 @@ if (!isset($_GET['id']) || !isset($_SESSION['user_id'])){
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
+$page_head = str_replace('<keyword/>', "eliminare,recensione,lavoro, recensione, privato, professione", $page_head);
+$page_head = str_replace('<metatitle/>', "Elimina recensione - WorkerAdvisor trova il lavoratore che fa per te", $page_head);
+
 // Contiene lo snippet di codice per visualizzare l'utente loggato in alto a destra
 
   $info_utente = createInfoUtente($db);
