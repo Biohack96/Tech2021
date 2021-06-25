@@ -63,7 +63,7 @@ body {
 }
 
 #minimenu a{
-	padding: 1.5em 0 1em 1.5em;
+	margin: 1em 0 1em 1.5em;
 	font-size: 2em;
 	color:#eb6105;
 }
@@ -265,9 +265,9 @@ ul#gruppo1, ul#gruppo2{
 
 #img_profilo 
 {
-	float: right;
-    width: 15em;
-    margin-right: 35em;
+	float: left;
+    width: 40%;
+	margin: 1em 1em 0 0.3em;
 }
 
 #profilo_dati_personali{
@@ -296,7 +296,7 @@ ul#gruppo1, ul#gruppo2{
   ul#profilo_dati{
 	  list-style-type: none;
 	  float: left;
-	  width: 30em;
+	  width: 20em;
   }
 
   #biografia{
@@ -423,8 +423,9 @@ ul#gruppo1, ul#gruppo2{
   
   #recensione{
 	  background-color: #f4f4f4;
-	  margin-bottom: 2%;
+	  margin: 9.5em 2em 2em 2em;
 	  padding: 2%;
+	  border-radius: 2em;
   }
   
 /*******ELIMINA RECENSIONE *********/
@@ -447,6 +448,8 @@ ul#gruppo1, ul#gruppo2{
 	  background-color: #f4f4f4;
 	  padding-bottom: 3%;
 	  padding-top: 3%;
+	  border-radius: 2em;
+	  margin: 9.5em 2em 2em 2em;
   }
 
 
@@ -509,6 +512,7 @@ span.banner_cerca{
 #elenco_lavoratori{
 	margin: 0 10%;
 	text-align: center;
+	margin-bottom: 2em;
 }
 
 .carte {
@@ -529,6 +533,7 @@ span.banner_cerca{
 	float: left;
 	font-size: 0.8em;
 	padding: 0.5em;
+	color: black;
 }
 
 #voto {

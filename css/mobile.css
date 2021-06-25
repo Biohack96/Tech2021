@@ -24,7 +24,7 @@ body {
 }
 
 #titolone {
-	padding: 1em;
+	padding: 1em 0.1em 1em 1em;
 	float: left;
 	width: auto;
 }
@@ -57,11 +57,12 @@ body {
 }
 
 #logout {
-	font-size: 0.8em;
+	font-size: 0.6em;
 }
 
 #logout a {
 	color: black;
+	margin-right: 0.2em;
 }
 
 #usr_zone img {
@@ -69,7 +70,7 @@ body {
 	border-radius: 50%;
     margin: 0.1em;
 	padding: 0.1em;
-	float: right;
+	
 }
 
 #minimenu {
@@ -131,11 +132,20 @@ body {
 #profilo_dati_personali{
   
 	background-color: #f4f4f4;
-	margin-bottom: 2em;
-	padding: 5%;
+	margin: 3em 1em 1em 1em;
+  }
+
+  #profilo_dati_personali h1{
+	  font-size: 1.8em;
   }
   
-  #profilo_dati_personali img{
+ #img_profilo {
+	  float: left;
+	  width: 12em;
+	  margin: 1em 1em 0 1em;
+  }
+  
+  #profilo_dati img{
 	  width: 2em;
 	  vertical-align: middle;
   }
@@ -149,7 +159,7 @@ body {
   }
   
   #profilo_dati li {
-	  margin-left: 10%;
+	  margin-left: 3%;
 	  margin-top: 1em;
   }
   
@@ -159,6 +169,10 @@ body {
 
   #biografia{
 	  padding: 2%;
+  }
+
+  #biografia h2 {
+	margin-top: 1em;
   }
 
   #biografia_testo{
@@ -178,10 +192,13 @@ body {
   /******RECENSIONI*******/
   
   #profilo_recensioni{
-	  margin-top: 2em;
+	  margin: 0.5em 1em 1em 1em;
 	  background-color: #f4f4f4;
 	  margin-bottom: 2%;
-	  padding: 5%;
+  }
+
+  #profilo_recensioni p {
+	  margin-left: 0.1em;
   }
   
   #media{
@@ -196,7 +213,7 @@ body {
   
   
   #lista_recensioni{
-	  margin-top: 2%;
+	  margin-right: 3em
   }
   
   #autore_recensione{
@@ -221,9 +238,9 @@ body {
 	vertical-align: -7px;
 }
 
-  #descrizione_recensione{
-	  margin-top: 3px;
-	  margin-left: 12px;
+   #break_word p{
+	  margin-right: 7em;
+	  padding-left: 7em;
   }
   
   .button{
@@ -255,7 +272,8 @@ body {
   }
   
   #conferma_recensione_button{
-	margin-left: 50px;
+	margin-left: 5em;
+	margin-top: 1em;
     width: 100px;
     height: 50px;
     border-radius: 10px;
@@ -267,18 +285,32 @@ body {
 
 
   textarea#commento_recensione{
-	  margin-top: 2%;
-	  resize: none;
-	  vertical-align: middle;
+	  margin-top: 1em;
+	  width: 100%;
   }
   
   #recensione{
-	  margin-top: 2em;
+	  margin: 7em 1em 5em 1em;
 	  background-color: #f4f4f4;
-	  margin-bottom: 2%;
-	  padding: 2%;
+  }
+
+  #recensione h3 {
+	margin-top: 1em;
+	font-size: 1em;
   }
   
+  #recensione_da_eliminare{
+	  padding-left: 0.5em;
+  }
+
+  #recensione_da_eliminare h2{
+	font-size: 1.2em;
+	margin: 1em 0.5em;
+}
+
+ #conferma_eliminazione_button{
+	 margin-left: 3em;
+ }
 
 /***** banner di ricerca *****/
 
@@ -298,21 +330,18 @@ body {
 	margin-top: 7em;
 }
 
-#ricerca fieldset {
-	
-}
-
-#button_cerca {
-	
+#ricerca span {
+	font-size: 1.2em;
 }
 
 #button_cerca img {
-	
+	margin-left: 5.5em;
 }
 
 .banner_cerca{
-	width: 10em;
+	width: 95%;
 }
+
 
 
 
@@ -321,6 +350,7 @@ body {
 #elenco_lavoratori{
 	margin: auto;
 	text-align: center;
+	margin-bottom: 5em;
 }
 
 .carte {
