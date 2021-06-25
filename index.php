@@ -19,6 +19,9 @@ $card_list_t = file_get_contents('includes/cardlist.html');
 
 // Contiene lo snippet di codice per visualizzare l'utente loggato in alto a destra
 
+$page_head = str_replace('<keyword/>', "lavoro, recensione, privato, professione", $page_head);
+$page_head = str_replace('<metatitle/>', "WorkerAdvisor trova il lavoratore che fa per te", $page_head);
+
 $info_utente = createInfoUtente($db);
 $page_body = str_replace('<info_utente />', $info_utente, $page_body);
 

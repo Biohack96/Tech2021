@@ -69,6 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $page_head = file_get_contents('includes/head.html');
   $page_body = file_get_contents('includes/body.html');
  
+ $page_head = str_replace('<keyword/>', "registrazione, profilo, lavoro, recensione, privato, professione", $page_head);
+$page_head = str_replace('<metatitle/>', "Pagina di Registrazione - WorkerAdvisor trova il lavoratore che fa per te ", $page_head);
   $page_head = str_replace('<scripts />', $scripts, $page_head);
 
   $title = 'Registrati';

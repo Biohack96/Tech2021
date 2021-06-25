@@ -116,7 +116,7 @@ function checkProfessione(input) {
     mostraError(input, "Professione vuota, aggiungi una professione");
     return false;
   }
-  if( /[^a-zA-Z0-9]/.test( input ) ) {
+  if( !/[^a-zA-Z0-9]/.test( input ) ) {
        mostraError(input, "La professione puo contenere solo caratteri alfanumerici");
        return false;
     }
@@ -127,6 +127,10 @@ function checkProfessione(input) {
 function checkLuogo(input) {
 		if(input.value.length > 50) {
     mostraError(input, "Il luogo puo contenere 50 caratteri");
+		return false;
+	}	
+	if(input.value.length < 2) {
+    mostraError(input, "Inserire almeno la sigla della provincia");
 		return false;
 	}	
 	return true

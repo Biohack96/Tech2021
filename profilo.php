@@ -32,6 +32,8 @@ $title = 'Profilo di ' . $profilo['nome'] . ' ' . $profilo['cognome'];
 if($profilo['id'] == NULL){
   header("Location: index.php");
 }
+$page_head = str_replace('<keyword/>', $profilo['nome']."," .$profilo['cognome']. ",lavoratore,lavoro, recensione, privato, professione,recensione,voto", $page_head);
+$page_head = str_replace('<metatitle/>', "Profilo di".$profilo['nome']." ". $profilo['cognome']." - WorkerAdvisor trova il lavoratore che fa per te ", $page_head);
 
 $content = file_get_contents('includes/content_profilo.html');
 $content = str_replace('<immagine_profilo />', $profilo['img_path'], $content);
@@ -40,7 +42,8 @@ $content = str_replace('<cognome />', $profilo['cognome'], $content);
 $content = str_replace('<data_di_nascita />', $profilo['data_nascita'], $content); 
 $content = str_replace('<professione />', $profilo['professione'], $content); 
 $content = str_replace('<luogo />', $profilo['luogo'], $content); 
-$content = str_replace('<bio />', $profilo['bio'], $content); 
+$content = str_replace('<bio />', $profilo['bio'], $content);
+$content = str_replace('<NomeCognome/>', $profilo['nome'] . " " . $profilo['cognome'] , $content); 
 
 
 $content = str_replace('<email />', $profilo['email'], $content);

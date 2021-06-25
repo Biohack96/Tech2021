@@ -30,6 +30,14 @@ body {
     width: 96%;
 }
 
+.error_login {
+    color: #FA3F00;
+    font-weight: bold;
+    padding: 2%;
+    width: 96%;
+}
+
+
 /***** header *****/
 
 #header {

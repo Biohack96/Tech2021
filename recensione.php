@@ -41,7 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 }
-
+$page_head = str_replace('<keyword/>', "recensione,voto,lavoro, recensione, privato, professione", $page_head);
+$page_head = str_replace('<metatitle/>', "Recensisci l'utente". $utente['nome']." ". $utente['cognome']." - WorkerAdvisor trova il lavoratore che fa per te ", $page_head);
 $content = str_replace('<nome />', $utente['nome'], $content);
 $content = str_replace('<cognome />', $utente['cognome'], $content);
 $content = str_replace('<id />', $utente['id'], $content);

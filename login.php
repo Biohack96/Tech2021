@@ -32,6 +32,9 @@ $title = 'Accedi';
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
+$page_head = str_replace('<keyword/>', "lavoro, recensione, privato, professione, login, profilo, accedi", $page_head);
+$page_head = str_replace('<metatitle/>', "Pagina di Login - WorkerAdvisor trova il lavoratore che fa per te", $page_head);
+
 $scripts = file_get_contents('includes/script_login.html');
 
 // Codice HTML del content

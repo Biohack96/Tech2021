@@ -12,9 +12,6 @@ class DB extends mysqli{
 	private $cellPattern = '/^[0-9]{7,12}$/';
 
 
-
-	//public function __construct($host="localhost:8889", $user="root", $pass="root", $db="db")
-	//public function __construct($host="localhost", $user="dbrescia", $pass="kainoolay9ojaeQu", $db="db")
 	public function __construct($host="localhost", $user="root", $pass="", $db="workeradvisor")
 	{
         parent::__construct($host, $user, $pass, $db);
@@ -188,7 +185,14 @@ class DB extends mysqli{
 		if (strlen($bio) > 65535) {$error[] = "Biografia troppo lunga (max: 65535 caratteri)";}
 		if (strlen($bio) === 0) {$error[] = "Biografia mancante, inserire una biografia";}
 		if (!preg_match($this->cellPattern,$telefono)) {$error[] = "Numero di telefono non valido, inserire solo numeri (min: 7 numeri, max: 12 numeri)";}
-
+		if (strlen($luogo) <2) {$error[] = "Luogo non valido, almeno due caratteri";}
+		if (strlen($professione) < 2) {$error[] = "Professione non valida, almeno 2 caratteri";}
+		if($t = $this->alreadyReg($email,$cf)) 
+		{
+			foreach($t as $e)
+			$error[] = $e;
+		}
+		
 		$hashed_pass = hash('sha256', $password);
 
 	if(!empty($img))
@@ -199,7 +203,7 @@ class DB extends mysqli{
 			$hash = hash_file('sha256', $img);
 			if (!move_uploaded_file($img, $this->imgDir.$hash)) {$error[] = "Impossibile spostare l'immagine";}
 			$img_path = $this->imgDir.$hash;
-			//$this->crop($img_path,1);
+			
 		}
 	
 	if(count($error)) {return $error;}
@@ -269,7 +273,14 @@ class DB extends mysqli{
 		if (strlen($bio) > 65535) {$error[] = "Biografia troppo lunga (max: 65535 caratteri)";}
 		if (strlen($bio) === 0) {$error[] = "Biografia mancante, inserire una biografia";}
 		if (!preg_match($this->cellPattern,$telefono)) {$error[] = "Numero di telefono non valido, inserire solo numeri (min: 7 numeri, max: 12 numeri)";}
-
+		if (strlen($luogo) <2) {$error[] = "Luogo non valido, almeno due caratteri";}
+		if (strlen($professione) < 2) {$error[] = "Professione non valida, almeno 2 caratteri";}
+		if($t = $this->alreadyReg($email,$cf)) 
+		{
+			foreach($t as $e)
+			$error[] = $e;
+		}
+		
 	if(!empty($img))
 		{
 			$img_format = exif_imagetype($img);
@@ -281,7 +292,6 @@ class DB extends mysqli{
 			if (!move_uploaded_file($img, $this->imgDir.$hash)) {$error[] = "Impossibile spostare l'immagine";}
 			}
 			$img_path = $this->imgDir.$hash;
-			//$this->crop($img_path,1);
 		}
 		
 		if(count($error)) {return $error;}
@@ -329,7 +339,30 @@ class DB extends mysqli{
 
 
 public function deleteProfilo($id = NULL){
-	return true;
+	
+		$sql1 = "DELETE FROM recensione WHERE id_autore = ? ;";
+		$sql2 = "DELETE FROM utente WHERE id = ? ;";
+
+		$query1 = $this->prepare($sql3);
+		$query2 = $this->prepare($sql4);
+
+		$query1->bind_param("i", $id);
+		$query2->bind_param("i", $id);
+
+
+		if(!$query1->execute())
+		{
+			return NULL;
+		}
+		$query1->close();
+
+		if($query2->execute())
+		{
+			$res = $this->affected_rows;
+			$query2->close();
+			return (bool)$res;
+		}
+		return NULL;
 }
 
 

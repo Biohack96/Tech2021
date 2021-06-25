@@ -24,12 +24,17 @@ $title = 'Modifica profilo';
 
   $info_utente = createInfoUtente($db);
   $page_body = str_replace('<info_utente />', $info_utente, $page_body);
+	
 
 // Gestione POST e chiamata al db  
 
  
   $content = file_get_contents('includes/registrazione.html');
   $profilo = $db->getProfilo($_SESSION['user_id']);
+
+$page_head = str_replace('<keyword/>', "account,modifica,profilo,lavoro, recensione, privato, professione", $page_head);
+	$page_head = str_replace('<metatitle/>', "Modifica il profilo di". $profilo['nome']." ". $profilo['cognome']." - WorkerAdvisor trova il lavoratore che fa per te ", $page_head);
+
 
   $content = str_replace('<titolo />', "Modifica profilo", $content);
   $content = str_replace('<conferma_button />', "Conferma modifica", $content);
