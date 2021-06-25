@@ -193,6 +193,11 @@ class DB extends mysqli{
 			$error[] = $e;
 		}
 		
+		$professione = htmlentities($professione);
+		$luogo = htmlentities($luogo);
+		$biografia = htmlentities($biografia);
+		
+		
 		$hashed_pass = hash('sha256', $password);
 
 	if(!empty($img))
@@ -392,6 +397,8 @@ public function getRecensioni($id = NULL)
  
     public function setRecensione($descrizione, $voto, $data_recensione, $id_autore, $id_utente){
         
+			$descrizione = htmlentities($descrizione);
+		
             $sql = "INSERT INTO recensione VALUES (NULL,?,?,?,?,?);";
             
             $query = $this->prepare($sql);
