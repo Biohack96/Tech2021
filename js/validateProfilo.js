@@ -1,5 +1,4 @@
 function mostraError(input, testoError) {
-
   var span = document.createElement('span');
   span.className = "error";
   span.innerText = testoError;
@@ -26,6 +25,14 @@ function checkPass(input, input2) {
     }
   }
  return true;
+}
+
+function checkData(input) {
+  if (input.value == "") {
+    mostraError(input, "Data non valida");
+    return false;
+  }
+  return true;
 }
 
 function checkMail(input) {
@@ -101,7 +108,7 @@ function checkTel(input) {
 }
 
 function checkProfessione(input) {
-  if (input.value.length > 15) {
+  if (input.value.length > 50) {
     mostraError(input, "Hai inserito troppi caratteri");
     return false;
 
@@ -109,12 +116,20 @@ function checkProfessione(input) {
     mostraError(input, "Professione vuota, aggiungi una professione");
     return false;
   }
+  if( /[^a-zA-Z0-9]/.test( input ) ) {
+       mostraError(input, "La professione puo contenere solo caratteri alfanumerici");
+       return false;
+    }
 
   return true;
 }
 
 function checkLuogo(input) {
-    return ",#-/ !@$%^*(){}|[]\\".indexOf(c) >= 0;
+		if(input.value.length > 50) {
+    mostraError(input, "Il luogo puo contenere 50 caratteri");
+		return false;
+	}	
+	return true
 }
 
 function validateProfilo() {
@@ -122,7 +137,7 @@ function validateProfilo() {
   var nome = document.getElementById('registrazione_nome');
   var cognome = document.getElementById("registrazione_cognome");
   var data = document.getElementById("registrazione_data_di_nascita");
-  var cf = document.getElementById("registrazione_codice_fiscale");
+  var cf = document.getElementById("registrazione_cf");
   var mail = document.getElementById("registrazione_email");
   var cell = document.getElementById("registrazione_telefono");
   var pass = document.getElementById("registrazione_password");
@@ -130,5 +145,5 @@ function validateProfilo() {
   var bio = document.getElementById("registrazione_biografia");
   var prof= document.getElementById("registrazione_professione");
   var luogo = document.getElementById("registrazione_luogo");
-  return (checkNome(nome) & checkCognome(cognome) & checkCF(cf) & checkTel(cell) & checkPass(pass,c_pass) & checkMail(mail)  & checkBio(bio)  & checkImg()) != 0 & checkProfessione(prof) & checkLuogo(luogo) ;
+  return (checkNome(nome) & checkCognome(cognome) & checkCF(cf) & checkTel(cell) & checkData(data) & checkPass(pass,c_pass) & checkMail(mail)  & checkBio(bio)  & checkImg() & checkProfessione(prof) & checkLuogo(luogo) ) != 0 ;
 }

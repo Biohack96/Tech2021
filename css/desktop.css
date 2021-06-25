@@ -22,7 +22,13 @@ body {
 #minimenu a:focus {
   outline: none;
 }
-
+.error {
+    color: #FA3F00;
+    font-weight: bold;
+    padding: 2%;
+    display: block;
+    width: 96%;
+}
 
 /***** header *****/
 
