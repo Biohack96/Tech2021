@@ -33,7 +33,7 @@ textarea {
 .error {
     color: #FA3F00;
     font-weight: bold;
-    padding: 2%;
+    padding: 0 0 5em 2em;
     display: block;
     width: 96%;
 }
