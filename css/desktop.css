@@ -193,6 +193,7 @@ ul#gruppo1, ul#gruppo2{
 	resize: none;
 	border: 1px solid #000000;
 	margin-bottom: 20px;
+	padding: 0.5em;
 }
 
 #conf_registrazione{
