@@ -43,15 +43,13 @@ if(isset($_GET['nome']) || isset($_GET['luogo']) || isset($_GET['professione']))
 	$ricerca = str_replace('<luogocercato/>',$_GET['luogo'], $ricerca);
 	$ricerca = str_replace('<lavorocercato/>',$_GET['professione'], $ricerca);
 	
-	$risultato = $card_list_t . file_get_contents('includes/ris_ricerca.html');
+	$risultato = file_get_contents('includes/ris_ricerca.html');
 	
 	$input = (!empty($_GET['nome'])?"NOME/COGNOME= ".$_GET['nome']:"") . (!empty($_GET['luogo'])?" LUOGO= ".$_GET['luogo']:"") . (!empty($_GET['professione'])?" PROFESSIONE= ".$_GET['professione']:"");
 	
 	$ricerca = $ricerca . str_replace('<inputs/>',$input, $risultato);
-	
-	
-	
-	$cards_data  = $db->getcardsR(10,0,$nome,$luogo,$professione);
+		
+	$cards_data  = $db->getcardsR($nome,$luogo,$professione);
 }
 else	{
 	
@@ -59,7 +57,7 @@ else	{
 	$ricerca = str_replace('<luogocercato/>',"", $ricerca);
 	$ricerca = str_replace('<lavorocercato/>',"", $ricerca);
 
-	$cards_data  = $db->getcards(10); //da scegliere
+	$cards_data  = $db->getcards(); //da scegliere
 
 }
 

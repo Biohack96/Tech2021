@@ -68,11 +68,11 @@ class DB extends mysqli{
 		return FALSE;
 	}
 	
-	public function getcards($limit = 1,$offset=0)
+	public function getcards()
 	{
 		$cards = array();
 
-		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,luogo,img_path FROM utente u left join recensione r on u.id = r.id_utente group by u.id limit $limit offset $offset";
+		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,luogo,img_path FROM utente u left join recensione r on u.id = r.id_utente group by u.id";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
@@ -99,7 +99,7 @@ class DB extends mysqli{
 
     }
 	
-	public function getcardsR($limit = 1,$offset=0,$nome='',$luogo='',$professione='')
+	public function getcardsR($nome='',$luogo='',$professione='')
 	{
 		
 		$nome= $this->real_escape_string($nome);
@@ -108,7 +108,7 @@ class DB extends mysqli{
 		
 		$cards = array();
 
-		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,luogo,img_path FROM utente u left join recensione r on u.id = r.id_utente where (nome  like '%".$nome . "%' or cognome  like '%".$nome . "%') and professione like '%".$professione . "%' and luogo like '%".$luogo . "%' group by u.id limit $limit offset $offset";
+		$sql = "SELECT FORMAT(AVG(voto), 1) as voto,u.id,nome,cognome,professione,luogo,img_path FROM utente u left join recensione r on u.id = r.id_utente where (nome  like '%".$nome . "%' or cognome  like '%".$nome . "%') and professione like '%".$professione . "%' and luogo like '%".$luogo . "%' group by u.id";
 		//var_dump($sql);
 		$query = $this->prepare($sql);
 		$query->execute();

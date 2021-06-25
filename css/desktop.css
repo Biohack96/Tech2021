@@ -516,14 +516,17 @@ ul#gruppo1, ul#gruppo2{
 	border-radius: 1em;
 	padding: 0.4em 0 0.5em 0;
 	margin: 1%;
-	width: 25%;
+	width: 20%;
 	text-align: center;
 	font-size: 80%;
 	height: 2.5em;
+	
 }
 
-span.banner_cerca{
+legend.banner_cerca{
 	font-size: 1.5em;
+	float: left;
+    height: 90%;
 }
 
     
