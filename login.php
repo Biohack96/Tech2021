@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($db->login($_POST['email'], $_POST['password'])) {
       header('Location: profilo.php?id=' . $_SESSION['user_id']);
 
-    } else header('Location: /login.php?error=1');
+    } else header('Location: login.php?error=1');
 
 
   } 

@@ -15,6 +15,14 @@ body {
 	margin-bottom: 5em;
 }
 
+input{
+	border-radius: 0.5em;
+}
+
+textarea {
+	border-radius: 0.5em;
+}
+
 *:focus {
   outline: 0.6em dashed #00ff00;
 }
@@ -185,6 +193,11 @@ ul#gruppo1, ul#gruppo2{
 	padding: 20px 0;
 	border-radius: 15px;
 	margin: 1em;
+}
+
+
+#registrazione_foto {
+	border-radius: 0;
 }
 
 #registrazione_biografia{
