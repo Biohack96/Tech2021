@@ -9,6 +9,7 @@ $db = new DB();
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
+$page_head = str_replace('<scripts />', '', $page_head);
 
 $info_utente = createInfoUtente($db);
 $page_body = str_replace('<info_utente />', $info_utente, $page_body);

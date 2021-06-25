@@ -78,6 +78,8 @@ $page_head = str_replace('<metatitle/>', "Elimina recensione - WorkerAdvisor tro
 
  $title = 'Elimina recensione';
  $page_head = str_replace('<titolo />', $title, $page_head);
+ $page_head = str_replace('<scripts />', '', $page_head);
+
 
 
 $page_body = str_replace('<content />', $content, $page_body);
