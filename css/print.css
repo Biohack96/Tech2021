@@ -1,0 +1,87 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: Verdana, Geneva, sans-serif;
+    text-decoration: none;
+    color: #000;
+}
+
+body {
+    margin-top: 10mm;
+    margin-left: 10mm;
+    margin-right: 10mm;
+    margin-bottom: 7mm;
+  }
+
+
+
+  img {
+      max-width: 5em;
+  }
+
+
+
+ #head_dx{
+     display: none;
+ }
+
+  #minimenu{
+      display: none; 
+  }
+
+  #footer {
+    text-align: center;
+    font-style: italic;
+    padding-top: 0.25em;
+    position: absolute;
+  }
+  
+  #footer a {
+    display: none;
+  }
+
+  #titolone {
+      display: none;
+  }
+
+  #profilo li {
+      padding-top: 1em;
+      padding-bottom: 1em;
+  }
+
+  #profilo img {
+      width: 5em;
+  }
+
+  #profilo_dati img {
+    width: 1.5em;
+    margin-right: 0.5em;
+}
+
+  
+  #button_modifica_profilo{
+      display: none;
+  }
+
+  #footer{
+      position: fixed;
+  }
+
+  #login_box legend{
+	font-weight: bolder;
+	font-size: x-large;
+	margin-bottom: 2em;
+}
+
+#login_button{
+    margin-top: 2em;
+}
+
+#bottone registrazione_button{
+    margin: 2em;
+}
+
+#box_registrazione legend{
+    margin-bottom: 2em;
+}
