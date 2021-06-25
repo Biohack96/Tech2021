@@ -322,6 +322,9 @@ ul#gruppo1, ul#gruppo2{
   #biografia_testo{
 	padding: 2%;
 	text-align: justify;
+	height: auto;
+	overflow: hidden;
+	word-wrap: break-word;
 }
 
   #button_modifica_profilo{
@@ -338,7 +341,7 @@ ul#gruppo1, ul#gruppo2{
 	  margin-top: 2em;
 	  background-color: #f4f4f4;
 	  padding: 5%;
-	  margin: 2em;
+	  margin: 2em 1em 1em 1em;
 	  border-radius: 2em;
   }
   
@@ -383,6 +386,8 @@ ul#gruppo1, ul#gruppo2{
 	  margin-top: 3px;
 	  margin-left: 12px;
 	  margin-bottom: 10px;
+	  overflow: hidden;
+	  word-wrap: break-word;
   }
 
   #link_elimina_recensione{

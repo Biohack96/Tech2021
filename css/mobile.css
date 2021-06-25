@@ -141,8 +141,9 @@ body {
   
  #img_profilo {
 	  float: left;
-	  width: 12em;
-	  margin: 1em 1em 0 1em;
+	  width: 80%;
+	  margin: 1em auto 0 1.5em;
+
   }
   
   #profilo_dati img{
@@ -169,6 +170,7 @@ body {
 
   #biografia{
 	  padding: 2%;
+	  margin: auto;
   }
 
   #biografia h2 {
@@ -177,8 +179,9 @@ body {
 
   #biografia_testo{
 	padding: 2%;
-	text-align: justify;
-}
+	overflow: hidden;
+	word-wrap: break-word;
+  }
 
   #button_modifica_profilo{
 	  width: unset;
@@ -284,10 +287,7 @@ body {
 }
 
 
-  textarea#commento_recensione{
-	  margin-top: 1em;
-	  width: 100%;
-  }
+  
   
   #recensione{
 	  margin: 7em 1em 5em 1em;
@@ -332,10 +332,11 @@ body {
 
 #ricerca span {
 	font-size: 1.2em;
+	
 }
 
 #button_cerca img {
-	margin-left: 5.5em;
+	margin-left: 6em;
 }
 
 .banner_cerca{
