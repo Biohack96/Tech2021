@@ -566,6 +566,10 @@ span.banner_cerca{
 	color: #ff5a00;
 }
 
+#voto_lascia_recensione input {
+	margin: 0.2em;
+}
+
 /******404*****/
 
 #_404error {
