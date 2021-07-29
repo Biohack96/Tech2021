@@ -12,7 +12,7 @@ class DB extends mysqli{
 	private $cellPattern = '/^[0-9]{7,12}$/';
 
 
-	public function __construct($host="localhost", $user="root", $pass="", $db="workeradvisor")
+	public function __construct($host="localhost", $user="ggrigole", $pass="ohGh8eexohzie5Fo", $db="ggrigole")
 	{
         parent::__construct($host, $user, $pass, $db);
 
