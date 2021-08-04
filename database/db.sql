@@ -28,10 +28,21 @@ CREATE TABLE opera (
   data_creazione     VARCHAR(2000) NOT NULL,
   id_autore          INT NOT NULL,
   id_categoria       INT NOT NULL,
+  likes              INT NOT NULL,
+  dilikes            INT NOT NULL,
   img_path           VARCHAR(256) NOT NULL,
 
   FOREIGN KEY (id_autore) REFERENCES autore(id),
   FOREIGN KEY (id_categoria) REFERENCES categoria(id)
+);
+
+CREATE TABLE commento (
+  id                 INT AUTO_INCREMENT PRIMARY KEY,
+  nickname           VARCHAR(200) NOT NULL,
+  testo_commento     VARCHAR(2000) NOT NULL,
+  id_opera           INT NOT NULL,
+
+  FOREIGN KEY (id_opera) REFERENCES opera(id)
 );
 
 
