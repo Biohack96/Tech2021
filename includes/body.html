@@ -4,18 +4,23 @@
 		<div id="titolone">
 			<h1 xml:lang="en">Share Arts</h1>
 		</div>
-    
-		<div id="usr_zone" >
-            <utente />
-		</div>
-
 	</div>
 
-    <breadcrumb />
+    <breadcrumb /> <!--generato dinamicamente con php-->
 	
-	<menu />
+	<div id="usr_zone" >
+		<utente /> <!--cambia a seconda se si è loggati o no-->
+	</div>
+
+	<ul id="menu"> <!--bisognerà disattivare con php (credo) il relativo link se si è nella relativa pagina-->
+        <li><a href=""><span xml:lang="en">Home</span></a></li>
+        <li><a href="">Tutte le opere</a></li>
+        <li><a href="">Categorie</a></li>
+        <li><a href="">Autori</a></li>
+        <li><a href="">Informazioni</a></li>
+    </ul>
 	
-    <content />
+    <content /> <!--cambia in base alla voce selezionata-->
 
     <div id="footer">
 	    <p> &copy; Giovanni Grigoletto, Christian Cinnirella, Marco Marangon, Stefano Biotto </p>
