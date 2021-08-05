@@ -16,8 +16,8 @@ CREATE TABLE autore (
 );
 
 CREATE TABLE categoria (
-    id          INT AUTO_INCREMENT PRIMARY KEY,
-    nome_cat    VARCHAR(30) NOT NULL
+  id          INT AUTO_INCREMENT PRIMARY KEY,
+  nome_cat    VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE opera (
