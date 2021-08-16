@@ -1,4 +1,4 @@
-<!-- MANCA MENU A TENDINA PER CATEGORIA -->
+
 <div class="box_registrazione_opera" id="registrazione_info_opera">
 	<form id="registrazione_opera" method="post" enctype="multipart/form-data" onsubmit="return validateProfilo()">
 	  <fieldset id="fieldset_registrazione_opera">
@@ -13,7 +13,11 @@
 		<li>
 		<label for="registrazione_categoria" class="registrazione_categoria_label" id="reg_categoria_id">Seleziona categoria</label>
 		<select name="category" id="category">
-			<options /> <!-- se possibile sarebbe comodo prendere dinamicamente con php le categorie dal db-->
+			<option>Pittura</option>
+			<option>Scultura</option>
+			<option>Digitale</option>
+			<option xml:lang="en">Street Art</option>
+			<option>Altro</option>
 		</select>
 		</li>
 
