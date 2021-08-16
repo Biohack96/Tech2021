@@ -1,39 +1,47 @@
 <!-- MANCA MENU A TENDINA PER CATEGORIA -->
-<div class="content">
 <div class="box_registrazione_opera" id="registrazione_info_opera">
 	<form id="registrazione_opera" method="post" enctype="multipart/form-data" onsubmit="return validateProfilo()">
-	<fieldset id="fieldset_registrazione_opera" xml:lang="en">
-	<legend class="fieldset_registrazione_opera"><titolo /></legend>
-	<ul id="gruppo1">
+	  <fieldset id="fieldset_registrazione_opera">
+	  <legend class="fieldset_registrazione_opera"><titolo /></legend>
+	  <ul>
+
 		<li>
-		<label for="registrazione_titolo" class="registrazione_titolo_label" id="reg_titolo_id">Titolo:</label>
+		<label for="registrazione_titolo" class="registrazione_titolo_label" id="reg_titolo_id">Titolo dell'opera:</label>
 		<input type="text" class="registrazione_field" id="registrazione_nome" name="titolo" value="<titolo />"></input>
 		</li>
+
 		<li>
-		<label for="registrazione_anno" class="registrazione_label" id="reg_data_id">Data creazione:</label>
+		<label for="registrazione_categoria" class="registrazione_categoria_label" id="reg_categoria_id">Seleziona categoria</label>
+		<select name="category" id="category">
+			<options /> <!-- se possibile sarebbe comodo prendere dinamicamente con php le categorie dal db-->
+		</select>
+		</li>
+
+		<li>
+		<label for="registrazione_anno" class="registrazione_label" id="reg_data_id">Anno di creazione:</label>
 		<input type="number" class="registrazione_field" id="registrazione_anno" name="anno_creazione" value="<anno_creazione/>"></input>
 		</li>
-	</ul>
-	</fieldset>
-	</div>
 	
-	<div id="registrazione_breve_bio_opera">
-	<label for="registrazione_desc_breve_opera" class="registrazione_label" id="desc_breve_id">Descrizione breve dell'opera: <desc_breve_opera /> </label>
-		<textarea id="registrazione_desc_breve_opera" name="bio_breve" rows="10" cols="20" maxlength="100"><bio_opera_breve /></textarea>
-	<br/> <!-- ho messo un maxlength, per evitare alt troppo lunghi, vedete voi se è meglio lasciarlo o meno -->
+		<li>
+		<label for="registrazione_desc_breve_opera" class="registrazione_label" id="desc_breve_id">Descrizione breve dell'opera: <desc_breve_opera /> </label>
+		<textarea id="registrazione_desc_breve_opera" name="bio_breve" rows="1" cols="60" maxlength="100"><bio_opera_breve /></textarea>
+		</li>
 
-	<div id="registrazione_bio_opera">
-	<label for="registrazione_desc_opera" class="registrazione_label" id="desc_id">Informazioni sull'opera: <desc_opera /> </label>
+		<li>
+		<label for="registrazione_desc_opera" class="registrazione_label" id="desc_id">Informazioni sull'opera: <desc_opera /> </label>
 		<textarea id="registrazione_desc_opera" name="bio" rows="10" cols="60"><bio_opera /></textarea>
-	<br/>
+		</li>
 
-	<label for="registrazione_foto_opera" class="registrazione_label" id="foto_id">Immagine dell'opera:</label>
-	<input type="file" id="registrazione_foto_opera" name="img" accept=".png, .jpg, .jpeg"></input>
-	<br/>
-	<input type="submit" class="bottone registrazione_button" id ="conf_registrazione" name="registrazione" value="<conferma_button />" tabindex="23"/>
-	</fieldset>
+		<li>
+		<label for="registrazione_foto_opera" class="registrazione_label" id="foto_id">Immagine dell'opera:</label>
+		<input type="file" id="registrazione_foto_opera" name="img" accept=".png, .jpg, .jpeg"></input>
+		</li>
+	
+	  </ul>
+
+	  <input type="submit" class="bottone registrazione_button" id ="conf_registrazione" name="registrazione" value="<conferma_button />" tabindex="23"/>
+
+	  </fieldset>
+
 	</form>
-	</br>
-	</div>
-	</div>
 </div>
