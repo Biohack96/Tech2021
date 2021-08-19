@@ -11,8 +11,9 @@ $title = 'Share Arts';
 
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
-$page_body = file_get_contents('includes/body.html');
-$content   = file_get_contents('includes/registrazione.html');
+$page_body = file_get_contents('includes/body.html'); 
+$content   = file_get_contents('includes/login.html'); //login
+$content  .= file_get_contents('includes/registrazione.html'); //registrazione
 
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
