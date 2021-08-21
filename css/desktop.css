@@ -1,0 +1,116 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+html {
+    background-image: url("../img/background.jpg");
+}
+
+body {
+    background-color: #fafafa;
+    margin: 0 13em;
+}
+
+#titolone {
+    padding: 1.5em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#breadcrumb {
+    background-color: darkblue;
+    color: white;
+    padding: 1em;
+}
+
+/****** menu ******/
+
+#menubox {
+    margin: 1em;
+    padding: 1em;
+    background-color: rgb(33, 201, 0);
+    float: left;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+#menubox ul {
+    list-style-type: none;
+    padding-top: 0.5em;
+}
+
+#menubox li {
+    padding: 0.3em 0;
+}
+
+#menubox p {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/***** contenuto ****/
+
+#contenuto {
+    margin: 2em;
+}
+
+
+/***** login e registrazione ****/
+
+#fieldset_login legend {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom: 1em;
+}
+
+#info_login {
+    list-style-type: none;
+    padding-bottom: 1em;
+}
+
+#info_login li {
+    padding: 0.3em 0;
+}
+
+#registrazione_e_login {
+    padding-bottom: 3em;
+}
+
+#login_button {
+    background-color: rgb(228, 24, 150);
+    padding: 0.5em 1em;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+#fieldset_registrazione p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#fieldset_registrazione ul {
+    padding-top: 1em;
+    list-style-type: none;
+}
+
+#fieldset_registrazione li {
+    padding: 0.3em 0;
+}
+
+#conf_registrazione {
+    background-color: rgb(228, 24, 150);
+    padding: 0.5em 1em;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+
+/***** footer *****/
+
+#footer {
+    text-align: center;
+    padding: 1em
+}
