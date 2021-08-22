@@ -39,7 +39,7 @@ class DB extends mysqli{
 
     public function getOpereByCategoria($categoria)
 	{
-		$sql = "SELECT titolo, img_path, o.id, username FROM opera o JOIN autore a ON o.id_categoria=a.id WHERE o.id_categoria=?";
+		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short FROM opera o JOIN autore a ON o.id_categoria=a.id WHERE o.id_categoria=?";
 		$query = $this->prepare($sql);
         $query->bind_param("i", $categoria);
 		$query->execute();
