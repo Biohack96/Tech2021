@@ -107,6 +107,16 @@ body {
     font-weight: bold;
 }
 
+/*****opere******/
+
+.carte {
+    display: inline-block;
+}
+
+.carte img {
+    height: 10em;
+}
+
 
 /***** footer *****/
 

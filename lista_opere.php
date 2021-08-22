@@ -8,7 +8,7 @@ session_start();
 
 // Titolo della pagina
 
-$title = 'Autori - Share Arts';
+$title = 'Opere - Share Arts';
 
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
