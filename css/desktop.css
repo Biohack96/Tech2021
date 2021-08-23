@@ -11,7 +11,8 @@ html {
 
 body {
     background-color: #fafafa;
-    margin: 0 13em;
+    margin: 0 10%;
+    height: auto;
 }
 
 #titolone {
@@ -31,9 +32,14 @@ body {
 #menubox {
     margin: 1em;
     padding: 1em;
-    background-color: rgb(33, 201, 0);
+    background-color: rgb(0, 110, 0);
     float: left;
     font-weight: bold;
+    color: rgb(231, 255, 94);
+    border-radius: 1em;
+}
+
+#menubox a {
     color: whitesmoke;
 }
 
@@ -49,12 +55,39 @@ body {
 #menubox p {
     font-size: 1.5em;
     text-align: center;
+    color: black;
 }
-
-/***** contenuto ****/
 
 #contenuto {
     margin: 2em;
+    margin-left: 15em;
+}
+
+
+/***** elenchi autori e categorie ****/
+
+.section_title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(138, 0, 138);
+    padding: 0 0 1em 1em;
+}
+
+
+.elenco ul {
+    padding-top: 1em;
+    text-align: center;
+    list-style-type: none;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.elenco li {
+    padding: 0.3em;
+}
+
+.elenco a {
+    color: black;
 }
 
 
@@ -87,8 +120,9 @@ body {
 }
 
 #fieldset_registrazione p {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
+    width: 80%;
 }
 
 #fieldset_registrazione ul {
@@ -107,14 +141,29 @@ body {
     font-weight: bold;
 }
 
+#registrazione_biografia {
+    width: 95%;
+}
+
 /*****opere******/
 
 .carte {
     display: inline-block;
+    padding: 1em;
+
 }
 
 .carte img {
     height: 10em;
+}
+
+#opera_tit {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+#opera_aut {
+    font-size: 0.6em;
 }
 
 
