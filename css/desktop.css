@@ -157,12 +157,12 @@ body {
     height: 10em;
 }
 
-#opera_tit {
+.opera_tit {
     font-size: 0.8em;
     font-weight: bold;
 }
 
-#opera_aut {
+.opera_aut {
     font-size: 0.6em;
 }
 

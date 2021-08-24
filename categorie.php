@@ -70,6 +70,7 @@ else {
             $op = str_replace("<Titolo/>", $opera['titolo'], $op);
             $op = str_replace("<descrizione/>", $opera['descrizione_short'], $op);
             $op = str_replace("<Nomeutente/>", $opera['username'], $op);
+            $op = str_replace("<Categoria/>", "", $op);
             $op = str_replace('<tabindex/>', $counter, $op);
             $lista_opere .= $op;
 			$counter++;

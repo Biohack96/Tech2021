@@ -1,10 +1,10 @@
 <?php
 session_start();
-// require_once('includes/DB.php');
+require_once('includes/DB.php');
 // require_once('includes/create_info_utente.php');
 
 // Oggetto di accesso al database
-// $db = new DB();
+$db = new DB();
 
 // Titolo della pagina
 
@@ -19,10 +19,34 @@ $content = file_get_contents('includes/opere_list.html');
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
-$page_body = str_replace("<breadcrumb />", "", $page_body);  	// da aggiungere
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 
-// $content = str_replace("<authors />", "", $page_head);          //da sostituire con lista degli autori
+$page_body = str_replace("<breadcrumb />", "Tutte le opere", $page_body);
+$content = str_replace("<section_name />", "Tutte le opere", $content);
+
+$counter = 5; // TODO: esempio, da cambiare
+
+$opere = $db->getAllOpere();
+$lista_opere = '';
+
+if($opere != null) {
+
+    foreach($opere as $opera){
+
+        $op = file_get_contents('includes/opere_card.html');
+        $op = str_replace("<id_opera/>", $opera['id'], $op);
+        $op = str_replace("<Path/>", $opera['img_path'], $op);
+        $op = str_replace("<Titolo/>", $opera['titolo'], $op);
+        $op = str_replace("<descrizione/>", $opera['descrizione_short'], $op);
+        $op = str_replace("<Nomeutente/>", $opera['username'], $op);
+        $op = str_replace("<Categoria/>", $opera['nome_categoria'], $op);
+        $op = str_replace('<tabindex/>', $counter, $op);
+        $lista_opere .= $op;
+        $counter++;
+}
+
+$content = str_replace("<opere/>", $lista_opere, $content);
+}
 
 // Disattiva link circolare
 $page_body = str_replace('<li><a href="lista_opere.php">Tutte le opere</a></li>', '<li>Tutte le opere</li>', $page_body);		// da aggiungere dinamicamente
