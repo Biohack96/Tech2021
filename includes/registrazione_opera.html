@@ -1,35 +1,36 @@
 
 <div class="box_registrazione_opera" id="registrazione_info_opera">
-	<form id="registrazione_opera" method="post" enctype="multipart/form-data" onsubmit="return validateProfilo()">
+	<form id="registrazione_opera" name="nuova_opera" method="post" enctype="multipart/form-data">
 	  <fieldset id="fieldset_registrazione_opera">
 	  <legend class="fieldset_registrazione_opera"><titolo /></legend>
 	  <ul>
 
 		<li>
 		<label for="registrazione_titolo" class="registrazione_titolo_label" id="reg_titolo_id">Titolo dell'opera:</label>
-		<input type="text" class="registrazione_field" id="registrazione_nome" name="titolo" value="<titolo />"></input>
+		<input type="text" class="registrazione_field" id="registrazione_titolo" name="titolo"></input>
 		</li>
 
 		<li>
 		<label for="registrazione_categoria" class="registrazione_categoria_label" id="reg_categoria_id">Seleziona categoria</label>
 		<select name="category" id="category">
-			<options /> <!--elenco  dinamico preso dal db-->
+			<option>-</option>
+			<options />
 		</select>
 		</li>
 
 		<li>
 		<label for="registrazione_anno" class="registrazione_label" id="reg_data_id">Anno di creazione:</label>
-		<input type="number" class="registrazione_field" id="registrazione_anno" name="anno_creazione" value="<anno_creazione/>"></input>
+		<input type="number" class="registrazione_field" id="registrazione_anno" name="anno_creazione"></input>
 		</li>
 	
 		<li>
-		<label for="registrazione_desc_breve_opera" class="registrazione_label" id="desc_breve_id">Descrizione breve dell'opera: <desc_breve_opera /> </label>
-		<textarea id="registrazione_desc_breve_opera" name="bio_breve" rows="1" cols="60" maxlength="100"><bio_opera_breve /></textarea>
+		<label for="registrazione_desc_breve_opera" class="registrazione_label" id="desc_breve_id">Descrizione breve dell'opera:</label>
+		<textarea id="registrazione_desc_breve_opera" name="desc_breve" rows="1" cols="60" maxlength="100"></textarea>
 		</li>
 
 		<li>
-		<label for="registrazione_desc_opera" class="registrazione_label" id="desc_id">Informazioni sull'opera: <desc_opera /> </label>
-		<textarea id="registrazione_desc_opera" name="bio" rows="10" cols="60"><bio_opera /></textarea>
+		<label for="registrazione_desc_opera" class="registrazione_label" id="desc_id">Informazioni sull'opera:</label>
+		<textarea id="registrazione_desc_opera" name="desc" rows="10" cols="60"></textarea>
 		</li>
 
 		<li>
@@ -39,7 +40,7 @@
 	
 	  </ul>
 
-	  <input type="submit" class="bottone registrazione_button" id ="conf_registrazione" name="registrazione" value="<conferma_button />" tabindex="23"/>
+	  <input type="submit" class="bottone registrazione_button" id ="conf_registrazione" name="registrazione" value="Carica" tabindex="23"/>
 
 	  </fieldset>
 

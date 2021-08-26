@@ -1,6 +1,10 @@
 <?php
 class DB extends mysqli{
 
+	private $imgDir = 'img/upload/';
+	private $max_img_size = 3000000; // 3MB
+	private $perm_img_format = array(IMAGETYPE_GIF , IMAGETYPE_JPEG , IMAGETYPE_PNG);
+
 
 	public function __construct($host="localhost", $user="root", $pass="", $db="sharearts")
 	{
@@ -111,5 +115,37 @@ class DB extends mysqli{
 
 		return $cat;
     }
+
+
+	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
+
+		if(!empty($img))
+		{
+			$img_format = exif_imagetype($img);
+			if(!in_array($img_format , $this->perm_img_format)) {$error[] = 'Formato immagine errato, inserire un immagine in formato PNG o JPEG';} 	 // verifica se è un immagine
+			if (filesize($img) > $this->max_img_size) {$error[] = 'Immagine troppo grande (max: 3MB)';}
+			$hash = hash_file('sha256', $img);
+			if (!move_uploaded_file($img, $this->imgDir.$hash)) {$error[] = "Impossibile spostare l'immagine";}
+			$img_path = $this->imgDir.$hash;
+			
+		}
+
+        if(!empty($img)){
+			$sql = "INSERT INTO opera VALUES (NULL,?,?,?,?,?,?,?);";
+			
+			$query = $this->prepare($sql);
+			$query->bind_param("ssssiis",$titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img_path);
+		
+			if($query->execute())
+			{
+				$res = $this->affected_rows;
+				$query->close();
+				return (bool)$res;
+			}
+		}
+	else return false;
+		
+}
+
 
 }
