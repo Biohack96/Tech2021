@@ -130,7 +130,7 @@ class DB extends mysqli{
 			
 		}
 
-        if(!empty($img)){
+        if(!empty($img_path)){
 			$sql = "INSERT INTO opera VALUES (NULL,?,?,?,?,?,?,?);";
 			
 			$query = $this->prepare($sql);
