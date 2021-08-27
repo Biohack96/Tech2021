@@ -117,6 +117,28 @@ class DB extends mysqli{
     }
 
 
+	public function getOperaById($id = null)
+	{
+        $sql = "SELECT titolo, descrizione_short, descrizione, data_creazione, img_path, username, nome_categoria 
+		FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE o.id=?";
+		$query = $this->prepare($sql);
+        $query->bind_param("i", $id);
+		$query->execute();
+		$result = $query->get_result();
+
+        if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$cat = $result->fetch_assoc(); /*traformo il risultato della query in un array associativo*/
+
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+
+		$query->close();
+		$result->free();
+
+		return $cat;
+    }
+
 	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
 
 		if(!empty($img))
