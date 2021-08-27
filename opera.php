@@ -32,6 +32,7 @@ $content = str_replace("<section_name />", "Tutte le opere", $content);
 
 $counter = 5; // TODO: esempio, da cambiare
 
+// TODO: aggiungere gestione del button elimina
 
 $content = str_replace("<Path/>", $opera['img_path'], $content);
 $content = str_replace("<img_description/>", $opera['descrizione_short'], $content);
