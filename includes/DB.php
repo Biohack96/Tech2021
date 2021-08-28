@@ -139,6 +139,34 @@ class DB extends mysqli{
 		return $cat;
     }
 
+
+	public function getAutori(){
+
+		$sql = "SELECT * FROM autore";
+		$query = $this->prepare($sql);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$rec = array();
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+		while ($row = $result->fetch_assoc())
+			{
+				$rec[] = $row;
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $rec;
+
+	}
+
+
 	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
 
 		if(!empty($img))

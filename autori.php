@@ -1,10 +1,10 @@
 <?php
 session_start();
-// require_once('includes/DB.php');
+require_once('includes/DB.php');
 // require_once('includes/create_info_utente.php');
 
 // Oggetto di accesso al database
-// $db = new DB();
+$db = new DB();
 
 // Titolo della pagina
 
@@ -22,7 +22,25 @@ $page_head = str_replace("<scripts />", "", $page_head);
 $page_body = str_replace("<breadcrumb />", "", $page_body);  	// da aggiungere
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 
-// $content = str_replace("<authors />", "", $page_head);          //da sostituire con lista degli autori
+
+$autori = $db->getAutori();
+
+$lista_autori = '';
+
+    if($autori != null) {
+
+        // Per ogni autore aggiunge un elemento alla lista
+        foreach($autori as $autore){
+
+            $aut = file_get_contents('includes/nome_autore_inlist.html');
+            $aut = str_replace("<username />", $autore['username'], $aut);
+            $aut = str_replace("<id_aut />", $autore['id'], $aut);
+            $lista_autori .= $aut;
+    }
+
+    $content = str_replace("<authors/>", $lista_autori, $content);
+    }
+
 
 // Disattiva link circolare
 $page_body = str_replace('<li><a href="autori.php">Autori</a></li>', '<li>Autori</li>', $page_body);		// da aggiungere dinamicamente
