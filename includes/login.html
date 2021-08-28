@@ -2,19 +2,24 @@
 	<div id="login_box">
 	  <errorLogin />
 	  <form id="login" action="login.php" method="post" onsubmit="return validateLogin()">
-		<fieldset id="fieldset_login">
-		  <legend class="post_titolo">Login</legend>
+		<fieldset id="fieldset_login" class="fieldset_form">
+			
+		  <legend>Login</legend>
+
 		  <ul id="info_login">
+
 			<li>
-				<label for="login_username" class="registrazione_label" id="login_username_id" xml:lang="en">Username:</label>
-				<input type="text" class="registrazione_field" id="login_username" name="username" ></input>
+				<label for="login_username" id="login_username_id" xml:lang="en">Username:</label>
+				<input type="text" id="login_username" name="username" ></input>
 			</li>
+
 			<li>
-			  <label for="login_password" class="registrazione_field" id="logn_password_id" xml:lang ="en">Password:</label>
-			  <input type="password"  class="registrazione_field" id="login_password" name="password" ></input>
+			  <label for="login_password" id="logn_password_id" xml:lang ="en">Password:</label>
+			  <input type="password" id="login_password" name="password" ></input>
 			</li>
 		  </ul>
-		  <input type="submit" id= "login_button" class="bottone registrazione_button" name="login" value="Accedi"/>
+
+		  <input type="submit" id="login_button" class="submit_button" name="login" value="Accedi"/>
   
 		</fieldset>
   

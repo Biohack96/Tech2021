@@ -1,34 +1,34 @@
-<div class="box_registrazione" id="registrazione_info">
+<div id="registrazione_info">
 	<form id="registrazione" action="registrazione.php" method="post" enctype="multipart/form-data" onsubmit="return validateProfilo()">
-	<fieldset id="fieldset_registrazione">
+	<fieldset id="fieldset_registrazione" class="fieldset_form">
 		<p>Non hai un account?</p>
 		<p>Registrati ed inizia anche tu a condividere le tue opere!</p>
 
 	<ul>
 
 		<li>
-		<label for="registrazione_nome" class="registrazione_label" id="reg_nome_id" xml:lang="en">Username:</label>
-		<input type="text" class="registrazione_field" id="registrazione_nome" name="nome" value="<nome />"></input>
+		<label for="registrazione_nome" id="reg_nome_id" xml:lang="en">Username:</label>
+		<input type="text" id="registrazione_nome" name="nome" value="<nome />"></input>
 		</li>
 
 		<li>
-		<label for="registrazione_password" class="registrazione_label" xml:lang="en">Password:</label>
-		<input type="password" class="registrazione_field" name="password" id="registrazione_password"></input>
+		<label for="registrazione_password" xml:lang="en">Password:</label>
+		<input type="password" name="password" id="registrazione_password"></input>
 		</li>
 
 		<li>	
-		<label for="registrazione_conferma_password" class="registrazione_label" >Conferma <span xml:lang="en">password:</span></label>
+		<label for="registrazione_conferma_password"> Conferma <span xml:lang="en">password:</span></label>
 		<input type="password" class="registrazione_field" name="conferma_password" id="registrazione_conferma_password"></input>
 		</li>
 	
 		<li>
-		<label for="registrazione_biografia" class="registrazione_label" id="bio_id">Informazioni sull'utente: <desc /> </label>
-		<textarea id="registrazione_biografia" name="bio" rows="10" cols="60"><bio /></textarea>
+		<label for="registrazione_biografia" id="bio_id">Informazioni sull'utente: <desc /> </label>
+		<textarea class="big_text" name="bio" rows="10" cols="60" placeholder="inserisci a piacere tutte le informazioni su di te che ritieni opportune"><bio /></textarea>
 		</li>
 
 	</ul>
 
-	<input type="submit" class="bottone registrazione_button" id ="conf_registrazione" name="registrazione" value="Registrati"/>
+	<input type="submit" class="submit_button" id ="conf_registrazione" name="registrazione" value="Registrati"/>
 
 	</fieldset>
 

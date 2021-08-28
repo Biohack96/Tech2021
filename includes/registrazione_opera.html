@@ -1,17 +1,19 @@
 
-<div class="box_registrazione_opera" id="registrazione_info_opera">
+<div id="registrazione_info_opera">
 	<form id="registrazione_opera" name="nuova_opera" method="post" enctype="multipart/form-data">
-	  <fieldset id="fieldset_registrazione_opera">
-	  <legend class="fieldset_registrazione_opera"><titolo /></legend>
+	  <fieldset id="fieldset_registrazione_opera" class="fieldset_form">
+		
+	<legend>Carica la tua opera</legend>
+	  
 	  <ul>
 
 		<li>
-		<label for="registrazione_titolo" class="registrazione_titolo_label" id="reg_titolo_id">Titolo dell'opera:</label>
-		<input type="text" class="registrazione_field" id="registrazione_titolo" name="titolo"></input>
+		<label for="registrazione_titolo" id="reg_titolo_id">Titolo dell'opera:</label>
+		<input type="text" id="registrazione_titolo" name="titolo"></input>
 		</li>
 
 		<li>
-		<label for="registrazione_categoria" class="registrazione_categoria_label" id="reg_categoria_id">Seleziona categoria</label>
+		<label for="registrazione_categoria" id="reg_categoria_id">Seleziona categoria</label>
 		<select name="category" id="category">
 			<option>-</option>
 			<options />
@@ -19,28 +21,28 @@
 		</li>
 
 		<li>
-		<label for="registrazione_anno" class="registrazione_label" id="reg_data_id">Anno di creazione:</label>
-		<input type="number" class="registrazione_field" id="registrazione_anno" name="anno_creazione"></input>
+		<label for="registrazione_anno" id="reg_data_id">Anno di creazione:</label>
+		<input type="number" id="registrazione_anno" name="anno_creazione"></input>
 		</li>
 	
 		<li>
-		<label for="registrazione_desc_breve_opera" class="registrazione_label" id="desc_breve_id">Descrizione breve dell'opera:</label>
-		<textarea id="registrazione_desc_breve_opera" name="desc_breve" rows="1" cols="60" maxlength="100"></textarea>
+		<label for="registrazione_desc_breve_opera" id="desc_breve_id">Descrizione breve:</label>
+		<textarea id="registrazione_desc_breve_opera" class="big_text" name="desc_breve" rows="1" cols="60" maxlength="100" placeholder="come descriveresti la tua opera in poche e semplici parole?"></textarea>
 		</li>
 
 		<li>
-		<label for="registrazione_desc_opera" class="registrazione_label" id="desc_id">Informazioni sull'opera:</label>
-		<textarea id="registrazione_desc_opera" name="desc" rows="10" cols="60"></textarea>
+		<label for="registrazione_desc_opera" id="desc_id">Informazioni sull'opera:</label>
+		<textarea class="big_text" name="desc" rows="10" cols="60" placeholder="descrizione estesa a piacere"></textarea>
 		</li>
 
 		<li>
-		<label for="registrazione_foto_opera" class="registrazione_label" id="foto_id">Immagine dell'opera:</label>
+		<label for="registrazione_foto_opera" id="foto_id">Carica immagine:</label>
 		<input type="file" id="registrazione_foto_opera" name="img" accept=".png, .jpg, .jpeg"></input>
 		</li>
 	
 	  </ul>
 
-	  <input type="submit" class="bottone registrazione_button" id ="conf_registrazione" name="registrazione" value="Carica" tabindex="23"/>
+	  <input type="submit" class="submit_button" id="conf_registrazione" name="registrazione" value="Conferma" tabindex="23"/>
 
 	  </fieldset>
 

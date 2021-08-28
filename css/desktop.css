@@ -9,6 +9,10 @@ html {
     background-image: url("../img/background.jpg");
 }
 
+.bolded {
+    font-weight: bold;
+}
+
 body {
     background-color: #fafafa;
     margin: 0 10%;
@@ -16,7 +20,7 @@ body {
 }
 
 #titolone {
-    padding: 1.5em;
+    padding: 1em;
     font-size: 1.5em;
     text-align: center;  
 }
@@ -35,16 +39,33 @@ body {
     padding: 1em;
 }
 
+#contenuto {
+    margin: 2em;
+    margin-left: 15em;
+}
+
+
+
 /****** menu ******/
 
-#menubox {
+.box {
     margin: 1em;
     padding: 1em;
-    background-color: rgb(0, 110, 0);
-    float: left;
+    background-color: rgb(0, 110, 0);   
     font-weight: bold;
     color: rgb(231, 255, 94);
     border-radius: 1em;
+    
+}
+
+#usr_zone {
+    margin-top: 1em;
+}
+
+#navigator {
+    float: left;
+    padding: 1em 0 0 1em;
+    width: 13em;
 }
 
 #menubox a {
@@ -64,11 +85,6 @@ body {
     font-size: 1.5em;
     text-align: center;
     color: black;
-}
-
-#contenuto {
-    margin: 2em;
-    margin-left: 15em;
 }
 
 
@@ -101,56 +117,51 @@ body {
 
 /***** login e registrazione ****/
 
-#fieldset_login legend {
-    font-size: 1.5em;
-    font-weight: bold;
-    padding-bottom: 1em;
-}
-
-#info_login {
-    list-style-type: none;
-    padding-bottom: 1em;
-}
-
-#info_login li {
-    padding: 0.3em 0;
-}
-
 #registrazione_e_login {
     padding-bottom: 3em;
 }
 
-#login_button {
-    background-color: rgb(228, 24, 150);
-    padding: 0.5em 1em;
-    color: whitesmoke;
+.fieldset_form legend {
+    font-size: 1.5em;
     font-weight: bold;
 }
 
-#fieldset_registrazione p {
+.fieldset_form p {
     font-size: 1em;
     font-weight: bold;
     width: 80%;
 }
 
-#fieldset_registrazione ul {
+.fieldset_form ul {
     padding-top: 1em;
     list-style-type: none;
 }
 
-#fieldset_registrazione li {
+.fieldset_form li {
     padding: 0.3em 0;
 }
 
-#conf_registrazione {
+.submit_button {
     background-color: rgb(228, 24, 150);
     padding: 0.5em 1em;
+    margin: 1em 0;
     color: whitesmoke;
     font-weight: bold;
 }
 
-#registrazione_biografia {
+.big_text {
     width: 95%;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    font-size: 0.7em;
+}
+
+#registrazione_foto_opera {
+    margin-top: 0.5em;
+}
+
+#registrazione_anno {
+    width: 7em;
 }
 
 /*****opere******/
@@ -176,6 +187,20 @@ body {
 
 .opera_cat {
     font-size: 0.7em;
+}
+
+.bigopera {
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+#profilo_dati {
+    list-style-type: none;
+    padding-bottom: 2em;
+}
+
+#profilo_dati li {
+    padding-top: 0.4em;
 }
 
 

@@ -20,13 +20,15 @@ body {
 
 /***** menu *****/
 
-#menubox {
+#navigator {
     float: none;
     text-align: center;
+    padding: 0;
+    width: auto;
 }
 
 #contenuto {
-    margin-left: 1em;
+    margin: 1em;
     text-align: center;
 }
 
@@ -39,19 +41,30 @@ body {
 
 /***** login e registrazione ****/
 
-#fieldset_registrazione p {
-    font-size: 1em;
+.fieldset_form p {
     width: 95%;
 }
 
-#registrazione_info {
+.fieldset_form {
     text-align: left;
+}
+
+#registrazione_desc_breve_opera {
+    height: 3em;
 }
 
 
 /**** opere ****/
 
 .carte img {
-    width: 90%;
+    width: 100%;
     height: auto;
+}
+
+#descrizione {
+    margin: 1em;
+}
+
+.description_text {
+    text-align: justify;
 }
