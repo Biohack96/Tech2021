@@ -25,6 +25,10 @@ $page_head = str_replace("<scripts />", "", $page_head);
 
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 
+if (!isset($_SESSION['user_id'])){
+    $content = str_replace("<button_elimina />", "", $content);
+}
+
 $opera = $db->getOperaById($_GET['id']);
 
 $page_body = str_replace("<breadcrumb />", "Categorie > " . $opera['nome_categoria'], $page_body);
