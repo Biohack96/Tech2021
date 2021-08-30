@@ -1,0 +1,207 @@
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+html {
+    background-image: none;
+}
+
+.bolded {
+    font-weight: bold;
+}
+
+body {
+    background-color: #fafafa;
+    margin: 0;
+    min-height: 100vh;
+    height: auto;
+}
+
+#titolone {
+    padding: 1em;
+    font-size: 1.5em;
+    text-align: center;  
+}
+
+#titolone h1 {
+    display: inline-block;
+}
+
+#titolone img {
+    height: 1.7em;
+}
+
+#breadcrumb {
+    display: none;
+}
+
+#contenuto {
+    margin: 2em;
+}
+
+
+
+/****** menu ******/
+
+.box {
+    margin: 1em;
+    padding: 1em;
+    background-color: rgb(0, 110, 0);   
+    font-weight: bold;
+    color: rgb(231, 255, 94);
+    border-radius: 1em;
+    
+}
+
+#usr_zone {
+    margin-top: 1em;
+}
+
+#navigator {
+    display: none;
+}
+
+#menubox a {
+    color: whitesmoke;
+}
+
+#menubox ul {
+    list-style-type: none;
+    padding-top: 0.5em;
+}
+
+#menubox li {
+    padding: 0.3em 0;
+}
+
+#menubox p {
+    font-size: 1.5em;
+    text-align: center;
+    color: black;
+}
+
+
+/***** elenchi autori e categorie ****/
+
+.section_title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(138, 0, 138);
+    padding: 0 0 1em 1em;
+}
+
+
+.elenco ul {
+    padding-top: 1em;
+    text-align: center;
+    list-style-type: none;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.elenco li {
+    padding: 0.3em;
+}
+
+.elenco a {
+    color: black;
+}
+
+
+/***** login e registrazione ****/
+
+#registrazione_e_login {
+    padding-bottom: 3em;
+}
+
+.fieldset_form legend {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.fieldset_form p {
+    font-size: 1em;
+    font-weight: bold;
+    width: 80%;
+}
+
+.fieldset_form ul {
+    padding-top: 1em;
+    list-style-type: none;
+}
+
+.fieldset_form li {
+    padding: 0.3em 0;
+}
+
+.submit_button {
+    background-color: rgb(228, 24, 150);
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+.big_text {
+    width: 95%;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    font-size: 0.7em;
+}
+
+#registrazione_foto_opera {
+    margin-top: 0.5em;
+}
+
+#registrazione_anno {
+    width: 7em;
+}
+
+/*****opere******/
+
+.carte {
+    display: inline-block;
+    padding: 1em;
+
+}
+
+.carte img {
+    height: 10em;
+}
+
+.opera_tit {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.opera_aut {
+    font-size: 0.6em;
+}
+
+.opera_cat {
+    font-size: 0.7em;
+}
+
+.bigopera {
+    width: 100%;
+    padding-bottom: 1em;
+}
+
+#profilo_dati {
+    list-style-type: none;
+    padding-bottom: 2em;
+}
+
+#profilo_dati li {
+    padding-top: 0.4em;
+}
+
+
+/***** footer *****/
+
+#footer {
+    display: none;
+}

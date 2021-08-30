@@ -1,17 +1,21 @@
 <div id="autore">
 
-    <img scr="<Path/>" alt="<img_description/>" /> <!-- facoltativa -->
+    <div id="dati_autore"> <!--presi dal db-->
 
-    <ul id="dati_autore"> <!--presi dal db--> <!--va bene se ho cambiato l'id o lascio profilo_dati?-->
-        <li>Username: <username /></li>
-        <li>Informazioni: <informazioni/></li>
-    </ul>
+        <h1><username /></h1>
+
+        <p class="bolded">Informazioni: </p> 
+        <p><informazioni/></p>
+
+    </div>
+
+    <button_inserisci_opera /> <!--presenti solo se loggato ed è la mia pagina-->
+    <button_modifica_profilo />
 
     <div id="opere">
-        <p>Opere</p>
+        <p class="bolded">Opere</p>
         <opere /> <!-- dal db prende opere_list.html e le filtra per autore -->
     </div>
 
-    <button_inserisci_opera />
-    <button_modifica_profilo />	
+    	
 </div>
