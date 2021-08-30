@@ -95,6 +95,34 @@ class DB extends mysqli{
 
     }
 
+	public function getOpereByAuthor($autore)
+	{
+		$sql = "SELECT titolo, img_path, o.id, descrizione_short, nome_categoria FROM opera o JOIN categoria c ON o.id_categoria=c.id WHERE o.id_autore=?";
+		$query = $this->prepare($sql);
+        $query->bind_param("i", $autore);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$op = array();
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+		while ($row = $result->fetch_assoc())
+			{
+				$op[] = $row;
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $op;
+
+    }
+
+
     public function getCategoriaName($id = null)
 	{
         $sql = "SELECT nome_categoria FROM categoria WHERE id=?";
@@ -166,6 +194,28 @@ class DB extends mysqli{
 
 	}
 
+
+	public function getAutoreById($id = null){
+
+		$sql = "SELECT * FROM autore WHERE id=?";
+		$query = $this->prepare($sql);
+		$query->bind_param("i", $id);
+		$query->execute();
+		$result = $query->get_result();
+
+        if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$aut = $result->fetch_assoc(); /*traformo il risultato della query in un array associativo*/
+
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+
+		$query->close();
+		$result->free();
+
+		return $aut;
+
+	}
 
 	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
 

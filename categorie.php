@@ -26,6 +26,7 @@ $page_body = str_replace('<li><a href="categorie.php">Categorie</a></li>', '<li>
 // Se non è settato un id mostra la lista delle categorie
 if (!isset($_GET['id'])) {
 
+    $counter = 5; // TODO: esempio, da cambiare
     $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
     $content = file_get_contents('includes/categorie_list.html');
     $categorie = $db->getListaCategorie();
@@ -40,6 +41,7 @@ if (!isset($_GET['id'])) {
             $cat = str_replace("<categoria_element />", $categoria['nome_categoria'], $cat);
             $cat = str_replace("<id_cat />", $categoria['id'], $cat);
             $lista_categorie .= $cat;
+            $counter++;
     }
 
     $content = str_replace("<categorie />", $lista_categorie, $content);

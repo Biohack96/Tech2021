@@ -14,7 +14,6 @@ $title = 'Autori - Share Arts';
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
-$content = file_get_contents('includes/autori_list.html');
 
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
@@ -22,9 +21,12 @@ $page_head = str_replace("<scripts />", "", $page_head);
 $page_body = str_replace("<breadcrumb />", "", $page_body);  	// da aggiungere
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 
-
+if (!isset($_GET['id'])){
 $autori = $db->getAutori();
 
+$content = file_get_contents('includes/autori_list.html');
+
+$counter = 5; // TODO: esempio, da cambiare
 $lista_autori = '';
 
     if($autori != null) {
@@ -36,10 +38,49 @@ $lista_autori = '';
             $aut = str_replace("<username />", $autore['username'], $aut);
             $aut = str_replace("<id_aut />", $autore['id'], $aut);
             $lista_autori .= $aut;
+            $counter++;
     }
 
     $content = str_replace("<authors/>", $lista_autori, $content);
     }
+}
+
+else {
+
+    $content = file_get_contents('includes/content_pagina_autore.html');
+
+    $a = $db->getAutoreById($_GET['id']);
+    $content = str_replace("<username />", $a['username'], $content);
+    $content = str_replace("<informazioni />", $a['bio'], $content);
+
+
+    $opere = $db->getOpereByAuthor($_GET['id']);
+    $opere_content = file_get_contents('includes/opere_list.html');
+
+    $lista_opere = '';
+    $counter = 5; // TODO da cambiare
+
+    if($opere != null) {
+
+        foreach($opere as $opera){
+
+            $op = file_get_contents('includes/opere_card.html');
+            $op = str_replace("<id_opera/>", $opera['id'], $op);
+            $op = str_replace("<Path/>", $opera['img_path'], $op);
+            $op = str_replace("<Titolo/>", $opera['titolo'], $op);
+            $op = str_replace("<descrizione/>", $opera['descrizione_short'], $op);
+            $op = str_replace("<Nomeutente/>", "", $op);
+            $op = str_replace("<Categoria/>", $opera['nome_categoria'], $op);
+            $op = str_replace('<tabindex/>', $counter, $op);
+            $lista_opere .= $op;
+            $counter++;
+    }
+
+    $opere_content = str_replace("<opere/>", $lista_opere, $opere_content);
+    }
+
+    $content = str_replace("<opere />", $opere_content, $content);
+}
 
 
 // Disattiva link circolare
