@@ -1,19 +1,21 @@
 <div id="autore">
 
-    <div id="dati_autore"> <!--presi dal db-->
+    <div id="dati_autore"> 
 
-        <h1><username /></h1>
+        <h2 class="titolo_sezione"><username /></h2>
 
         <p class="bolded">Informazioni: </p> 
         <p><informazioni /></p>
 
     </div>
 
-    <button_inserisci_opera /> <!--presenti solo se loggato ed è la mia pagina-->
-    <button_modifica_profilo />
+    <!--presenti solo se loggato ed è la mia pagina-->
+    <button_inserisci_opera /> <!-- (button_aggiungi_opera.html)-->
+    
+    <button_modifica_profilo /> <!-- (button_modifica_profilo.html)-->
 
     <div id="opere">
-        <p class="bolded">Opere</p>
+        <p class="bolded">Opere di <username />:</p>
         <opere /> <!-- dal db prende opere_list.html e le filtra per autore -->
     </div>
 

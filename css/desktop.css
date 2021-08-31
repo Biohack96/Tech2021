@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    background-color: #fafafa;
+    background-color: #f5f5f5;
     margin: 0 10%;
     min-height: 100vh;
     height: auto;
@@ -35,9 +35,10 @@ body {
 }
 
 #breadcrumb {
-    background-color: darkblue;
+    background-color: rgb(28, 28, 124);
     color: white;
     padding: 1em;
+    padding-left: 2em;
 }
 
 #contenuto {
@@ -54,7 +55,7 @@ body {
     padding: 1em;
     background-color: rgb(0, 110, 0);   
     font-weight: bold;
-    color: rgb(231, 255, 94);
+    color: rgb(236, 255, 126);
     border-radius: 1em;
     
 }
@@ -85,17 +86,17 @@ body {
 #menubox p {
     font-size: 1.5em;
     text-align: center;
-    color: black;
+    color: rgb(236, 255, 126);
 }
 
 
 /***** elenchi autori e categorie ****/
 
-.section_title {
+.titolo_sezione {
     font-size: 1.5em;
     font-weight: bold;
     color: rgb(138, 0, 138);
-    padding: 0 0 1em 1em;
+    padding: 0 0 1em 0.5em;
 }
 
 
@@ -154,7 +155,7 @@ body {
     width: 95%;
     padding: 0.5em;
     margin-top: 0.5em;
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
 
 #registrazione_foto_opera {
@@ -202,6 +203,18 @@ body {
 
 #profilo_dati li {
     padding-top: 0.4em;
+}
+
+
+/**** autore ****/
+
+#opere {
+    padding-top: 2em;
+}
+
+#autore p {
+    padding-left: 1em;
+    text-align: left;
 }
 
 

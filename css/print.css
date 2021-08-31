@@ -22,7 +22,7 @@ body {
 
 #titolone {
     padding: 1em;
-    font-size: 1.5em;
+    font-size: 0.8em;
     text-align: center;  
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 #titolone img {
-    height: 1.7em;
+    height: 1em;
 }
 
 #breadcrumb {
@@ -86,11 +86,11 @@ body {
 
 /***** elenchi autori e categorie ****/
 
-.section_title {
+.titolo_sezione {
     font-size: 1.5em;
     font-weight: bold;
     color: rgb(138, 0, 138);
-    padding: 0 0 1em 1em;
+    padding: 0 0 1em 0.5em;
 }
 
 
@@ -197,6 +197,17 @@ body {
 
 #profilo_dati li {
     padding-top: 0.4em;
+}
+
+/**** autore ****/
+
+#opere {
+    padding-top: 2em;
+}
+
+#autore p {
+    padding-left: 1em;
+    text-align: left;
 }
 
 
