@@ -5,14 +5,18 @@
 
     <ul id="profilo_dati"> 
         <li><span class="bolded">Titolo: </span> <titolo /></li>
-        <li><span class="bolded">Autore: </span> <autore /></li> <!-- mettiamo link alla relativa pagina?-->
+        <li><span class="bolded">Autore: </span> 
+            <a href=""><autore /></a> <!-- link alla pagina-->
+        </li> 
         <li><span class="bolded">Data creazione: </span> <data_creazione /></li>
-        <li><span class="bolded">Categoria: </span> <categoria /></li> <!-- mettiamo link alla relativa pagina?-->
+        <li><span class="bolded">Categoria: </span> 
+            <a href=""><categoria /></a> <!-- link alla pagina-->
+        </li> 
     </ul>
 
     <div id="descrizione">
         <p class="bolded"> Descrizione </p>
-        <p class="description_text"> <descrizione /> </p>  <!--presa dal db-->
+        <p class="description_text"> <descrizione /> </p> 
     </div>
 
     <button_elimina /> <!-- (button_elimina_opera.html) presente solo se loggato ed è mia opera-->
@@ -20,7 +24,7 @@
     <!-- (provvisorio)
 
     <div id="commenti">
-        <h2>Commenti:</h2>
+        <p>Commenti:</p>
 
         <form_insert_commento /> 
 
