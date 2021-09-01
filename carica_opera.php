@@ -44,7 +44,7 @@ if($categorie != null) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-        if (isset($_POST['registrazione'])) {
+        if (isset($_POST['registrazione_op'])) {
 
             $img_path = '';
 
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         
     
-        if( $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], 1, $_POST['category'], $img_path)){
+        if( $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], 2, $_POST['category'], $img_path)){
     
         header('Location: lista_opere.php'); // TODO: cambiare
         } else {

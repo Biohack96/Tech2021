@@ -149,6 +149,7 @@ body {
     margin: 1em 0;
     color: whitesmoke;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .big_text {
