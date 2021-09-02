@@ -147,7 +147,7 @@ class DB extends mysqli{
 
 	public function getOperaById($id = null)
 	{
-        $sql = "SELECT titolo, descrizione_short, descrizione, data_creazione, img_path, username, nome_categoria 
+        $sql = "SELECT titolo, descrizione_short, descrizione, data_creazione, img_path, username, nome_categoria, id_categoria, id_autore 
 		FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE o.id=?";
 		$query = $this->prepare($sql);
         $query->bind_param("i", $id);

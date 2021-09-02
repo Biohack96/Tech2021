@@ -18,13 +18,13 @@ $page_body = file_get_contents('includes/body.html');
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
-$page_body = str_replace("<breadcrumb />", "", $page_body);  	// da aggiungere
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 
 if (!isset($_GET['id'])){
 $autori = $db->getAutori();
 
 $content = file_get_contents('includes/autori_list.html');
+$page_body = str_replace("<breadcrumb />", "Autori", $page_body);
 
 $counter = 5; // TODO: esempio, da cambiare
 $lista_autori = '';
@@ -52,7 +52,10 @@ else {
     $a = $db->getAutoreById($_GET['id']);
     $content = str_replace("<username />", $a['username'], $content);
     $content = str_replace("<informazioni />", $a['bio'], $content);
-
+    $link = file_get_contents('includes/link.html');
+    $link = str_replace("<path />", "autori.php", $link);
+    $link = str_replace("<nome_link />", "Autori", $link);
+    $page_body = str_replace("<breadcrumb />", $link . " > " . $a['username'], $page_body);
 
     $opere = $db->getOpereByAuthor($_GET['id']);
     $opere_content = file_get_contents('includes/opere_list.html');

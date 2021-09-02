@@ -1,6 +1,6 @@
 
 <div id="registrazione_info_opera">
-	<form id="registrazione_opera" name="nuova_opera" method="post" enctype="multipart/form-data">
+	<form id="registrazione_opera" action="carica_opera.php" method="post" enctype="multipart/form-data">
 	  <fieldset id="fieldset_registrazione_opera" class="fieldset_form">
 		
 	  <legend>Carica la tua opera</legend>
@@ -14,7 +14,7 @@
 
 		<li>
 		<label for="registrazione_categoria" id="reg_categoria_id">Seleziona categoria</label>
-		<select name="category" id="category">
+		<select id="registrazione_categoria" name="category">
 			<option>-</option>
 			<options />
 		</select>
@@ -22,17 +22,17 @@
 
 		<li>
 		<label for="registrazione_anno" id="reg_data_id">Anno di creazione:</label>
-		<input type="number" id="registrazione_anno" name="anno_creazione"></input>
+		<input type="text" id="registrazione_anno" name="anno_creazione"></input>
 		</li>
 	
 		<li>
 		<label for="registrazione_desc_breve_opera" id="desc_breve_id">Descrizione breve:</label>
-		<textarea id="registrazione_desc_breve_opera" class="big_text" name="desc_breve" rows="1" cols="60" maxlength="100" placeholder="come descriveresti la tua opera in poche e semplici parole?"></textarea>
+		<textarea id="registrazione_desc_breve_opera" class="big_text" name="desc_breve" rows="1" cols="60"></textarea>
 		</li>
 
 		<li>
 		<label for="registrazione_desc_opera" id="desc_id">Informazioni sull'opera:</label>
-		<textarea class="big_text" name="desc" rows="10" cols="60" placeholder="descrizione estesa a piacere"></textarea>
+		<textarea id="registrazione_desc_opera" class="big_text" name="desc" rows="10" cols="60"></textarea>
 		</li>
 
 		<li>

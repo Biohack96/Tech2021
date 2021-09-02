@@ -54,9 +54,12 @@ else {
 
     $counter = 5; // TODO: esempio, da cambiare
     $content = file_get_contents('includes/opere_list.html');
+    $link = file_get_contents('includes/link.html');
+    $link = str_replace("<path />", "categorie.php", $link);
+    $link = str_replace("<nome_link />", "Categorie", $link);
 
     $nome_categoria = $db->getCategoriaName($_GET['id']);
-    $page_body = str_replace("<breadcrumb />", "Categorie > " . $nome_categoria['nome_categoria'], $page_body);
+    $page_body = str_replace("<breadcrumb />", $link . " > " . $nome_categoria['nome_categoria'], $page_body);
     $content = str_replace("<section_name />", $nome_categoria['nome_categoria'], $content);
 
     $opere = $db->getOpereByCategoria($_GET['id']);
