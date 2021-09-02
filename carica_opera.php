@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('includes/DB.php');
+require_once('includes/error.php');
 // require_once('includes/create_info_utente.php');
 
 // Oggetto di accesso al database
@@ -53,14 +54,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         
     
-        if( $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], 2, $_POST['category'], $img_path)){
+        $result = $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], 2, $_POST['category'], $img_path);
     
-        header('Location: lista_opere.php'); // TODO: cambiare
-        } else {
-        header('Location: categorie.php');
         }
+
+    if (is_numeric($result)) {
+        header('Location: opera.php?id=' . $result);
+    }
+    else {
+        $page_body = str_replace('<errors />', printError($result), $page_body);
     }
 }
+    
+
 
 $page_body = str_replace('<content />', $content, $page_body);
 

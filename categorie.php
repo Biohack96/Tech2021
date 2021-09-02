@@ -18,6 +18,8 @@ $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
+$page_body = str_replace('<errors />', "", $page_body);
+
 
 // Disattiva link circolare
 $page_body = str_replace('<li><a href="categorie.php">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente

@@ -24,6 +24,7 @@ $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
+$page_body = str_replace('<errors />', "", $page_body);
 
 
 if (!isset($_SESSION['user_id'])){

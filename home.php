@@ -19,6 +19,7 @@ $page_head = str_replace("<scripts />", "", $page_head);
 $page_body = str_replace("<breadcrumb />", "", $page_body);  	// da aggiungere
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 $page_body = str_replace("<content />", "", $page_body);		// da aggiungere
+$page_body = str_replace('<errors />', "", $page_body);
 
 // Disattiva link circolare
 $page_body = str_replace('<li><a href="home.php"><span xml:lang="en">Home</span></a></li>', '<li><span xml:lang="en">Home</span></li>', $page_body);		// da aggiungere dinamicamente

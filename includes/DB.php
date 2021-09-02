@@ -219,6 +219,15 @@ class DB extends mysqli{
 
 	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
 
+		$error = array();
+		if (strlen($titolo) === 0) {$error[] = "Titolo mancante, inserire un titolo";}
+		if (strlen($sht_dsc) === 0) {$error[] = "Descrizione breve mancante, inserire una descrizione breve";}
+		if (strlen($descrizione) === 0) {$error[] = "Descrizione mancante, inserire una descrizione";}
+		if (strlen($data) === 0) {$error[] = "Anno mancante, inserire un anno";}
+		if ($id_categoria === "-1") {$error[] = "Categoria mancante, selezionare una categoria";}
+		if(empty($img)) {$error[] = "Immagine mancante, inserire un'immagine";}
+		
+
 		if(!empty($img))
 		{
 			$img_format = exif_imagetype($img);
@@ -230,6 +239,8 @@ class DB extends mysqli{
 			
 		}
 
+		if(count($error)) {return $error;}
+
         if(!empty($img_path)){
 			$sql = "INSERT INTO opera VALUES (NULL,?,?,?,?,?,?,?);";
 			
@@ -238,9 +249,10 @@ class DB extends mysqli{
 		
 			if($query->execute())
 			{
+				$new_id = $this->insert_id;
 				$res = $this->affected_rows;
 				$query->close();
-				return (bool)$res;
+				return $new_id;
 			}
 		}
 	else return false;

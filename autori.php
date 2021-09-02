@@ -14,7 +14,7 @@ $title = 'Autori - Share Arts';
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
-
+$page_body = str_replace('<errors />', "", $page_body);
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 

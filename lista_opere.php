@@ -20,6 +20,7 @@ $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
+$page_body = str_replace('<errors />', "", $page_body);
 
 $page_body = str_replace("<breadcrumb />", "Tutte le opere", $page_body);
 $content = str_replace("<section_name />", "Tutte le opere", $content);
