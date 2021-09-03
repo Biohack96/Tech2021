@@ -1,5 +1,5 @@
 <body>
-<errors />
+
 	<div id="header"> 
 
 		<div id="titolone">
@@ -8,8 +8,7 @@
 		</div>
 
 		<div id="breadcrumb">
-			<p>Breadcrumb</p> <!--poi da togliere, messo per vedere il div-->
-			<breadcrumb /> <!--generato dinamicamente con php-->
+			<p>Dove sei: <breadcrumb /></p>
 		</div>
 
 	</div>
@@ -22,11 +21,10 @@
 	
 			<p>Menu</p>
 			<ul id="menu"> 
-        		<li><a href="home.php">Home</a></li>
+        		<li><a href="home.php">Home</a></li> <!--qui metti le info -->
         		<li><a href="lista_opere.php">Tutte le opere</a></li>
         		<li><a href="categorie.php">Categorie</a></li>
         		<li><a href="autori.php">Autori</a></li>
-        		<li><a href="">Informazioni</a></li>
     		</ul>
 
 		</div>
@@ -40,6 +38,7 @@
 	</div>
 	
     <div id="contenuto">
+		<errors />
 		<content />
 	</div>	
 

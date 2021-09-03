@@ -41,6 +41,10 @@ body {
     padding-left: 2em;
 }
 
+#breadcrumb a {
+    color: white;
+}
+
 #contenuto {
     margin: 2em;
     margin-left: 15em;
@@ -129,9 +133,7 @@ body {
 }
 
 .fieldset_form p {
-    font-size: 1em;
-    font-weight: bold;
-    width: 80%;
+    font-size: 0.8em;
 }
 
 .fieldset_form ul {
@@ -176,7 +178,8 @@ body {
 }
 
 .carte img {
-    height: 10em;
+    max-height: 10em;
+    max-width: 15em;
 }
 
 .opera_tit {
@@ -216,6 +219,15 @@ body {
 #autore p {
     padding-left: 1em;
     text-align: left;
+}
+
+/**** errore ***/
+
+.error {
+    color: crimson;
+    font-size: 0.9em;
+    list-style-type: none;
+    margin: 1em 0;
 }
 
 

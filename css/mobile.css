@@ -57,8 +57,8 @@ body {
 /**** opere ****/
 
 .carte img {
-    width: 100%;
-    height: auto;
+    max-height: 15em;
+    max-width: 100%;
 }
 
 #descrizione {
