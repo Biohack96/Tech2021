@@ -69,6 +69,7 @@ else {
 
             $op = file_get_contents('includes/opere_card.html');
             $op = str_replace("<id_opera/>", $opera['id'], $op);
+            $op = str_replace("<from/>", "autore", $op);
             $op = str_replace("<Path/>", $opera['img_path'], $op);
             $op = str_replace("<Titolo/>", $opera['titolo'], $op);
             $op = str_replace("<descrizione/>", $opera['descrizione_short'], $op);
