@@ -18,7 +18,8 @@ $page_body = file_get_contents('includes/body.html');
 $content = file_get_contents('includes/registrazione_opera.html');
 
 $page_head = str_replace("<titolo />", $title, $page_head);
-$page_head = str_replace("<scripts />", "", $page_head);
+$scripts = file_get_contents('includes/script_carica_opera.html');
+$page_head = str_replace('<scripts />', $scripts, $page_head);
 
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 

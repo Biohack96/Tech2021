@@ -21,7 +21,7 @@ $page_body = file_get_contents('includes/body.html');
 $content = file_get_contents('includes/content_opera.html');
 
 $page_head = str_replace("<titolo />", $title, $page_head);
-$page_head = str_replace("<scripts />", "", $page_head);
+$page_head = str_replace('<scripts />', "", $page_head);
 
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 $page_body = str_replace('<errors />', "", $page_body);
@@ -32,16 +32,35 @@ if (!isset($_SESSION['user_id'])){
 }
 
 $opera = $db->getOperaById($_GET['id']);
-$link = file_get_contents('includes/link.html');
-$link = str_replace("<path />", "categorie.php", $link);
-$link = str_replace("<nome_link />", "Categorie", $link);
-$link2 = file_get_contents('includes/link.html');
-$link2 = str_replace("<path />", "categorie.php?id=".$opera['id_categoria'], $link2);
-$link2 = str_replace("<nome_link />", $opera['nome_categoria'], $link2);
 
-$page_body = str_replace("<breadcrumb />", $link . " > " . $link2 . " > " . $opera['titolo'], $page_body);
 
-$page_body = str_replace("<breadcrumb />", "Categorie > " . $opera['nome_categoria'], $page_body);
+if ($_GET['from'] == "autore") {
+    $link = file_get_contents('includes/link.html');
+    $link = str_replace("<path />", "autori.php", $link);
+    $link = str_replace("<nome_link />", "Autori", $link);
+    $link2 = file_get_contents('includes/link.html');
+    $link2 = str_replace("<path />", "autori.php?id=".$opera['id_autore'], $link2);
+    $link2 = str_replace("<nome_link />", $opera['username'], $link2);
+    $page_body = str_replace("<breadcrumb />", $link . " > " . $link2 . " > " . $opera['titolo'], $page_body);
+}
+
+else if ($_GET['from'] == "all") {
+    $link = file_get_contents('includes/link.html');
+    $link = str_replace("<path />", "lista_opere.php", $link);
+    $link = str_replace("<nome_link />", "Tutte le opere", $link);
+    $page_body = str_replace("<breadcrumb />", $link . " > " . $opera['titolo'], $page_body);
+}
+
+else if ($_GET['from'] == "cat") {
+    $link = file_get_contents('includes/link.html');
+    $link = str_replace("<path />", "categorie.php", $link);
+    $link = str_replace("<nome_link />", "Categorie", $link);
+    $link2 = file_get_contents('includes/link.html');
+    $link2 = str_replace("<path />", "categorie.php?id=".$opera['id_categoria'], $link2);
+    $link2 = str_replace("<nome_link />", $opera['nome_categoria'], $link2);
+    $page_body = str_replace("<breadcrumb />", $link . " > " . $link2 . " > " . $opera['titolo'], $page_body);
+}
+
 $content = str_replace("<section_name />", "Tutte le opere", $content);
 
 $counter = 5; // TODO: esempio, da cambiare
