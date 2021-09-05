@@ -25,7 +25,7 @@ CREATE TABLE opera (
   id                 INT AUTO_INCREMENT PRIMARY KEY,
   titolo             VARCHAR(2000) NOT NULL,
   descrizione_short  VARCHAR(200) NOT NULL,
-  descrizione        VARCHAR(2000),
+  descrizione        TEXT NOT NULL,
   data_creazione     VARCHAR(20) NOT NULL,
   id_autore          INT NOT NULL,
   id_categoria       INT NOT NULL,

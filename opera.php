@@ -21,7 +21,7 @@ $page_body = file_get_contents('includes/body.html');
 $content = file_get_contents('includes/content_opera.html');
 
 $page_head = str_replace("<titolo />", $title, $page_head);
-$page_head = str_replace("<scripts />", "", $page_head);
+$page_head = str_replace('<scripts />', "", $page_head);
 
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 $page_body = str_replace('<errors />', "", $page_body);

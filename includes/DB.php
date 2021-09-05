@@ -4,6 +4,8 @@ class DB extends mysqli{
 	private $imgDir = 'img/upload/';
 	private $max_img_size = 3000000; // 3MB
 	private $perm_img_format = array(IMAGETYPE_GIF , IMAGETYPE_JPEG , IMAGETYPE_PNG);
+	private $yearPattern = '/^[0-9]{4,4}$/';
+
 
 
 	public function __construct($host="localhost", $user="root", $pass="", $db="sharearts")
@@ -222,8 +224,11 @@ class DB extends mysqli{
 		$error = array();
 		if (strlen($titolo) === 0) {$error[] = "Titolo mancante, inserire un titolo";}
 		if (strlen($sht_dsc) === 0) {$error[] = "Descrizione breve mancante, inserire una descrizione breve";}
+		if (strlen($sht_dsc) > 200) {$error[] = "Descrizione breve troppo lunga, massimo 200 caratteri";}
 		if (strlen($descrizione) === 0) {$error[] = "Descrizione mancante, inserire una descrizione";}
+		if (strlen($descrizione) > 2000) {$error[] = "Descrizione troppo lunga, massimo 2000 caratteri";}
 		if (strlen($data) === 0) {$error[] = "Anno mancante, inserire un anno";}
+		if (!preg_match($this->yearPattern, $data) && strlen($data) > 0) {$error[] = "Anno in formato errato, inserire un anno composto da 4 cifre";}
 		if ($id_categoria === "-1") {$error[] = "Categoria mancante, selezionare una categoria";}
 		if(empty($img)) {$error[] = "Immagine mancante, inserire un'immagine";}
 		
