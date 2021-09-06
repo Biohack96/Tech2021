@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: opera.php?id=' . $result);
     }
     else {
-        $page_body = str_replace('<errors />', printError($result), $page_body);
+        $page_body = str_replace('<p></p>', printError($result), $page_body);
     }
 }
     

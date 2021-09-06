@@ -4,7 +4,7 @@ class DB extends mysqli{
 	private $imgDir = 'img/upload/';
 	private $max_img_size = 3000000; // 3MB
 	private $perm_img_format = array(IMAGETYPE_GIF , IMAGETYPE_JPEG , IMAGETYPE_PNG);
-	private $yearPattern = '/^[0-9]{4,4}$/';
+	private $yearPattern = '/^[0-9]{1,4}$/';
 
 
 
@@ -227,8 +227,9 @@ class DB extends mysqli{
 		if (strlen($sht_dsc) > 200) {$error[] = "Descrizione breve troppo lunga, massimo 200 caratteri";}
 		if (strlen($descrizione) === 0) {$error[] = "Descrizione mancante, inserire una descrizione";}
 		if (strlen($descrizione) > 2000) {$error[] = "Descrizione troppo lunga, massimo 2000 caratteri";}
+		if ($data > date("Y")) {$error[] = "Inserire un anno passato";}
 		if (strlen($data) === 0) {$error[] = "Anno mancante, inserire un anno";}
-		if (!preg_match($this->yearPattern, $data) && strlen($data) > 0) {$error[] = "Anno in formato errato, inserire un anno composto da 4 cifre";}
+		if (!preg_match($this->yearPattern, $data) && strlen($data) > 0) {$error[] = "Anno in formato errato";}
 		if ($id_categoria === "-1") {$error[] = "Categoria mancante, selezionare una categoria";}
 		if(empty($img)) {$error[] = "Immagine mancante, inserire un'immagine";}
 		
