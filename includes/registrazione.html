@@ -2,15 +2,15 @@
 	<form id="registrazione" action="registrazione.php" method="post" enctype="multipart/form-data" onsubmit="return validateProfilo()">
 	<fieldset id="fieldset_registrazione" class="fieldset_form">
 		<legend>
-			<p>Non hai un account?</p>
-			<p>Registrati ed inizia anche tu a condividere le tue opere!</p>
+			Non hai un account?
+			Registrati ed inizia anche tu a condividere le tue opere!
 		</legend>
 
 	<ul>
 
 		<li>
 		<label for="registrazione_nome" id="reg_nome_id" xml:lang="en">Username:</label>
-		<input type="text" id="registrazione_nome" name="nome" value="<nome />"></input>
+		<input type="text" id="registrazione_nome" name="username"></input>
 		</li>
 
 		<li>
@@ -24,10 +24,8 @@
 		</li>
 	
 		<li>
-		<label for="registrazione_biografia" id="bio_id">Informazioni su di te: <desc /> 
-			<p>Inserisci tutte le informazioni su di te che ritieni più opportune</p>
-		</label>
-		<textarea class="big_text" name="bio" rows="10" cols="60"><bio /></textarea>
+		<label for="bio" id="bio_id">Informazioni su di te:	</label>
+		<textarea class="big_text" name="bio" id="bio" rows="10" cols="60"><bio /></textarea>
 		</li>
 
 		<!-- desc/ e bio/ qui sopra sono per la modifica?-->

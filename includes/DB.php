@@ -5,7 +5,7 @@ class DB extends mysqli{
 	private $max_img_size = 3000000; // 3MB
 	private $perm_img_format = array(IMAGETYPE_GIF , IMAGETYPE_JPEG , IMAGETYPE_PNG);
 	private $yearPattern = '/^[0-9]{1,4}$/';
-
+	private $passPattern = '/^(?=.*[0-9])(?=.*[A-Z]).{8,}$/' ; // Almeno 8 caratteri con almeno una maiuscola e un numero
 
 
 	public function __construct($host="localhost", $user="root", $pass="", $db="sharearts")
@@ -262,8 +262,90 @@ class DB extends mysqli{
 			}
 		}
 	else return false;
+	}	
+
+	public function login($username, $password)
+	{
+		$hashed_pass = hash('sha256', $password);
+
+		$sql = "SELECT id FROM `autore` WHERE username = ? AND password = ? LIMIT 1;";
+		$query = $this->prepare($sql);
+		$query->bind_param("ss", $username,$hashed_pass);
+		if(!$query->execute()) {return NULL;}
+		$result = $query->get_result();
+
+		if($result->num_rows === 0) return FALSE;
+
+		$row = $result->fetch_assoc();
+
+		$query->close();
+		$result->free();
+
+		$_SESSION['user_id'] = $row['id'];
+		return TRUE;
+
+	}
+
+	public function logout()
+	{
+		unset($_SESSION['user_id']);
+	}
+
+	public function setProfilo($username, $password, $conf_password,$bio)
+	{
+
+		$error = array();
+
+		if (strlen($username) > 30) {$error[] = "Username tropppo lunga (Max: 50 caratteri)";}
+
+		if (!preg_match($this->passPattern,$password))	{$error[] = "Password in formato errato, la password deve essere rispettare i seguenti requisiti: deve essere di almeno 8 caratteri con almeno una maiuscola e un numero";}
+
+		If ($password !== $conf_password) {$error[] = "Le password non coincidono";}
+		if (strlen($bio) > 2000) {$error[] = "Biografia troppo lunga (max: 65535 caratteri)";}
+		if (strlen($bio) === 0) {$error[] = "Biografia mancante, inserire una biografia";}
+		if ( $this->alreadyReg($username))	{$error[] = "Username già utilizzato";	}
+
+		$hashed_pass = hash('sha256', $password);
+
+		if(count($error)) {return $error;}
+
+		$bio=htmlentities($bio);
+
 		
+
+		$register = "INSERT INTO autore(username,password,bio) VALUES (?,?,?)";
+
+		$query = $this->prepare($register);
+		$query->bind_param("sss", $username, $hashed_pass,$bio);
+		if($query->execute())
+			{
+				$new_id = $this->insert_id;
+				$_SESSION['user_id']= $new_id;
+				$query->close();
+				return $new_id;
+			}
+			else {return NULL;}
+
+		
+		
+	}
+	public function alreadyReg($username)
+	{
+		$sql = "SELECT id FROM autore WHERE username = ?;";
+		$query = $this->prepare($sql);
+		$query->bind_param("s", $username);
+
+		if($query->execute())
+		{
+			if($query->get_result()->num_rows)
+			{
+				return TRUE;
+			}
+		}
+
+		return FALSE;
+	}
 }
 
 
-}
+
