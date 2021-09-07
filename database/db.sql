@@ -40,11 +40,13 @@ CREATE TABLE commento (
   id                 INT AUTO_INCREMENT PRIMARY KEY,
   testo_commento     VARCHAR(2000) NOT NULL,
   id_opera           INT NOT NULL,
-  id_autore          INT NOT NULL
+  id_autore          INT NOT NULL,
 
-  FOREIGN KEY (id_opera) REFERENCES opera(id)
+  FOREIGN KEY (id_opera) REFERENCES opera(id),
   FOREIGN KEY (id_autore) REFERENCES autore(id)
 );
 
 
 SET FOREIGN_KEY_CHECKS = 1; -- Riabilita check
+
+INSERT into autore(password,username,bio) VALUES ('04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb','user','just a user');
