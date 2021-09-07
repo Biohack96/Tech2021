@@ -33,12 +33,12 @@ else
 $page_body = str_replace('<errors />', "", $page_body);
 
 
-// Disattiva link circolare
-$page_body = str_replace('<li><a href="categorie.php">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente
-
 
 // Se non è settato un id mostra la lista delle categorie
 if (!isset($_GET['id'])) {
+
+    // Disattiva link circolare
+    $page_body = str_replace('<li><a href="categorie.php">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente
 
     $counter = 5; // TODO: esempio, da cambiare
     $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);

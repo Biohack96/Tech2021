@@ -33,6 +33,10 @@ else
 ////
 
 if (!isset($_GET['id'])){
+
+// Disattiva link circolare
+$page_body = str_replace('<li><a href="autori.php">Autori</a></li>', '<li>Autori</li>', $page_body);
+
 $autori = $db->getAutori();
 
 $content = file_get_contents('includes/autori_list.html');
@@ -75,6 +79,8 @@ else {
     $lista_opere = '';
     $counter = 5; // TODO da cambiare
 
+// TODO rimpiazzare tutti i tag button
+
     if($opere != null) {
 
         foreach($opere as $opera){
@@ -95,12 +101,12 @@ else {
     $opere_content = str_replace("<opere/>", $lista_opere, $opere_content);
     }
 
+    else {
+        $opere_content = str_replace("<opere/>", "Nessuna opera", $opere_content);
+    }
+
     $content = str_replace("<opere />", $opere_content, $content);
 }
-
-
-// Disattiva link circolare
-$page_body = str_replace('<li><a href="autori.php">Autori</a></li>', '<li>Autori</li>', $page_body);		// da aggiungere dinamicamente
 
 
 $page_body = str_replace('<content />', $content, $page_body);
