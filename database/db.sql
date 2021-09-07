@@ -36,14 +36,14 @@ CREATE TABLE opera (
 );
 
 
-
 CREATE TABLE commento (
   id                 INT AUTO_INCREMENT PRIMARY KEY,
-  nickname           VARCHAR(200) NOT NULL,
   testo_commento     VARCHAR(2000) NOT NULL,
   id_opera           INT NOT NULL,
+  id_autore          INT NOT NULL
 
   FOREIGN KEY (id_opera) REFERENCES opera(id)
+  FOREIGN KEY (id_autore) REFERENCES autore(id)
 );
 
 

@@ -55,7 +55,7 @@ body {
 /****** menu ******/
 
 .box {
-    margin: 1em;
+    margin: 0.5em;
     padding: 1em;
     background-color: rgb(0, 110, 0);   
     font-weight: bold;
@@ -219,6 +219,11 @@ body {
 #autore p {
     padding-left: 1em;
     text-align: left;
+}
+
+#usr_zone a {
+    color: white;
+    font-size: 0.9em;
 }
 
 /**** errore ***/
