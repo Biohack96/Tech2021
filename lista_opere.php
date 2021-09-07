@@ -19,7 +19,19 @@ $content = file_get_contents('includes/opere_list.html');
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
-$page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
+/////gestione login/logout
+$login_button = file_get_contents('includes/login_button.html');
+$profile_button = file_get_contents('includes/usr_zone_logged.html');
+
+if(isset($_SESSION['user_id']))
+{
+    $page_body = str_replace("<utente />", $profile_button, $page_body);			
+}
+else
+{
+    $page_body = str_replace("<utente />",$login_button, $page_body);			
+}
+////
 $page_body = str_replace('<errors />', "", $page_body);
 
 $page_body = str_replace("<breadcrumb />", "Tutte le opere", $page_body);
