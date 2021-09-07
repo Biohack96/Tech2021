@@ -170,6 +170,18 @@ class DB extends mysqli{
     }
 
 
+	public function deleteOpera($id = null)
+	{
+        $sql = "DELETE FROM opera WHERE id=?";
+		$query = $this->prepare($sql);
+        $query->bind_param("i", $id);
+		
+		if ($query->execute()) {
+			return true;
+		}
+		return false;
+    }
+
 	public function getAutori(){
 
 		$sql = "SELECT * FROM autore";

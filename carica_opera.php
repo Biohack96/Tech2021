@@ -2,8 +2,10 @@
 session_start();
 require_once('includes/DB.php');
 require_once('includes/error.php');
-// require_once('includes/create_info_utente.php');
 
+if (!isset($_SESSION['user_id'])){
+    header('Location: login.php');
+}
 // Oggetto di accesso al database
 $db = new DB();
 
@@ -55,12 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         
     
-        $result = $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], 2, $_POST['category'], $img_path);
+        $result = $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], $_SESSION['user_id'], $_POST['category'], $img_path);
     
         }
 
     if (is_numeric($result)) {
-        header('Location: opera.php?id=' . $result);
+        header('Location: opera.php?id=' . $result . "&from=autore");
     }
     else {
         $page_body = str_replace('<p></p>', printError($result), $page_body);

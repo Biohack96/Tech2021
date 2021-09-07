@@ -39,12 +39,14 @@ else
 $page_body = str_replace('<errors />', "", $page_body);
 
 
-if (!isset($_SESSION['user_id'])){
-    $content = str_replace("<button_elimina />", "", $content);
-}
 
 $opera = $db->getOperaById($_GET['id']);
 
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $opera['id_autore']){
+    $button_elimina = file_get_contents('includes/button_elimina_opera.html');
+    $button_elimina = str_replace("<id_opera />", $_GET['id'], $button_elimina);
+    $content = str_replace("<button_elimina />", $button_elimina, $content);
+}
 
 if ($_GET['from'] == "autore") {
     $link = file_get_contents('includes/link.html');
