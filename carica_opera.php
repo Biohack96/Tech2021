@@ -25,7 +25,11 @@ $page_head = str_replace('<scripts />', $scripts, $page_head);
 
 $page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
 
-$page_body = str_replace("<breadcrumb />", "Carica opera", $page_body);
+$link = file_get_contents('includes/link.html');
+$link = str_replace("<path />", "autori.php?id=" . $_SESSION['user_id'], $link);
+$link = str_replace("<nome_link />", "La tua pagina", $link);
+$page_body = str_replace("<breadcrumb />", $link . " > Carica opera", $page_body);
+
 $content = str_replace("<section_name />", "Carica opera", $content);
 
 $counter = 5; // TODO: esempio, da cambiare

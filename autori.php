@@ -24,6 +24,8 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
 if(isset($_SESSION['user_id']))
 {
+    // TODO disattivare link circolare "La tua pagina"
+    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
     $page_body = str_replace("<utente />", $profile_button, $page_body);			
 }
 else
@@ -71,7 +73,15 @@ else {
     $link = file_get_contents('includes/link.html');
     $link = str_replace("<path />", "autori.php", $link);
     $link = str_replace("<nome_link />", "Autori", $link);
-    $page_body = str_replace("<breadcrumb />", $link . " > " . $a['username'], $page_body);
+
+        if($_SESSION['user_id'] == $_GET['id']) {
+            $button_aggiungi_opera = file_get_contents('includes/button_aggiungi_opera.html');
+            $content = str_replace("<button_aggiungi_opera />", $button_aggiungi_opera, $content);
+            $page_body = str_replace("<breadcrumb />", "La tua pagina", $page_body);
+        }
+        else {
+            $page_body = str_replace("<breadcrumb />", $link . " > " . $a['username'], $page_body);
+        }
 
     $opere = $db->getOpereByAuthor($_GET['id']);
     $opere_content = file_get_contents('includes/opere_list.html');

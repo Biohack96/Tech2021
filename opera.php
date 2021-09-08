@@ -29,6 +29,7 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
 if(isset($_SESSION['user_id']))
 {
+    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
     $page_body = str_replace("<utente />", $profile_button, $page_body);			
 }
 else
