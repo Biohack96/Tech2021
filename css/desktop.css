@@ -209,6 +209,10 @@ body {
     padding-top: 0.4em;
 }
 
+#panoramica_opere {
+    padding-left: 1em;
+}
+
 
 /**** autore ****/
 
@@ -223,8 +227,37 @@ body {
 
 #usr_zone a {
     color: white;
-    font-size: 0.9em;
 }
+
+#usr_zone ul {
+    list-style-type: none;
+}
+
+#usr_zone li {
+    padding-bottom: 0.3em;
+}
+
+#nome_utente {
+    font-size: 1.1em;
+}
+
+#buttons_panel {
+    font-size: 0.9em;
+    margin: 2.5em 1em;
+}
+
+#buttons_panel a {
+    margin-right: 1em;
+    color: white;
+    font-weight: bold;
+}
+
+#add_opera_button {
+    background-color: rgb(155, 93, 0);
+    border-radius: 1em;
+    padding: 0.6em 1em;
+}
+
 
 /**** errore ***/
 
