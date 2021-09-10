@@ -30,7 +30,14 @@ if (!isset($_GET['id'])){
 // Disattiva link circolare
 $page_body = str_replace('<li><a href="autori.php">Autori</a></li>', '<li>Autori</li>', $page_body);
 
-$autori = $db->getAutori();
+    if (isset($_SESSION['user_id'])) {
+        $autori = $db->getAutoriLogged($_SESSION['user_id']);
+    
+    }
+
+    else {
+        $autori = $db->getAutori();
+    }
 
 $content = file_get_contents('includes/autori_list.html');
 $page_body = str_replace("<breadcrumb />", "Autori", $page_body);
@@ -153,7 +160,7 @@ else {
     }
 
     else {
-        $opere_content = str_replace("<opere/>", "Nessuna opera", $opere_content);
+        $opere_content = str_replace("<opere/>", "<p>Nessuna opera</p>", $opere_content);
     }
 
     $content = str_replace("<opere />", $opere_content, $content);

@@ -27,7 +27,7 @@ $content  .= file_get_contents('includes/registrazione.html'); //registrazione
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
-$page_body = str_replace("<breadcrumb />", "", $page_body);  	// da aggiungere
+$page_body = str_replace("<breadcrumb />", "Accedi o Registrati", $page_body);  	// da aggiungere
 /////gestione login/logout
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
