@@ -29,25 +29,24 @@ $page_body = str_replace('<errors />', "", $page_body);
 if (!isset($_GET['id'])) {
 
     // Disattiva link circolare
-    $page_body = str_replace('<li><a href="categorie.php">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente
+    $page_body = str_replace('<li><a href="categorie.php" tabindex="<tab3 />">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente
 
     $page_body = str_replace("<tab1 />", "1", $page_body);
     $page_body = str_replace("<tab2 />", "2", $page_body);
-    $page_body = str_replace("<tab3 />", "3", $page_body);
-    $page_body = str_replace("<tab4 />", "4", $page_body);
+    $page_body = str_replace("<tab4 />", "3", $page_body);
 
     if(isset($_SESSION['user_id'])) {
     $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-    $profile_button = str_replace("<tab1 />", "5", $profile_button);
-    $profile_button = str_replace("<tab2 />", "6", $profile_button);
+    $profile_button = str_replace("<tab1 />", "4", $profile_button);
+    $profile_button = str_replace("<tab2 />", "5", $profile_button);
     $page_body = str_replace("<utente />", $profile_button, $page_body);
-    $counter = 7;			
+    $counter = 6;			
     }
 
     else {
-    $login_button = str_replace("<tab />", "5", $login_button);
+    $login_button = str_replace("<tab />", "4", $login_button);
     $page_body = str_replace("<utente />",$login_button, $page_body);			
-    $counter = 6;			
+    $counter = 5;			
     }
 
     $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);

@@ -19,10 +19,12 @@ $content = file_get_contents('includes/opere_list.html');
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
+// Disattiva link circolare
+$page_body = str_replace('<li><a href="lista_opere.php" tabindex="<tab2 />">Tutte le opere</a></li>', '<li>Tutte le opere</li>', $page_body);
+
 $page_body = str_replace("<tab1 />", "1", $page_body);
-$page_body = str_replace("<tab2 />", "2", $page_body);
-$page_body = str_replace("<tab3 />", "3", $page_body);
-$page_body = str_replace("<tab4 />", "4", $page_body);
+$page_body = str_replace("<tab3 />", "2", $page_body);
+$page_body = str_replace("<tab4 />", "3", $page_body);
 
 /////gestione login/logout
 $login_button = file_get_contents('includes/login_button.html');
@@ -31,16 +33,16 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
     if(isset($_SESSION['user_id'])) {
     $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-    $profile_button = str_replace("<tab1 />", "5", $profile_button);
-    $profile_button = str_replace("<tab2 />", "6", $profile_button);
+    $profile_button = str_replace("<tab1 />", "4", $profile_button);
+    $profile_button = str_replace("<tab2 />", "5", $profile_button);
     $page_body = str_replace("<utente />", $profile_button, $page_body);
-    $counter = 7;			
+    $counter = 6;			
     }
 
     else {
-    $login_button = str_replace("<tab />", "5", $login_button);
+    $login_button = str_replace("<tab />", "4", $login_button);
     $page_body = str_replace("<utente />",$login_button, $page_body);			
-    $counter = 6;			
+    $counter = 5;			
     }
 ////
 $page_body = str_replace('<errors />', "", $page_body);
@@ -71,9 +73,6 @@ if($opere != null) {
 
 $content = str_replace("<opere/>", $lista_opere, $content);
 }
-
-// Disattiva link circolare
-$page_body = str_replace('<li><a href="lista_opere.php">Tutte le opere</a></li>', '<li>Tutte le opere</li>', $page_body);		// da aggiungere dinamicamente
 
 
 $page_body = str_replace('<content />', $content, $page_body);

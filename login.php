@@ -48,7 +48,7 @@ $page_body = str_replace("<nome />","", $page_body);
 $page_body = str_replace("<bio />", "", $page_body);
 
 // Disattiva link circolare
-$page_body = str_replace('<li><a href="login.php">Accedi o Registrati</a></li>', '<li><span>Accedi o Registrati</span></li>', $page_body);		// da aggiungere dinamicamente
+$page_body = str_replace('<li id="loggati"><a href="login.php" tabindex="<tab />">Accedi o Registrati</a></li>', '<li><span>Accedi o Registrati</span></li>', $page_body);		// da aggiungere dinamicamente
 
 
 echo $page_head  . $page_body  ;

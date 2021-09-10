@@ -36,7 +36,7 @@ $page_body = str_replace("<content />", "", $page_body);		// da aggiungere
 $page_body = str_replace('<errors />', "", $page_body);
 
 // Disattiva link circolare
-$page_body = str_replace('<li><a href="home.php"><span xml:lang="en">Home</span></a></li>', '<li><span xml:lang="en">Home</span></li>', $page_body);		// da aggiungere dinamicamente
+$page_body = str_replace('<li><a href="home.php"><span xml:lang="en" tabindex="<tab1 />">Home</span></a></li>', '<li><span xml:lang="en">Home</span></li>', $page_body);		// da aggiungere dinamicamente
 
 
 
