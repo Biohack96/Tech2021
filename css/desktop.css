@@ -223,6 +223,10 @@ body {
     color: white;
 }
 
+#usr_zone li span {
+    font-size: 0.9em;
+}
+
 #loggati {
     font-size: 0.9em;
 }
@@ -272,6 +276,30 @@ body {
 
 .errorjs {
     color: crimson;
+}
+
+
+/**** 404 ****/
+
+#_404error {
+    text-align: center;
+    margin-bottom: 5em;
+}
+
+#_404 {
+    font-size: 8em;
+    font-weight: bold;
+}
+
+#ops{
+    font-size: 3em;
+    padding-bottom: 1em;
+}
+
+#back_button {
+    background-color: mediumvioletred;
+    padding: 0.5em 1em;
+    border-radius: 1em;
 }
 
 
