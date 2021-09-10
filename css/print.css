@@ -138,11 +138,7 @@ body {
 }
 
 .submit_button {
-    background-color: rgb(228, 24, 150);
-    padding: 0.5em 1em;
-    margin: 1em 0;
-    color: whitesmoke;
-    font-weight: bold;
+    display: none;
 }
 
 .big_text {
@@ -153,7 +149,7 @@ body {
 }
 
 #registrazione_foto_opera {
-    margin-top: 0.5em;
+    display: none;
 }
 
 #registrazione_anno {
@@ -209,6 +205,11 @@ body {
     padding-left: 1em;
     text-align: left;
 }
+
+.buttons_panel {
+    display: none;
+}
+
 
 
 /***** footer *****/
