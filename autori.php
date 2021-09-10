@@ -25,7 +25,13 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 if(isset($_SESSION['user_id']))
 {
     // TODO disattivare link circolare "La tua pagina"
+    if ( !isset($_GET['id']) || $_SESSION['user_id'] != $_GET['id']) {
     $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+    }
+
+    else {
+        $profile_button = str_replace('<li><a id="nome_utente" href="autori.php?id=<id_aut />" tabindex="">La tua pagina</a></li>', '<li>La tua pagina</li>', $profile_button);
+    }
     $page_body = str_replace("<utente />", $profile_button, $page_body);			
 }
 else
@@ -78,8 +84,12 @@ else {
             $button_aggiungi_opera = file_get_contents('includes/button_aggiungi_opera.html');
             $content = str_replace("<button_aggiungi_opera />", $button_aggiungi_opera, $content);
             $page_body = str_replace("<breadcrumb />", "La tua pagina", $page_body);
+            $profile_button = str_replace('<li><a id="nome_utente" href="autori.php?id=<id_aut />" tabindex="">La tua pagina</a></li>', '<li>La tua pagina</li>', $profile_button);
+            $page_body = str_replace("<utente />", $profile_button, $page_body);			
+            
         }
         else {
+            $content = str_replace("<button_aggiungi_opera />", "", $content);
             $page_body = str_replace("<breadcrumb />", $link . " > " . $a['username'], $page_body);
         }
 

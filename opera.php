@@ -48,6 +48,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $opera['id_autore']){
     $button_elimina = str_replace("<id_opera />", $_GET['id'], $button_elimina);
     $content = str_replace("<button_elimina />", $button_elimina, $content);
 }
+else {
+    $content = str_replace("<button_elimina />", "", $content);
+}
 
 if ($_GET['from'] == "autore") {
     $link = file_get_contents('includes/link.html');
@@ -79,8 +82,6 @@ else if ($_GET['from'] == "cat") {
 $content = str_replace("<section_name />", "Tutte le opere", $content);
 
 $counter = 5; // TODO: esempio, da cambiare
-
-// TODO: aggiungere gestione del button elimina
 
 $content = str_replace("<Path/>", $opera['img_path'], $content);
 $content = str_replace("<img_description/>", $opera['descrizione_short'], $content);

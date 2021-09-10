@@ -23,12 +23,22 @@ $page_head = str_replace("<titolo />", $title, $page_head);
 $scripts = file_get_contents('includes/script_carica_opera.html');
 $page_head = str_replace('<scripts />', $scripts, $page_head);
 
-$page_body = str_replace("<utente />", "", $page_body);			// da aggiungere
-
 $link = file_get_contents('includes/link.html');
 $link = str_replace("<path />", "autori.php?id=" . $_SESSION['user_id'], $link);
 $link = str_replace("<nome_link />", "La tua pagina", $link);
+$link = str_replace("<tab />", "1", $link);
 $page_body = str_replace("<breadcrumb />", $link . " > Carica opera", $page_body);
+
+$profile_button = file_get_contents('includes/usr_zone_logged.html');
+$profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+$profile_button = str_replace("<tab1 />", "6", $profile_button);
+$profile_button = str_replace("<tab2 />", "7", $profile_button);
+$page_body = str_replace("<utente />", $profile_button, $page_body);
+
+$page_body = str_replace("<tab1 />", "2", $page_body);
+$page_body = str_replace("<tab2 />", "3", $page_body);
+$page_body = str_replace("<tab3 />", "4", $page_body);
+$page_body = str_replace("<tab4 />", "5", $page_body);
 
 $content = str_replace("<section_name />", "Carica opera", $content);
 
