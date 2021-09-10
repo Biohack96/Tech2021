@@ -19,26 +19,35 @@ $content = file_get_contents('includes/opere_list.html');
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
+$page_body = str_replace("<tab1 />", "1", $page_body);
+$page_body = str_replace("<tab2 />", "2", $page_body);
+$page_body = str_replace("<tab3 />", "3", $page_body);
+$page_body = str_replace("<tab4 />", "4", $page_body);
+
 /////gestione login/logout
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
-if(isset($_SESSION['user_id']))
-{
+
+    if(isset($_SESSION['user_id'])) {
     $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-    $page_body = str_replace("<utente />", $profile_button, $page_body);			
-}
-else
-{
+    $profile_button = str_replace("<tab1 />", "5", $profile_button);
+    $profile_button = str_replace("<tab2 />", "6", $profile_button);
+    $page_body = str_replace("<utente />", $profile_button, $page_body);
+    $counter = 7;			
+    }
+
+    else {
+    $login_button = str_replace("<tab />", "5", $login_button);
     $page_body = str_replace("<utente />",$login_button, $page_body);			
-}
+    $counter = 6;			
+    }
 ////
 $page_body = str_replace('<errors />', "", $page_body);
 
 $page_body = str_replace("<breadcrumb />", "Tutte le opere", $page_body);
 $content = str_replace("<section_name />", "Tutte le opere", $content);
 
-$counter = 5; // TODO: esempio, da cambiare
 
 $opere = $db->getAllOpere();
 $lista_opere = '';

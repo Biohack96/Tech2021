@@ -22,22 +22,7 @@ $page_head = str_replace("<scripts />", "", $page_head);
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
-if(isset($_SESSION['user_id']))
-{
-    // TODO disattivare link circolare "La tua pagina"
-    if ( !isset($_GET['id']) || $_SESSION['user_id'] != $_GET['id']) {
-    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-    }
 
-    else {
-        $profile_button = str_replace('<li><a id="nome_utente" href="autori.php?id=<id_aut />" tabindex="">La tua pagina</a></li>', '<li>La tua pagina</li>', $profile_button);
-    }
-    $page_body = str_replace("<utente />", $profile_button, $page_body);			
-}
-else
-{
-    $page_body = str_replace("<utente />",$login_button, $page_body);			
-}
 ////
 
 if (!isset($_GET['id'])){
@@ -50,7 +35,25 @@ $autori = $db->getAutori();
 $content = file_get_contents('includes/autori_list.html');
 $page_body = str_replace("<breadcrumb />", "Autori", $page_body);
 
-$counter = 5; // TODO: esempio, da cambiare
+    $page_body = str_replace("<tab1 />", "1", $page_body);
+    $page_body = str_replace("<tab2 />", "2", $page_body);
+    $page_body = str_replace("<tab3 />", "3", $page_body);
+    $page_body = str_replace("<tab4 />", "4", $page_body);
+
+    if(isset($_SESSION['user_id'])) {
+        $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+        $profile_button = str_replace("<tab1 />", "5", $profile_button);
+        $profile_button = str_replace("<tab2 />", "6", $profile_button);
+        $page_body = str_replace("<utente />",  $profile_button, $page_body);
+        $counter = 7;
+    }
+    else {
+        $login_button = str_replace("<tab />", "5", $login_button);
+        $page_body = str_replace("<utente />",$login_button, $page_body);
+        $counter = 6;		
+    }
+
+
 $lista_autori = '';
 
     if($autori != null) {
@@ -61,6 +64,7 @@ $lista_autori = '';
             $aut = file_get_contents('includes/nome_autore_inlist.html');
             $aut = str_replace("<username />", $autore['username'], $aut);
             $aut = str_replace("<id_aut />", $autore['id'], $aut);
+            $aut = str_replace("<tab />", $counter, $aut);
             $lista_autori .= $aut;
             $counter++;
     }
@@ -79,25 +83,52 @@ else {
     $link = file_get_contents('includes/link.html');
     $link = str_replace("<path />", "autori.php", $link);
     $link = str_replace("<nome_link />", "Autori", $link);
+    $link = str_replace("<tab />", "1", $link);
 
-        if($_SESSION['user_id'] == $_GET['id']) {
-            $button_aggiungi_opera = file_get_contents('includes/button_aggiungi_opera.html');
-            $content = str_replace("<button_aggiungi_opera />", $button_aggiungi_opera, $content);
+        if(isset ($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['id']) {
+            $page_body = str_replace("<tab1 />", "1", $page_body);
+            $page_body = str_replace("<tab2 />", "2", $page_body);
+            $page_body = str_replace("<tab3 />", "3", $page_body);
+            $page_body = str_replace("<tab4 />", "4", $page_body);
+
             $page_body = str_replace("<breadcrumb />", "La tua pagina", $page_body);
-            $profile_button = str_replace('<li><a id="nome_utente" href="autori.php?id=<id_aut />" tabindex="">La tua pagina</a></li>', '<li>La tua pagina</li>', $profile_button);
-            $page_body = str_replace("<utente />", $profile_button, $page_body);			
+            $profile_button = str_replace('<li><a id="nome_utente" href="autori.php?id=<id_aut />" tabindex="<tab1 />">La tua pagina</a></li>', '<li>La tua pagina</li>', $profile_button);
+            $profile_button = str_replace("<tab2 />", "5", $profile_button);
+            $page_body = str_replace("<utente />", $profile_button, $page_body);
+            
+            $button_aggiungi_opera = file_get_contents('includes/button_aggiungi_opera.html');
+            $button_aggiungi_opera = str_replace("<tab />", "6", $button_aggiungi_opera);
+            $content = str_replace("<button_aggiungi_opera />", $button_aggiungi_opera, $content);
+            
+            $counter = 7;
             
         }
         else {
             $content = str_replace("<button_aggiungi_opera />", "", $content);
             $page_body = str_replace("<breadcrumb />", $link . " > " . $a['username'], $page_body);
-        }
+            $page_body = str_replace("<tab1 />", "2", $page_body);
+            $page_body = str_replace("<tab2 />", "3", $page_body);
+            $page_body = str_replace("<tab3 />", "4", $page_body);
+            $page_body = str_replace("<tab4 />", "5", $page_body);
 
+            if(isset ($_SESSION['user_id'])) {
+                $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+                $profile_button = str_replace("<tab1 />", "6", $profile_button);
+                $profile_button = str_replace("<tab2 />", "7", $profile_button);
+                $page_body = str_replace("<utente />",  $profile_button, $page_body);
+                $counter = 8;
+            }
+
+            else {
+                $login_button = str_replace("<tab />", "6", $login_button);
+                $page_body = str_replace("<utente />",$login_button, $page_body);
+                $counter = 7;
+            }
+        }
     $opere = $db->getOpereByAuthor($_GET['id']);
     $opere_content = file_get_contents('includes/opere_list.html');
 
     $lista_opere = '';
-    $counter = 5; // TODO da cambiare
 
 // TODO rimpiazzare tutti i tag button
 

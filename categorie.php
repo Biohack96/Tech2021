@@ -17,20 +17,10 @@ $page_body = file_get_contents('includes/body.html');
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
-/////gestione login/logout
+
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
-if(isset($_SESSION['user_id']))
-{
-    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-    $page_body = str_replace("<utente />", $profile_button, $page_body);			
-}
-else
-{
-    $page_body = str_replace("<utente />",$login_button, $page_body);			
-}
-////
 $page_body = str_replace('<errors />', "", $page_body);
 
 
@@ -41,7 +31,25 @@ if (!isset($_GET['id'])) {
     // Disattiva link circolare
     $page_body = str_replace('<li><a href="categorie.php">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente
 
-    $counter = 5; // TODO: esempio, da cambiare
+    $page_body = str_replace("<tab1 />", "1", $page_body);
+    $page_body = str_replace("<tab2 />", "2", $page_body);
+    $page_body = str_replace("<tab3 />", "3", $page_body);
+    $page_body = str_replace("<tab4 />", "4", $page_body);
+
+    if(isset($_SESSION['user_id'])) {
+    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+    $profile_button = str_replace("<tab1 />", "5", $profile_button);
+    $profile_button = str_replace("<tab2 />", "6", $profile_button);
+    $page_body = str_replace("<utente />", $profile_button, $page_body);
+    $counter = 7;			
+    }
+
+    else {
+    $login_button = str_replace("<tab />", "5", $login_button);
+    $page_body = str_replace("<utente />",$login_button, $page_body);			
+    $counter = 6;			
+    }
+
     $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
     $content = file_get_contents('includes/categorie_list.html');
     $categorie = $db->getListaCategorie();
@@ -55,6 +63,7 @@ if (!isset($_GET['id'])) {
             $cat = file_get_contents('includes/categorie_list_element.html');
             $cat = str_replace("<categoria_element />", $categoria['nome_categoria'], $cat);
             $cat = str_replace("<id_cat />", $categoria['id'], $cat);
+            $cat = str_replace("<tab />", $counter, $cat);
             $lista_categorie .= $cat;
             $counter++;
     }
@@ -67,15 +76,34 @@ if (!isset($_GET['id'])) {
 // Se è settato un id mostra la lista delle opere filtrate per la categoria passata in GET
 else {
 
-    $counter = 5; // TODO: esempio, da cambiare
     $content = file_get_contents('includes/opere_list.html');
     $link = file_get_contents('includes/link.html');
     $link = str_replace("<path />", "categorie.php", $link);
     $link = str_replace("<nome_link />", "Categorie", $link);
+    $link = str_replace("<tab />", "1", $link);
 
     $nome_categoria = $db->getCategoriaName($_GET['id']);
     $page_body = str_replace("<breadcrumb />", $link . " > " . $nome_categoria['nome_categoria'], $page_body);
     $content = str_replace("<section_name />", $nome_categoria['nome_categoria'], $content);
+
+    $page_body = str_replace("<tab1 />", "2", $page_body);
+    $page_body = str_replace("<tab2 />", "3", $page_body);
+    $page_body = str_replace("<tab3 />", "4", $page_body);
+    $page_body = str_replace("<tab4 />", "5", $page_body);
+
+    if(isset($_SESSION['user_id'])) {
+    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+    $profile_button = str_replace("<tab1 />", "6", $profile_button);
+    $profile_button = str_replace("<tab2 />", "7", $profile_button);
+    $page_body = str_replace("<utente />", $profile_button, $page_body);
+    $counter = 8;			
+    }
+
+    else {
+    $login_button = str_replace("<tab />", "6", $login_button);
+    $page_body = str_replace("<utente />",$login_button, $page_body);			
+    $counter = 7;			
+    }
 
     $opere = $db->getOpereByCategoria($_GET['id']);
     $lista_opere = '';
