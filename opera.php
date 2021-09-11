@@ -39,7 +39,7 @@ else
 ////
 $page_body = str_replace('<errors />', "", $page_body);
 
-
+// TODO sistemare breadcrumb la tua pagina
 
 $opera = $db->getOperaById($_GET['id']);
 
@@ -81,7 +81,6 @@ else if ($_GET['from'] == "cat") {
 
 $content = str_replace("<section_name />", "Tutte le opere", $content);
 
-$counter = 5; // TODO: esempio, da cambiare
 
 $content = str_replace("<Path/>", $opera['img_path'], $content);
 $content = str_replace("<img_description/>", $opera['descrizione_short'], $content);

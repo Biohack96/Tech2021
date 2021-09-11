@@ -9,6 +9,31 @@ if (!isset($_SESSION['user_id'])){
 // Oggetto di accesso al database
 $db = new DB();
 
+$content = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    if (isset($_POST['registrazione_op'])) {
+
+        $img_path = '';
+
+        if (isset($_FILES['img']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
+            $img_path = $_FILES['img']['tmp_name'];
+        }
+    
+
+    $result = $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], $_SESSION['user_id'], $_POST['category'], $img_path);
+
+    }
+
+if (is_numeric($result)) {
+    header('Location: opera.php?id=' . $result . "&from=autore");
+}
+else {
+    $content .= printError($result);
+}
+}
+
 // Titolo della pagina
 
 $title = 'Carica opera - Share Arts';
@@ -17,7 +42,7 @@ $title = 'Carica opera - Share Arts';
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
-$content = file_get_contents('includes/registrazione_opera.html');
+$content .= file_get_contents('includes/registrazione_opera.html');
 
 $page_head = str_replace("<titolo />", $title, $page_head);
 $scripts = file_get_contents('includes/script_carica_opera.html');
@@ -42,8 +67,6 @@ $page_body = str_replace("<tab4 />", "5", $page_body);
 
 $content = str_replace("<section_name />", "Carica opera", $content);
 
-$counter = 5; // TODO: esempio, da cambiare
-
 $categorie = $db->getListaCategorie();
 $lista_categorie = '';
 
@@ -58,29 +81,6 @@ if($categorie != null) {
         $lista_categorie .= $cat;
     }
     $content = str_replace("<options />", $lista_categorie, $content);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-        if (isset($_POST['registrazione_op'])) {
-
-            $img_path = '';
-
-            if (isset($_FILES['img']) && is_uploaded_file($_FILES['img']['tmp_name'])) {
-                $img_path = $_FILES['img']['tmp_name'];
-            }
-        
-    
-        $result = $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], $_SESSION['user_id'], $_POST['category'], $img_path);
-    
-        }
-
-    if (is_numeric($result)) {
-        header('Location: opera.php?id=' . $result . "&from=autore");
-    }
-    else {
-        $page_body = str_replace('<p></p>', printError($result), $page_body);
-    }
 }
     
 
