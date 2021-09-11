@@ -105,8 +105,13 @@ else {
             $button_aggiungi_opera = file_get_contents('includes/button_aggiungi_opera.html');
             $button_aggiungi_opera = str_replace("<tab />", "6", $button_aggiungi_opera);
             $content = str_replace("<button_aggiungi_opera />", $button_aggiungi_opera, $content);
+
+            $button_elimina_profilo = file_get_contents('includes/button_elimina_profilo.html');
+            $button_elimina_profilo = str_replace("<tab />", "7", $button_elimina_profilo);
+            $button_elimina_profilo = str_replace("<id_aut />", $_GET['id'], $button_elimina_profilo);
+            $content = str_replace("<button_elimina_profilo />", $button_elimina_profilo, $content);
             
-            $counter = 7;
+            $counter = 8;
             
         }
         else {

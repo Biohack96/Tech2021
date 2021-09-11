@@ -182,6 +182,31 @@ class DB extends mysqli{
 		return false;
     }
 
+	public function deleteProfilo($id = null)
+	{
+		$sql1 = "DELETE FROM opera WHERE id_autore=?";
+        $sql2 = "DELETE FROM autore WHERE id=?";
+
+		$query1 = $this->prepare($sql1);
+		$query2 = $this->prepare($sql2);
+
+        $query1->bind_param("i", $id);
+        $query2->bind_param("i", $id);
+		
+		if (!$query1->execute()) {
+			return false;
+		}
+		$query1->close();
+
+		if($query2->execute())
+		{
+			$res = $this->affected_rows;
+			$query2->close();
+			return (bool)$res;
+		}
+		return NULL;
+    }
+
 	public function getAutori(){
 
 		$sql = "SELECT * FROM autore";

@@ -53,13 +53,20 @@ else {
 }
 
 if ($_GET['from'] == "autore") {
+    $link2 = file_get_contents('includes/link.html');
+    $link2 = str_replace("<path />", "autori.php?id=".$opera['id_autore'], $link2);    
+
+    if ($_SESSION['user_id'] == $opera['id_autore']) {
+        $link2 = str_replace("<nome_link />", "La tua pagina", $link2);
+        $page_body = str_replace("<breadcrumb />", $link2 . " > " . $opera['titolo'], $page_body);
+    }
+    else {
     $link = file_get_contents('includes/link.html');
     $link = str_replace("<path />", "autori.php", $link);
     $link = str_replace("<nome_link />", "Autori", $link);
-    $link2 = file_get_contents('includes/link.html');
-    $link2 = str_replace("<path />", "autori.php?id=".$opera['id_autore'], $link2);
     $link2 = str_replace("<nome_link />", $opera['username'], $link2);
     $page_body = str_replace("<breadcrumb />", $link . " > " . $link2 . " > " . $opera['titolo'], $page_body);
+    }
 }
 
 else if ($_GET['from'] == "all") {
