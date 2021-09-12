@@ -20,6 +20,10 @@ $page_head = str_replace("<keywords/>", "arte, autore, opere, condividere, pubbl
 $page_head = str_replace("<metatitle/>", $title, $page_head);
 $page_body = str_replace("<breadcrumb />", "Home", $page_body);  	// da aggiungere
 
+
+$page_body = str_replace("<tab2 />", "1", $page_body);
+$page_body = str_replace("<tab3 />", "2", $page_body);
+$page_body = str_replace("<tab4 />", "3", $page_body);
 /////gestione login/logout
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
@@ -27,10 +31,13 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 if(isset($_SESSION['user_id']))
 {
     $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+    $profile_button = str_replace("<tab1 />", "4", $profile_button);
+    $profile_button = str_replace("<tab2 />", "5", $profile_button);
     $page_body = str_replace("<utente />", $profile_button, $page_body);			
 }
 else
 {
+    $login_button = str_replace("<tab />", "4", $login_button);
     $page_body = str_replace("<utente />",$login_button, $page_body);			
 }
 ////
@@ -38,7 +45,7 @@ else
 $page_body = str_replace("<content />", "", $page_body);		// da aggiungere
 
 // Disattiva link circolare
-$page_body = str_replace('<li><a href="home.php"><span xml:lang="en" tabindex="<tab1 />">Home</span></a></li>', '<li><span xml:lang="en">Home</span></li>', $page_body);		// da aggiungere dinamicamente
+$page_body = str_replace('<li><a href="home.php" tabindex="<tab1 />"><span xml:lang="en">Home</span></a></li>', '<li><span xml:lang="en">Home</span></li>', $page_body);		// da aggiungere dinamicamente
 
 
 

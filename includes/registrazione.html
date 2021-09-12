@@ -10,29 +10,29 @@
 
 		<li>
 		<label for="registrazione_nome" id="reg_nome_id" xml:lang="en">Username:</label>
-		<input type="text" id="registrazione_nome" name="username"></input>
+		<input type="text" id="registrazione_nome" name="username" tabindex="<tab1 />"></input>
 		</li>
 
 		<li>
 		<label for="registrazione_password" xml:lang="en">Password:</label>
-		<input type="password" name="password" id="registrazione_password"></input>
+		<input type="password" name="password" id="registrazione_password" tabindex="<tab2 />"></input>
 		</li>
 
 		<li>	
 		<label for="registrazione_conferma_password"> Conferma <span xml:lang="en">password:</span></label>
-		<input type="password" class="registrazione_field" name="conferma_password" id="registrazione_conferma_password"></input>
+		<input type="password" class="registrazione_field" name="conferma_password" id="registrazione_conferma_password" tabindex="<tab3 />"></input>
 		</li>
 	
 		<li>
 		<label for="bio" id="bio_id">Informazioni su di te:	</label>
-		<textarea class="big_text" name="bio" id="bio" rows="10" cols="60"><bio /></textarea>
+		<textarea class="big_text" name="bio" id="bio" rows="10" cols="60" tabindex="<tab4 />"><bio /></textarea>
 		</li>
 
 		<!-- desc/ e bio/ qui sopra sono per la modifica?-->
 
 	</ul>
 
-	<input type="submit" class="submit_button" id="conf_registrazione" name="registrazione_utente" value="Registrati"/>
+	<input type="submit" class="submit_button" id="conf_registrazione" tabindex="<tab5 />" name="registrazione_utente" value="Registrati"/>
 
 	</fieldset>
 

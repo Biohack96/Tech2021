@@ -46,6 +46,16 @@ else
 }
 ////
 
+$page_body = str_replace("<tab1 />", "1", $page_body);
+$page_body = str_replace("<tab2 />", "2", $page_body);
+$page_body = str_replace("<tab3 />", "3", $page_body);
+$page_body = str_replace("<tab4 />", "4", $page_body);
+
+$content = str_replace("<tab1 />", "8", $content);
+$content = str_replace("<tab2 />", "9", $content);
+$content = str_replace("<tab3 />", "10", $content);
+$content = str_replace("<tab4 />", "11", $content);
+$content = str_replace("<tab5 />", "12", $content);
 
 $page_body = str_replace("<content />", $content, $page_body);
 $page_body = str_replace("<nome />","", $page_body);
