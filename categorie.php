@@ -14,19 +14,24 @@ $title = 'Categorie - Share Arts';
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
-$page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
 
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
-$page_body = str_replace('<errors />', "", $page_body);
 
 
 
 // Se non è settato un id mostra la lista delle categorie
 if (!isset($_GET['id'])) {
+
+    $title = 'Categorie - Share Arts';
+    $page_head = str_replace("<titolo />", $title, $page_head);
+
+    $page_head = str_replace("<page_description/>", "Elenco delle categorie di opere presenti nel sito", $page_head);
+    $page_head = str_replace("<keywords/>", "arte, opera, selezione, esplorare, categorie", $page_head);
+    $page_head = str_replace("<metatitle/>", $title, $page_head);
 
     // Disattiva link circolare
     $page_body = str_replace('<li><a href="categorie.php" tabindex="<tab3 />">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente
@@ -75,13 +80,19 @@ if (!isset($_GET['id'])) {
 // Se è settato un id mostra la lista delle opere filtrate per la categoria passata in GET
 else {
 
+    
     $content = file_get_contents('includes/opere_list.html');
     $link = file_get_contents('includes/link.html');
     $link = str_replace("<path />", "categorie.php", $link);
     $link = str_replace("<nome_link />", "Categorie", $link);
     $link = str_replace("<tab />", "1", $link);
-
+    
     $nome_categoria = $db->getCategoriaName($_GET['id']);
+    $title = $nome_categoria['nome_categoria'] . " - Share Arts";
+    $page_head = str_replace("<titolo />", $title, $page_head);
+    $page_head = str_replace("<page_description/>", "Panoramica delle opere appartenenti alla categoria " . $nome_categoria['nome_categoria'], $page_head);
+    $page_head = str_replace("<keywords/>", "arte, opera, panoramica, esplorare, categoria, " . $nome_categoria['nome_categoria'] . ", immagine", $page_head);
+    $page_head = str_replace("<metatitle/>", $title, $page_head);
     $page_body = str_replace("<breadcrumb />", $link . " > " . $nome_categoria['nome_categoria'], $page_body);
     $content = str_replace("<section_name />", $nome_categoria['nome_categoria'], $content);
 

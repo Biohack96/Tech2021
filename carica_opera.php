@@ -38,8 +38,14 @@ else {
 
 $title = 'Carica opera - Share Arts';
 
+$autore = $db->getAutoreById($_SESSION['user_id']);
+
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
+$page_head = str_replace("<page_description/>", "Upload nuova opera di " . $autore['username'], $page_head);
+$page_head = str_replace("<keywords/>", "arte, opera, selezione, autore, caricamento, upload, immagine, informazioni", $page_head);
+$page_head = str_replace("<metatitle/>", $title, $page_head);
+
 $page_body = file_get_contents('includes/body.html');
 
 $content .= file_get_contents('includes/registrazione_opera.html');

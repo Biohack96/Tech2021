@@ -20,6 +20,10 @@ $title = 'Share Arts';
 
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
+$page_head = str_replace("<page_description/>", "Login o registrazione al sito Share Arts", $page_head);
+$page_head = str_replace("<keywords/>", "arte, opera, accesso, login, registrazione, autore, utente, informazioni", $page_head);
+$page_head = str_replace("<metatitle/>", $title, $page_head);
+
 $page_body = file_get_contents('includes/body.html'); 
 $content  .= file_get_contents('includes/login.html'); //login
 $content  .= file_get_contents('includes/registrazione.html'); //registrazione

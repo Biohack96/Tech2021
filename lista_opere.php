@@ -19,6 +19,10 @@ $content = file_get_contents('includes/opere_list.html');
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
+$page_head = str_replace("<page_description/>", "Panoramica di tutte le opere caricate nel sito", $page_head);
+$page_head = str_replace("<keywords/>", "arte, opera, panoramica, esplorare, condividere, immagine", $page_head);
+$page_head = str_replace("<metatitle/>", $title, $page_head);
+
 // Disattiva link circolare
 $page_body = str_replace('<li><a href="lista_opere.php" tabindex="<tab2 />">Tutte le opere</a></li>', '<li>Tutte le opere</li>', $page_body);
 
@@ -45,7 +49,6 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
     $counter = 5;			
     }
 ////
-$page_body = str_replace('<errors />', "", $page_body);
 
 $page_body = str_replace("<breadcrumb />", "Tutte le opere", $page_body);
 $content = str_replace("<section_name />", "Tutte le opere", $content);

@@ -6,16 +6,10 @@ require_once('includes/DB.php');
 // Oggetto di accesso al database
 $db = new DB();
 
-// Titolo della pagina
-
-$title = 'Autori - Share Arts';
-
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
-$page_body = str_replace('<errors />', "", $page_body);
-$page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
 
 /////gestione login/logout
@@ -27,8 +21,15 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
 if (!isset($_GET['id'])){
 
+    $title = 'Autori - Share Arts';
+    $page_head = str_replace("<titolo />", $title, $page_head);
+
+    $page_head = str_replace("<page_description/>", "Elenco degli autori presenti nel sito", $page_head);
+    $page_head = str_replace("<keywords/>", "arte, opera, selezione, esplorare, autori", $page_head);
+    $page_head = str_replace("<metatitle/>", $title, $page_head);
+
 // Disattiva link circolare
-$page_body = str_replace('<li><a href="autori.php" tabindex="<tab4 />">Autori</a></li>', '<li>Autori</li>', $page_body);
+    $page_body = str_replace('<li><a href="autori.php" tabindex="<tab4 />">Autori</a></li>', '<li>Autori</li>', $page_body);
 
     if (isset($_SESSION['user_id'])) {
         $autori = $db->getAutoriLogged($_SESSION['user_id']);
@@ -39,8 +40,8 @@ $page_body = str_replace('<li><a href="autori.php" tabindex="<tab4 />">Autori</a
         $autori = $db->getAutori();
     }
 
-$content = file_get_contents('includes/autori_list.html');
-$page_body = str_replace("<breadcrumb />", "Autori", $page_body);
+    $content = file_get_contents('includes/autori_list.html');
+    $page_body = str_replace("<breadcrumb />", "Autori", $page_body);
 
     $page_body = str_replace("<tab1 />", "1", $page_body);
     $page_body = str_replace("<tab2 />", "2", $page_body);
@@ -60,7 +61,7 @@ $page_body = str_replace("<breadcrumb />", "Autori", $page_body);
     }
 
 
-$lista_autori = '';
+    $lista_autori = '';
 
     if($autori != null) {
 
@@ -81,9 +82,17 @@ $lista_autori = '';
 
 else {
 
+    $a = $db->getAutoreById($_GET['id']);
+
+    $title = $a['username'] . " - Share Arts";
+    $page_head = str_replace("<titolo />", $title, $page_head);
+
+    $page_head = str_replace("<page_description/>", "Profilo e opere di " . $a['username'], $page_head);
+    $page_head = str_replace("<keywords/>", "arte, autore, immagine, opera, condividere, " . $a['username'], $page_head);
+    $page_head = str_replace("<metatitle/>", $title, $page_head);
+
     $content = file_get_contents('includes/content_pagina_autore.html');
 
-    $a = $db->getAutoreById($_GET['id']);
     $content = str_replace("<username />", $a['username'], $content);
     $content = str_replace("<informazioni />", $a['bio'], $content);
     $link = file_get_contents('includes/link.html');
@@ -116,6 +125,7 @@ else {
         }
         else {
             $content = str_replace("<button_aggiungi_opera />", "", $content);
+            $content = str_replace("<button_elimina_profilo />", "", $content);
             $page_body = str_replace("<breadcrumb />", $link . " > " . $a['username'], $page_body);
             $page_body = str_replace("<tab1 />", "2", $page_body);
             $page_body = str_replace("<tab2 />", "3", $page_body);

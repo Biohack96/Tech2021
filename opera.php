@@ -37,11 +37,13 @@ else
     $page_body = str_replace("<utente />",$login_button, $page_body);			
 }
 ////
-$page_body = str_replace('<errors />', "", $page_body);
 
 // TODO sistemare breadcrumb la tua pagina
 
 $opera = $db->getOperaById($_GET['id']);
+
+$page_head = str_replace("<page_description/>", "Opera di " . $opera['username'] . " intitolata " . $opera['titolo'], $page_head);
+$page_head = str_replace("<keywords/>", "arte, autore, opera, immagine, condividere, " . $opera['nome_categoria'], $page_head);
 
 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $opera['id_autore']){
     $button_elimina = file_get_contents('includes/button_elimina_opera.html');
@@ -56,7 +58,7 @@ if ($_GET['from'] == "autore") {
     $link2 = file_get_contents('includes/link.html');
     $link2 = str_replace("<path />", "autori.php?id=".$opera['id_autore'], $link2);    
 
-    if ($_SESSION['user_id'] == $opera['id_autore']) {
+    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $opera['id_autore']) {
         $link2 = str_replace("<nome_link />", "La tua pagina", $link2);
         $page_body = str_replace("<breadcrumb />", $link2 . " > " . $opera['titolo'], $page_body);
     }
