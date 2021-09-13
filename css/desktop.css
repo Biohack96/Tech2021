@@ -57,9 +57,9 @@ body {
 .box {
     margin: 0.5em;
     padding: 1em;
-    background-color: rgb(0, 75, 0);   
+    background-color: rgb(36, 42, 44);   
     font-weight: bold;
-    color: rgb(236, 255, 126);
+    color: yellow;
     border-radius: 1em;
     
 }
@@ -74,8 +74,12 @@ body {
     width: 13em;
 }
 
-#menubox a {
+#menubox a:link {
     color: whitesmoke;
+}
+
+#menubox a:visited {
+    color: rgb(206, 223, 196);
 }
 
 #menubox ul {
@@ -90,7 +94,7 @@ body {
 #menubox p {
     font-size: 1.5em;
     text-align: center;
-    color: rgb(236, 255, 126);
+    color: yellow;
 }
 
 
@@ -116,8 +120,12 @@ body {
     padding: 0.3em;
 }
 
-.elenco a {
+.elenco a:link {
     color: black;
+}
+
+.elenco a:visited {
+    color:rgb(124, 0, 124);
 }
 
 /***** ricerca ****/
@@ -165,6 +173,10 @@ body {
     font-weight: bold;
 }
 
+#remember {
+    font-size: 0.9em;
+}
+
 .fieldset_form p {
     font-size: 0.8em;
 }
@@ -175,7 +187,7 @@ body {
 }
 
 .fieldset_form li {
-    padding: 0.3em 0; 
+    padding: 0.5em 0; 
 }
 
 .input_field {
@@ -218,7 +230,6 @@ body {
 .carte {
     display: inline-block;
     padding: 1em;
-
 }
 
 .carte img {
@@ -297,19 +308,34 @@ body {
 
 .buttons_panel {
     font-size: 0.9em;
-    margin: 2.5em 1em;
+    margin: 1em 0 2.5em 0.9em;
+}
+
+.buttons_panel div {
+    display: inline-block;
+    margin: 1em 0;
 }
 
 .buttons_panel a {
-    margin-right: 1em;
+    margin-right: 0.6em;
     color: white;
     font-weight: bold;
-}
-
-#add_opera_button {
-    background-color: rgb(155, 93, 0);
+    text-decoration: none;
     border-radius: 1em;
     padding: 0.6em 1em;
+}
+
+
+#add_opera_button {
+    background-color: rgb(37, 110, 69);   
+}
+
+#button_elimina_profilo {
+    background-color: rgb(167, 0, 25);
+}
+
+#button_mod_profilo {
+    background-color: rgb(117, 0, 117);
 }
 
 .description_text {
