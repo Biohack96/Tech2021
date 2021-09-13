@@ -120,6 +120,39 @@ body {
     color: black;
 }
 
+/***** ricerca ****/
+
+.ricerca {
+    text-align: center;
+    padding-top: 2em;
+}
+
+.legend_cerca {
+   padding-left: 3em;
+   text-align: center;
+}
+
+.banner_cerca {
+    padding: 0.7em 1em;
+    border-radius: 1em;
+    width: 15em;
+    border-style:solid;
+    border-color: black;
+    border-width: 0.1em;
+}
+
+.no_results {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.go_back {
+    padding: 0.5em 1em;
+    background-color: steelblue;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
 
 /***** login e registrazione ****/
 
@@ -142,16 +175,24 @@ body {
 }
 
 .fieldset_form li {
-    padding: 0.3em 0;
+    padding: 0.3em 0; 
+}
+
+.input_field {
+    border-style:solid;
+    border-color: black;
+    border-width: 0.1em;
+    padding: 0.2em 0.5em;
 }
 
 .submit_button {
     background-color: rgb(228, 24, 150);
-    padding: 0.5em 1em;
+    padding: 0.7em 1em;
     margin: 1em 0;
     color: whitesmoke;
     font-weight: bold;
     cursor: pointer;
+    border-radius: 1em;
 }
 
 .big_text {
@@ -159,6 +200,9 @@ body {
     padding: 0.5em;
     margin-top: 0.5em;
     font-size: 0.8em;
+    border-style:solid;
+    border-color: black;
+    border-width: 0.1em;
 }
 
 #registrazione_foto_opera {
