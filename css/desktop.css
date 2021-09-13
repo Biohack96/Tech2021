@@ -79,7 +79,7 @@ body {
 }
 
 #menubox a:visited {
-    color: rgb(206, 223, 196);
+    color: rgb(252, 213, 255);
 }
 
 #menubox ul {
@@ -103,7 +103,7 @@ body {
 .titolo_sezione {
     font-size: 1.5em;
     font-weight: bold;
-    color: rgb(138, 0, 138);
+    color: rgb(1, 90, 20);
     padding: 0 0 0.5em 0.5em;
 }
 
