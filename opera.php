@@ -10,20 +10,20 @@ if(!isset($_GET['id'])) {
 // Oggetto di accesso al database
 $db = new DB();
 
-// Titolo della pagina
-
-$title = 'Opere - Share Arts';
-
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
 $content = file_get_contents('includes/content_opera.html');
 
-$page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace('<scripts />', "", $page_head);
 
 $opera = $db->getOperaById($_GET['id']);
+
+$title = $opera['titolo'] . ' - Share Arts';
+$page_head = str_replace("<titolo />", $title, $page_head);
+$page_head = str_replace("<metatitle/>", $title, $page_head);
+
 
 // Creazione breadcrumb
 

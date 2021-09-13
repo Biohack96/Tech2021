@@ -209,7 +209,7 @@ class DB extends mysqli{
 
 	public function getAutori(){
 
-		$sql = "SELECT * FROM autore";
+		$sql = "SELECT * FROM autore WHERE isAdmin=false";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
@@ -235,7 +235,7 @@ class DB extends mysqli{
 
 	public function getAutoriLogged($id = null) {
 
-		$sql = "SELECT * FROM autore WHERE id!=?";
+		$sql = "SELECT * FROM autore WHERE id!=? AND isAdmin=false";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();

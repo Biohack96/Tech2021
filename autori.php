@@ -149,7 +149,7 @@ else {
                 $counter = 7;
             }
 
-            if ($auth['isAdmin']) {
+            if (isset ($_SESSION['user_id']) && $auth['isAdmin']) {
                 $button_elimina_profilo = file_get_contents('includes/button_elimina_profilo.html');
                 $button_elimina_profilo = str_replace("<tab />", $counter++, $button_elimina_profilo);
                 $button_elimina_profilo = str_replace("<id_aut />", $_GET['id'], $button_elimina_profilo);
@@ -162,6 +162,8 @@ else {
         }
     $opere = $db->getOpereByAuthor($_GET['id']);
     $opere_content = file_get_contents('includes/opere_list.html');
+    $opere_content = str_replace("<section_name />", "", $opere_content);
+
 
     $lista_opere = '';
 
