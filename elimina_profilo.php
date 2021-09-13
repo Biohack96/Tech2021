@@ -8,8 +8,9 @@ if (!isset($_GET['id']) || !isset($_SESSION['user_id'])) {
 
 $db = new DB();
 
+$auth = $db->getAutoreById($_SESSION['user_id']);
 
-if ($_SESSION['user_id'] != $_GET['id']) {
+if (($_SESSION['user_id'] != $_GET['id']) && $auth['isAdmin'] == false) {
     header('Location: lista_opere.php');
 }
 
