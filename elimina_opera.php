@@ -9,8 +9,9 @@ if (!isset($_GET['id']) || !isset($_SESSION['user_id'])) {
 $db = new DB();
 
 $opera = $db->getOperaById($_GET['id']);
+$auth = $db->getAutoreById($_SESSION['user_id']);
 
-if ($_SESSION['user_id'] != $opera['id_autore']) {
+if (($_SESSION['user_id'] != $opera['id_autore']) && $auth['isAdmin'] == false) {
     header('Location: lista_opere.php');
 }
 

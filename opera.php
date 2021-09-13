@@ -83,6 +83,7 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
 if(isset($_SESSION['user_id']))
 {
+    $auth = $db->getAutoreById($_SESSION['user_id']);
     $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
     $profile_button = str_replace("<tab1 />", $counter++, $profile_button);
     $profile_button = str_replace("<tab2 />", $counter++, $profile_button);
@@ -120,6 +121,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $opera['id_autore']){
     $button_elimina = str_replace("<tab />", $counter++, $button_elimina);
     $content = str_replace("<button_elimina />", $button_elimina, $content);
 }
+
+else if (isset($_SESSION['user_id']) && $auth['isAdmin']) {
+    $button_elimina = file_get_contents('includes/button_elimina_opera.html');
+    $button_elimina = str_replace("<id_opera />", $_GET['id'], $button_elimina);
+    $button_elimina = str_replace("<tab />", $counter++, $button_elimina);
+    $content = str_replace("<button_elimina />", $button_elimina, $content);
+}
+
 else {
     $content = str_replace("<button_elimina />", "", $content);
 }

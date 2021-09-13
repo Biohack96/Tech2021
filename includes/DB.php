@@ -376,7 +376,7 @@ class DB extends mysqli{
 
 		
 
-		$register = "INSERT INTO autore(username,password,bio) VALUES (?,?,?)";
+		$register = "INSERT INTO autore(username,password,bio,isAdmin) VALUES (?,?,?, false)";
 
 		$query = $this->prepare($register);
 		$query->bind_param("sss", $username, $hashed_pass,$bio);

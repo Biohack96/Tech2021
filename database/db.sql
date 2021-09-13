@@ -12,7 +12,8 @@ CREATE TABLE autore (
   id          INT AUTO_INCREMENT PRIMARY KEY,
   password    VARCHAR(64) NOT NULL,
   username    VARCHAR(30) NOT NULL,
-  bio         VARCHAR(2000)
+  bio         VARCHAR(2000),
+  isAdmin     BOOLEAN NOT NULL
 );
 
 CREATE TABLE categoria (
@@ -49,4 +50,5 @@ CREATE TABLE commento (
 
 SET FOREIGN_KEY_CHECKS = 1; -- Riabilita check
 
-INSERT into autore(password,username,bio) VALUES ('04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb','user','just a user');
+INSERT into autore(password,username,bio,isAdmin) VALUES ('04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb','user','just a user', false);
+INSERT into autore(password,username,bio,isAdmin) VALUES ('8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','admin','admin', true);

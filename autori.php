@@ -100,7 +100,10 @@ else {
     $link = str_replace("<nome_link />", "Autori", $link);
     $link = str_replace("<tab />", "1", $link);
 
-        if(isset ($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['id']) {
+    if (isset($_SESSION['user_id'])) {
+        $auth = $db->getAutoreById($_SESSION['user_id']);
+    }
+        if(isset ($_SESSION['user_id']) && ($_SESSION['user_id'] == $_GET['id'])) {
             $page_body = str_replace("<tab1 />", "1", $page_body);
             $page_body = str_replace("<tab2 />", "2", $page_body);
             $page_body = str_replace("<tab3 />", "3", $page_body);
@@ -125,26 +128,37 @@ else {
         }
         else {
             $content = str_replace("<button_aggiungi_opera />", "", $content);
-            $content = str_replace("<button_elimina_profilo />", "", $content);
             $page_body = str_replace("<breadcrumb />", $link . " > " . $a['username'], $page_body);
             $page_body = str_replace("<tab1 />", "2", $page_body);
             $page_body = str_replace("<tab2 />", "3", $page_body);
             $page_body = str_replace("<tab3 />", "4", $page_body);
             $page_body = str_replace("<tab4 />", "5", $page_body);
+            $counter = 6;
 
             if(isset ($_SESSION['user_id'])) {
                 $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-                $profile_button = str_replace("<tab1 />", "6", $profile_button);
-                $profile_button = str_replace("<tab2 />", "7", $profile_button);
+                $profile_button = str_replace("<tab1 />", $counter++, $profile_button);
+                $profile_button = str_replace("<tab2 />", $counter++, $profile_button);
                 $page_body = str_replace("<utente />",  $profile_button, $page_body);
                 $counter = 8;
             }
-
+            
             else {
                 $login_button = str_replace("<tab />", "6", $login_button);
                 $page_body = str_replace("<utente />",$login_button, $page_body);
                 $counter = 7;
             }
+
+            if ($auth['isAdmin']) {
+                $button_elimina_profilo = file_get_contents('includes/button_elimina_profilo.html');
+                $button_elimina_profilo = str_replace("<tab />", $counter++, $button_elimina_profilo);
+                $button_elimina_profilo = str_replace("<id_aut />", $_GET['id'], $button_elimina_profilo);
+                $content = str_replace("<button_elimina_profilo />", $button_elimina_profilo, $content);
+            }
+            else {
+                $content = str_replace("<button_elimina_profilo />", "", $content);
+            }
+
         }
     $opere = $db->getOpereByAuthor($_GET['id']);
     $opere_content = file_get_contents('includes/opere_list.html');
