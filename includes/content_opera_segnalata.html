@@ -1,7 +1,4 @@
-<div class="buttons_panel">
-    <a id="button_ripubblica" href="ripubblica_opera.php?id=<id_opera />" tabindex="<tab1 />" onclick="return confirm ('Vuoi ripubblicare questa opera? Tornerà visibile a tutti gli utenti')">Ripubblica</a>
-    <a id="button_elimina" href="elimina_opera.php?id=<id_opera />" tabindex="<tab2 />" onclick="return confirm ('Vuoi eliminare questa opera?')">Elimina</a>
-</div>
+
 <div id="opera">
 <div id="img">
     <img class="bigopera" src="<Path/>" alt="<img_description/>"/>
@@ -19,6 +16,12 @@
                 <a href="<link_cat />" tabindex="<tab_cat />"><categoria /></a>
             </li> 
         </ul>
+
+        <div id="opera_buttons" class="buttons_panel">
+            <div><a id="button_ripubblica" href="ripubblica_opera.php?id=<id_opera />" tabindex="<tab1 />" onclick="return confirm ('Vuoi ripubblicare questa opera? Tornerà visibile a tutti gli utenti')">Ripubblica</a></div>
+            <div><a id="button_elimina" href="elimina_opera.php?id=<id_opera />" tabindex="<tab2 />" onclick="return confirm ('Vuoi eliminare questa opera?')">Elimina</a>
+            </div>
+        </div>
 
     </div>
 
