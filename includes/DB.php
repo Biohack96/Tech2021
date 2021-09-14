@@ -19,7 +19,7 @@ class DB extends mysqli{
 
     public function getListaCategorie()
 	{
-		$sql = "SELECT nome_categoria, id FROM categoria";
+		$sql = "SELECT nome_categoria, id FROM categoria  ORDER BY nome_categoria";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
@@ -209,7 +209,7 @@ class DB extends mysqli{
 
 	public function getAutori(){
 
-		$sql = "SELECT * FROM autore WHERE isAdmin=false";
+		$sql = "SELECT * FROM autore WHERE isAdmin=false ORDER BY username";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
