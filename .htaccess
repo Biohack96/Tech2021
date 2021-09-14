@@ -1,1 +1,2 @@
 ErrorDocument 404 /Tech2021/404.php
+DirectoryIndex /Tech2021/home.php
