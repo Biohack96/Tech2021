@@ -10,6 +10,15 @@ $db = new DB();
 
 $title = 'Opere - Share Arts';
 
+$admin = false;
+
+if(isset($_SESSION['user_id'])) {
+    $auth = $db->getAutoreById($_SESSION['user_id']);
+    if ($auth['isAdmin']) {
+        $admin = true;
+    }
+}
+
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
@@ -36,11 +45,20 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
 
     if(isset($_SESSION['user_id'])) {
-    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-    $profile_button = str_replace("<tab1 />", "4", $profile_button);
-    $profile_button = str_replace("<tab2 />", "5", $profile_button);
-    $page_body = str_replace("<utente />", $profile_button, $page_body);
-    $counter = 6;			
+        if ($admin) {
+            $admin_button = file_get_contents('includes/usr_zone_admin.html');
+            $admin_button = str_replace("<tab1 />", "4", $admin_button);
+            $admin_button = str_replace("<tab2 />", "5", $admin_button);
+            $page_body = str_replace("<utente />",  $admin_button, $page_body);
+            $counter = 6;
+        }
+        else {
+            $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+            $profile_button = str_replace("<tab1 />", "4", $profile_button);
+            $profile_button = str_replace("<tab2 />", "5", $profile_button);
+            $page_body = str_replace("<utente />", $profile_button, $page_body);
+            $counter = 6;	
+        }		
     }
 
     else {

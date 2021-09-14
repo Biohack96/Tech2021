@@ -31,6 +31,7 @@ CREATE TABLE opera (
   id_autore          INT NOT NULL,
   id_categoria       INT NOT NULL,
   img_path           VARCHAR(256) NOT NULL,
+  segnalata          BOOLEAN NOT NULL
 
   FOREIGN KEY (id_autore) REFERENCES autore(id),
   FOREIGN KEY (id_categoria) REFERENCES categoria(id)

@@ -45,7 +45,33 @@ class DB extends mysqli{
 
 	public function getAllOpere()
 	{
-		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id";
+		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE segnalata=false";
+		$query = $this->prepare($sql);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$rec = array();
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+		while ($row = $result->fetch_assoc())
+			{
+				$rec[] = $row;
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $rec;
+
+    }
+
+	public function getOpereSegnalate()
+	{
+		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE segnalata=true";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
@@ -72,7 +98,7 @@ class DB extends mysqli{
 
     public function getOpereByCategoria($categoria)
 	{
-		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short FROM opera o JOIN autore a ON o.id_autore=a.id WHERE o.id_categoria=?";
+		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short FROM opera o JOIN autore a ON o.id_autore=a.id WHERE o.id_categoria=? AND o.segnalata=false";
 		$query = $this->prepare($sql);
         $query->bind_param("i", $categoria);
 		$query->execute();
@@ -98,6 +124,33 @@ class DB extends mysqli{
     }
 
 	public function getOpereByAuthor($autore)
+	{
+		$sql = "SELECT titolo, img_path, o.id, descrizione_short, nome_categoria FROM opera o JOIN categoria c ON o.id_categoria=c.id WHERE o.id_autore=? AND o.segnalata=false";
+		$query = $this->prepare($sql);
+        $query->bind_param("i", $autore);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$op = array();
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+		while ($row = $result->fetch_assoc())
+			{
+				$op[] = $row;
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $op;
+
+    }
+
+	public function getMyOpere($autore)
 	{
 		$sql = "SELECT titolo, img_path, o.id, descrizione_short, nome_categoria FROM opera o JOIN categoria c ON o.id_categoria=c.id WHERE o.id_autore=?";
 		$query = $this->prepare($sql);
@@ -149,7 +202,7 @@ class DB extends mysqli{
 
 	public function getOperaById($id = null)
 	{
-        $sql = "SELECT titolo, descrizione_short, descrizione, data_creazione, img_path, username, nome_categoria, id_categoria, id_autore 
+        $sql = "SELECT titolo, descrizione_short, descrizione, data_creazione, img_path, username, nome_categoria, id_categoria, id_autore, segnalata 
 		FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE o.id=?";
 		$query = $this->prepare($sql);
         $query->bind_param("i", $id);
@@ -282,6 +335,19 @@ class DB extends mysqli{
 
 	}
 
+	public function segnalaOpera($id = null){
+
+		$sql = "UPDATE opera SET segnalata=true WHERE id=?";
+		$query = $this->prepare($sql);
+		$query->bind_param("i", $id);
+
+        if ($query->execute()) {
+			return true;
+		}
+		return false;
+
+	}
+
 	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
 
 		$error = array();
@@ -311,7 +377,7 @@ class DB extends mysqli{
 		if(count($error)) {return $error;}
 
         if(!empty($img_path)){
-			$sql = "INSERT INTO opera VALUES (NULL,?,?,?,?,?,?,?);";
+			$sql = "INSERT INTO opera VALUES (NULL,?,?,?,?,?,?,?,false);";
 			
 			$query = $this->prepare($sql);
 			$query->bind_param("ssssiis",$titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img_path);

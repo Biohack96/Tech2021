@@ -74,11 +74,11 @@ body {
     width: 13em;
 }
 
-#menubox a:link {
+#navigator a:link {
     color: whitesmoke;
 }
 
-#menubox a:visited {
+#navigator a:visited {
     color: rgb(252, 213, 255);
 }
 
@@ -262,6 +262,12 @@ body {
     border-radius: 1em;
 }
 
+#button_segnala_opera {
+    background-color: rgb(167, 0, 25);
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+}
 
 /**** autore ****/
 
