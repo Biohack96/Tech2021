@@ -271,7 +271,7 @@ else {
     }
 
     else {
-        $opere_content = str_replace("<opere/>", "<p>Nessuna opera</p>", $opere_content);
+        $opere_content = str_replace("<opere/>", "<p class=\"no_results\">Nessuna opera</p>", $opere_content);
     }
 
     $content = str_replace("<opere />", $opere_content, $content);

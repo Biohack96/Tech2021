@@ -96,7 +96,7 @@ $content = str_replace("<opere/>", $lista_opere, $content);
 }
 else
 {
-    $content = str_replace("<opere/>", "<span>Non sono presenti opere al momento</span>", $content);
+    $content = str_replace("<opere/>", "<span class=\"no_results\">Non sono presenti opere al momento</span>", $content);
 }
 
 
