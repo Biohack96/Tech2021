@@ -152,20 +152,23 @@ else {
 
 // button segnala
 
-if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $opera['id_autore']) {
-    if ($opera['segnalata'] == false) {
+if ($opera['segnalata'] == true) {
+    if ($admin) {
+    $content = str_replace("<button_segnala />", "<p>Quest'opera è stata segnalata ed è in attesa di revisione</p>", $content);
+    }
+    else {
+    $content = str_replace("<button_segnala />", "<p>Quest'opera è stata segnalata ed è in attesa di revisione da parte degli amministratori</p>", $content);
+    }
+}
+
+else if (!isset($_SESSION['user_id']) || ($_SESSION['user_id'] != $opera['id_autore'] && $admin==false)) {
     $button_segnala = file_get_contents('includes/button_segnala_opera.html');
     $button_segnala = str_replace("<id_opera />", $_GET['id'], $button_segnala);
     $button_segnala = str_replace("<tab />", $counter++, $button_segnala);
     $content = str_replace("<button_segnala />", $button_segnala, $content);
     }
-
-    else {
-        $content = str_replace("<button_segnala />", "<p>Quest'opera è stata segnalata ed è in attesa di revisione da parte degli amministratori</p>", $content);
-    }
-}
 else {
-    $content = str_replace("<button_segnala />", "<p>Quest'opera è stata segnalata ed è in attesa di revisione da parte degli amministratori</p>", $content);
+    $content = str_replace("<button_segnala />", "", $content);
 }
 
 $page_body = str_replace('<content />', $content, $page_body);

@@ -262,7 +262,33 @@ class DB extends mysqli{
 
 	public function getAutori(){
 
-		$sql = "SELECT * FROM autore WHERE isAdmin=false ORDER BY username";
+		$sql = "SELECT * FROM autore WHERE isAdmin=false AND segnalato=false ORDER BY username";
+		$query = $this->prepare($sql);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$rec = array();
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+		while ($row = $result->fetch_assoc())
+			{
+				$rec[] = $row;
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $rec;
+
+	}
+
+	public function getAutoriSegnalati(){
+
+		$sql = "SELECT * FROM autore WHERE isAdmin=false AND segnalato=true ORDER BY username";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
@@ -288,7 +314,7 @@ class DB extends mysqli{
 
 	public function getAutoriLogged($id = null) {
 
-		$sql = "SELECT * FROM autore WHERE id!=? AND isAdmin=false";
+		$sql = "SELECT * FROM autore WHERE id!=? AND isAdmin=false AND segnalato=false";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();
@@ -338,6 +364,19 @@ class DB extends mysqli{
 	public function segnalaOpera($id = null){
 
 		$sql = "UPDATE opera SET segnalata=true WHERE id=?";
+		$query = $this->prepare($sql);
+		$query->bind_param("i", $id);
+
+        if ($query->execute()) {
+			return true;
+		}
+		return false;
+
+	}
+
+	public function segnalaAutore($id = null){
+
+		$sql = "UPDATE autore SET segnalato=true WHERE id=?";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 

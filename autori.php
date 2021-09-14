@@ -6,6 +6,15 @@ require_once('includes/DB.php');
 // Oggetto di accesso al database
 $db = new DB();
 
+$admin = false;
+
+if(isset($_SESSION['user_id'])) {
+    $auth = $db->getAutoreById($_SESSION['user_id']);
+    if ($auth['isAdmin']) {
+        $admin = true;
+    }
+}
+
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
@@ -158,7 +167,6 @@ else {
                     $profile_button = str_replace("<tab1 />", $counter++, $profile_button);
                     $profile_button = str_replace("<tab2 />", $counter++, $profile_button);
                     $page_body = str_replace("<utente />",  $profile_button, $page_body);
-                    $counter = 8;
                 }
             }
             
@@ -173,12 +181,38 @@ else {
                 $button_elimina_profilo = str_replace("<tab />", $counter++, $button_elimina_profilo);
                 $button_elimina_profilo = str_replace("<id_aut />", $_GET['id'], $button_elimina_profilo);
                 $content = str_replace("<button_elimina_profilo />", $button_elimina_profilo, $content);
+
+                if ($a['segnalato'] == true) {
+
+                } 
             }
             else {
                 $content = str_replace("<button_elimina_profilo />", "", $content);
             }
 
         }
+
+        if ($a['segnalato'] == true) {
+            if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['id']) {
+                $content = str_replace("<button_segnala_profilo />", "<p>Il tuo profilo è stato segnalato ed è in attesa di revisione da parte degli amministratori</p>", $content);
+            }
+            else {
+                $content = str_replace("<button_segnala_profilo />", "<p>Questo profilo è stato segnalato ed è in attesa di revisione da parte degli amministratori</p>", $content);
+            }
+        }
+
+        else {
+            if (!isset($_SESSION['user_id']) || ($_SESSION['user_id'] != $_GET['id'] && $admin==false)){
+                $button_segnala = file_get_contents('includes/button_segnala_profilo.html');
+                $button_segnala = str_replace("<id_aut />", $_GET['id'], $button_segnala);
+                $button_segnala = str_replace("<tab />", $counter++, $button_segnala);
+                $content = str_replace("<button_segnala_profilo />", $button_segnala, $content);
+            }
+            else {
+                $content = str_replace("<button_segnala_profilo />", "", $content);
+            }
+        }
+
         if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['id']) {
             $opere = $db->getMyOpere($_GET['id']);
         }
