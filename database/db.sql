@@ -13,6 +13,7 @@ CREATE TABLE autore (
   password    VARCHAR(64) NOT NULL,
   username    VARCHAR(30) NOT NULL,
   bio         VARCHAR(2000),
+  segnalato   BOOLEAN NOT NULL,
   isAdmin     BOOLEAN NOT NULL
 );
 

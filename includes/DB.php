@@ -348,6 +348,19 @@ class DB extends mysqli{
 
 	}
 
+	public function republishOpera($id = null){
+
+		$sql = "UPDATE opera SET segnalata=false WHERE id=?";
+		$query = $this->prepare($sql);
+		$query->bind_param("i", $id);
+
+        if ($query->execute()) {
+			return true;
+		}
+		return false;
+
+	}
+
 	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
 
 		$error = array();

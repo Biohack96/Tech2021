@@ -10,6 +10,15 @@ if(!isset($_GET['id'])) {
 // Oggetto di accesso al database
 $db = new DB();
 
+$admin = false;
+
+if(isset($_SESSION['user_id'])) {
+    $auth = $db->getAutoreById($_SESSION['user_id']);
+    if ($auth['isAdmin']) {
+        $admin = true;
+    }
+}
+
 // Include i file html
 $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
@@ -83,11 +92,19 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
 if(isset($_SESSION['user_id']))
 {
-    $auth = $db->getAutoreById($_SESSION['user_id']);
-    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-    $profile_button = str_replace("<tab1 />", $counter++, $profile_button);
-    $profile_button = str_replace("<tab2 />", $counter++, $profile_button);
-    $page_body = str_replace("<utente />", $profile_button, $page_body);			
+    if ($admin) {
+        $admin_button = file_get_contents('includes/usr_zone_admin.html');
+        $admin_button = str_replace("<tab1 />", $counter++, $admin_button);
+        $admin_button = str_replace("<tab2 />", $counter++, $admin_button);
+        $page_body = str_replace("<utente />",  $admin_button, $page_body);
+        $counter = 6;
+    }
+    else {
+        $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+        $profile_button = str_replace("<tab1 />", $counter++, $profile_button);
+        $profile_button = str_replace("<tab2 />", $counter++, $profile_button);
+        $page_body = str_replace("<utente />", $profile_button, $page_body);			
+    }
 }
 else
 {
@@ -122,7 +139,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $opera['id_autore']){
     $content = str_replace("<button_elimina />", $button_elimina, $content);
 }
 
-else if (isset($_SESSION['user_id']) && $auth['isAdmin']) {
+else if (isset($_SESSION['user_id']) && $admin) {
     $button_elimina = file_get_contents('includes/button_elimina_opera.html');
     $button_elimina = str_replace("<id_opera />", $_GET['id'], $button_elimina);
     $button_elimina = str_replace("<tab />", $counter++, $button_elimina);
@@ -144,7 +161,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] != $opera['id_autore'])
     }
 
     else {
-        $content = str_replace("<button_segnala />", "<p>Quest'opera è stata segnalata ed è in attesa di revisione da parte degli amministratori", $content);
+        $content = str_replace("<button_segnala />", "<p>Quest'opera è stata segnalata ed è in attesa di revisione da parte degli amministratori</p>", $content);
     }
 }
 else {

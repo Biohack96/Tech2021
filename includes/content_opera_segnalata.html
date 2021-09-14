@@ -1,0 +1,31 @@
+<div class="buttons_panel">
+    <a id="button_ripubblica" href="ripubblica_opera.php?id=<id_opera />" tabindex="<tab1 />" onclick="return confirm ('Vuoi ripubblicare questa opera? Tornerà visibile a tutti gli utenti')">Ripubblica</a>
+    <a id="button_elimina" href="elimina_opera.php?id=<id_opera />" tabindex="<tab2 />" onclick="return confirm ('Vuoi eliminare questa opera?')">Elimina</a>
+</div>
+<div id="opera">
+<div id="img">
+    <img class="bigopera" src="<Path/>" alt="<img_description/>"/>
+</div>
+
+
+    <div>
+        <ul id="profilo_dati"> 
+            <li><span class="bolded">Titolo: </span> <titolo /></li>
+            <li><span class="bolded">Autore: </span> 
+                <a href="<link_autore />" tabindex="<tab_aut />"><autore /></a>
+            </li> 
+            <li><span class="bolded">Anno di creazione: </span> <data_creazione /></li>
+            <li><span class="bolded">Categoria: </span> 
+                <a href="<link_cat />" tabindex="<tab_cat />"><categoria /></a>
+            </li> 
+        </ul>
+
+    </div>
+
+    <div id="descrizione">
+        <p class="bolded"> Descrizione </p>
+        <p class="description_text"> <descrizione /> </p>
+    </div>
+
+
+</div>

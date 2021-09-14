@@ -40,36 +40,11 @@ $admin_button = file_get_contents('includes/usr_zone_admin.html');
 $admin_button = str_replace("<tab2 />", "5", $admin_button);
 $content = file_get_contents('includes/admin.html');
 
-$opere_segnalate = $db->getOpereSegnalate();
+$content = str_replace("<tab1 />", "6", $content);
+$content = str_replace("<tab2 />", "7", $content);
 
-$lista_opere = '';
-
-if ($opere_segnalate != null) {
-    $counter = 7;
-    foreach ($opere_segnalate as $opera_segnalata) {
-
-        $op = file_get_contents('includes/opere_card.html');
-        $op = str_replace("<id_opera/>", $opera_segnalata['id'], $op);
-        $op = str_replace("<from/>", "all", $op);
-        $op = str_replace("<Path/>", $opera_segnalata['img_path'], $op);
-        $op = str_replace("<Titolo/>", $opera_segnalata['titolo'], $op);
-        $op = str_replace("<descrizione/>", $opera_segnalata['descrizione_short'], $op);
-        $op = str_replace("<Nomeutente/>", $opera_segnalata['username'], $op);
-        $op = str_replace("<Categoria/>", $opera_segnalata['nome_categoria'], $op);
-        $op = str_replace('<tabindex/>', $counter, $op);
-        $lista_opere .= $op;
-        $counter++;
-
-    }
-    $content = str_replace("<opere_segnalate />", $lista_opere, $content);
-}
-
-else {
-    $content = str_replace("<opere_segnalate />", '<p>Nessun opera segnalata</p>', $content);
-}
-
-    $admin_button = str_replace('<a id="nome_utente" href="admin.php" tabindex="<tab1 />">Pannello amministratore</a>', "Pannello amministratore", $admin_button);
-    $page_body = str_replace("<utente />", $admin_button, $page_body);			
+$admin_button = str_replace('<a id="nome_utente" href="admin.php" tabindex="<tab1 />">Pannello amministratore</a>', "Pannello amministratore", $admin_button);
+$page_body = str_replace("<utente />", $admin_button, $page_body);			
 
 ////
 // TODO fixare tabindex
