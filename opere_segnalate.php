@@ -76,7 +76,7 @@ if ($opere_segnalate != null) {
 }
 
 else {
-    $content = str_replace("<opere_segnalate />", '<p>Nessun opera segnalata</p>', $content);
+    $content = str_replace("<opere_segnalate />", '<p id="no_opere_segnalate">Nessun opera segnalata</p>', $content);
 }
 
 $page_body = str_replace('<content />', $content, $page_body);

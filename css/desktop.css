@@ -41,8 +41,12 @@ body {
     padding-left: 2em;
 }
 
-#breadcrumb a {
+#breadcrumb a:link {
     color: white;
+}
+
+#breadcrumb a:visited {
+    color: rgb(255, 196, 255);
 }
 
 #contenuto {
@@ -79,7 +83,7 @@ body {
 }
 
 #navigator a:visited {
-    color: rgb(252, 213, 255);
+    color: rgb(255, 196, 255);
 }
 
 #menubox ul {
@@ -125,7 +129,7 @@ body {
 }
 
 .elenco a:visited {
-    color:rgb(124, 0, 124);
+    color:rgb(100, 0, 100);
 }
 
 /***** ricerca ****/
@@ -270,6 +274,13 @@ body {
     border-radius: 1em;
 }
 
+#opera_buttons {
+    float: right;
+    padding-right: 4.5em;
+    margin-bottom: 12em;
+    margin-left: 2em;
+}
+
 /**** autore ****/
 
 #opere {
@@ -348,6 +359,40 @@ body {
 .description_text {
     padding-top: 0.5em;
 }
+
+
+/**** admin ****/
+
+#admin ul {
+    list-style-type: none;
+    padding: 2em;
+}
+
+#admin li {
+    padding: 1em 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#admin a:link {
+    color: black;
+}
+
+#admin a:visited {
+    color: rgb(100, 0, 100);
+}
+
+#lista_autori li {
+    color: black;
+}
+
+#no_opere_segnalate {
+    padding-top: 1em;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
 
 
 /**** errore ***/

@@ -68,3 +68,7 @@ body {
 .description_text {
     text-align: justify;
 }
+
+#opera_buttons {
+    margin-bottom: 3em;
+}
