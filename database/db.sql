@@ -6,7 +6,7 @@ USE sharearts;
 
 SET FOREIGN_KEY_CHECKS = 0; -- Disabilita check su vincoli di integrità referenziale
 
-DROP TABLE IF EXISTS autore, categoria, opera, commento;
+DROP TABLE IF EXISTS autore, categoria, opera;
 
 CREATE TABLE autore (
   id          INT AUTO_INCREMENT PRIMARY KEY,

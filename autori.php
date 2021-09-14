@@ -39,17 +39,40 @@ if (!isset($_GET['id'])){
 
 // Disattiva link circolare
     $page_body = str_replace('<li><a href="autori.php" tabindex="<tab4 />">Autori</a></li>', '<li>Autori</li>', $page_body);
+    if(isset($_GET['trova_autore']) && !empty($_GET['autore']))
+    {
+        
+        if (isset($_SESSION['user_id'])) {
+            $autori = $db->getAutoriS($_GET['autore'],$_SESSION['user_id']);
+        
+        }
 
-    if (isset($_SESSION['user_id'])) {
-        $autori = $db->getAutoriLogged($_SESSION['user_id']);
-    
+        else {
+            $autori = $db->getAutoriS($_GET['autore']);
+        }   
     }
+    else
+    {
+        if (isset($_SESSION['user_id'])) {
+            $autori = $db->getAutoriLogged($_SESSION['user_id']);
+        
+        }
 
-    else {
-        $autori = $db->getAutori();
+        else {
+            $autori = $db->getAutori();
+        }
     }
-
     $content = file_get_contents('includes/autori_list.html');
+
+    if(isset($_GET['trova_autore']) && !empty($_GET['autore']))
+    {
+        $content = str_replace("<cercato/>", " risultati per ".htmlentities($_GET['autore']), $content);
+    }
+    else
+    {
+        $content = str_replace("<cercato/>", "", $content);
+    }
+
     $page_body = str_replace("<breadcrumb />", "Autori", $page_body);
 
     $page_body = str_replace("<tab1 />", "1", $page_body);

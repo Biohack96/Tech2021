@@ -314,7 +314,7 @@ class DB extends mysqli{
 
 	public function getAutoriLogged($id = null) {
 
-		$sql = "SELECT * FROM autore WHERE id!=? AND isAdmin=false AND segnalato=false";
+		$sql = "SELECT * FROM autore WHERE id!=? AND isAdmin=false AND segnalato=false ORDER BY username";
 		$query = $this->prepare($sql);
 		$query->bind_param("i", $id);
 		$query->execute();
@@ -540,6 +540,43 @@ class DB extends mysqli{
 		}
 
 		return FALSE;
+	}
+
+	public function getAutoriS($search,$id = null) {
+
+		if(is_numeric($id))
+		{
+			$sql = "SELECT * FROM autore WHERE id!=? AND isAdmin=false AND segnalato=false and username like '%".  $this->real_escape_string($search)  ."%' ORDER BY username";
+			$query = $this->prepare($sql);
+			$query->bind_param("i", $id);
+		}
+		else
+		{
+			$sql = "SELECT * FROM autore where isAdmin=false AND segnalato=false and username like '%".  $this->real_escape_string($search)  ."%' ORDER BY username";
+			$query = $this->prepare($sql);
+
+		
+		}
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$rec = array();
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+		while ($row = $result->fetch_assoc())
+			{
+				$rec[] = $row;
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $rec;
+
 	}
 }
 
