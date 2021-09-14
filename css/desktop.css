@@ -253,6 +253,7 @@ body {
 #profilo_dati {
     list-style-type: none;
     padding-bottom: 2em;
+    float: left;
 }
 
 #profilo_dati li {
@@ -262,7 +263,7 @@ body {
 #button_elimina {
     background-color: rgb(167, 0, 25);
     color: white;
-    padding: 0.5em 1em;
+    padding: 0.6em 1em;
     border-radius: 1em;
     margin: 1em;
 }
@@ -277,7 +278,6 @@ body {
 #opera_buttons {
     float: right;
     padding-right: 4.5em;
-    margin-bottom: 12em;
     margin-left: 2em;
 }
 
@@ -326,7 +326,8 @@ body {
 
 .buttons_panel {
     font-size: 0.9em;
-    margin: 1em 0 2.5em 0.9em;
+    margin: 1em 4.5em 2.5em 0.9em;
+    float: right;
 }
 
 .buttons_panel div {
@@ -358,6 +359,18 @@ body {
 
 .description_text {
     padding-top: 0.5em;
+}
+
+#descrizione {
+    margin-top: 10em;
+}
+
+#button_ripubblica {
+    background-color: rgb(55, 102, 9);
+}
+
+#button_riabilita {
+    background-color: rgb(55, 102, 9);
 }
 
 
