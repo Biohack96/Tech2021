@@ -400,6 +400,19 @@ class DB extends mysqli{
 
 	}
 
+	public function riabilitaAutore($id = null){
+
+		$sql = "UPDATE autore SET segnalato=false WHERE id=?";
+		$query = $this->prepare($sql);
+		$query->bind_param("i", $id);
+
+        if ($query->execute()) {
+			return true;
+		}
+		return false;
+
+	}
+
 	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
 
 		$error = array();
@@ -494,7 +507,7 @@ class DB extends mysqli{
 
 		
 
-		$register = "INSERT INTO autore(username,password,bio,isAdmin) VALUES (?,?,?, false)";
+		$register = "INSERT INTO autore(username,password,bio,segnalato,isAdmin) VALUES (?,?,?,false, false)";
 
 		$query = $this->prepare($register);
 		$query->bind_param("sss", $username, $hashed_pass,$bio);

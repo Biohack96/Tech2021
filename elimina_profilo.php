@@ -29,6 +29,7 @@ else {
         else {
             header('Location: admin.php');
         }
+    }
 }
 
 ?>

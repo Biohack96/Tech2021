@@ -30,6 +30,7 @@ $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<page_description/>", "Profilo e opere di " . $a['username'], $page_head);
 $page_head = str_replace("<keywords/>", "arte, autore, immagine, opera, condividere, " . $a['username'], $page_head);
 $page_head = str_replace("<metatitle/>", $title, $page_head);
+$page_head = str_replace("<scripts />", "", $page_head);
 
 $counter = 1;
 
@@ -61,6 +62,7 @@ $content = file_get_contents('includes/content_pagina_autore_segnalato.html');
 
 $content = str_replace("<username />", $a['username'], $content);
 $content = str_replace("<informazioni />", $a['bio'], $content);
+$content = str_replace("<id_aut />", $_GET['id'], $content);
 $content = str_replace("<tab1 />", $counter++, $content);
 $content = str_replace("<tab2 />", $counter++, $content);
 

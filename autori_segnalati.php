@@ -72,6 +72,10 @@ $lista_autori = '';
     $content = str_replace("<authors/>", $lista_autori, $content);
     }
 
+    else {
+        $content = str_replace("<authors/>", "<li>Nessun autore segnalato</li>", $content);
+    }
+
     $page_body = str_replace('<content />', $content, $page_body);
 
 
