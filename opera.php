@@ -118,19 +118,6 @@ $page_head = str_replace("<keywords/>", "arte, autore, opera, immagine, condivid
 
 $content = str_replace("<section_name />", "Tutte le opere", $content);
 
-// Dettagli opera
-$content = str_replace("<Path/>", $opera['img_path'], $content);
-$content = str_replace("<img_description/>", $opera['descrizione_short'], $content);
-$content = str_replace("<descrizione />", $opera['descrizione'], $content);
-$content = str_replace("<titolo />", $opera['titolo'], $content);
-$content = str_replace("<autore />", $opera['username'], $content);
-$content = str_replace("<link_autore />", "autori.php?id=" . $opera['id_autore'], $content);
-$content = str_replace("<tab_aut />", $counter++, $content);
-$content = str_replace("<data_creazione />", $opera['data_creazione'], $content);
-$content = str_replace("<categoria />", $opera['nome_categoria'], $content);
-$content = str_replace("<tab_cat />", $counter++, $content);
-$content = str_replace("<link_cat />", "categorie.php?id=" . $opera['id_categoria'], $content);
-
 // Button elimina opera
 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $opera['id_autore']){
     $button_elimina = file_get_contents('includes/button_elimina_opera.html');
@@ -170,6 +157,21 @@ else if (!isset($_SESSION['user_id']) || ($_SESSION['user_id'] != $opera['id_aut
 else {
     $content = str_replace("<button_segnala />", "", $content);
 }
+
+
+// Dettagli opera
+$content = str_replace("<Path/>", $opera['img_path'], $content);
+$content = str_replace("<img_description/>", $opera['descrizione_short'], $content);
+$content = str_replace("<descrizione />", $opera['descrizione'], $content);
+$content = str_replace("<titolo />", $opera['titolo'], $content);
+$content = str_replace("<autore />", $opera['username'], $content);
+$content = str_replace("<link_autore />", "autori.php?id=" . $opera['id_autore'], $content);
+$content = str_replace("<tab_aut />", $counter++, $content);
+$content = str_replace("<data_creazione />", $opera['data_creazione'], $content);
+$content = str_replace("<categoria />", $opera['nome_categoria'], $content);
+$content = str_replace("<tab_cat />", $counter++, $content);
+$content = str_replace("<link_cat />", "categorie.php?id=" . $opera['id_categoria'], $content);
+
 
 $page_body = str_replace('<content />', $content, $page_body);
 
