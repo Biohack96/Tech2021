@@ -72,23 +72,59 @@ if (!isset($_GET['id'])) {
 
     $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
     $content = file_get_contents('includes/categorie_list.html');
-    $categorie = $db->getListaCategorie();
-    $lista_categorie = '';
+    
 
-    if($categorie != null) {
+    if(isset($_GET['trova_categoria']) && !empty($_GET['nome']))
+    {
+            $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
+            $content = file_get_contents('includes/categorie_list.html');
+            $categorie = $db->getListaCategorieS($_GET['nome']);
+            $lista_categorie = '';
 
-        // Per ogni categoria aggiunge un elemento alla lista
-        foreach($categorie as $categoria){
+            if($categorie != null) {
 
-            $cat = file_get_contents('includes/categorie_list_element.html');
-            $cat = str_replace("<categoria_element />", $categoria['nome_categoria'], $cat);
-            $cat = str_replace("<id_cat />", $categoria['id'], $cat);
-            $cat = str_replace("<tab />", $counter, $cat);
-            $lista_categorie .= $cat;
-            $counter++;
+                // Per ogni categoria aggiunge un elemento alla lista
+                foreach($categorie as $categoria){
+
+                    $cat = file_get_contents('includes/categorie_list_element.html');
+                    $cat = str_replace("<categoria_element />", $categoria['nome_categoria'], $cat);
+                    $cat = str_replace("<id_cat />", $categoria['id'], $cat);
+                    $cat = str_replace("<tab />", $counter, $cat);
+                    $lista_categorie .= $cat;
+                    $counter++;
+            }
+
+            $content = str_replace("<categorie />", $lista_categorie, $content);
+
+            $content = str_replace("<cercato/>", " risultati per ".htmlentities($_GET['nome']), $content);
+            
+        }
     }
+    else
+    {
+            $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
+            $content = file_get_contents('includes/categorie_list.html');
+            $categorie = $db->getListaCategorie();
+            $lista_categorie = '';
 
-    $content = str_replace("<categorie />", $lista_categorie, $content);
+            if($categorie != null) {
+
+                // Per ogni categoria aggiunge un elemento alla lista
+                foreach($categorie as $categoria){
+
+                    $cat = file_get_contents('includes/categorie_list_element.html');
+                    $cat = str_replace("<categoria_element />", $categoria['nome_categoria'], $cat);
+                    $cat = str_replace("<id_cat />", $categoria['id'], $cat);
+                    $cat = str_replace("<tab />", $counter, $cat);
+                    $lista_categorie .= $cat;
+                    $counter++;
+                     }
+
+            $content = str_replace("<categorie />", $lista_categorie, $content);
+
+            $content = str_replace("<cercato/>", "", $content);
+            
+         }
     }
 
 }
