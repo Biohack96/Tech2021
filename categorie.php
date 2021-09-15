@@ -40,41 +40,47 @@ if (!isset($_GET['id'])) {
     $page_head = str_replace("<keywords/>", "arte, opera, selezione, esplorare, categorie", $page_head);
     $page_head = str_replace("<metatitle/>", $title, $page_head);
 
-    // Disattiva link circolare
-    $page_body = str_replace('<li><a href="categorie.php" tabindex="<tab3 />">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente
 
-    $page_body = str_replace("<tab1 />", "1", $page_body);
-    $page_body = str_replace("<tab2 />", "2", $page_body);
-    $page_body = str_replace("<tab4 />", "3", $page_body);
-
-    if(isset($_SESSION['user_id'])) {
-        if ($admin) {
-            $admin_button = file_get_contents('includes/usr_zone_admin.html');
-            $admin_button = str_replace("<tab1 />", "4", $admin_button);
-            $admin_button = str_replace("<tab2 />", "5", $admin_button);
-            $page_body = str_replace("<utente />",  $admin_button, $page_body);
-            $counter = 6+4;
-        }
-        else {
-            $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-            $profile_button = str_replace("<tab1 />", "4", $profile_button);
-            $profile_button = str_replace("<tab2 />", "5", $profile_button);
-            $page_body = str_replace("<utente />", $profile_button, $page_body);
-            $counter = 6+4;		
-        }	
-    }
-
-    else {
-    $login_button = str_replace("<tab />", "4", $login_button);
-    $page_body = str_replace("<utente />",$login_button, $page_body);			
-    $counter = 5;			
-    }
-
-    $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
     $content = file_get_contents('includes/categorie_list.html');
+    $counter = 1;
     
     if(isset($_GET['trova_categoria']) && !empty($_GET['nome']))
     {
+
+            $link = file_get_contents('includes/link.html');
+            $link = str_replace("<path />", "categorie.php", $link);
+            $link = str_replace("<nome_link />", "Categorie", $link);
+            $link = str_replace("<tab />", $counter++, $link);
+            $page_body = str_replace("<breadcrumb />", $link . " > Ricerca: " . $_GET['nome'], $page_body);
+            
+            $page_body = str_replace("<tab1 />", $counter++, $page_body);
+            $page_body = str_replace("<tab2 />", $counter++, $page_body);
+            $page_body = str_replace("<tab3 />", $counter++, $page_body);
+            $page_body = str_replace("<tab4 />", $counter++, $page_body);
+
+            if(isset($_SESSION['user_id'])) {
+                if ($admin) {
+                    $admin_button = file_get_contents('includes/usr_zone_admin.html');
+                    $admin_button = str_replace("<tab1 />", $counter++, $admin_button);
+                    $admin_button = str_replace("<tab2 />", $counter++, $admin_button);
+                    $page_body = str_replace("<utente />",  $admin_button, $page_body);
+                }
+                else {
+                    $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+                    $profile_button = str_replace("<tab1 />", $counter++, $profile_button);
+                    $profile_button = str_replace("<tab2 />", $counter++, $profile_button);
+                    $page_body = str_replace("<utente />", $profile_button, $page_body);
+                }	
+            }
+
+    else {
+    $login_button = str_replace("<tab />", $counter++, $login_button);
+    $page_body = str_replace("<utente />",$login_button, $page_body);			
+    }
+
+    $content = str_replace ("<tab1 />", $counter++, $content);
+    $content = str_replace ("<tab2 />", $counter++, $content);
+
             $categorie = $db->getListaCategorieS($_GET['nome']);
             $lista_categorie = '';
 
@@ -100,6 +106,38 @@ if (!isset($_GET['id'])) {
     }
     else
     {
+         // Disattiva link circolare
+    $page_body = str_replace('<li><a href="categorie.php" tabindex="<tab3 />">Categorie</a></li>', '<li>Categorie</li>', $page_body);		// da aggiungere dinamicamente
+
+    $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
+
+    $page_body = str_replace("<tab1 />", $counter++, $page_body);
+    $page_body = str_replace("<tab2 />", $counter++, $page_body);
+    $page_body = str_replace("<tab4 />", $counter++, $page_body);
+
+    if(isset($_SESSION['user_id'])) {
+        if ($admin) {
+            $admin_button = file_get_contents('includes/usr_zone_admin.html');
+            $admin_button = str_replace("<tab1 />", $counter++, $admin_button);
+            $admin_button = str_replace("<tab2 />", $counter++, $admin_button);
+            $page_body = str_replace("<utente />",  $admin_button, $page_body);
+        }
+        else {
+            $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+            $profile_button = str_replace("<tab1 />", $counter++, $profile_button);
+            $profile_button = str_replace("<tab2 />", $counter++, $profile_button);
+            $page_body = str_replace("<utente />", $profile_button, $page_body);
+        }	
+    }
+
+    else {
+    $login_button = str_replace("<tab />", $counter++, $login_button);
+    $page_body = str_replace("<utente />",$login_button, $page_body);			
+    }
+
+    $content = str_replace ("<tab1 />", $counter++, $content);
+    $content = str_replace ("<tab2 />", $counter++, $content);
+
             $categorie = $db->getListaCategorie();
             $lista_categorie = '';
 
@@ -122,6 +160,8 @@ if (!isset($_GET['id'])) {
 
         $content = str_replace("<cercato/>", "", $content);
     }
+
+    
 
 }
 

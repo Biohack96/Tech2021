@@ -25,7 +25,7 @@ $page_head = str_replace("<scripts />", "", $page_head);
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
-
+$counter = 2;
 ////
 
 if (!isset($_GET['id'])){
@@ -37,10 +37,19 @@ if (!isset($_GET['id'])){
     $page_head = str_replace("<keywords/>", "arte, opera, selezione, esplorare, autori", $page_head);
     $page_head = str_replace("<metatitle/>", $title, $page_head);
 
+    $page_body = str_replace("<tab1 />", $counter++, $page_body);
+    $page_body = str_replace("<tab2 />", $counter++, $page_body);
+    $page_body = str_replace("<tab3 />", $counter++, $page_body);
+
 // Disattiva link circolare
-    $page_body = str_replace('<li><a href="autori.php" tabindex="<tab4 />">Autori</a></li>', '<li>Autori</li>', $page_body);
     if(isset($_GET['trova_autore']) && !empty($_GET['autore']))
     {
+        $link = file_get_contents('includes/link.html');
+        $link = str_replace("<path />", "autori.php", $link);
+        $link = str_replace("<nome_link />", "Autori", $link);
+        $link = str_replace("<tab />", "1", $link);
+        $page_body = str_replace("<breadcrumb />", $link . " > Ricerca: " . $_GET['autore'], $page_body);
+        $page_body = str_replace("<tab4 />", $counter++, $page_body);
         
         if (isset($_SESSION['user_id'])) {
             $autori = $db->getAutoriS($_GET['autore'],$_SESSION['user_id']);
@@ -53,6 +62,7 @@ if (!isset($_GET['id'])){
     }
     else
     {
+    $page_body = str_replace('<li><a href="autori.php" tabindex="<tab4 />">Autori</a></li>', '<li>Autori</li>', $page_body);
         if (isset($_SESSION['user_id'])) {
             $autori = $db->getAutoriLogged($_SESSION['user_id']);
         
@@ -75,29 +85,26 @@ if (!isset($_GET['id'])){
 
     $page_body = str_replace("<breadcrumb />", "Autori", $page_body);
 
-    $page_body = str_replace("<tab1 />", "1", $page_body);
-    $page_body = str_replace("<tab2 />", "2", $page_body);
-    $page_body = str_replace("<tab3 />", "3", $page_body);
 
     if(isset($_SESSION['user_id'])) {
         $auth = $db->getAutoreById($_SESSION['user_id']);
         if ($auth['isAdmin']) {
             $admin_button = file_get_contents('includes/usr_zone_admin.html');
-            $admin_button = str_replace("<tab1 />", "4", $admin_button);
-            $admin_button = str_replace("<tab2 />", "5", $admin_button);
+            $admin_button = str_replace("<tab1 />", $counter++, $admin_button);
+            $admin_button = str_replace("<tab2 />", $counter++, $admin_button);
             $page_body = str_replace("<utente />",  $admin_button, $page_body);
             $counter = 6+4;
         }
         else {
             $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
-            $profile_button = str_replace("<tab1 />", "4", $profile_button);
-            $profile_button = str_replace("<tab2 />", "5", $profile_button);
+            $profile_button = str_replace("<tab1 />", $counter++, $profile_button);
+            $profile_button = str_replace("<tab2 />", $counter++, $profile_button);
             $page_body = str_replace("<utente />",  $profile_button, $page_body);
             $counter = 6+4;
         }
     }
     else {
-        $login_button = str_replace("<tab />", "4", $login_button);
+        $login_button = str_replace("<tab />", $counter++, $login_button);
         $page_body = str_replace("<utente />",$login_button, $page_body);
         $counter = 5+5;		
     }
