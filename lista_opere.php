@@ -109,7 +109,10 @@ else
 {
     if(isset($_GET['trova_opera']) && !empty($_GET['nome']) )
     {
-    $content = str_replace("<opere/>", "<span class=\"no_results\">Nessuna opera trovata</span>", $content);
+        $no_result = file_get_contents('includes/ricerca_opera_no_results.html');
+        $no_result = str_replace("<tab_nores />", $counter++, $no_result);
+        $content = str_replace("<opere/>", $no_result, $content);
+    
     }
     else
     {
