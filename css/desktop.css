@@ -53,7 +53,6 @@ body {
 #contenuto {
     margin: 2em;
     margin-left: 15em;
-    margin-bottom: 25em;
 }
 
 .titolo_sezione {
@@ -61,6 +60,11 @@ body {
     font-weight: bold;
     color: rgb(1, 90, 20);
     padding: 0 0 0.5em 0.5em;
+}
+
+#desc {
+    font-size: 0.9em;
+    margin: 0 0.7em;
 }
 
 
@@ -413,6 +417,10 @@ body {
 
 /**** admin ****/
 
+#admin {
+    margin-bottom: 25em;
+}
+
 #admin ul {
     list-style-type: none;
     padding: 2em;
@@ -471,25 +479,19 @@ body {
 
 #_404error {
     text-align: center;
-    margin-bottom: 5em;
+    margin-bottom: 10em;
 }
 
 #_404 {
     font-size: 8em;
     font-weight: bold;
+    
 }
 
 #ops{
     font-size: 3em;
     padding-bottom: 1em;
 }
-
-#back_button {
-    background-color: mediumvioletred;
-    padding: 0.5em 1em;
-    border-radius: 1em;
-}
-
 
 /***** footer *****/
 

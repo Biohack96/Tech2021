@@ -30,7 +30,6 @@ body {
 #contenuto {
     margin: 1em;
     text-align: center;
-    margin-bottom: 15em;
 }
 
 /***** elenchi autori e categorie ****/
@@ -38,6 +37,10 @@ body {
 .titolo_sezione {
     font-size: 1.5em;
     padding: 0 0 1em 0;
+}
+
+#button_elimina_profilo {
+    margin-right: 0;
 }
 
 /***** login e registrazione ****/
@@ -72,6 +75,7 @@ body {
 
 #opera_buttons {
     margin-bottom: 3em;
+    padding-right: 0;
 }
 
 #profilo_dati {
@@ -82,12 +86,30 @@ body {
     margin-left: 0;
 }
 
+.buttons_panel {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 2em;
+}
+
 /**** admin ***/
+
+#admin {
+    margin-bottom: 12em;
+}
+
+#admin ul {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
 
 #admin img {
     display: none;
 }
 
 #admin li {
-    font-size: 1.1em
+    font-size: 1em;
 }

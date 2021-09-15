@@ -19,7 +19,8 @@ CREATE TABLE autore (
 
 CREATE TABLE categoria (
   id                 INT AUTO_INCREMENT PRIMARY KEY,
-  nome_categoria     VARCHAR(200) NOT NULL
+  nome_categoria     VARCHAR(200) NOT NULL,
+  cat_description    VARCHAR(2000) NOT NULL
   
 );
 
