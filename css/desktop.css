@@ -150,69 +150,7 @@ body {
 }
 
 
-/***** elenchi autori e categorie ****/
 
-
-.elenco ul {
-    padding-top: 1em;
-    text-align: center;
-    list-style-type: none;
-    font-size: 2em;
-    font-weight: bold;
-}
-
-.elenco li {
-    padding: 0.3em;
-}
-
-.elenco a:link {
-    color: black;
-}
-
-.elenco a:visited {
-    color:rgb(100, 0, 100);
-}
-
-/***** ricerca ****/
-
-.ricerca {
-    text-align: center;
-    padding-top: 2em;
-}
-
-.legend_cerca {
-   padding-left: 3em;
-   text-align: center;
-}
-
-.banner_cerca {
-    padding: 0.7em 1em;
-    border-radius: 1em;
-    width: 15em;
-    border-style:solid;
-    border-color: black;
-    border-width: 0.1em;
-}
-
-.no_results {
-    text-align: center;
-    font-size: 1em;
-    margin-top: 1em;
-}
-
-.go_back {
-    padding: 0.5em 1em;
-    background-color: steelblue;
-    color: whitesmoke;
-    font-weight: bold;
-    border-radius: 1em;
-    text-decoration: none;
-    font-size: 1em;
-}
-
-.button_back {
-    margin-top: 2em;  
-}
 
 /***** login e registrazione ****/
 
@@ -426,6 +364,67 @@ body {
 #button_riabilita {
     background-color: rgb(55, 102, 9);
 }
+
+/***** elenchi autori e categorie ****/
+
+
+.elenco ul {
+    padding-top: 1em;
+    text-align: center;
+    list-style-type: none;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.elenco li {
+    padding: 0.3em;
+}
+
+.elenco a:link {
+    color: black;
+}
+
+.elenco a:visited {
+    color:rgb(100, 0, 100);
+}
+
+/***** ricerca ****/
+
+.ricerca {
+    text-align: center;
+    padding-top: 2em;
+}
+
+.banner_cerca {
+    padding: 0.7em 1em;
+    border-radius: 1em;
+    width: 15em;
+    border-style:solid;
+    border-color: black;
+    border-width: 0.1em;
+}
+
+.no_results {
+    text-align: center;
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+.go_back {
+    padding: 0.5em 1em;
+    background-color: steelblue;
+    color: whitesmoke;
+    font-weight: bold;
+    border-radius: 1em;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.button_back {
+    margin-top: 2em;  
+}
+
+
 
 
 /**** admin ****/
