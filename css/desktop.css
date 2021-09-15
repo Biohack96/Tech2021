@@ -372,12 +372,13 @@ body {
     padding-top: 1em;
     text-align: center;
     list-style-type: none;
-    font-size: 2em;
-    font-weight: bold;
+    
 }
 
 .elenco li {
     padding: 0.3em;
+    font-size: 2em;
+    font-weight: bold;
 }
 
 .elenco a:link {
@@ -410,10 +411,17 @@ body {
     margin-top: 1em;
 }
 
+.button_back a:link {
+    color: whitesmoke;
+}
+
+.button_back a:visited {
+    color: whitesmoke;
+}
+
 .go_back {
     padding: 0.5em 1em;
     background-color: steelblue;
-    color: whitesmoke;
     font-weight: bold;
     border-radius: 1em;
     text-decoration: none;
@@ -425,6 +433,10 @@ body {
 }
 
 
+
+.cerca {
+    display: block;
+}
 
 
 /**** admin ****/
