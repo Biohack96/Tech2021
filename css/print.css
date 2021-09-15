@@ -84,6 +84,35 @@ body {
     color: black;
 }
 
+/***** home ****/
+
+#home {
+    text-align: center;
+}
+
+#home img {
+    width: 10em;
+}
+
+#home h3 {
+    color: rgb(128, 10, 82);
+}
+
+.contenuto_home {
+    margin-left: 1em;
+    padding-top: 2em;
+}
+
+.contenuto_home p {
+    padding: 0.3em;
+}
+
+#suggest {
+    display: none;
+}
+
+
+
 /***** elenchi autori e categorie ****/
 
 .titolo_sezione {
@@ -182,8 +211,12 @@ body {
 }
 
 .bigopera {
-    width: 90%;
+    width: 93%;
     padding-bottom: 1em;
+}
+
+#img {
+    text-align: center;
 }
 
 #profilo_dati {
