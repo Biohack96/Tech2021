@@ -40,8 +40,8 @@ if (!isset($_GET['id'])){
     $page_body = str_replace("<tab1 />", $counter++, $page_body);
     $page_body = str_replace("<tab2 />", $counter++, $page_body);
     $page_body = str_replace("<tab3 />", $counter++, $page_body);
+    $content = file_get_contents('includes/autori_list.html');
 
-// Disattiva link circolare
     if(isset($_GET['trova_autore']) && !empty($_GET['autore']))
     {
         $link = file_get_contents('includes/link.html');
@@ -53,12 +53,15 @@ if (!isset($_GET['id'])){
         
         if (isset($_SESSION['user_id'])) {
             $autori = $db->getAutoriS($_GET['autore'],$_SESSION['user_id']);
-        
+            
         }
 
         else {
             $autori = $db->getAutoriS($_GET['autore']);
         }   
+        if (empty($autori)) {
+            $content.= file_get_contents ('includes/ricerca_autori_no_results.html');
+        }
     }
     else
     {
@@ -72,7 +75,7 @@ if (!isset($_GET['id'])){
             $autori = $db->getAutori();
         }
     }
-    $content = file_get_contents('includes/autori_list.html');
+    
 
     if(isset($_GET['trova_autore']) && !empty($_GET['autore']))
     {
