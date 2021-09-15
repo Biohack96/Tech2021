@@ -50,21 +50,21 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
             $admin_button = str_replace("<tab1 />", "4", $admin_button);
             $admin_button = str_replace("<tab2 />", "5", $admin_button);
             $page_body = str_replace("<utente />",  $admin_button, $page_body);
-            $counter = 6;
+            $counter = 6+4;
         }
         else {
             $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
             $profile_button = str_replace("<tab1 />", "4", $profile_button);
             $profile_button = str_replace("<tab2 />", "5", $profile_button);
             $page_body = str_replace("<utente />", $profile_button, $page_body);
-            $counter = 6;	
+            $counter = 6+4;	
         }		
     }
 
     else {
     $login_button = str_replace("<tab />", "4", $login_button);
     $page_body = str_replace("<utente />",$login_button, $page_body);			
-    $counter = 5;			
+    $counter = 5+5;			
     }
 ////
 

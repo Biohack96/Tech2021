@@ -86,20 +86,20 @@ if (!isset($_GET['id'])){
             $admin_button = str_replace("<tab1 />", "4", $admin_button);
             $admin_button = str_replace("<tab2 />", "5", $admin_button);
             $page_body = str_replace("<utente />",  $admin_button, $page_body);
-            $counter = 6;
+            $counter = 6+4;
         }
         else {
             $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
             $profile_button = str_replace("<tab1 />", "4", $profile_button);
             $profile_button = str_replace("<tab2 />", "5", $profile_button);
             $page_body = str_replace("<utente />",  $profile_button, $page_body);
-            $counter = 6;
+            $counter = 6+4;
         }
     }
     else {
         $login_button = str_replace("<tab />", "4", $login_button);
         $page_body = str_replace("<utente />",$login_button, $page_body);
-        $counter = 5;		
+        $counter = 5+5;		
     }
 
 
@@ -165,7 +165,7 @@ else {
             $button_elimina_profilo = str_replace("<id_aut />", $_GET['id'], $button_elimina_profilo);
             $content = str_replace("<button_elimina_profilo />", $button_elimina_profilo, $content);
             
-            $counter = 8;
+            $counter = 8+2;
             
         }
         else {
@@ -175,7 +175,7 @@ else {
             $page_body = str_replace("<tab2 />", "3", $page_body);
             $page_body = str_replace("<tab3 />", "4", $page_body);
             $page_body = str_replace("<tab4 />", "5", $page_body);
-            $counter = 6;
+            $counter = 6+4;
 
             if(isset ($_SESSION['user_id'])) {
                 if ($auth['isAdmin']) {
@@ -196,7 +196,7 @@ else {
             else {
                 $login_button = str_replace("<tab />", "6", $login_button);
                 $page_body = str_replace("<utente />",$login_button, $page_body);
-                $counter = 7;
+                $counter = 7+3;
             }
 
             if (isset ($_SESSION['user_id']) && $auth['isAdmin']) {

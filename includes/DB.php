@@ -518,14 +518,14 @@ class DB extends mysqli{
 
 		$error = array();
 
-		if (strlen($username) > 30) {$error[] = "Username tropppo lunga (Max: 50 caratteri)";}
+		if (strlen($username) > 30) {$error[] = '<span xml:lang="en">Username</span> tropppo lunga (Massimo: 50 caratteri)';}
 
-		if (!preg_match($this->passPattern,$password))	{$error[] = "Password in formato errato, la password deve essere rispettare i seguenti requisiti: deve essere di almeno 8 caratteri con almeno una maiuscola e un numero";}
+		if (!preg_match($this->passPattern,$password))	{$error[] = '<span xml:lang="en">Password</span> in formato errato, la <span xml:lang="en">password</span> deve essere rispettare i seguenti requisiti: deve essere di almeno 8 caratteri con almeno una maiuscola e un numero';}
 
-		If ($password !== $conf_password) {$error[] = "Le password non coincidono";}
-		if (strlen($bio) > 2000) {$error[] = "Biografia troppo lunga (max: 65535 caratteri)";}
+		If ($password !== $conf_password) {$error[] = 'Le <span xml:lang="en">password</span> non coincidono';}
+		if (strlen($bio) > 2000) {$error[] = "Biografia troppo lunga (massimo: 65535 caratteri)";}
 		if (strlen($bio) === 0) {$error[] = "Biografia mancante, inserire una biografia";}
-		if ( $this->alreadyReg($username))	{$error[] = "Username già utilizzato";	}
+		if ( $this->alreadyReg($username))	{$error[] = '<span xml:lang="en">Username</span> già utilizzato';	}
 
 		$hashed_pass = hash('sha256', $password);
 

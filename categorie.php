@@ -53,14 +53,14 @@ if (!isset($_GET['id'])) {
             $admin_button = str_replace("<tab1 />", "4", $admin_button);
             $admin_button = str_replace("<tab2 />", "5", $admin_button);
             $page_body = str_replace("<utente />",  $admin_button, $page_body);
-            $counter = 6;
+            $counter = 6+4;
         }
         else {
             $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
             $profile_button = str_replace("<tab1 />", "4", $profile_button);
             $profile_button = str_replace("<tab2 />", "5", $profile_button);
             $page_body = str_replace("<utente />", $profile_button, $page_body);
-            $counter = 6;		
+            $counter = 6+4;		
         }	
     }
 
@@ -94,7 +94,7 @@ if (!isset($_GET['id'])) {
         }
                     
 
-        $content = str_replace("<categorie />", $lista_categorie, $content);
+        $content = str_replace("<categorie />", empty($lista_categorie)?"<li/>":$lista_categorie, $content);
 
         $content = str_replace("<cercato/>", " risultati per " . htmlentities($_GET['nome']), $content);
     }
@@ -118,7 +118,7 @@ if (!isset($_GET['id'])) {
 
          }
 
-        $content = str_replace("<categorie />", $lista_categorie, $content);
+         $content = str_replace("<categorie />", empty($lista_categorie)?"<li/>":$lista_categorie, $content);
 
         $content = str_replace("<cercato/>", "", $content);
     }
@@ -155,21 +155,21 @@ else {
             $admin_button = str_replace("<tab1 />", "6", $admin_button);
             $admin_button = str_replace("<tab2 />", "7", $admin_button);
             $page_body = str_replace("<utente />",  $admin_button, $page_body);
-            $counter = 8;
+            $counter = 8+2;
         }
         else {
             $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
             $profile_button = str_replace("<tab1 />", "6", $profile_button);
             $profile_button = str_replace("<tab2 />", "7", $profile_button);
             $page_body = str_replace("<utente />", $profile_button, $page_body);
-            $counter = 8;
+            $counter = 8+2;
         }	
     }
 
     else {
     $login_button = str_replace("<tab />", "6", $login_button);
     $page_body = str_replace("<utente />",$login_button, $page_body);			
-    $counter = 7;			
+    $counter = 7+3;			
     }
 
     $opere = $db->getOpereByCategoria($_GET['id']);

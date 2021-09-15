@@ -6,7 +6,9 @@ require_once('includes/DB.php');
 $content = "";
 // Oggetto di accesso al database
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $db = new DB();
+    if(isset($_POST['login']))
+    {
+        $db = new DB();
 
     if($db->login($_POST['username'],$_POST['password']))
     {
@@ -26,7 +28,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     else
-    $content .=  '<span class="error">Credenziali non valide</span>';
+    $content .=  '<ul>';
+    $content .=  '<li class="error">Credenziali non valide</li>';
+    $content .=  '</ul>';
+    }
+    else if(isset($_POST['registrazione_utente']))
+    {
+        $error = array();
+    $db = new DB();
+    
+    $result = $db->setProfilo($_POST['username'], $_POST['password'], $_POST['conferma_password'],$_POST['bio']);
+
+    if (is_numeric($result)) {
+        header('Location: autori.php?id=' . $_SESSION['user_id']);
+      } else {
+       foreach($result as $key =>$varl)
+       {
+        $content .=  '<ul>';
+        $content .=  '<li class="error">'. $result[$key] . ' </li>';
+        $content .=  '</ul>';
+       }
+      }
+    }
+    
 }
 // Titolo della pagina
 $title = 'Share Arts';
