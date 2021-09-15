@@ -73,11 +73,8 @@ if (!isset($_GET['id'])) {
     $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
     $content = file_get_contents('includes/categorie_list.html');
     
-
     if(isset($_GET['trova_categoria']) && !empty($_GET['nome']))
     {
-            $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
-            $content = file_get_contents('includes/categorie_list.html');
             $categorie = $db->getListaCategorieS($_GET['nome']);
             $lista_categorie = '';
 
@@ -94,16 +91,15 @@ if (!isset($_GET['id'])) {
                     $counter++;
             }
 
-            $content = str_replace("<categorie />", $lista_categorie, $content);
-
-            $content = str_replace("<cercato/>", " risultati per ".htmlentities($_GET['nome']), $content);
-            
         }
+                    
+
+        $content = str_replace("<categorie />", $lista_categorie, $content);
+
+        $content = str_replace("<cercato/>", " risultati per " . htmlentities($_GET['nome']), $content);
     }
     else
     {
-            $page_body = str_replace("<breadcrumb />", "Categorie", $page_body);
-            $content = file_get_contents('includes/categorie_list.html');
             $categorie = $db->getListaCategorie();
             $lista_categorie = '';
 
@@ -120,11 +116,11 @@ if (!isset($_GET['id'])) {
                     $counter++;
                      }
 
-            $content = str_replace("<categorie />", $lista_categorie, $content);
-
-            $content = str_replace("<cercato/>", "", $content);
-            
          }
+
+        $content = str_replace("<categorie />", $lista_categorie, $content);
+
+        $content = str_replace("<cercato/>", "", $content);
     }
 
 }
