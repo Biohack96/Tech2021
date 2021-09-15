@@ -494,8 +494,6 @@ class DB extends mysqli{
 
 		if(count($error)) {return $error;}
 
-		$descrizione=htmlentities($descrizione);
-
         if(!empty($img_path)){
 			$sql = "INSERT INTO opera VALUES (NULL,?,?,?,?,?,?,?,false);";
 			
