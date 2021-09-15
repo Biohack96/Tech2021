@@ -18,6 +18,10 @@ body {
     font-size: 0.8em;
 }
 
+.avviso_segnalata {
+    width: auto;
+}
+
 /***** menu *****/
 
 #navigator {
@@ -76,6 +80,7 @@ body {
 #opera_buttons {
     margin-bottom: 3em;
     padding-right: 0;
+    text-align: center;
 }
 
 #profilo_dati {
@@ -93,6 +98,16 @@ body {
     margin: auto;
     margin-bottom: 2em;
 }
+
+#button_segnala_opera {
+    margin-right: 0;
+}
+
+#add_opera_button {
+    margin-right: 0;
+}
+
+
 
 /**** admin ***/
 

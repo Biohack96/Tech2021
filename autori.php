@@ -217,10 +217,10 @@ else {
 
         if ($a['segnalato'] == true) {
             if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $_GET['id']) {
-                $content = str_replace("<button_segnala_profilo />", "<p>Il tuo profilo è stato segnalato ed è in attesa di revisione da parte degli amministratori</p>", $content);
+                $content = str_replace("<button_segnala_profilo />", "<p class=\"avviso_segnalata\">Il tuo profilo è stato segnalato ed è in attesa di revisione da parte degli amministratori, pertanto al momento non è visibile al pubblico.</p>", $content);
             }
             else {
-                $content = str_replace("<button_segnala_profilo />", "<p>Questo profilo è stato segnalato ed è in attesa di revisione da parte degli amministratori</p>", $content);
+                $content = str_replace("<button_segnala_profilo />", "<p class=\"avviso_segnalata\">Questo profilo è stato segnalato ed è in attesa di revisione da parte degli amministratori, pertanto al momento non è visibile al pubblico.</p>", $content);
             }
         }
 

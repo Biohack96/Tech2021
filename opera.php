@@ -141,10 +141,10 @@ else {
 
 if ($opera['segnalata'] == true) {
     if ($admin) {
-    $content = str_replace("<button_segnala />", "<p>Quest'opera è stata segnalata ed è in attesa di revisione</p>", $content);
+    $content = str_replace("<button_segnala />", "<p class=\"avviso_segnalata\">Quest'opera è stata segnalata ed è in attesa di revisione, pertanto al momento non è visibile al pubblico.</p>", $content);
     }
     else {
-    $content = str_replace("<button_segnala />", "<p>Quest'opera è stata segnalata ed è in attesa di revisione da parte degli amministratori</p>", $content);
+    $content = str_replace("<button_segnala />", "<p class=\"avviso_segnalata\">Quest'opera è stata segnalata ed è in attesa di revisione da parte degli amministratori, pertanto al momento non è visibile al pubblico.</p>", $content);
     }
 }
 
