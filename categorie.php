@@ -95,10 +95,15 @@ if (!isset($_GET['id'])) {
                     $cat = str_replace("<tab />", $counter, $cat);
                     $lista_categorie .= $cat;
                     $counter++;
-            }
+                }
 
-        }
-                    
+            }
+         
+            else {
+                $no_result = file_get_contents('includes/ricerca_categorie_no_results.html');
+                $no_result = str_replace("<tab_nores />", $counter++, $no_result);
+                $content = str_replace("<categorie />", $no_result, $content);
+            }
 
         $content = str_replace("<categorie />", empty($lista_categorie)?"<li/>":$lista_categorie, $content);
 
