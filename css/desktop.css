@@ -196,7 +196,7 @@ body {
 
 .no_results {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1em;
     margin-top: 1em;
 }
 
@@ -205,8 +205,14 @@ body {
     background-color: steelblue;
     color: whitesmoke;
     font-weight: bold;
+    border-radius: 1em;
+    text-decoration: none;
+    font-size: 1em;
 }
 
+.button_back {
+    margin-top: 2em;  
+}
 
 /***** login e registrazione ****/
 
