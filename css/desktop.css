@@ -156,6 +156,7 @@ body {
 .no_results {
     text-align: center;
     font-size: 1.5em;
+    margin-top: 1em;
 }
 
 .go_back {
@@ -167,6 +168,10 @@ body {
 
 
 /***** login e registrazione ****/
+
+#registrazione_info {
+    margin-right: 1em;
+}
 
 #registrazione_e_login {
     padding-bottom: 3em;
@@ -281,6 +286,8 @@ body {
     margin-left: 2em;
 }
 
+
+
 /**** autore ****/
 
 #opere {
@@ -326,7 +333,7 @@ body {
 
 .buttons_panel {
     font-size: 0.9em;
-    margin: 1em 4.5em 2.5em 0.9em;
+    margin: 1em 2em 2.5em 0.9em;
     float: right;
 }
 
