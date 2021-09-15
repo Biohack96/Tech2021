@@ -58,14 +58,10 @@ else
     $counter = 6;		
 }
 
-/////gestione login/logout
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
 $content = file_get_contents('includes/404.html');
 $content = str_replace("<tab />",$counter, $content);
-
-////
-// TODO fixare tabindex
 
 $page_body = str_replace('<content />', $content, $page_body);
 

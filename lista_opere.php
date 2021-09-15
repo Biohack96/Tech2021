@@ -70,7 +70,8 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
 $page_body = str_replace("<breadcrumb />", "Tutte le opere", $page_body);
 
-
+$cerca_opera = file_get_contents('includes/cerca_opere.html');
+$content = str_replace("<cerca_opere />", $cerca_opera, $content);
 
 
 if(isset($_GET['trova_opera']) && !empty($_GET['nome']) )

@@ -171,12 +171,14 @@ else {
             $button_elimina_profilo = str_replace("<tab />", "7", $button_elimina_profilo);
             $button_elimina_profilo = str_replace("<id_aut />", $_GET['id'], $button_elimina_profilo);
             $content = str_replace("<button_elimina_profilo />", $button_elimina_profilo, $content);
+            $content = str_replace("<button_modifica_profilo />", "", $content); // TODO aggiungere button
             
             $counter = 8+2;
             
         }
         else {
             $content = str_replace("<button_aggiungi_opera />", "", $content);
+            $content = str_replace("<button_modifica_profilo />", "", $content);
             $page_body = str_replace("<breadcrumb />", $link . " > " . $a['username'], $page_body);
             $page_body = str_replace("<tab1 />", "2", $page_body);
             $page_body = str_replace("<tab2 />", "3", $page_body);
@@ -251,11 +253,11 @@ else {
         }
     $opere_content = file_get_contents('includes/opere_list.html');
     $opere_content = str_replace("<section_name />", "", $opere_content);
+    $opere_content = str_replace("<cerca_opere />", "", $opere_content);
+    $opere_content = str_replace("<section_description />", "", $opere_content);
 
 
     $lista_opere = '';
-
-// TODO rimpiazzare tutti i tag button
 
     if($opere != null) {
 
