@@ -69,10 +69,20 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 ////
 
 $page_body = str_replace("<breadcrumb />", "Tutte le opere", $page_body);
-$content = str_replace("<section_name />", "Tutte le opere", $content);
 
 
-$opere = $db->getAllOpere();
+
+
+if(isset($_GET['trova_opera']) && !empty($_GET['nome']) )
+{
+    $content = str_replace("<section_name />", "Tutte le opere risultati per " . htmlentities($_GET['nome']), $content);
+    $opere = $db->getAllOpereS($_GET['nome']);
+}
+else{
+    $content = str_replace("<section_name />", "Tutte le opere", $content);
+    $opere = $db->getAllOpere();
+}
+
 $lista_opere = '';
 
 if($opere != null) {
@@ -96,11 +106,20 @@ $content = str_replace("<opere/>", $lista_opere, $content);
 }
 else
 {
+    if(isset($_GET['trova_opera']) && !empty($_GET['nome']) )
+    {
+    $content = str_replace("<opere/>", "<span class=\"no_results\">Nessuna opera trovata</span>", $content);
+    }
+    else
+    {
     $content = str_replace("<opere/>", "<span class=\"no_results\">Non sono presenti opere al momento</span>", $content);
+    }
 }
 
 
 $page_body = str_replace('<content />', $content, $page_body);
+
+$page_body = str_replace('<cercato />', $content, $page_body);
 
 echo $page_head  . $page_body  ;
 ?>

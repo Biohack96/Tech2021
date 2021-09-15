@@ -95,6 +95,33 @@ class DB extends mysqli{
 
     }
 
+	public function getAllOpereS($search)
+	{
+		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE segnalata=false and titolo like '%". $this->real_escape_string($search) . "%' or descrizione_short like '%" . $this->real_escape_string($search) . "%'";
+		$query = $this->prepare($sql);
+		$query->execute();
+		$result = $query->get_result();
+
+		/*preparo la query, la eseguo e ottengo i risultati*/
+
+		if($result->num_rows === 0) return NULL; /*check sul risultato ritornato*/
+
+		$rec = array();
+		/*foreach($usr as $key => $value)
+		{echo "\n".$key."  ".$usr["$key"];} */ /*ciclo per il debug*/
+		while ($row = $result->fetch_assoc())
+			{
+				$rec[] = $row;
+			}
+		
+		$query->close();
+		$result->free();
+
+		return $rec;
+
+    }
+
+
 	public function getOpereSegnalate()
 	{
 		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE segnalata=true";
