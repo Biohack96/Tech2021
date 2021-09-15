@@ -30,6 +30,7 @@ body {
 #contenuto {
     margin: 1em;
     text-align: center;
+    margin-bottom: 15em;
 }
 
 /***** elenchi autori e categorie ****/
@@ -75,4 +76,18 @@ body {
 
 #profilo_dati {
     float: none;
+}
+
+#footer {
+    margin-left: 0;
+}
+
+/**** admin ***/
+
+#admin img {
+    display: none;
+}
+
+#admin li {
+    font-size: 1.1em
 }

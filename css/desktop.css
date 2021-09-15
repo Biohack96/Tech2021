@@ -13,6 +13,7 @@ html {
     font-weight: bold;
 }
 
+
 body {
     background-color: #f5f5f5;
     margin: 0 10%;
@@ -52,6 +53,14 @@ body {
 #contenuto {
     margin: 2em;
     margin-left: 15em;
+    margin-bottom: 25em;
+}
+
+.titolo_sezione {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(1, 90, 20);
+    padding: 0 0 0.5em 0.5em;
 }
 
 
@@ -101,15 +110,36 @@ body {
     color: yellow;
 }
 
+/***** home ****/
+
+#home {
+    text-align: center;
+}
+
+#home img {
+    width: 10em;
+}
+
+#home h3 {
+    color: rgb(128, 10, 82);
+}
+
+.contenuto_home {
+    margin-left: 1em;
+    padding-top: 2em;
+}
+
+.contenuto_home p {
+    padding: 0.3em;
+}
+
+#suggest {
+    font-size: 0.8em;
+    padding-top: 6em;
+}
+
 
 /***** elenchi autori e categorie ****/
-
-.titolo_sezione {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: rgb(1, 90, 20);
-    padding: 0 0 0.5em 0.5em;
-}
 
 
 .elenco ul {
@@ -386,6 +416,8 @@ body {
 #admin ul {
     list-style-type: none;
     padding: 2em;
+    padding-left: 3.5em;
+    float: left;
 }
 
 #admin li {
@@ -394,12 +426,12 @@ body {
     font-weight: bold;
 }
 
-#admin a:link {
-    color: black;
-}
-
-#admin a:visited {
-    color: rgb(100, 0, 100);
+#admin a{
+    color: white;
+    background-color: rgb(165, 42, 99);
+    border-radius: 1em;
+    padding: 0.4em 1em;
+    text-decoration: none;
 }
 
 #lista_autori li {
@@ -411,6 +443,12 @@ body {
     text-align: center;
     font-size: 2em;
     font-weight: bold;
+}
+
+#admin img {
+    width: 13em;
+    float: right;
+    padding-right: 15em;
 }
 
 
@@ -460,4 +498,5 @@ body {
     padding: 1em;
     margin-bottom: 0;
     font-size: 0.9em;
+    margin-left: 15em;
 }

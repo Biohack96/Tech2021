@@ -6,7 +6,7 @@ require_once('includes/DB.php');
 $db = new DB();
 
 // Titolo della pagina
-$title = 'Share Arts';
+$title = 'Home - Share Arts';
 
 $admin = false;
 
@@ -59,7 +59,13 @@ else
 }
 ////
 
-$page_body = str_replace("<content />", "", $page_body);		// da aggiungere
+$login_button = file_get_contents('includes/login_button.html');
+$profile_button = file_get_contents('includes/usr_zone_logged.html');
+$content = file_get_contents('includes/home.html');
+
+
+
+$page_body = str_replace("<content />", $content, $page_body);		// da aggiungere
 
 // Disattiva link circolare
 $page_body = str_replace('<li><a href="home.php" tabindex="<tab1 />"><span xml:lang="en">Home</span></a></li>', '<li><span xml:lang="en">Home</span></li>', $page_body);		// da aggiungere dinamicamente
