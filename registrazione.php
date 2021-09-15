@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = array();
     $db = new DB();
     
-    $result = $db->setProfilo($_POST['username'], $_POST['password'], $_POST['conferma_password'],$_POST['bio']);
+    $result = $db->setProfilo(htmlentities($_POST['username']), $_POST['password'], $_POST['conferma_password'],htmlentities($_POST['bio']));
 
     if (is_numeric($result)) {
         header('Location: Home.php');
@@ -20,3 +20,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
 }
 ?>
+

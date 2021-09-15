@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     
 
-    $result = $db->setOpera($_POST['titolo'], $_POST['desc_breve'], $_POST['desc'], $_POST['anno_creazione'], $_SESSION['user_id'], $_POST['category'], $img_path);
+    $result = $db->setOpera(htmlentities($_POST['titolo']), htmlentities($_POST['desc_breve']), htmlentities($_POST['desc']), htmlentities($_POST['anno_creazione']),$_SESSION['user_id'], $_POST['category'], $img_path);
 
     }
 
