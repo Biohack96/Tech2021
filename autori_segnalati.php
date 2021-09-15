@@ -32,7 +32,7 @@ $link = str_replace("<nome_link />", "Pannello amministratore", $link);
 $link = str_replace("<tab />", "1", $link);
 
 $page_body = str_replace("<breadcrumb />", $link . " > Autori segnalati", $page_body);
-$page_head = str_replace("<page_description/>", "Pannello amministratore Share Arts", $page_head);
+$page_head = str_replace("<page_description/>", "Autori segnalati di Share Arts", $page_head);
 $page_head = str_replace("<keywords/>", "amministratore, admin, revisione, profili, autori", $page_head);
 $page_head = str_replace("<metatitle/>", $title, $page_head);
 
