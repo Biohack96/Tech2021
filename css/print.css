@@ -42,10 +42,11 @@ body {
     margin: 2em;
 }
 
-
+.cerca{
+    display: none;
+}
 
 /****** menu ******/
-
 .box {
     margin: 1em;
     padding: 1em;

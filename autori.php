@@ -25,6 +25,27 @@ $page_head = str_replace("<scripts />", "", $page_head);
 $login_button = file_get_contents('includes/login_button.html');
 $profile_button = file_get_contents('includes/usr_zone_logged.html');
 
+if(isset($_SESSION['user_id']))
+{
+    if ($admin == true) {
+        $admin_button = file_get_contents('includes/usr_zone_admin.html');
+        $admin_button = str_replace("<tab1 />", "4", $admin_button);
+        $admin_button = str_replace("<tab2 />", "5", $admin_button);
+        $page_body = str_replace("<utente />",  $admin_button, $page_body);
+    }
+    else {
+        $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
+        $profile_button = str_replace("<tab1 />", "4", $profile_button);
+        $profile_button = str_replace("<tab2 />", "5", $profile_button);
+        $page_body = str_replace("<utente />", $profile_button, $page_body);			
+    }
+}
+else
+{
+    $login_button = str_replace("<tab />", "4", $login_button);
+    $page_body = str_replace("<utente />",$login_button, $page_body);			
+}
+
 $counter = 2;
 ////
 
@@ -128,6 +149,10 @@ if (!isset($_GET['id'])){
     }
 
     $content = str_replace("<authors/>", $lista_autori, $content);
+    }
+    else
+    {
+    $content = str_replace("<authors/>", "<li/>", $content);
     }
 }
 

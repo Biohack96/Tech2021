@@ -59,8 +59,6 @@ else
 }
 ////
 
-$login_button = file_get_contents('includes/login_button.html');
-$profile_button = file_get_contents('includes/usr_zone_logged.html');
 $content = file_get_contents('includes/home.html');
 
 
