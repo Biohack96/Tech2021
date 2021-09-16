@@ -557,7 +557,7 @@ class DB extends mysqli{
 		if(count($error)) {return $error;}
 
 		$bio=htmlentities($bio);
-
+		$username=htmlentities($username);
 		
 
 		$register = "INSERT INTO autore(username,password,bio,segnalato,isAdmin) VALUES (?,?,?,false, false)";
@@ -576,6 +576,55 @@ class DB extends mysqli{
 		
 		
 	}
+
+	public function updateProfilo($username, $password, $conf_password,$bio)
+	{
+
+		$error = array();
+
+		$a = $this->getAutoreById($_SESSION['user_id']);
+
+		if (strlen($username) > 30) {$error[] = '<span xml:lang="en">Username</span> tropppo lunga (Massimo: 50 caratteri)';}
+
+		if (!empty($password) && !preg_match($this->passPattern,$password))	{$error[] = '<span xml:lang="en">Password</span> in formato errato, la <span xml:lang="en">password</span> deve essere rispettare i seguenti requisiti: deve essere di almeno 8 caratteri con almeno una maiuscola e un numero';}
+
+		
+		If (!empty($password) && $password !== $conf_password) {$error[] = 'Le <span xml:lang="en">password</span> non coincidono';}
+
+
+		if (strlen($bio) > 2000) {$error[] = "Biografia troppo lunga (massimo: 65535 caratteri)";}
+		if (strlen($bio) === 0) {$error[] = "Biografia mancante, inserire una biografia";}
+		if ( $a['username']!= $username && $this->alreadyReg($username))	{$error[] = '<span xml:lang="en">Username</span> già utilizzato';	}
+
+		if(!empty($password))
+		{$hashed_pass = hash('sha256', $password);}
+		else
+		{
+			$hashed_pass = $a['password'];
+		}
+
+		if(count($error)) {return $error;}
+
+		$bio=htmlentities($bio);
+		$username=htmlentities($username);
+		
+
+		$register = "UPDATE autore SET username = ? , password = ? , bio = ? where id = ?";
+
+		$query = $this->prepare($register);
+		$query->bind_param("sssi", $username, $hashed_pass,$bio,$_SESSION['user_id']);
+		if($query->execute())
+			{
+				
+				$query->close();
+				return $_SESSION['user_id'];
+			}
+			else {return NULL;}
+
+		
+		
+	}
+
 	public function alreadyReg($username)
 	{
 		$sql = "SELECT id FROM autore WHERE username = ?;";

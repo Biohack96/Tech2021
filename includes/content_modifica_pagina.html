@@ -1,0 +1,37 @@
+<form id="edit" action="profiloUpdate.php" method="post" enctype="multipart/form-data">
+	<fieldset id="fieldset_edit" class="fieldset_form">
+		<legend>
+			Modifica il tuo profilo
+		</legend>
+
+	<ul>
+
+		<li>
+		<label for="registrazione_nome" id="reg_nome_id" xml:lang="en">Scegli uno username:</label>
+		<input type="text" id="registrazione_nome" class="input_field" name="username" tabindex="7" value="<user_edit/>"/>
+		</li>
+
+		<li>
+		<label for="registrazione_password">Scegli una <span xml:lang="en">password:</span></label>
+		<input type="password" name="password" id="registrazione_password" class="input_field" tabindex="8"/>
+		<p>La password dovrà essere di almeno 8 caratteri e dovrà contenere almeno un numero ed una lettera maiuscola.
+		</p>
+		</li>
+
+		<li>	
+		<label for="registrazione_conferma_password"> Conferma la <span xml:lang="en">password:</span></label>
+		<input type="password" name="conferma_password" id="registrazione_conferma_password" class="input_field" tabindex="9"/>
+		</li>
+	
+		<li>
+		<label for="bio" id="bio_id">Su di te:	</label>
+		<textarea class="big_text" name="bio" id="bio" rows="10" cols="60" tabindex="10"><bio/></textarea>
+		</li>
+
+	</ul>
+
+	<input type="submit" class="submit_button" id="conf_registrazione" tabindex="11" name="registrazione_utente" value="Aggiorna profilo"/>
+
+	</fieldset>
+
+	</form>
