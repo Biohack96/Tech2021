@@ -180,7 +180,7 @@ else {
     if (isset($_SESSION['user_id'])) {
         $auth = $db->getAutoreById($_SESSION['user_id']);
     }
-        if(isset ($_SESSION['user_id']) && ($_SESSION['user_id'] == $_GET['id'])) {
+        if(isset ($_SESSION['user_id']) && ($_SESSION['user_id'] == $_GET['id'])) { //sono io
             $page_body = str_replace("<tab1 />", "1", $page_body);
             $page_body = str_replace("<tab2 />", "2", $page_body);
             $page_body = str_replace("<tab3 />", "3", $page_body);
@@ -188,7 +188,7 @@ else {
 
             $page_body = str_replace("<breadcrumb />", "La tua pagina", $page_body);
             //var_dump($profile_button);
-            $profile_button = str_replace('<a id="nome_utente" href="autori.php?id='.$_SESSION['user_id'].'" tabindex="4">La tua pagina</a>', '<li>La tua pagina</li>', $profile_button);
+            $profile_button = str_replace('<a id="nome_utente" href="autori.php?id='.$_SESSION['user_id'].'" tabindex="4">La tua pagina</a>', 'La tua pagina', $profile_button);
             //var_dump($page_body);
             $profile_button = str_replace("<tab2 />", "5", $profile_button);
             $page_body = str_replace("<utente />", $profile_button, $page_body);
@@ -197,11 +197,17 @@ else {
             $button_aggiungi_opera = str_replace("<tab />", "6", $button_aggiungi_opera);
             $content = str_replace("<button_aggiungi_opera />", $button_aggiungi_opera, $content);
 
+             
+            $button_modifica_profilo = file_get_contents('includes/button_modifica_profilo.html');
+            $button_modifica_profilo = str_replace("<tab />", "7", $button_modifica_profilo);
+            $content = str_replace("<button_modifica_profilo />", $button_modifica_profilo, $content);
+
             $button_elimina_profilo = file_get_contents('includes/button_elimina_profilo.html');
-            $button_elimina_profilo = str_replace("<tab />", "7", $button_elimina_profilo);
+            $button_elimina_profilo = str_replace("<tab />", "8", $button_elimina_profilo);
             $button_elimina_profilo = str_replace("<id_aut />", $_GET['id'], $button_elimina_profilo);
             $content = str_replace("<button_elimina_profilo />", $button_elimina_profilo, $content);
-            $content = str_replace("<button_modifica_profilo />", "", $content); // TODO aggiungere button
+            
+           
             
             $counter = 8+2;
             
