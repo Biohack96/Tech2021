@@ -8,7 +8,7 @@ $db = new DB();
 
 if(!isset($_SESSION['user_id']))
 {
-    header('Location: Login.php');
+    header('Location: login.php');
 }
 $content = "";
 $a = $db->getAutoreById($_SESSION['user_id']);

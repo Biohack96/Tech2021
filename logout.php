@@ -6,5 +6,5 @@ require_once('includes/DB.php');
 // Oggetto di accesso al database
     $db = new DB();
     $db->logout();
-    header('Location: Home.php');
+    header('Location: home.php');
 ?>
