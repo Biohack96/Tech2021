@@ -24,6 +24,7 @@ $page_head = file_get_contents('includes/head.html');
 $page_body = file_get_contents('includes/body.html');
 
 $content = file_get_contents('includes/opere_list.html');
+$content = str_replace("<section_description />", "", $content);
 
 $page_head = str_replace("<titolo />", $title, $page_head);
 $page_head = str_replace("<scripts />", "", $page_head);
@@ -71,6 +72,8 @@ $profile_button = file_get_contents('includes/usr_zone_logged.html');
 $page_body = str_replace("<breadcrumb />", "Tutte le opere", $page_body);
 
 $cerca_opera = file_get_contents('includes/cerca_opere.html');
+$cerca_opera = str_replace("<tab1 />", $counter++, $cerca_opera);
+$cerca_opera = str_replace("<tab2 />", $counter++, $cerca_opera);
 $content = str_replace("<cerca_opere />", $cerca_opera, $content);
 
 

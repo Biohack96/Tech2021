@@ -138,7 +138,7 @@ if (!isset($_GET['id'])){
     $lista_autori = '';
 
     if($autori != null) {
-
+        $counter = 12;
         // Per ogni autore aggiunge un elemento alla lista
         foreach($autori as $autore){
 
