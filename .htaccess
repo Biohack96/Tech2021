@@ -1,5 +1,6 @@
 ## Configurazione pagina 404
 ErrorDocument 404 /ccinnire/404.php
+DirectoryIndex /ccinnire/home.php
 
 ## PHP Debug
 #php_flag display_startup_errors on
