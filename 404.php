@@ -34,6 +34,9 @@ $page_body = str_replace("<tab2 />", "2", $page_body);
 $page_body = str_replace("<tab3 />", "3", $page_body);
 $page_body = str_replace("<tab4 />", "4", $page_body);
 
+$login_button = file_get_contents('includes/login_button.html');
+$profile_button = file_get_contents('includes/usr_zone_logged.html');
+
 if(isset($_SESSION['user_id']))
 {
     if ($admin == true) {
@@ -58,8 +61,6 @@ else
     $counter = 6;		
 }
 
-$login_button = file_get_contents('includes/login_button.html');
-$profile_button = file_get_contents('includes/usr_zone_logged.html');
 $content = file_get_contents('includes/404.html');
 $content = str_replace("<tab />",$counter, $content);
 

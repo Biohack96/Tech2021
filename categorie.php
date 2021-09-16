@@ -175,6 +175,7 @@ else {
 
     
     $content = file_get_contents('includes/opere_list.html');
+    $content = str_replace("<cerca_opere />", "", $content);
     $link = file_get_contents('includes/link.html');
     $link = str_replace("<path />", "categorie.php", $link);
     $link = str_replace("<nome_link />", "Categorie", $link);

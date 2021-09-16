@@ -27,7 +27,7 @@ $page_head = str_replace("<scripts />", "", $page_head);
 $page_head = str_replace("<page_description/>", "Panoramica principale del sito Share Arts", $page_head);
 $page_head = str_replace("<keywords/>", "arte, autore, opere, condividere, pubblicare, esplorare, vedere, immagine", $page_head);
 $page_head = str_replace("<metatitle/>", $title, $page_head);
-$page_body = str_replace("<breadcrumb />", "Home", $page_body);
+$page_body = str_replace("<breadcrumb />", '<span xml:lang="en">Home</span>', $page_body);
 
 
 $page_body = str_replace("<tab2 />", "1", $page_body);

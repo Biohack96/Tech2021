@@ -425,7 +425,7 @@ body {
 
 .go_back {
     padding: 0.5em 1em;
-    background-color: steelblue;
+    background-color: rgb(28, 28, 124);
     font-weight: bold;
     border-radius: 1em;
     text-decoration: none;
