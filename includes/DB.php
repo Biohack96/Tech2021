@@ -469,7 +469,7 @@ class DB extends mysqli{
 	public function setOpera($titolo, $sht_dsc, $descrizione, $data, $id_autore, $id_categoria, $img){
 
 		$error = array();
-		if (strlen($titolo) > 0) {$error[] = "Titolo troppo lungo, lunghezza massima 200 caratteri";}
+		if (strlen($titolo) > 200) {$error[] = "Titolo troppo lungo, lunghezza massima 200 caratteri";}
 		if (strlen($titolo) === 0) {$error[] = "Titolo mancante, inserire un titolo";}
 		if (strlen($sht_dsc) === 0) {$error[] = "Descrizione breve mancante, inserire una descrizione breve";}
 		if (strlen($sht_dsc) > 200) {$error[] = "Descrizione breve troppo lunga, massimo 200 caratteri";}
