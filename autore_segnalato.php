@@ -69,7 +69,7 @@ $content = str_replace("<tab2 />", $counter++, $content);
 $opere = $db->getMyOpere($_GET['id']);
 
 $opere_content = file_get_contents('includes/opere_list.html');
-$opere_content = str_replace("<section_name />", "", $opere_content);
+$opere_content = str_replace('<h2 class="titolo_sezione"><section_name /></h2>', "", $opere_content);
 $opere_content = str_replace("<section_description />","", $opere_content);
 $opere_content = str_replace("<cerca_opere />","", $opere_content);
 
