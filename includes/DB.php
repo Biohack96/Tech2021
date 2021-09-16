@@ -8,7 +8,7 @@ class DB extends mysqli{
 	private $passPattern = '/^(?=.*[0-9])(?=.*[A-Z]).{8,}$/' ; // Almeno 8 caratteri con almeno una maiuscola e un numero
 
 
-	public function __construct($host="localhost", $user="root", $pass="", $db="sharearts")
+	public function __construct($host="localhost", $user="ccinnire", $pass="Iyu6so3Ohr3sei8o", $db="ccinnire")
 	{
         parent::__construct($host, $user, $pass, $db);
 
