@@ -21,6 +21,10 @@ body {
     height: auto;
 }
 
+#userinfo {
+    font-size: 1.1em;
+}
+
 #titolone {
     padding: 1em;
     font-size: 1.5em;

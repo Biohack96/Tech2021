@@ -34,10 +34,12 @@ if(isset($_SESSION['user_id']))
         $page_body = str_replace("<utente />",  $admin_button, $page_body);
     }
     else {
+        
         $profile_button = str_replace("<id_aut />", $_SESSION['user_id'], $profile_button);
         $profile_button = str_replace("<tab1 />", "4", $profile_button);
         $profile_button = str_replace("<tab2 />", "5", $profile_button);
-        $page_body = str_replace("<utente />", $profile_button, $page_body);			
+        if(!isset($_GET['id']) || (isset($_GET['id']) && $_SESSION['user_id'] != $_GET['id'])) //lasciamo stare va
+        {$page_body = str_replace("<utente />", $profile_button, $page_body);}			
     }
 }
 else
@@ -157,7 +159,6 @@ if (!isset($_GET['id'])){
 }
 
 else {
-
     $a = $db->getAutoreById($_GET['id']);
 
     $title = $a['username'] . " - Share Arts";
@@ -186,7 +187,9 @@ else {
             $page_body = str_replace("<tab4 />", "4", $page_body);
 
             $page_body = str_replace("<breadcrumb />", "La tua pagina", $page_body);
-            $profile_button = str_replace('<li><a id="nome_utente" href="autori.php?id=<id_aut />" tabindex="<tab1 />">La tua pagina</a></li>', '<li>La tua pagina</li>', $profile_button);
+            //var_dump($profile_button);
+            $profile_button = str_replace('<a id="nome_utente" href="autori.php?id='.$_SESSION['user_id'].'" tabindex="4">La tua pagina</a>', '<li>La tua pagina</li>', $profile_button);
+            //var_dump($page_body);
             $profile_button = str_replace("<tab2 />", "5", $profile_button);
             $page_body = str_replace("<utente />", $profile_button, $page_body);
             
