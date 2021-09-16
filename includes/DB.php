@@ -71,7 +71,7 @@ class DB extends mysqli{
 
 	public function getAllOpere()
 	{
-		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE segnalata=false";
+		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE segnalata=false and segnalato=false";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
@@ -97,7 +97,7 @@ class DB extends mysqli{
 
 	public function getAllOpereS($search)
 	{
-		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE segnalata=false and titolo like '%". $this->real_escape_string($search) . "%' or descrizione_short like '%" . $this->real_escape_string($search) . "%'";
+		$sql = "SELECT titolo, img_path, o.id, username, descrizione_short, nome_categoria FROM (opera o JOIN autore a ON o.id_autore=a.id) JOIN categoria c ON o.id_categoria=c.id WHERE o.segnalata=false and a.segnalato=false and (titolo like '%". $this->real_escape_string($search) . "%' or descrizione_short like '%" . $this->real_escape_string($search) . "%')";
 		$query = $this->prepare($sql);
 		$query->execute();
 		$result = $query->get_result();
