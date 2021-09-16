@@ -183,6 +183,7 @@ else {
     $link = str_replace("<tab />", "1", $link);
     
     $nome_categoria = $db->getCategoriaName($_GET['id']);
+    $content = str_replace("<section_description />", $nome_categoria['cat_description'], $content);
     $title = $nome_categoria['nome_categoria'] . " - Share Arts";
     $page_head = str_replace("<titolo />", $title, $page_head);
     $page_head = str_replace("<page_description/>", "Panoramica delle opere appartenenti alla categoria " . $nome_categoria['nome_categoria'], $page_head);

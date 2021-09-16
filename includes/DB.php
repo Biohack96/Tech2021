@@ -233,7 +233,7 @@ class DB extends mysqli{
 
     public function getCategoriaName($id = null)
 	{
-        $sql = "SELECT nome_categoria FROM categoria WHERE id=?";
+        $sql = "SELECT nome_categoria, cat_description FROM categoria WHERE id=?";
 		$query = $this->prepare($sql);
         $query->bind_param("i", $id);
 		$query->execute();
